@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+<meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
+<meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+  <link rel="mask-icon" href="/images/favicon.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="CS231n - Loss Functions and Optimization  损失函数–Loss Function– SVM 损失函数模型：  对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签 损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示：     在得到score之后，可以使用多分类线性SVM  对于xi，yi，令s&#x3D;f(xi,W)，那么SVM可以表示">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习-CS231n Lecture 3 [2017版]">
+<meta property="og:url" content="http://example.com/8dbb3082.html">
+<meta property="og:site_name" content="逢坂葵的个人博客">
+<meta property="og:description" content="CS231n - Loss Functions and Optimization  损失函数–Loss Function– SVM 损失函数模型：  对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签 损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示：     在得到score之后，可以使用多分类线性SVM  对于xi，yi，令s&#x3D;f(xi,W)，那么SVM可以表示">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/8dbb3082/1.png">
+<meta property="og:image" content="http://example.com/8dbb3082/2.png">
+<meta property="og:image" content="http://example.com/8dbb3082/3.png">
+<meta property="og:image" content="http://example.com/8dbb3082/4.png">
+<meta property="og:image" content="http://example.com/8dbb3082/5.png">
+<meta property="og:image" content="http://example.com/8dbb3082/6.png">
+<meta property="og:image" content="http://example.com/8dbb3082/7.png">
+<meta property="og:image" content="http://example.com/8dbb3082/8.png">
+<meta property="og:image" content="http://example.com/8dbb3082/9.png">
+<meta property="og:image" content="http://example.com/8dbb3082/10.png">
+<meta property="og:image" content="http://example.com/8dbb3082/11.png">
+<meta property="og:image" content="http://example.com/8dbb3082/12.png">
+<meta property="og:image" content="http://example.com/8dbb3082/13.png">
+<meta property="og:image" content="http://example.com/8dbb3082/14.png">
+<meta property="article:published_time" content="2022-02-03T13:31:29.000Z">
+<meta property="article:modified_time" content="2023-02-23T08:56:17.703Z">
+<meta property="article:author" content="Aisaka Aoi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/8dbb3082/1.png">
+
+<link rel="canonical" href="http://example.com/8dbb3082.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>深度学习-CS231n Lecture 3 [2017版] | 逢坂葵的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">逢坂葵葵</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Aisaka's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/AisakaAoi" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/8dbb3082.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/manatsu.jpg">
+      <meta itemprop="name" content="Aisaka Aoi">
+      <meta itemprop="description" content="Aisaka's Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逢坂葵的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习-CS231n Lecture 3 [2017版]
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-03 21:31:29" itemprop="dateCreated datePublished" datetime="2022-02-03T21:31:29+08:00">2022-02-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%F0%9F%8C%99%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">🌙进阶学习</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%F0%9F%8C%99%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0/%E2%AD%90%E8%AF%BE%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">⭐课程</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%F0%9F%8C%99%E8%BF%9B%E9%98%B6%E5%AD%A6%E4%B9%A0/%E2%AD%90%E8%AF%BE%E7%A8%8B/%F0%9F%92%ABCS231n/" itemprop="url" rel="index"><span itemprop="name">💫CS231n</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/8dbb3082.html" class="post-meta-item leancloud_visitors" data-flag-title="深度学习-CS231n Lecture 3 [2017版]" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/8dbb3082.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/8dbb3082.html" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><strong>CS231n - Loss Functions and Optimization</strong></li>
+</ul>
+<h3 id="损失函数–Loss-Function–-SVM"><a href="#损失函数–Loss-Function–-SVM" class="headerlink" title="损失函数–Loss Function– SVM"></a>损失函数–Loss Function– SVM</h3><ol>
+<li><p>损失函数模型：</p>
+<ol>
+<li>对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签</li>
+<li>损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示： <img src="/8dbb3082/1.png" class>
+</li>
+</ol>
+</li>
+<li><p>在得到score之后，可以使用多分类线性SVM</p>
+<ol>
+<li>对于xi，yi，令s=f(xi,W)，那么SVM可以表示为： <img src="/8dbb3082/2.png" class>
+ 其中syi代表的是第i张图像正确标签分类所在的scores对应的列，yi对应的值在scores列中对应的C类相同<br> syi≥sj+1的含义是正确的分类要比错误分类的score大1，该项贡献的损失函数为0；反之损失函数正值</li>
+<li>详细的一列的计算过程如下，在作业中使用循环和向量化（vectorization）两种，计算方法很巧妙，这里使用循环的理解方式： <img src="/8dbb3082/3.png" class>
+ <span id="more"></span>
+ 对于将猫和青蛙分类错误的情况下，得分较低的损失函数较大；在车的分类中，得分越高的损失函数值较小；而对于一种最理想的情况，正确分类为1，而其他的分类为0，那么损失函数将为0</li>
+<li>而最后的损失函数由以下公式得到： <img src="/8dbb3082/4.png" class></li>
+</ol>
+<ul>
+<li>Q1：而对于car分类的值如果有微小改变，在正确的值始终比错误的值大1的情况，损失函数不变；但当差值小于1的时候，损失函数值增大。因此微小改变一般不会对损失函数值产生影响。   </li>
+<li>Q2：最小的损失函数值为0，最大的损失函数值为无穷大    </li>
+<li>Q3：当W初始值很小，所有的s都近似为0的时候，损失函数的值最终为1    </li>
+<li>Q4：当算上正确分类的一行时，那么最终的损失函数趋近1，对于整个训练过程没有影响。</li>
+<li>Q5：使用平均和使用和没有太大区别，只是比例不同    </li>
+<li>Q6: 如果使用以下均方函数，不会对结果产生太大的影响。  <img src="/8dbb3082/5.png" class></li>
+</ul>
+</li>
+<li><p>正则化（regularization）——防止过拟合，引入W的作用</p>
+<ol>
+<li>正则化的概念：在特征参数维度较大、训练样本较少情况下，会导致模型过拟合。一方面可以通过丢掉某些参数（dropout等）；另一方法需要加入正则项对特征参数进行惩罚，降低特征参数的影响，通常如下： <img src="/8dbb3082/6.png" class>
+ 其中公式中 λ 为平衡两者之间的影响，但通常值较大，数量级在10^4以上。<br> 正则化详细地讲解参照网页：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jianxinzhou/p/4083921.html">https://www.cnblogs.com/jianxinzhou/p/4083921.html</a></li>
+<li>欧卡姆剃刀：“Among competing hypotheses,the simplest is the best”     William of Ockham, 1285 - 1347</li>
+<li>正则化的方法（直接贴图）： <img src="/8dbb3082/7.png" class></li>
+<li>L2正则化（权重衰减）：对于使得损失函数相同的特征参数矩阵，优选特征参数矩阵均匀的，[0.25, 0.25, 0.25, 0.25]优于[1, 0, 0, 0]</li>
+<li>L1正则化（稀疏特性）：具体还未讲到。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="损失函数–Loss-Function–-Softmax（Multinomial-Logistic-Regression）"><a href="#损失函数–Loss-Function–-Softmax（Multinomial-Logistic-Regression）" class="headerlink" title="损失函数–Loss Function– Softmax（Multinomial Logistic Regression）"></a>损失函数–Loss Function– Softmax（Multinomial Logistic Regression）</h3><ol>
+<li>函数公式很简单，参照以下公式：</li>
+</ol>
+<img src="/8dbb3082/8.png" class>
+
+<p>EXP和normalize的作用将score归一化到[0,1]之间。</p>
+<ol start="2">
+<li>计算方式：</li>
+</ol>
+<img src="/8dbb3082/9.png" class>
+
+<p><strong>损失函数总结</strong></p>
+<ol>
+<li>Softmax对于scores值变化较为敏感，而SVM对于Scores值微小变化不敏感，意味着SVM具有较大鲁棒性，Softmax具有较强灵敏性。</li>
+<li>通过数据集和标签（x,y）——&gt;乘以特征参数W和偏置b，计算scores——&gt;通过损失函数计算Loss</li>
+<li>如何优化参数，最佳的W—-&gt;Optimization</li>
+</ol>
+<hr>
+<h3 id="最优化-Optimization"><a href="#最优化-Optimization" class="headerlink" title="最优化-Optimization"></a>最优化-Optimization</h3><ol>
+<li>最优化问题就像在一个山谷中寻找最低点<ul>
+<li>不理智的策略：采用随机的方式去寻找最佳W矩阵，能够寻找到合适的点，但是准确率不高</li>
+</ul>
+</li>
+<li>跟随斜率/梯度<ul>
+<li>数值计算斜率的方法如下：  <img src="/8dbb3082/10.png" class>
+<ol>
+<li>多维的情况下，梯度等同于偏导数，独立对每一维度进行计算</li>
+<li>但是对于一个损失函数和W，步长是不确定，同时对于上面的损失函数，是一个W的函数</li>
+<li>对于求梯度，可以转换为使用微积分（calculus）求取解析解，(反向传播),再使用学习率进行更新<img src="/8dbb3082/11.png" class></li>
+<li>数值法优缺点：估算；速度慢；易于coding</li>
+<li>解析法优缺点：准确；速度快；易出错（特别是在某些函数不可导点）</li>
+</ol>
+</li>
+<li>梯度检验：<ol>
+<li>如何证明更新后的参数是正确的，可以使用数值解的逼近计算方式来验证求取的梯度是否正确</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>梯度下降法–随机梯度下降法（SGD-stochastic）<ul>
+<li>当数据集比较大的时候，计算代价非常大(占用内存)；计算会非常慢（图像越多，需要优化的参数成倍增长）</li>
+<li>使用mini-batch进行训练，通常一组为32/64/128，大小与内存大小成比例，使用这种方法损失函数会在波动中下降。</li>
+<li>学习率不同优化速度不同：太高跨度大无法收敛；太小收敛速度慢；较高无法收敛到最佳点，会找到局部最优；合适的值才能有快又好。</li>
+<li>其他的梯度下降法还有：Momentum（冲量法）、NAG（牛顿法）、Adagrad、Adadelta、RMSprop等</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="图像特征提取"><a href="#图像特征提取" class="headerlink" title="图像特征提取"></a>图像特征提取</h3><ol>
+<li>特征提取</li>
+</ol>
+<img src="/8dbb3082/12.png" class>
+
+<ul>
+<li>特征提取作为某些统计特征来进行分类</li>
+</ul>
+<ol start="2">
+<li>推动力</li>
+</ol>
+<img src="/8dbb3082/13.png" class>
+
+<ul>
+<li>特征提取的推动力在于将以前不能区分的类别，通过函数映射变化成为直观可区分的类</li>
+</ul>
+<ol start="3">
+<li><p>实例</p>
+<ol>
+<li>Color Histogram:通过提取不同颜色通道的值作为特征</li>
+<li>Histogram of Oriented Gradients (HoG)：通过提取图像的不同旋转方向的梯度统计直方图来作为特征</li>
+<li>Bag of Words：通过提取某些分类的特征作为编码，比如猫的耳朵、青蛙的脚；再通过这些特征作为解码去恢复图片</li>
+</ol>
+</li>
+<li><p>特征提取VS神经网络</p>
+</li>
+</ol>
+<img src="/8dbb3082/14.png" class>
+
+<ul>
+<li><p>2012年前图片分类广泛采用特征提取+线性分类（特别是SVM），在特定领域方向具有价值，具有专用性，但缺乏通用性与广泛性。</p>
+</li>
+<li><p>2012年后imagenet的Alexnet网络已极高的准确率打败传统方法后，随着算力和数据爆炸式增长而崛起。</p>
+</li>
+</ul>
+<hr>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/4c35ef42.html" rel="prev" title="深度学习-CS231n Lecture 2 [2017版]">
+      <i class="fa fa-chevron-left"></i> 深度学习-CS231n Lecture 2 [2017版]
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/a4802501.html" rel="next" title="深度学习-CS231n Lecture 4 [2017版]">
+      深度学习-CS231n Lecture 4 [2017版] <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E2%80%93Loss-Function%E2%80%93-SVM"><span class="nav-number">1.</span> <span class="nav-text">损失函数–Loss Function– SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E2%80%93Loss-Function%E2%80%93-Softmax%EF%BC%88Multinomial-Logistic-Regression%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">损失函数–Loss Function– Softmax（Multinomial Logistic Regression）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%96-Optimization"><span class="nav-number">3.</span> <span class="nav-text">最优化-Optimization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-number">4.</span> <span class="nav-text">图像特征提取</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Aisaka Aoi"
+      src="/images/manatsu.jpg">
+  <p class="site-author-name" itemprop="name">Aisaka Aoi</p>
+  <div class="site-description" itemprop="description">逢坂葵的个人博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AisakaAoi" title="GitHub 👨‍💻 → https:&#x2F;&#x2F;github.com&#x2F;AisakaAoi" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub 👨‍💻</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://github.com/AisakaManatsu" title="GitHub 👩‍💻 → https:&#x2F;&#x2F;github.com&#x2F;AisakaManatsu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub 👩‍💻</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/91560309" title="Bilibili 📺 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;91560309" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili 📺</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/198562921" title="Bilibili 🎮 → https:&#x2F;&#x2F;space.bilibili.com&#x2F;198562921" rel="noopener" target="_blank"><i class="fab fa-bilibili fa-fw"></i>Bilibili 🎮</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UCALvyn5Cl76GCotO9pczvjg" title="YouTube 📺 → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UCALvyn5Cl76GCotO9pczvjg" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube 📺</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:aisakaaoi@qq.com" title="E-Mail 📧 → mailto:aisakaaoi@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail 📧</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Aisaka Aoi</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">1.1m</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">46:55</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+<script>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'UqjWdRYbIUEUQRXhBUUIh1QE-gzGzoHsz',
+      appKey     : 'gj89JXC485PFbpdHLKVkz6dm',
+      placeholder: "这里可以发送评论~（上面可以输入昵称、邮箱）",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/haru02.model.json"},"display":{"position":"right","width":208,"height":520},"mobile":{"show":false},"log":false});</script></body>
+</html>
