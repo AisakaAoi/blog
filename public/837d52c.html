@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -165,7 +165,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -284,7 +284,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.5k</span>
+              <span>4.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -328,17 +328,17 @@
 <h3 id="RSA原理"><a href="#RSA原理" class="headerlink" title="RSA原理"></a>RSA原理</h3><h4 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h4><p>RSA公开密钥密码体制的原理是：根据数论，寻求两个大素数比较简单，而将它们的乘积进行因式分解却极其困难，因此可以将乘积公开作为加密密钥。</p>
 <h4 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h4><p>RSA算法的具体描述如下：</p>
 <ol>
-<li><p>任意选取两个不同的大素数p和q计算乘积n = pq，φ(n) = (p-1)(q-1)</p>
+<li><p>任意选取两个不同的大素数p和q计算乘积n &#x3D; pq，φ(n) &#x3D; (p-1)(q-1)</p>
 </li>
-<li><p>任意选取一个大整数e，满足gcd(e, φ(n)) = 1，整数e用做加密钥（注意：e的选取是很容易的，例如，所有大于p和q的素数都可用）</p>
+<li><p>任意选取一个大整数e，满足gcd(e, φ(n)) &#x3D; 1，整数e用做加密钥（注意：e的选取是很容易的，例如，所有大于p和q的素数都可用）</p>
 </li>
-<li><p>确定的解密钥d，满足(de) mod φ(n) = 1，即de = kφ(n) + 1, k &gt;= 1是一个任意的整数；所以，若知道e和φ(n)，则很容易计算出d</p>
+<li><p>确定的解密钥d，满足(de) mod φ(n) &#x3D; 1，即de &#x3D; kφ(n) + 1, k &gt;&#x3D; 1是一个任意的整数；所以，若知道e和φ(n)，则很容易计算出d</p>
 </li>
 <li><p>公开整数n和e，秘密保存d</p>
 </li>
-<li><p>将明文m（m&lt;n是一个整数）加密成密文c，加密算法为：c = E(m) = mᵉ mod n</p>
+<li><p>将明文m（m&lt;n是一个整数）加密成密文c，加密算法为：c &#x3D; E(m) &#x3D; mᵉ mod n</p>
 </li>
-<li><p>将密文c解密为明文m，解密算法为：m = D(c) = cᵈ mod n</p>
+<li><p>将密文c解密为明文m，解密算法为：m &#x3D; D(c) &#x3D; cᵈ mod n</p>
 </li>
 </ol>
 <p>然而只根据n和e（注意：不是p和q）要计算出d是不可能的。因此，任何人都可对明文进行加密，但只有授权用户（知道d）才可对密文解密。</p>
@@ -363,9 +363,9 @@
 <p>其中一个答案是模运算。模运算又被叫作求余运算，像计算机中伪随机数、散列（hash）算法都是它的典型应用。</p>
 <p>试想一下这个例子：3³ mod 7</p>
 <p>要计算3的3次方对7取余数很容易，答案是6。</p>
-<p>3ⁿ mod 7 = 6</p>
+<p>3ⁿ mod 7 &#x3D; 6</p>
 <p>但已知答案是6的情况下，我们又应当如何去寻找这里的n值呢？由于求余运算并不可逆，我们只能一个数一个数地代进去尝试，从0开始直到得到答案3。</p>
-<p>但如果这里出现的是很大很大的数字，再去一一尝试就很不现实了：3ⁿ mod 98859834576182328468765894361723649832 = 6</p>
+<p>但如果这里出现的是很大很大的数字，再去一一尝试就很不现实了：3ⁿ mod 98859834576182328468765894361723649832 &#x3D; 6</p>
 <img src="/837d52c/7.png" class>
 
 <p>这也是为什么模运算被称作是单向函数，因为对于大数来说，对模运算求逆是根本不现实的。而公钥加密正是利用了模运算的这个特性。</p>
@@ -404,7 +404,7 @@
 <p>这样说可能有些抽象，我们来看一个例子：φ(6)</p>
 <img src="/837d52c/17.png" class>
 
-<p>我们会发现在小于等于6的正整数中，只有1、5和数字6除了1以外并不存在其它的公约数，所以φ(6)=2</p>
+<p>我们会发现在小于等于6的正整数中，只有1、5和数字6除了1以外并不存在其它的公约数，所以φ(6)&#x3D;2</p>
 <p>在了解φ函数之后，我们回到欧拉定理，尝试对公式进行一些简单的变换，首先我们可以在等式两端同时取k次幂</p>
 <img src="/837d52c/18.png" class>
 
@@ -429,10 +429,10 @@
 <img src="/837d52c/24.png" class>
 
 <p>截至目前为止，用最前沿的分布式算法，花了大约2700个“CPU年”，才成功分解了一个829位的数字。因此对于大数来说，φ(n)的求解可以看作是计算上不可行的（computational infeasible）</p>
-<p>但是，如果n本身就是一个质数，情况就有所不同了，比如对于质数7来说，小于等于7并与7互质的数有1~6，除了7本身，因此φ(7)=6</p>
+<p>但是，如果n本身就是一个质数，情况就有所不同了，比如对于质数7来说，小于等于7并与7互质的数有1~6，除了7本身，因此φ(7)&#x3D;6</p>
 <img src="/837d52c/25.png" class>
 
-<p>同理对于质数13来说，与13互质的数除了13本身其它全部都是，因此φ(13)=12</p>
+<p>同理对于质数13来说，与13互质的数除了13本身其它全部都是，因此φ(13)&#x3D;12</p>
 <img src="/837d52c/26.png" class>
 
 <p>其实对于任何的质数p，我们可以推广到φ(p)等于这个质数p减去1：</p>
@@ -441,14 +441,14 @@
 <p>除此之外，φ函数还有一个重要的特性，对于任意两个互质的整数p和q，φ(p*q)可以直接拆分为φ(p)和φ(q)它们单独的乘积（欧拉函数是积性函数）</p>
 <img src="/837d52c/28.png" class>
 
-<p>例如，我们可以选取两个质数17和23，因此我们可以轻易求得φ(391)=352</p>
+<p>例如，我们可以选取两个质数17和23，因此我们可以轻易求得φ(391)&#x3D;352</p>
 <img src="/837d52c/29.png" class>
 
 <hr>
-<h4 id="RSA加密解密"><a href="#RSA加密解密" class="headerlink" title="RSA加密解密"></a>RSA加密解密</h4><p>我们代入之前推导出的公式，然后选取一个较小的数e=3，这里我们需要保证它与φ(n)互质</p>
+<h4 id="RSA加密解密"><a href="#RSA加密解密" class="headerlink" title="RSA加密解密"></a>RSA加密解密</h4><p>我们代入之前推导出的公式，然后选取一个较小的数e&#x3D;3，这里我们需要保证它与φ(n)互质</p>
 <img src="/837d52c/30.png" class>
 
-<p>于是在k=5的情况下，求得用于解密的密钥d等于587</p>
+<p>于是在k&#x3D;5的情况下，求得用于解密的密钥d等于587</p>
 <p>在求出了私钥d以后，我们将不再需要这里的p和q了，算法会将e和n公布，作为加密时用的公钥（public key），而d将保存下来作为解密时用的私钥（private key），其他人由于不知道p和q这两个关键的质因数，没有办法计算出这里的φ(n)，因而无从破译这里的私钥d</p>
 <p>公钥加密正是利用了这个信息不对等，让加密者能够快速构造出一个φ(n)，而其他人却无法在有限的时间内求解它</p>
 <p>接着我们用求得的e、d、n来模拟一段信息的加密解密过程，我们要加密的字符是“a”，它所对应的ascII编码是97，于是97的三次方除以391并取余数等于79，79是我们加密后的密文，为了解密，我们计算79的587次方除以391取余数，得到原始数据97，因此成功还原了字符“a”</p>
@@ -565,7 +565,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -639,7 +639,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

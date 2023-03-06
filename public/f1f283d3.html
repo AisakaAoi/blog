@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -335,7 +335,7 @@
 <h4 id="结合分类与位置信息"><a href="#结合分类与位置信息" class="headerlink" title="结合分类与位置信息"></a>结合分类与位置信息</h4><p>定义一种新的全卷积网络用作语义分割任务，通过调整用于分类的卷积分类器可以在语义分割任务上达到较好的性能。本文基于 VGG-16 模型提出了基础的 FCN-32s、跨层信息融合的 FCN-16s 以及 FCN-8s,模型原理如图 3 所示：</p>
 <img src="/f1f283d3/4.png" class>
 
-<p>由图 3 可以看出，FCN-32s 模型就是在 VGG16 模型的 5 次下采样之后得到的得分输出直接进行 32x 上采样，恢复到原图尺寸。而 FCN-16s 则是将 pool5 的得分输出进行 2x 上采样，恢复到原始图像的 1/16，然后再与 pool4 的得分输出直接相加。（注：这里的得分输出是指经过 1 x 1 卷积进行通道拓展，n_channels = 21)。最后，FCN-8s 是在 FCN-16s 的基础上将输出 2x 上采样，再直接加上 pool3 的得分输出得到 1/8 尺度的 output，最后再进行 8x 采样恢复尺寸。本文提出的基于 VGG-16 模型的 FCN-32s、FCN-16s，以及 FCN-8 在语义分割中的实际效果如图 4 所示：</p>
+<p>由图 3 可以看出，FCN-32s 模型就是在 VGG16 模型的 5 次下采样之后得到的得分输出直接进行 32x 上采样，恢复到原图尺寸。而 FCN-16s 则是将 pool5 的得分输出进行 2x 上采样，恢复到原始图像的 1&#x2F;16，然后再与 pool4 的得分输出直接相加。（注：这里的得分输出是指经过 1 x 1 卷积进行通道拓展，n_channels &#x3D; 21)。最后，FCN-8s 是在 FCN-16s 的基础上将输出 2x 上采样，再直接加上 pool3 的得分输出得到 1&#x2F;8 尺度的 output，最后再进行 8x 采样恢复尺寸。本文提出的基于 VGG-16 模型的 FCN-32s、FCN-16s，以及 FCN-8 在语义分割中的实际效果如图 4 所示：</p>
 <img src="/f1f283d3/5.png" class>
 
 <hr>
@@ -343,7 +343,7 @@
 <p><strong>Fine-tuning</strong> 训练时，每个模型都进行了端到端的 fine-tuning，如果只是在原 VGG-16 分类器的层上进行 fine-tuning 只能达到最好性能的 70%，各模型的实验结果如表 2 所示：</p>
 <img src="/f1f283d3/6.png" class>
 
-<p><strong>Patch Sampling</strong> 同时，作者还进行了 patch-wise training 的对比试验。之前的文献表明，patch-wise 的训练中由于进行随机采样，数据的方差较大，这有利于加速模型收敛。（？？？）在研究这种 trade-off 的过程中，作者通过空间上的损失采样来进行，同时为每种训练方式（full image training VS patch-wise training)独立地选定一个概率 p，以这个概率保留掉最后一层的神经元，同时为每个 batch 中的图像数量乘上一个因子 1/p（0 &lt; p &lt; 1）以扩大 batch_size。对比实验结果如图 5 所示：</p>
+<p><strong>Patch Sampling</strong> 同时，作者还进行了 patch-wise training 的对比试验。之前的文献表明，patch-wise 的训练中由于进行随机采样，数据的方差较大，这有利于加速模型收敛。（？？？）在研究这种 trade-off 的过程中，作者通过空间上的损失采样来进行，同时为每种训练方式（full image training VS patch-wise training)独立地选定一个概率 p，以这个概率保留掉最后一层的神经元，同时为每个 batch 中的图像数量乘上一个因子 1&#x2F;p（0 &lt; p &lt; 1）以扩大 batch_size。对比实验结果如图 5 所示：</p>
 <img src="/f1f283d3/7.png" class>
 
 <p>同时进行了全图像训练、50% 采样训练、25% 采样训练三种方式，通过实验结果可以看出，patch-wise 的训练方式在促进模型收敛上并没有显著的优势（左图）。同时，右图显示了模型收敛的相对时间，可以发现由于 patch-wise 方式在每个 batch 中需要训练的图像数量更多，速度更慢。所以本文并没有采用这种训练方式。</p>
@@ -355,7 +355,7 @@
 <img src="/f1f283d3/8.png" class>
 
 <ul>
-<li>pixel accuracy 指的是像素准确性，n_ij 表示原本属于类别 i 的像素被分类到类别 j 中的像素个数，t_i = ∑_j n_ij 表示类别 i 中所有的像素个数。pixel accuracy 是把所有正确预测类别的像素数量求和再除以所有的像素数量。</li>
+<li>pixel accuracy 指的是像素准确性，n_ij 表示原本属于类别 i 的像素被分类到类别 j 中的像素个数，t_i &#x3D; ∑_j n_ij 表示类别 i 中所有的像素个数。pixel accuracy 是把所有正确预测类别的像素数量求和再除以所有的像素数量。</li>
 <li>mean accuracy 是指平均准确率，对每个类别的 accuracy 取平均。</li>
 <li>mean IU 平均交并比，将每个类别的正确预测像素数量 n_ii 除以本类别像素数量 t_i 除以本类别像素数量 i<br>的像素的并集 (t_i + ∑_j n_ij - n_ii)，再除以类别 n_cl。</li>
 <li>按类别频率加权的IU</li>
@@ -475,7 +475,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -549,7 +549,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

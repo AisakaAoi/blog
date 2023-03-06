@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -23,12 +23,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="开启服务和绑定服务的区别&#x2F;优缺点开启服务：startService() → stopService()（其生命周期为onCreate() → onStartCommand() → onDestroy()） 绑定服务：bindService() → unBindService()（其生命周期为onCreate() → onBind() → onUnbind() → onDestroy()） 区别：s">
+  <meta name="description" content="开启服务和绑定服务的区别&#x2F;优缺点开启服务：startService() → stopService()（其生命周期为onCreate() → onStartCommand() → onDestroy()） 绑定服务：bindService() → unBindService()（其生命周期为onCreate() → onBind() → onUnbind() → onDestroy()）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-四大组件-Service">
 <meta property="og:url" content="http://example.com/2421557f.html">
 <meta property="og:site_name" content="逢坂葵的个人博客">
-<meta property="og:description" content="开启服务和绑定服务的区别&#x2F;优缺点开启服务：startService() → stopService()（其生命周期为onCreate() → onStartCommand() → onDestroy()） 绑定服务：bindService() → unBindService()（其生命周期为onCreate() → onBind() → onUnbind() → onDestroy()） 区别：s">
+<meta property="og:description" content="开启服务和绑定服务的区别&#x2F;优缺点开启服务：startService() → stopService()（其生命周期为onCreate() → onStartCommand() → onDestroy()） 绑定服务：bindService() → unBindService()（其生命周期为onCreate() → onBind() → onUnbind() → onDestroy()）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2421557f/1.png">
 <meta property="og:image" content="http://example.com/2421557f/2.jpg">
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -256,7 +256,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>2.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -275,7 +275,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="开启服务和绑定服务的区别-优缺点"><a href="#开启服务和绑定服务的区别-优缺点" class="headerlink" title="开启服务和绑定服务的区别/优缺点"></a>开启服务和绑定服务的区别/优缺点</h3><p>开启服务：startService() → stopService()（其生命周期为onCreate() → onStartCommand() → onDestroy()）</p>
+        <h3 id="开启服务和绑定服务的区别-x2F-优缺点"><a href="#开启服务和绑定服务的区别-x2F-优缺点" class="headerlink" title="开启服务和绑定服务的区别&#x2F;优缺点"></a>开启服务和绑定服务的区别&#x2F;优缺点</h3><p>开启服务：startService() → stopService()（其生命周期为onCreate() → onStartCommand() → onDestroy()）</p>
 <p>绑定服务：bindService() → unBindService()（其生命周期为onCreate() → onBind() → onUnbind() → onDestroy()）</p>
 <p>区别：startService()可以长期在后台运行，bindService()不可以在后台长期运行；bindService()启动服务可以跟服务进行通讯，startService()启动服务不可以跟服务进行通讯。</p>
 <p>解决方法：混合两种启动方式，先startService()再bindService()，这样又可以长期运行又可以跟服务进行通讯。</p>
@@ -286,7 +286,7 @@
 <ol>
 <li><p>开启服务 → 绑定服务，如果不取消绑定，则无法停止服务</p>
 </li>
-<li><p>开启服务 → 多次绑定/解绑服务，服务不会被停止，只能通过stopService()来停止服务</p>
+<li><p>开启服务 → 多次绑定&#x2F;解绑服务，服务不会被停止，只能通过stopService()来停止服务</p>
 </li>
 </ol>
 <p><strong>推荐的混合开启服务的方式：</strong></p>
@@ -295,7 +295,7 @@
 </li>
 <li><p>绑定服务 → 为了可以进行通讯</p>
 </li>
-<li><p>调用服务的内部方法，例如控制音乐的播放/暂停/停止/快进。</p>
+<li><p>调用服务的内部方法，例如控制音乐的播放&#x2F;暂停&#x2F;停止&#x2F;快进。</p>
 </li>
 <li><p>退出Activity，要记得解绑服务 → 释放资源</p>
 </li>
@@ -427,7 +427,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%91%E5%AE%9A%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8C%BA%E5%88%AB-%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">开启服务和绑定服务的区别&#x2F;优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service%E6%B7%B7%E5%90%88%E5%BC%80%E5%90%AF%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">Service混合开启模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android%E6%9C%8D%E5%8A%A1%EF%BC%88Service%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">Android服务（Service）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BUG%E4%BF%AE%E6%94%B9"><span class="nav-number">4.</span> <span class="nav-text">BUG修改</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%91%E5%AE%9A%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8C%BA%E5%88%AB-x2F-%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">开启服务和绑定服务的区别&#x2F;优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Service%E6%B7%B7%E5%90%88%E5%BC%80%E5%90%AF%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">Service混合开启模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android%E6%9C%8D%E5%8A%A1%EF%BC%88Service%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">Android服务（Service）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BUG%E4%BF%AE%E6%94%B9"><span class="nav-number">4.</span> <span class="nav-text">BUG修改</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,7 +443,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -517,7 +517,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

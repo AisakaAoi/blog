@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -333,7 +333,7 @@
 <img src="/e17abfce/5.jpg" class>
 
 <hr>
-<h4 id="Inference-Zero-shot-prediction"><a href="#Inference-Zero-shot-prediction" class="headerlink" title="Inference / Zero-shot prediction"></a>Inference / Zero-shot prediction</h4><p>一旦CLIP训练好了，我们就可以做zero-shot prediction了，如图所示：</p>
+<h4 id="Inference-x2F-Zero-shot-prediction"><a href="#Inference-x2F-Zero-shot-prediction" class="headerlink" title="Inference &#x2F; Zero-shot prediction"></a>Inference &#x2F; Zero-shot prediction</h4><p>一旦CLIP训练好了，我们就可以做zero-shot prediction了，如图所示：</p>
 <img src="/e17abfce/6.jpg" class>
 
 <p>步骤可以整理成下面这样：</p>
@@ -361,7 +361,7 @@
 <h3 id="Experiment"><a href="#Experiment" class="headerlink" title="Experiment"></a>Experiment</h3><p>实验部分这里重点focus在CV相关部分。</p>
 <h4 id="Zero-shot-CLIP-v-s-Linear-Probe-on-ResNet50"><a href="#Zero-shot-CLIP-v-s-Linear-Probe-on-ResNet50" class="headerlink" title="Zero-shot CLIP v.s. Linear Probe on ResNet50"></a>Zero-shot CLIP v.s. Linear Probe on ResNet50</h4><img src="/e17abfce/7.jpg" class>
 
-<p>CLIP的胜率在16/27，已经很强了，因为CLIP是zero-shot的，即没有用下游任务的数据，而linear probed ResNet50用了下游数据进行finetune逻辑回归分类器的参数。</p>
+<p>CLIP的胜率在16&#x2F;27，已经很强了，因为CLIP是zero-shot的，即没有用下游任务的数据，而linear probed ResNet50用了下游数据进行finetune逻辑回归分类器的参数。</p>
 <hr>
 <h4 id="Prompt-engineering-and-ensembling"><a href="#Prompt-engineering-and-ensembling" class="headerlink" title="Prompt engineering and ensembling"></a>Prompt engineering and ensembling</h4><p>作者默认prompt模板是：”A photo of a {label}.”，但作者发现这样的模板还是有点粗糙，可以考虑加一些context比如”A photo of a {label}, a type of pet.”。对于不同类型任务，作者做了一些手动的、特定的prompt工程。</p>
 <p>从另一个角度，一张图的text描述其实有很多种的，只要text的核心语义和image相同就行，那么我们还可以做一些ensemble，比如ensemble一下”A photo of a big {label}.”和”A photo of a small {label}.”。</p>
@@ -394,7 +394,7 @@
 <h4 id="Robustness-to-Natural-Distribution-Shift"><a href="#Robustness-to-Natural-Distribution-Shift" class="headerlink" title="Robustness to Natural Distribution Shift"></a>Robustness to Natural Distribution Shift</h4><p>作者在ImageNet的7个shift datasets上观察各模型的平均性能。</p>
 <img src="/e17abfce/13.jpg" class>
 
-<p>说实话，做domain adaptation（DA）/generalization（DG）的人看到这里应该挺兴奋，新的鲁棒特征来啦。不过问题来了，左边这张图是不是也反映了representation learning比DA、DG technique更重要呢？（那么，我们真的需要花那么大力气去卷DA嘛… 说不定通过这种大规模pretraining就能很大程度上解决domain shift的问题。但另一方面，DA、DG也可以在这些pretraining得到的表征上锦上添花。怎么说都有道理，但我更prefer to CLIP这类表征学习的意义。</p>
+<p>说实话，做domain adaptation（DA）&#x2F;generalization（DG）的人看到这里应该挺兴奋，新的鲁棒特征来啦。不过问题来了，左边这张图是不是也反映了representation learning比DA、DG technique更重要呢？（那么，我们真的需要花那么大力气去卷DA嘛… 说不定通过这种大规模pretraining就能很大程度上解决domain shift的问题。但另一方面，DA、DG也可以在这些pretraining得到的表征上锦上添花。怎么说都有道理，但我更prefer to CLIP这类表征学习的意义。</p>
 <p>CLIP的实验非常丰富，这里只是抛砖引玉地挑了几个我个人觉得比较有意思的实验讲，具体地还是推荐大家去看原文。</p>
 <hr>
 <h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><p>这个部分往往容易被人忽略，但其实个人觉得，limitation和conclusion部分往往有作者们更深入的思考，这里简单总结下CLIP的limitation：</p>
@@ -498,7 +498,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">2.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Motivation"><span class="nav-number">3.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">4.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Objective"><span class="nav-number">4.1.</span> <span class="nav-text">Objective</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inference-Zero-shot-prediction"><span class="nav-number">4.2.</span> <span class="nav-text">Inference &#x2F; Zero-shot prediction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training"><span class="nav-number">4.3.</span> <span class="nav-text">Training</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#text-encoder"><span class="nav-number">4.3.1.</span> <span class="nav-text">text encoder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#image-encoder"><span class="nav-number">4.3.2.</span> <span class="nav-text">image encoder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other-configuration"><span class="nav-number">4.3.3.</span> <span class="nav-text">Other configuration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiment"><span class="nav-number">5.</span> <span class="nav-text">Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zero-shot-CLIP-v-s-Linear-Probe-on-ResNet50"><span class="nav-number">5.1.</span> <span class="nav-text">Zero-shot CLIP v.s. Linear Probe on ResNet50</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prompt-engineering-and-ensembling"><span class="nav-number">5.2.</span> <span class="nav-text">Prompt engineering and ensembling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Few-shot-CLIP-v-s-SOTA-ImageNet-SSL-methods"><span class="nav-number">5.3.</span> <span class="nav-text">Few-shot CLIP v.s. SOTA (ImageNet) SSL methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-many-shots-is-needed-for-achieving-zero-shot-performance"><span class="nav-number">5.4.</span> <span class="nav-text">How many shots is needed for achieving zero-shot performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-probing-CLIP-performance"><span class="nav-number">5.5.</span> <span class="nav-text">Linear probing CLIP performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Robustness-to-Natural-Distribution-Shift"><span class="nav-number">5.6.</span> <span class="nav-text">Robustness to Natural Distribution Shift</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limitation"><span class="nav-number">6.</span> <span class="nav-text">Limitation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">7.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E6%96%87%E9%93%BE%E6%8E%A5"><span class="nav-number">8.</span> <span class="nav-text">原文链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">2.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Motivation"><span class="nav-number">3.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">4.</span> <span class="nav-text">Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Objective"><span class="nav-number">4.1.</span> <span class="nav-text">Objective</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inference-x2F-Zero-shot-prediction"><span class="nav-number">4.2.</span> <span class="nav-text">Inference &#x2F; Zero-shot prediction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Training"><span class="nav-number">4.3.</span> <span class="nav-text">Training</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#text-encoder"><span class="nav-number">4.3.1.</span> <span class="nav-text">text encoder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#image-encoder"><span class="nav-number">4.3.2.</span> <span class="nav-text">image encoder</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Other-configuration"><span class="nav-number">4.3.3.</span> <span class="nav-text">Other configuration</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiment"><span class="nav-number">5.</span> <span class="nav-text">Experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Zero-shot-CLIP-v-s-Linear-Probe-on-ResNet50"><span class="nav-number">5.1.</span> <span class="nav-text">Zero-shot CLIP v.s. Linear Probe on ResNet50</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prompt-engineering-and-ensembling"><span class="nav-number">5.2.</span> <span class="nav-text">Prompt engineering and ensembling</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Few-shot-CLIP-v-s-SOTA-ImageNet-SSL-methods"><span class="nav-number">5.3.</span> <span class="nav-text">Few-shot CLIP v.s. SOTA (ImageNet) SSL methods</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-many-shots-is-needed-for-achieving-zero-shot-performance"><span class="nav-number">5.4.</span> <span class="nav-text">How many shots is needed for achieving zero-shot performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-probing-CLIP-performance"><span class="nav-number">5.5.</span> <span class="nav-text">Linear probing CLIP performance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Robustness-to-Natural-Distribution-Shift"><span class="nav-number">5.6.</span> <span class="nav-text">Robustness to Natural Distribution Shift</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Limitation"><span class="nav-number">6.</span> <span class="nav-text">Limitation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">7.</span> <span class="nav-text">参考链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E6%96%87%E9%93%BE%E6%8E%A5"><span class="nav-number">8.</span> <span class="nav-text">原文链接</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -514,7 +514,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -588,7 +588,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -256,7 +256,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -284,12 +284,12 @@
 <p>内容提供者可以让内容集中，必要时可以有多个不同的应用程序来访问。内容提供者的行为和数据库很像。你可以查询，编辑它的内容，使用 insert()， update()， delete() 和 query() 来添加或者删除内容。多数情况下数据被存储在 SQLite 数据库。</p>
 <p>内容提供者被实现为类 ContentProvider 类的子类。需要实现一系列标准的 API，以便其他的应用程序来执行事务。</p>
 <hr>
-<h3 id="内容URI"><a href="#内容URI" class="headerlink" title="内容URI"></a>内容URI</h3><p>要查询内容提供者，需要以如下格式的URI的形式来指定查询字符串：&lt;prefix&gt;://&lt;authority&gt;/&lt;data_type&gt;/&lt;id&gt;</p>
+<h3 id="内容URI"><a href="#内容URI" class="headerlink" title="内容URI"></a>内容URI</h3><p>要查询内容提供者，需要以如下格式的URI的形式来指定查询字符串：&lt;prefix&gt;:&#x2F;&#x2F;&lt;authority&gt;&#x2F;&lt;data_type&gt;&#x2F;&lt;id&gt;</p>
 <p>以下是URL中各部分的具体说明：</p>
-<p><strong>prefix：</strong>前缀，一直被设置为content://</p>
+<p><strong>prefix：</strong>前缀，一直被设置为content:&#x2F;&#x2F;</p>
 <p><strong>thority：</strong>授权，指定内容提供者的名称，例如联系人，浏览器等。第三方的内容提供者可以是全名，如：cn.programmer.statusprovider</p>
-<p><strong>data_type：</strong>数据类型，这个表明这个特殊的内容提供者中的数据的类型。例如：你要通过内容提供者Contacts来获取所有的通讯录，数据路径是people，那么URI将是下面这样：content://contacts/people</p>
-<p><strong>id：</strong>这个指定特定的请求记录。例如：你在内容提供者Contacts中查找联系人的ID号为5，那么URI看起来是这样：content://contacts/people/5</p>
+<p><strong>data_type：</strong>数据类型，这个表明这个特殊的内容提供者中的数据的类型。例如：你要通过内容提供者Contacts来获取所有的通讯录，数据路径是people，那么URI将是下面这样：content:&#x2F;&#x2F;contacts&#x2F;people</p>
+<p><strong>id：</strong>这个指定特定的请求记录。例如：你在内容提供者Contacts中查找联系人的ID号为5，那么URI看起来是这样：content:&#x2F;&#x2F;contacts&#x2F;people&#x2F;5</p>
 <img src="/6826dd2/2.jpg" class>
 
 <hr>
@@ -300,7 +300,7 @@
 </li>
 <li><p>需要创建数据库来保存内容。通常，Android使用SQLite数据库，并在框架中重写onCreate()方法来使用SQLiteOpenHelper的方法创建或者打开提供者的数据库。当你的应用程序被启动，它的每个内容提供者的onCreate()方法将在应用程序主线程中被调用。</p>
 </li>
-<li><p>使用&lt;provider…/&gt;标签在AndroidManifest.xml中注册内容提供者。</p>
+<li><p>使用&lt;provider…&#x2F;&gt;标签在AndroidManifest.xml中注册内容提供者。</p>
 </li>
 </ol>
 <img src="/6826dd2/3.jpg" class>
@@ -417,7 +417,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -491,7 +491,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

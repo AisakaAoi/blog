@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -172,7 +172,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -358,7 +358,7 @@
 <p>SAGAN当中提出了两种优化方式以实现稳定训练的 GANs，分别是Spectral Normalization与TTUR（Two Timescale Update Rule），前者稳定了训练和生成过程，后者平衡了D与G的训练速度。</p>
 <ol>
 <li>Spectral Normalization。SAGAN为D和G加入了谱范数归一化的方式，让D满足了1-lipschitz限制，同时也避免了G的参数过多导致梯度异常，使得整套训练较为平稳和高效。</li>
-<li>TTUR。在以前的工作中，鉴别器的正则化通常会减慢GAN学习过程。实际上，使用正则化鉴别器的方法通常在训练期间每个生成器需要多个更新步骤。本文建议专门使用TTUR来补偿正则化鉴别器中慢学习的问题，使得对于每个鉴别器步骤使用更少的生成器步骤成为可能。 </li>
+<li>TTUR。在以前的工作中，鉴别器的正则化通常会减慢GAN学习过程。实际上，使用正则化鉴别器的方法通常在训练期间每个生成器需要多个更新步骤。本文建议专门使用TTUR来补偿正则化鉴别器中慢学习的问题，使得对于每个鉴别器步骤使用更少的生成器步骤成为可能。</li>
 </ol>
 <p>当前 SOTA！平台收录SAGAN共 43 个模型实现资源。</p>
 <img src="/20702606/7.webp" class>
@@ -419,7 +419,7 @@
 
 <p>进一步，提出了D^U鉴别器的一致性正则化，鼓励解码器模块(D^U)_dec在真实和虚假样本的CutMix转换下输出等值预测值。图7中展示了CutMix的增强策略和D^U的预测。</p>
 <img src="/20702606/29.webp" class>
-<p>图7. CutMix增强和U-Net鉴别器对CutMix图像的预测的可视化。第一行：真实和虚假的样本。第二行和第三行：采样的真/假CutMix比率r和相应的二进制掩码M（颜色代码：白色为真，黑色为假）。第四行：从真实和虚假样本中生成的CutMix图像。第5行和第6行：相应的真/假D^U的分割图及其预测的分类分数</p>
+<p>图7. CutMix增强和U-Net鉴别器对CutMix图像的预测的可视化。第一行：真实和虚假的样本。第二行和第三行：采样的真&#x2F;假CutMix比率r和相应的二进制掩码M（颜色代码：白色为真，黑色为假）。第四行：从真实和虚假样本中生成的CutMix图像。第5行和第6行：相应的真&#x2F;假D^U的分割图及其预测的分类分数</p>
 <p>具体的，通过将x和G(z)∈RW×H×C与掩码M混合，为鉴别器D^U合成一个新的训练样本x˜</p>
 <img src="/20702606/30.webp" class>
 
@@ -443,7 +443,7 @@
 
 <p>在训练IC-GAN时，使用所有可用的训练数据点来微调模型。在推理时，与KDE等非参数密度估计方法一样，IC-GAN的生成器也需要实例特征，这些特征可能来自于训练分布或不同的分布。</p>
 <p>并且这种方法可以扩展到具有类别条件（class condition）的生成上。通过在类别标签y上添加一个额外的生成器和鉴别器，可以让IC-GAN 用于有类别条件的生成。IC-GAN 通过向生成器和鉴别器提供实例的表示作为额外的输入，并通过使用实例的邻居作为鉴别器的真实样本，学习对数据点（也称为实例）的邻域的分布建模。与对离散簇索引进行条件处理不同，对实例表示进行条件处理自然会导致生成器为相似实例生成相似样本。并且一旦训练完成，IC-GAN可以通过在推理时简单地交换条件实例，轻松地迁移到训练期间未看到的其他数据集。</p>
-<p>作者在文章中是基于BigGAN和StyleGAN2实现的IC-GAN，同时扩展了它们的架构来处理引入的实例条件。当使用BigGAN作为基础架构时，IC-GAN用全连接层来替换生成器和鉴别器中的类别嵌入层。生成器中的全连接层的输入大小为2,048(对应于特征提取器f_θ的维数)和一个可以调整的输出大小o_dim。鉴别器中的全连接层具有一个可变的输出大小n_dim来匹配中间无条件鉴别器特征向量的维数。对于类别条件的IC-GAN，同时使用类别嵌入层以及与实例条件反射相关联的全连接层。将类别嵌入(维度c_dim=128)和实例嵌入(维度o_dim=512)连接起来。</p>
+<p>作者在文章中是基于BigGAN和StyleGAN2实现的IC-GAN，同时扩展了它们的架构来处理引入的实例条件。当使用BigGAN作为基础架构时，IC-GAN用全连接层来替换生成器和鉴别器中的类别嵌入层。生成器中的全连接层的输入大小为2,048(对应于特征提取器f_θ的维数)和一个可以调整的输出大小o_dim。鉴别器中的全连接层具有一个可变的输出大小n_dim来匹配中间无条件鉴别器特征向量的维数。对于类别条件的IC-GAN，同时使用类别嵌入层以及与实例条件反射相关联的全连接层。将类别嵌入(维度c_dim&#x3D;128)和实例嵌入(维度o_dim&#x3D;512)连接起来。</p>
 <p>当使用StyleGAN2作为基础架构时，将生成器中的输出维数512的全连接层替换类别嵌入层。替换鉴别器中的类别嵌入的全连接层是大小可变的。在这种情况下，实例特征与StyleGAN2的映射网络输入处的噪声向量连接起来，为生成器创建一个style vector。当涉及到鉴别器时，映射网络只输入提取的实例特征，以获得一个modulating vector，该向量乘以每个块上的内部鉴别器表示。所有实例特征向量h_i在计算邻域和用作GAN的条件反射之前都用l2范数进行归一化处理。</p>
 <p>当前 SOTA！平台收录IC-GAN 共 1 个模型实现资源。</p>
 <img src="/20702606/37.png" class>
@@ -451,13 +451,13 @@
 <hr>
 <h4 id="ADC-GAN"><a href="#ADC-GAN" class="headerlink" title="ADC-GAN"></a>ADC-GAN</h4><p>条件生成模型（Conditional generative models ）学习数据和标签的基本联合分布，以实现条件数据的生成。其中，辅助分类器生成式对抗网络（auxiliary classifier generative adversarial network ，AC-GAN）已被广泛使用，但存在着生成样本的类内多样性低的问题。原因是AC-GAN的分类器与生成器无关，因此不能为生成器提供接近联合分布的信息指导，导致条件熵的最小化降低了类内多样性。ADC-GAN的目标是解决上述问题，具体来说，所提出的辅助判别分类器通过辨别真实数据和生成的数据的类别标签而具备生成器感知特性（ generator-aware ）。</p>
 <img src="/20702606/38.webp" class>
-<p>图9 cGAN、AC-GAN、TAC-GAN和ADC-GAN的鉴别器/分类器的说明。符号+/-表示GAN标签（真实或虚假），y是数据x的类别标签。ADC-GAN与cGAN不同，它明确预测了标签，与AC-GAN和TAC-GAN不同的是，分类器C_d也区分真实和生成，就像鉴别器一样</p>
+<p>图9 cGAN、AC-GAN、TAC-GAN和ADC-GAN的鉴别器&#x2F;分类器的说明。符号+&#x2F;-表示GAN标签（真实或虚假），y是数据x的类别标签。ADC-GAN与cGAN不同，它明确预测了标签，与AC-GAN和TAC-GAN不同的是，分类器C_d也区分真实和生成，就像鉴别器一样</p>
 <p>使分类器能够对具有不同类别标签的真实数据和生成的数据进行分类，建立一个鉴别性分类器Cd : X → Y+ ∪ Y- (Y+代表真实数据，Y-代表生成的数据)，以鉴别性地识别真实和生成样本的标签。鼓励生成器产生可分类的真实数据，而不是可分类的虚假数据。ADC-GAN的鉴别器、鉴别分类器和生成器的目标函数被定义为：</p>
 <img src="/20702606/39.webp" class>
 <img src="/20702606/40.webp" class>
 <img src="/20702606/41.webp" class>
 
-<p>其中，C_d表示数据x被判别性分类器同时归类为标签y和真假的概率。φ : X → Rd是一个特征提取器，与原始鉴别器共享（D = σ ◦ ψ ◦ φ，具有线性映射ψ : Rd → R和sigmoid函数σ : R → [0, 1]），ϕ+ : Y → Rd和ϕ- : Y → Rd捕获负责真实和生成数据的标签的可学习嵌入。log C_d(y+|x)的最大化鼓励生成器只生成少数标签一致的数据，促进了保真度，但失去了生成样本的多样性。另一方面，log C_d(y-|x)的最小化鼓励生成器不合成典型的标签一致的数据，增加多样性，但可能降低生成样本的保真度。</p>
+<p>其中，C_d表示数据x被判别性分类器同时归类为标签y和真假的概率。φ : X → Rd是一个特征提取器，与原始鉴别器共享（D &#x3D; σ ◦ ψ ◦ φ，具有线性映射ψ : Rd → R和sigmoid函数σ : R → [0, 1]），ϕ+ : Y → Rd和ϕ- : Y → Rd捕获负责真实和生成数据的标签的可学习嵌入。log C_d(y+|x)的最大化鼓励生成器只生成少数标签一致的数据，促进了保真度，但失去了生成样本的多样性。另一方面，log C_d(y-|x)的最小化鼓励生成器不合成典型的标签一致的数据，增加多样性，但可能降低生成样本的保真度。</p>
 <p>当前 SOTA！平台收录 ADC-GAN 共 1个模型实现资源。</p>
 <img src="/20702606/42.webp" class>
 
@@ -562,7 +562,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -636,7 +636,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -163,7 +163,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -425,35 +425,33 @@
 <li><p>假设权值为0，初始化10层网络，这样网络对称，那么每一层都是相同的，梯度值也相同，这样网络就无法得到训练。</p>
 </li>
 <li><p>方法1：小数字随机初始化，均值为0，标准差为1e-2的高斯分布。</p>
- <img src="/650efac1/16.png" class>
+<img src="/650efac1/16.png" class>
 
 <ul>
-<li><p>对于层数较少时是适用的，但是当层数较多时，那么高斯分布的参数，假如有10层，每层的值进行权重乘法以后，后续数值将乘以0.01，这样经过多层以后权重的分布就再也无法保持均值为0，标准差为1e-2的高斯分布。后续分布均值为0,标准差成指数下降，这样在后期只会分布在0上，多层以后输入为0，反向传播过程中求取的梯度值将会非常小，这样在反向传播中，每一层后最后梯度趋于0，这就是梯度消失现象。</p>
-<img src="/650efac1/17.png" class>
-</li>
+<li>对于层数较少时是适用的，但是当层数较多时，那么高斯分布的参数，假如有10层，每层的值进行权重乘法以后，后续数值将乘以0.01，这样经过多层以后权重的分布就再也无法保持均值为0，标准差为1e-2的高斯分布。后续分布均值为0,标准差成指数下降，这样在后期只会分布在0上，多层以后输入为0，反向传播过程中求取的梯度值将会非常小，这样在反向传播中，每一层后最后梯度趋于0，这就是梯度消失现象。</li>
 </ul>
+<img src="/650efac1/17.png" class>
 </li>
 <li><p>方法2：使用1来代替0.01进行随机初始化</p>
 <ul>
-<li><p>对于tanh函数就会出现结果分布在两端-1和1，处于饱和区，后续计算所有神经元都饱和，梯度为0，损失函数将不会变，无法进行反向传播，没有权值得到更新。</p>
-<img src="/650efac1/18.png" class>
-</li>
+<li>对于tanh函数就会出现结果分布在两端-1和1，处于饱和区，后续计算所有神经元都饱和，梯度为0，损失函数将不会变，无法进行反向传播，没有权值得到更新。</li>
 </ul>
+ <img src="/650efac1/18.png" class>
 </li>
 <li><p>Reaseonable初始化：使得神经元输出的方差为1。</p>
  <img src="/650efac1/19.png" class>
 
 <ul>
-<li><p>对于处于神经网络前面层的让权重输出在合适的范围，后续每层的权重都略有增大，可以有一个在预期中的范围，不饱和也不趋于0，这个方法能够在tanh中得到使用</p>
-<img src="/650efac1/20.png" class>
-</li>
-<li><p>但是对于ReLU的情况，加权计算将失败，ReLU是半边函数,将方差的权重缩小了一半，因此要给他补上一个2。</p>
-<img src="/650efac1/21.png" class>
-
-<img src="/650efac1/22.png" class>
-</li>
+<li>对于处于神经网络前面层的让权重输出在合适的范围，后续每层的权重都略有增大，可以有一个在预期中的范围，不饱和也不趋于0，这个方法能够在tanh中得到使用</li>
 </ul>
-</li>
+ <img src="/650efac1/20.png" class>
+
+<ul>
+<li>但是对于ReLU的情况，加权计算将失败，ReLU是半边函数,将方差的权重缩小了一半，因此要给他补上一个2。</li>
+</ul>
+ <img src="/650efac1/21.png" class>
+
+ <img src="/650efac1/22.png" class></li>
 </ol>
 <ul>
 <li>这些都是策略性的内容，可以使得深度学习走的更远的原因</li>
@@ -525,10 +523,10 @@
 <li>将训练集划分为多个交叉验证集mini-batch，选择不同的参数作为集合，进行小批量参数验证。</li>
 <li>使用较少的迭代次数来进行验证哪些参数是合适，损失函数下降快，准确率增大快。</li>
 <li>精细化参数设置，长时间进行验证，选择到合适的参数。</li>
-<li>探测到损失函数爆炸现象：损失函数增大为原来值的3倍，需要中断函数，减少时间浪费。<img src="/650efac1/30.png" class></li>
-<li>使用log空间阈值进行参数搜索<img src="/650efac1/31.png" class></li>
-<li>精细化搜索，调节空间域范围<img src="/650efac1/32.png" class></li>
-<li>随机搜素使得参数在空间份上更加均匀<img src="/650efac1/33.png" class></li>
+<li>探测到损失函数爆炸现象：损失函数增大为原来值的3倍，需要中断函数，减少时间浪费。 <img src="/650efac1/30.png" class></li>
+<li>使用log空间阈值进行参数搜索 <img src="/650efac1/31.png" class></li>
+<li>精细化搜索，调节空间域范围 <img src="/650efac1/32.png" class></li>
+<li>随机搜素使得参数在空间份上更加均匀 <img src="/650efac1/33.png" class></li>
 <li>监测并可视化准确率，分析哪些参数变动导致准确率变化，推测原因，修正超参数：网络层数；每层神经元数目；学习率、衰减率、更新模型；正则化。</li>
 </ul>
 </li>
@@ -630,7 +628,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -704,7 +702,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -169,7 +169,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -408,11 +408,11 @@
 </tbody></table>
 <hr>
 <h4 id="StyleGAN"><a href="#StyleGAN" class="headerlink" title="StyleGAN"></a>StyleGAN</h4><p>StyleGAN是一种开创性的工作，不仅可以生成高质量和逼真的图像，还可以对生成的图像进行更好的控制和理解，从而比以前更容易生成可信的假图像。StyleGAN是ProGAN图像生成器的升级版本，重点关注生成器网络（G）。</p>
-<p>StyleGAN的重点就是“Style”，在提出StyleGAN的论文中具体是指人脸的风格，包括人脸表情、人脸朝向、发型等等，还包括纹理细节上的人脸肤色、人脸光照等。进一步对这些Style进行细分为：1）粗-分辨率高达8 * 8-影响姿势、一般发型、人脸形状等；2）中等-分辨率16 * 16到32 * 32-影响更精细的人脸特征、发型、睁眼/闭眼等；3）精细-分辨率为64 * 64到1024 * 1024-影响配色方案（眼睛、头发和皮肤）和微观特征。</p>
+<p>StyleGAN的重点就是“Style”，在提出StyleGAN的论文中具体是指人脸的风格，包括人脸表情、人脸朝向、发型等等，还包括纹理细节上的人脸肤色、人脸光照等。进一步对这些Style进行细分为：1）粗-分辨率高达8 * 8-影响姿势、一般发型、人脸形状等；2）中等-分辨率16 * 16到32 * 32-影响更精细的人脸特征、发型、睁眼&#x2F;闭眼等；3）精细-分辨率为64 * 64到1024 * 1024-影响配色方案（眼睛、头发和皮肤）和微观特征。</p>
 <img src="/f9495119/6.png" class>
 <p>图4 StyleGAN结构</p>
 <p>StyleGAN 的网络结构包含两个部分，第一个是Mapping network，即图 4(b)的左部分，由潜在变量 z 生成中间潜在变量 w的过程，w用来控制生成图像的style。第二个是Synthesis network，它的作用是生成图像，创新之处在于给每一层子网络都输入A 和 B，A 是由 w 转换得到的仿射变换，用于控制生成图像的style，B 是转换后的随机噪声，用于丰富生成图像的细节，即每个卷积层都能根据输入的A来调整”style”。整个网络结构还是保持了 ProGAN 的结构。经典GAN的随机变量或者潜在变量 z是通过输入层，即前馈网络的第一层提供给生成器的（图4a）。而StyleGAN完全省略了输入层，直接从一个学习的常数开始（图4b，右），即将 z 单独用 mapping网络变换成w，再将w输入给 Synthesis network的每一层。</p>
-<p>Mapping network 要做的事就是对潜在空间（latent space）进行解耦，Mapping network由8个全连接层组成，其输出与输入层的大小相同。通过一系列仿射变换，由 z 得到 w，这个 w 转换成风格y=(ys,yb) ，结合 AdaIN (adaptive instance normalization) 风格变换方法：</p>
+<p>Mapping network 要做的事就是对潜在空间（latent space）进行解耦，Mapping network由8个全连接层组成，其输出与输入层的大小相同。通过一系列仿射变换，由 z 得到 w，这个 w 转换成风格y&#x3D;(ys,yb) ，结合 AdaIN (adaptive instance normalization) 风格变换方法：</p>
 <img src="/f9495119/7.png" class>
 
 <p>使用输入向量控制视觉特征的能力是有限的，因为它必须遵循训练数据的概率密度。例如，如果黑发人的图像在数据集中更常见，则更多输入值将映射到该特征。因此，该模型无法将部分输入（向量中的元素）映射到特征，这种现象称为特征纠缠。然而，Mapping network通过使用另一个神经网络，可以生成一个不必遵循训练数据分布的向量，并且可以减少特征之间的相关性。</p>
@@ -463,7 +463,7 @@
 <p>最后，与StyleGAN第一代使用progressive growing的策略不同，StyleGAN2开始寻求其它的设计以便于让网络更深，并有着更好的训练稳定性。progressive growing的关键问题是，逐渐演进的生成器会对细节有着强烈的位置偏好；当像牙齿或眼睛这样的特征应该在图像上平滑移动时，它们反而可能在跳到下一个首选位置之前停留在原地。如图8所示。</p>
 <img src="/f9495119/15.png" class>
 <p>图8. progressive growing会导致 “相位 “伪影。在这个例子中，牙齿没有跟随姿势，而是与相机保持一致，如蓝线所示</p>
-<p>为此，作者重新评估了StyleGAN的网络设计，并寻找一种能生成高质量图像而又不会逐渐增长的架构。如图9所示，作者对比了MSG-GAN、对不同分辨率的RGB输出的贡献进行上采样和求和、残差连接。StyleGAN2采用了类似ResNet的残差连接结构(residual block)，使用双线性滤波对前一层进行上/下采样，并尝试学习下一层的残差值(residual value)。通过一个resnet风格的skip connection在低分辨率的特征映射到最终生成的图像（图9（c）的绿色block）。</p>
+<p>为此，作者重新评估了StyleGAN的网络设计，并寻找一种能生成高质量图像而又不会逐渐增长的架构。如图9所示，作者对比了MSG-GAN、对不同分辨率的RGB输出的贡献进行上采样和求和、残差连接。StyleGAN2采用了类似ResNet的残差连接结构(residual block)，使用双线性滤波对前一层进行上&#x2F;下采样，并尝试学习下一层的残差值(residual value)。通过一个resnet风格的skip connection在低分辨率的特征映射到最终生成的图像（图9（c）的绿色block）。</p>
 <img src="/f9495119/16.png" class>
 <p>图9. 三个生成器（虚线以上）和鉴别器的结构。上面和下面分别表示双线性上采样和下采样。在残差网络中，这些还包括一个1×1的卷积，以调整特征图的数量</p>
 <p>当前 SOTA！平台收录 StyleGAN2 共 1 个模型实现资源。</p>
@@ -488,11 +488,11 @@
 
 <p>其中 t 是一种变换（平移或旋转），上式表明生成器对特征信号的连续运算应该对于平移和旋转操作是等变的。改进后的生成器网络结构图见图10。</p>
 <img src="/f9495119/19.png" class>
-<p>图10 (a) 2×上采样滤波器的一维例子，n = 6, s = 2, fc = 1, fh = 0.4（蓝色）。设置fh=0.6使得过渡带更宽（绿色），这减少了不需要的阻带纹波，从而导致更强的衰减。(b) alias-free生成器，对应于配置T和R。主要的数据路径包括傅里叶特征和归一化，调制卷积和过滤非线性。(c) Flexible layer specification（配置T），N=14，sN=1024。截止点fc（蓝色）和最小可接受的阻带频率ft（橙色）服从各层的几何级数；采样率s（红色）和实际阻带fc+fh（绿色）是根据设计约束计算出来的</p>
+<p>图10 (a) 2×上采样滤波器的一维例子，n &#x3D; 6, s &#x3D; 2, fc &#x3D; 1, fh &#x3D; 0.4（蓝色）。设置fh&#x3D;0.6使得过渡带更宽（绿色），这减少了不需要的阻带纹波，从而导致更强的衰减。(b) alias-free生成器，对应于配置T和R。主要的数据路径包括傅里叶特征和归一化，调制卷积和过滤非线性。(c) Flexible layer specification（配置T），N&#x3D;14，sN&#x3D;1024。截止点fc（蓝色）和最小可接受的阻带频率ft（橙色）服从各层的几何级数；采样率s（红色）和实际阻带fc+fh（绿色）是根据设计约束计算出来的</p>
 <p>首先是将StyleGAN2的生成器的常数输入替换为Fourier特征，删除噪声输入，降低映射网络深度并禁用 mixing regularization 和 path length regularization， 在每次卷积前使用简单的归一化。（B，C，D改进步骤）。</p>
-<p>通过在目标空间周围保持一个固定大小的边界来进行近似，在每一层之后都要crop到这个扩展的空间上。用理想低通滤波器的一个更好的近似来代替双线性上采样：带有较大Kaiser窗口（n=6）的 sinc 滤波器，Kaiser窗口的好处是提供了对过渡带和衰减的明确控制。改进的边界和上采样得到了更好的平移Equivariance，但是FID变差了。（E改进步骤）。</p>
+<p>通过在目标空间周围保持一个固定大小的边界来进行近似，在每一层之后都要crop到这个扩展的空间上。用理想低通滤波器的一个更好的近似来代替双线性上采样：带有较大Kaiser窗口（n&#x3D;6）的 sinc 滤波器，Kaiser窗口的好处是提供了对过渡带和衰减的明确控制。改进的边界和上采样得到了更好的平移Equivariance，但是FID变差了。（E改进步骤）。</p>
 <p>由于信号是有带限的，所以可以切换上采样和卷积的顺序，允许将常规的2×上采样和随后与非线性相关的m×上采样融合到一个2m×上采样中，并将整个upsample-LReLU-downsample过程写到一个自定义的CUDA内核中。（F改进步骤）。</p>
-<p>为了抑制aliasing，可以简单地将截止频率降低到fc = s/2 - fh，这样可以确保所有的alias频率（高于s/2）都在阻带中。作者又额外加了一些trick使得FID低于了StyleGAN2。（G改进步骤）。</p>
+<p>为了抑制aliasing，可以简单地将截止频率降低到fc &#x3D; s&#x2F;2 - fh，这样可以确保所有的alias频率（高于s&#x2F;2）都在阻带中。作者又额外加了一些trick使得FID低于了StyleGAN2。（G改进步骤）。</p>
 <p>引入一个学习型仿射层，为输入的傅里叶特征输出全局平移和旋转参数。该层被初始化为 identity transformation 。但随着时间的推移，在有利的情况下会学习使用该机制。(H改进步骤）。</p>
 <p>作者还设计了新的层规范化操作再次提高平移的Equivariance，目的是增强衰减来完全消除alias。（T改进步骤）。</p>
 <p>生成一个有两个变体的rotated equivalence网络。首先，将所有层的3×3卷积改为1×1，并通过将特征图的数量增加一倍来弥补容量的减少。在这个配置中，只有上采样和下采样操作在像素之间传播信息。其次，用一个径向对称的jinc-based的滤波器取代sinc-based的下采样滤波器，用同样的Kaiser方案来构建这个滤波器。对所有的层都是这样做的，除了两个关键的采样层。这两个采样层最重要的是要与训练数据的potential non-radiometric spectrum相匹配。（R改进步骤）。</p>
@@ -515,7 +515,7 @@
 <h4 id="VDVAE"><a href="#VDVAE" class="headerlink" title="VDVAE"></a>VDVAE</h4><p>VDVAE是一个层次化的VAE，它能快速生成样本，并在所有自然图像基准上的 log-likelihood 方面优于PixelCNN。文章论证了增加 VAE 的层数能够在保证生成速度的情况下，实现超过自回归模型 (AR) 的 NLL (negative log-likelihood)。VDVAE的基本假设就是：我们可以通过增加 VAE 的层数获得更好的 VAE。首先，本文采用类似 LVAE 的并行化生成，示意图如下：</p>
 <img src="/f9495119/21.png" class>
 <p>图11 在VAE中可能学到的不同生成模型。左图：一个层次化的VAE可以通过使用确定性的identity functions作为编码器来学习自回归模型，并在先验中学习自回归。右图：学习编码器可以导致潜在变量的有效分层（黑色）。如果最下面的三组潜在变量是有条件地独立于第一组潜在变量的，那么它们可以在一个单层内平行生成，可能会导致更快的采样</p>
-<p>当然了，只是单纯的增加VAE的层数并不可行，作者对VAE进行了一些改进，包括减少 residual block 的维度，将残差乘以一个常数，去掉 weight normalization, 使用 nearest-neighbour upsampling, skip 较大的 gradient 等。如图12所示。它类似于ResNet VAE，但有bottleneck ResNet块。对于每个随机层，先验和后验是对角线高斯分布。作为权重归一化和依赖数据的初始化的替代方案，采用默认的PyTorch权重归一化。唯一的例外是对每个剩余bottleneck ResNet块中的最后一个卷积层，将其按1/sqrt(N)进行扩展，其中N是深度。此外，对 “unpool “层使用了最近邻的上采样，当与ResNet架构配对时，可以完全消除相关工作中出现的 “free bits “和KL “warming up “。当上采样通过转置卷积层进行时，网络可能会忽略低分辨率的层（例如，1x1或4x4层）。</p>
+<p>当然了，只是单纯的增加VAE的层数并不可行，作者对VAE进行了一些改进，包括减少 residual block 的维度，将残差乘以一个常数，去掉 weight normalization, 使用 nearest-neighbour upsampling, skip 较大的 gradient 等。如图12所示。它类似于ResNet VAE，但有bottleneck ResNet块。对于每个随机层，先验和后验是对角线高斯分布。作为权重归一化和依赖数据的初始化的替代方案，采用默认的PyTorch权重归一化。唯一的例外是对每个剩余bottleneck ResNet块中的最后一个卷积层，将其按1&#x2F;sqrt(N)进行扩展，其中N是深度。此外，对 “unpool “层使用了最近邻的上采样，当与ResNet架构配对时，可以完全消除相关工作中出现的 “free bits “和KL “warming up “。当上采样通过转置卷积层进行时，网络可能会忽略低分辨率的层（例如，1x1或4x4层）。</p>
 <img src="/f9495119/22.png" class>
 <p>图12. 自上而下的VAE架构的图示。残差块类似于bottleneck ResNet块。q_φ(.)和p_θ(.)是对角线高斯分布。使用平均池化和最近邻上采样来进行池化和非池化层的处理</p>
 <p>当前 SOTA！平台收录 VDVAE 共1个模型实现资源。</p>
@@ -597,7 +597,7 @@
 <p>Diffusion-GAN的对应目标是vanilla GAN的最小-最大目标，定义为</p>
 <img src="/f9495119/35.png" class>
 
-<p>鉴别器D学习区分扩散的生成样本y_g和扩散的真实观测值y，时间为∀t∈{1, . . . , T}，具体的优先级由π_t的值决定。生成器G学习将潜在变量z映射到它的输出x_g=G_θ(z)，它可以在扩散链的任何一步骗过鉴别器。y_g∼q(y | G_θ(z), t)可以被重新参数化为</p>
+<p>鉴别器D学习区分扩散的生成样本y_g和扩散的真实观测值y，时间为∀t∈{1, . . . , T}，具体的优先级由π_t的值决定。生成器G学习将潜在变量z映射到它的输出x_g&#x3D;G_θ(z)，它可以在扩散链的任何一步骗过鉴别器。y_g∼q(y | G_θ(z), t)可以被重新参数化为</p>
 <img src="/f9495119/36.png" class>
 
 <p>梯度可以直接反向传播到生成器。随着t的增加，y和y_g中的噪声与数据之比也在增加，从而使鉴别器D的任务越来越难。作者设计了一个扩散强度的自适应控制，以便更好地训练鉴别器。作者通过适应性地修改T来实现这一目标。我们为T设计了一个基于度量r_d的 self-paced schedule，这个schedule评估了鉴别器的过拟合度</p>
@@ -727,7 +727,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -801,7 +801,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

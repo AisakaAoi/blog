@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -170,7 +170,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -304,7 +304,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>39 分钟</span>
+              <span>40 分钟</span>
             </span>
 
         </div>
@@ -433,7 +433,7 @@
 <li>第二个 sub-layer 是 simple, position-wise fully connected feed-forward network, 简称 MLP</li>
 </ul>
 <p>每个 sub-layer 的输出做 残差连接 和 LayerNorm<br>公式：LayerNorm( x + Sublayer(x) )<br>Sublayer(x) 指 self-attention 或者 MLP</p>
-<p>residual connections 需要输入输出维度一致，不一致需要做投影。简单起见，固定 每一层的输出维度dmodel = 512</p>
+<p>residual connections 需要输入输出维度一致，不一致需要做投影。简单起见，固定 每一层的输出维度dmodel &#x3D; 512</p>
 <p>简单设计：只需调 2 个参数 dmodel 每层维度有多大 和 N 多少层，影响后续一系列网络的设计，BERT、GPT。</p>
 <p>Remark：和 CNN、MLP 不一样。MLP 通常空间维度往下减；CNN 空间维度往下减，channel 维度往上拉。</p>
 <p>LayerNorm<br>写作：不要假设读者都知道所有的细节。可以的话，花几句话讲清楚内容</p>
@@ -441,7 +441,7 @@
 <p>BatchNorm 简单的 2 维 情况<br>每一行是一个样本 X，每一列是 一个 feature<br>BatchNorm：每次把一列（1 个 feature）放在一个 mini-batch 里，均值变成 0， 方差变成 1 的标准化。</p>
 <img src="/98fdeece/9.png" class>
 
-<p>How：（该列向量 - mini-batch 该列向量的均值）/（mini - batch 该列向量的方差）<br>训练时：mini-batch 计算均值；<br>测试时：使用 全局 均值、方差。</p>
+<p>How：（该列向量 - mini-batch 该列向量的均值）&#x2F;（mini - batch 该列向量的方差）<br>训练时：mini-batch 计算均值；<br>测试时：使用 全局 均值、方差。</p>
 <p>BatchNorm 还会学 lambda1 beta，BatchNorm 可以通过学习将向量 放缩成 任意均值、任意方差 的一个向量。</p>
 <p><strong>Layernorm 画图示例</strong></p>
 <p>LayerNorm 跟 BatchNorm 在很多时候几乎是一样的，除了实现的方法有点不一样之外。</p>
@@ -451,7 +451,7 @@
 <p><strong>LayerNorm 在操作上 和 BatchNorm (二维输入) 的关系</strong><br>LayerNorm 整个把数据转置一次，放到 BatchNorm 里面出来的结果，再转置回去，基本上可以得到LayerNorm的结果。</p>
 <p><strong>三维输入</strong></p>
 <p>Transformer 和 RNN 里面：3 维输入。<br>输入的是一个序列的样本，每个样本中有很多元素，是一个序列。<br>一个句子里面有 n 个词，每个词对应一个向量，+ 一个 batch –&gt; 3 维</p>
-<p><strong>3维输入示意图</strong><br>列 是 seq 序列长度 n；第 3 维 feature 是每个词额外的向量，d = 512 in transformer</p>
+<p><strong>3维输入示意图</strong><br>列 是 seq 序列长度 n；第 3 维 feature 是每个词额外的向量，d &#x3D; 512 in transformer</p>
 <img src="/98fdeece/11.png" class>
 
 <p>BatchNorm<br>每次取一个特征，切一块（蓝色线），拉成一个向量，均值为 0 、方差为 1 的标准化。</p>
@@ -489,8 +489,8 @@
 <p>在 decoder 训练的时候，在预测第 t 个时刻的输出的时候，decoder不应该看到 t 时刻以后的那些输入。它的做法是通过一个带掩码 masked 的注意力机制。–&gt; 保证 训练和预测时 行为一致。</p>
 <hr>
 <h5 id="3-2-Attention"><a href="#3-2-Attention" class="headerlink" title="3.2 Attention"></a>3.2 Attention</h5><p>注意力函数是 一个将一个 query 和一些 key - value 对 映射成一个输出的函数，其中所有的 query、key、value 和 output 都是一些向量。</p>
-<p>具体来说，output 是 value 的一个加权和 –&gt; 输出的维度 ==  value 的维度。</p>
-<p>output 中 value 的权重 = 查询 query 和对应的 key 的相似度 or compatibility function</p>
+<p>具体来说，output 是 value 的一个加权和 –&gt; 输出的维度 &#x3D;&#x3D;  value 的维度。</p>
+<p>output 中 value 的权重 &#x3D; 查询 query 和对应的 key 的相似度 or compatibility function</p>
 <p>权重等价于 query 和对应的 key 的相似度</p>
 <p>虽然 key-value 并没有变，但是随着 query 的改变，因为权重的分配不一样，导致输出会有不一样，这就是注意力机制。</p>
 <hr>
@@ -498,12 +498,12 @@
 <p>query 和 key 的长度是等长的，都等于 dk。value 的维度是 dv，输出也是 dv。<br>因为 query 和 key 可以不等长，不等长是有别的办法算的。</p>
 <p>注意力的具体计算是：对每一个 query 和 key 做内积，然后把它作为相似度。</p>
 <p>两个向量做内积：如果这两个向量的 norm 是一样d的话，那么内积的值越大，它的余弦值越大，这两个向量的相似度就越高。如果你的内积的值为 0 ，这两个向量正交了，没有相似度。</p>
-<p>attention = softmax( 两个向量的内积值 / sqrt(dk)) * V ，dk 是向量的长度</p>
+<p>attention &#x3D; softmax( 两个向量的内积值 &#x2F; sqrt(dk)) * V ，dk 是向量的长度</p>
 <p>使用 softmax ：一个 query 给 n 个 key - value pair ，这个 query 会跟每个 key - value pair 做内积，会产生 n 个相似度值。传入 softmax 得到 n 个非负、求和为 1 的权重值。把 softmax 得到的权重值 与 value 矩阵 V 相乘 得到 attention 输出。</p>
-<p>实际计算：不会一个 query 一个 query 的计算，因为运算比较慢。把多个 query 写成 一个矩阵，并行化运算。<br>Q：n * dk<br>K:  m * dk<br>Q * K T：(n * dk) * (m * dk)T = (n * m)<br>每一行蓝色的线：一个 query 对所有 key 的内积值，然后再除以sqrt(dk)， 再做 softmax。 softmax 是对每一行的值做 softmax，然后每一行之间是独立的，会得到权重。</p>
+<p>实际计算：不会一个 query 一个 query 的计算，因为运算比较慢。把多个 query 写成 一个矩阵，并行化运算。<br>Q：n * dk<br>K:  m * dk<br>Q * K T：(n * dk) * (m * dk)T &#x3D; (n * m)<br>每一行蓝色的线：一个 query 对所有 key 的内积值，然后再除以sqrt(dk)， 再做 softmax。 softmax 是对每一行的值做 softmax，然后每一行之间是独立的，会得到权重。</p>
 <img src="/98fdeece/20.png" class>
 
-<p>权重 softmax( Q * K T / sqrt(dk) ) (n * m) 再乘以  V （m * dv）= (n * dv) 矩阵。</p>
+<p>权重 softmax( Q * K T &#x2F; sqrt(dk) ) (n * m) 再乘以  V （m * dv）&#x3D; (n * dv) 矩阵。</p>
 <img src="/98fdeece/21.png" class>
 
 <p>绿色的每一行它就是 attention。</p>
@@ -538,7 +538,7 @@
 <p>但是输出是 不同的头的输出的 concat 起来，再投影到一个 WO 里面。</p>
 <p>每一个头 hi 是把 Q,K,V 通过 可以学习的 Wq, Wk, Wv 投影到 dv 上，再通过注意力函数，得到 headi。 </p>
 <p>本文采用 8 个 heads。因为有残差连接的存在使得输入和输出的维度至少是一样的。</p>
-<p>投影维度 dv = dmodel / h = 512 / 8 = 64，每个 head 得到 64 维度，concat，再投影回 dmodel。</p>
+<p>投影维度 dv &#x3D; dmodel &#x2F; h &#x3D; 512 &#x2F; 8 &#x3D; 64，每个 head 得到 64 维度，concat，再投影回 dmodel。</p>
 <hr>
 <h5 id="3-2-3-Applications-of-attentions-in-our-model"><a href="#3-2-3-Applications-of-attentions-in-our-model" class="headerlink" title="3.2.3 Applications of attentions in our model"></a>3.2.3 Applications of attentions in our model</h5><p>3 种 不一样的注意力层</p>
 <img src="/98fdeece/24.png" class>
@@ -553,7 +553,7 @@
 <p>一根线过来，它复制成了三下：同样一个东西，既 key 也作为 value 也作为 query，所以叫做<strong>自注意力机制</strong>。<strong>key、value 和 query 其实就是一个东西</strong>，就是自己本身。</p>
 <img src="/98fdeece/27.png" class>
 
-<p>输入了 n 个 query，每个 query 会得到一个输出，那么会有 n 个输出。<br>输出  是 value 加权和（权重是 query 和 key 的相似度），输出的维度 == d  – &gt; 输入维度 == 输出维度</p>
+<p>输入了 n 个 query，每个 query 会得到一个输出，那么会有 n 个输出。<br>输出  是 value 加权和（权重是 query 和 key 的相似度），输出的维度 &#x3D;&#x3D; d  – &gt; 输入维度 &#x3D;&#x3D; 输出维度</p>
 <img src="/98fdeece/28.png" class>
 
 <p>绿色线代表权重，和自己的相似度最大、权重线最粗。</p>
@@ -609,9 +609,9 @@
 <p>RNN 跟 transformer <strong>同：语义空间的转换 + 关注点</strong><br>用一个线性层 or 一个 MLP 来做语义空间的转换。<br><strong>关注点：</strong>怎么有效的去使用序列的信息。</p>
 <hr>
 <h5 id="3-4-Embeddings-and-Softmax"><a href="#3-4-Embeddings-and-Softmax" class="headerlink" title="3.4 Embeddings and Softmax"></a>3.4 Embeddings and Softmax</h5><p>embedding：将输入的一个词、词语 token 映射成 为一个长为 d 的向量。学习到的长为 d 的向量 来表示整个词、词语 token。</p>
-<p>本文 d = 512<br>编码器、解码器、最后 softmax 之前的 3 个 embedding 共享权重。–&gt; 训练更简单。</p>
-<p>Note：权重 *  sqrt(dmodel = 512) ，学 embedding 的时候，会把每一个向量的 L2 Norm 学的比较小。</p>
-<p>i.e., 学成 1， 不论维度多大，最后的值都会 = 1。<br>维度大的化，学到的一些权重值就会变小，但之后还需要加上 positional encoding（不会随着维度的增加而变化）。 </p>
+<p>本文 d &#x3D; 512<br>编码器、解码器、最后 softmax 之前的 3 个 embedding 共享权重。–&gt; 训练更简单。</p>
+<p>Note：权重 *  sqrt(dmodel &#x3D; 512) ，学 embedding 的时候，会把每一个向量的 L2 Norm 学的比较小。</p>
+<p>i.e., 学成 1， 不论维度多大，最后的值都会 &#x3D; 1。<br>维度大的化，学到的一些权重值就会变小，但之后还需要加上 positional encoding（不会随着维度的增加而变化）。 </p>
 <p>multiply weights by sqrt(dmodel) 使得 embedding 和  positional encosing 的 scale 差不多，可以做加法。</p>
 <hr>
 <h5 id="3-5-Positional-Encoding"><a href="#3-5-Positional-Encoding" class="headerlink" title="3.5 Positional Encoding"></a>3.5 Positional Encoding</h5><p>Why? attention 不会有时序信息。<br>output 是 value 的 加权和（权重是 query 和 key 之间的距离，和 序列信息 无关）。<br>根本不看 key - value 对在序列哪些地方。一句话把顺序任意打乱之后，attention 出来，结果都是一样的。<br><strong>顺序会变，但是值不会变，有问题！</strong><br>在处理时序数据的时候，一句话里面的词完全打乱，那么语义肯定会发生变化，但是 attention 不会处理这个情况。 –&gt; 加入时序信息。</p>
@@ -632,7 +632,7 @@
 
 <p>第一个当然是他们关注的自注意力，然后是循环层、卷积层。另外一个是他构造出来一个受限的自注意力，它的有三列作比较。第一列是说我的计算复杂度当然是越低越好。第二个是说我的顺序的计算越少越好。顺序的计算就是说你下一步计算必须要等前面多少步计算完成，再算一个 layer 的时候。你越标的，那么你的并行度就越高啊。</p>
 <p>Complexity per Layer 越少越好<br>n 序列长度，d 向量长度； </p>
-<p>self-attention: O(n^2 * d) 主要是矩阵乘法，并行度高<br>Q（n * d） K（m * d）–&gt; Q * KT (n * m)<br>self-attention 自注意力，query、key 相同 –&gt; m = n, 复杂度为O(n^2 * d)  【其它的矩阵运算复杂度是一样的 O()省略了常数项 k 】</p>
+<p>self-attention: O(n^2 * d) 主要是矩阵乘法，并行度高<br>Q（n * d） K（m * d）–&gt; Q * KT (n * m)<br>self-attention 自注意力，query、key 相同 –&gt; m &#x3D; n, 复杂度为O(n^2 * d)  【其它的矩阵运算复杂度是一样的 O()省略了常数项 k 】</p>
 <p>recurrent: 序列长度为 n ，一个 dense layer * 一个长为 d 的输入</p>
 <p>循环层是要我们知道，如果你的序列是长的 N 话，它就一个一个做运算，每个里面它的主要的计算就是一个 N 乘以 N 的矩阵，一个你就是一个 dance layer 然后再乘以你一个长为 D 的一个输入，所以它是一个 N 平方，然后要做 N 次，所以是 N 乘 D 平方。</p>
 <p>然后你对比一下这两个东西是有一定区别的，真的取决你是 N 大还是 D 大。如果你 N 大的话，当然它贵点。你第一大的话是下面一个贵一点。实际上来说，你的第一这个地方是52，你的 N 也差不多是几百的样子。现在当然是说比较大的模型话，第一可以做到 22048 甚至更大，你的 N 相对来说也会做得比较，也是几千的样子。所以你其实现在看起来这两个东西都差不多， N 和 D 的其实在差不多的数据上面。所以这两个都差不多。</p>
@@ -644,26 +644,26 @@
 <h4 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h4><h5 id="Training-Data-and-Benchmarking"><a href="#Training-Data-and-Benchmarking" class="headerlink" title="Training Data and Benchmarking"></a>Training Data and Benchmarking</h5><p>WMT 2014 数据集<br>byte-pair encoding, BPE 提取词根 –&gt; 处理一个词的多种变化 -ing -ed、37000 tokens（英语德语共享字典 –&gt; encoder 和 decoder 用一个东西、模型更简单、Embedding 共享权重）</p>
 <p>英语法语用了一个更大的数据集</p>
 <hr>
-<h5 id="Hardware-and-Schedule"><a href="#Hardware-and-Schedule" class="headerlink" title="Hardware and Schedule"></a>Hardware and Schedule</h5><p>8 P100 GPUs, 现在 Google 推荐用 TPUs (适合大的矩阵乘法)<br>0.4 seconds / batch, 100, 000 steps or 12 hours<br>big models: 1s / step, 300, 000 steps, 3.5 days</p>
+<h5 id="Hardware-and-Schedule"><a href="#Hardware-and-Schedule" class="headerlink" title="Hardware and Schedule"></a>Hardware and Schedule</h5><p>8 P100 GPUs, 现在 Google 推荐用 TPUs (适合大的矩阵乘法)<br>0.4 seconds &#x2F; batch, 100, 000 steps or 12 hours<br>big models: 1s &#x2F; step, 300, 000 steps, 3.5 days</p>
 <hr>
 <h5 id="Optimizer：没有可以调的Adam"><a href="#Optimizer：没有可以调的Adam" class="headerlink" title="Optimizer：没有可以调的Adam"></a>Optimizer：没有可以调的Adam</h5><p>Adam 训练器； beta2 常见为 0.99 or 0.999<br>学习率通过公式计算</p>
-<p>dmodel ^ (-0.5) == 1 / sqrt(dmodel)  –&gt; <strong>模型要学习的宽度越宽，学习率越低</strong></p>
+<p>dmodel ^ (-0.5) &#x3D;&#x3D; 1 &#x2F; sqrt(dmodel)  –&gt; <strong>模型要学习的宽度越宽，学习率越低</strong></p>
 <p>warm-up, 从一个小的值慢慢爬到一个高的值，到一定值之后，根据 step_num ^ 0.5衰减<br>warmup-steps 4000步</p>
 <img src="/98fdeece/38.png" class>
 
 <p>学习率不用调，Adam 对学习率不那么敏感，dmodel已经考虑在公式里， step_num 也是不错的 schedule。</p>
 <hr>
 <h5 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h5><p><strong>Residual Dropout</strong></p>
-<p>each sub-layer: 多头注意力 和 之后的 MLP，每一层的输出上，在进入残差连接之前和进入 layernorm 之前，使用 dropout，P drop = 0.1<br>10% 的元素 重置为 0， 剩下的值 * 1.1</p>
+<p>each sub-layer: 多头注意力 和 之后的 MLP，每一层的输出上，在进入残差连接之前和进入 layernorm 之前，使用 dropout，P drop &#x3D; 0.1<br>10% 的元素 重置为 0， 剩下的值 * 1.1</p>
 <p><strong>总结：</strong>带权重的层，输出都使用了 dropout</p>
-<p><strong>Label Smoothing</strong><br><strong>Inception V3</strong><br>0 - 1 标签，softmax很难趋近为1。很soft，输出值很大，才会激活为1。<br>正确的词，softmax的输出为 0.1 即可，剩下的值是 0.9 / 字典大小</p>
+<p><strong>Label Smoothing</strong><br><strong>Inception V3</strong><br>0 - 1 标签，softmax很难趋近为1。很soft，输出值很大，才会激活为1。<br>正确的词，softmax的输出为 0.1 即可，剩下的值是 0.9 &#x2F; 字典大小</p>
 <p>损失 perplexity，模型的困惑度（不确信度）、log（loss）做指数。因为正确的标签只需要给到 10 %。<br>模型不那么精确，可以提高 accuracy and BLEU score</p>
 <p><strong>超参数的对比：只调 N层数、dmodel模型的宽、注意力的head数 h</strong></p>
 <img src="/98fdeece/39.png" class>
 
 <p>N 是 堆多少层<br>dmodel 模型的宽度：是 一个 token 进来之后表示成 多长的向量<br>dff 是 MLP 中间隐藏层输出的大小<br>h 是 注意力层 head 的个数<br>dk, dv 分别是 key 和 value 的维度<br>Pdrop 是 dropout 的概率<br>Els 是 label smoothing 要学的正确的 label 值为多少</p>
-<p>dmodel = h * dk</p>
-<p>big model：模型宽度 * 2,  dff * 2，<br>h * 2 –&gt; dk 和 dv 不用变维度<br>模型更复杂 –&gt; Pdrop = 0.3, train steps 300 K</p>
+<p>dmodel &#x3D; h * dk</p>
+<p>big model：模型宽度 * 2,  dff * 2，<br>h * 2 –&gt; dk 和 dv 不用变维度<br>模型更复杂 –&gt; Pdrop &#x3D; 0.3, train steps 300 K</p>
 <p>模型可调的参数：多少层 N，多宽 dmodel, 模型的 head数 h，剩下的参数按比例计算，便于后人的工作。</p>
 <p>Table 4: 除了 MT，其它的任务也表现不错。</p>
 <hr>
@@ -784,7 +784,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -858,7 +858,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

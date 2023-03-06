@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -261,7 +261,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>2.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -294,10 +294,10 @@
 
 <p>VAE 的工作流程是：</p>
 <ol>
-<li>在训练集（Dataset）中抽样，得到样本x_i，x_i经过神经网络编码器（NN Encoder）得到一个正态分布（N(μ_i, (σ_i)^2)）的充分统计量：均值（以图 1 为例进行解释，μ_i = (m1, m2, m3)）和方差（σ_i = (σ1, σ2, σ3)）</li>
+<li>在训练集（Dataset）中抽样，得到样本x_i，x_i经过神经网络编码器（NN Encoder）得到一个正态分布（N(μ_i, (σ_i)^2)）的充分统计量：均值（以图 1 为例进行解释，μ_i &#x3D; (m1, m2, m3)）和方差（σ_i &#x3D; (σ1, σ2, σ3)）</li>
 <li>由 N(μ_i, (σ_i)^2) 抽样得到 z_i， 已知 z_i 的分布是标准正态分布 N(0, 1)</li>
 <li>z_i 经过 NN_Decoder 得到输出x_i</li>
-<li>Loss = ‖x^i−xi‖，训练过程就是让 Loss 取得最小值</li>
+<li>Loss &#x3D; ‖x^i−xi‖，训练过程就是让 Loss 取得最小值</li>
 <li>训练好的模型，我们可以利用 Decoder 生成样本，即将已知分布 q(z) 的样本通过 Decoder 映射成目标 p(x) 分布的样本</li>
 </ol>
 <p>以上过程可以用图 3 进行概括。</p>
@@ -306,9 +306,9 @@
 
 <p>为比较 VAE 和 GAN 的差异，参考图 4，简述 GAN 的工作原理如下：</p>
 <ol>
-<li>在一个已知的、可控的随机分布 q(z) (e.g.: 多维正态分布 q(z)=N(μ,σ^2))采样，得到z_i</li>
-<li>zi 经过生成器映射 G(z_i) 得到在样本空间（高维空间）的一个数据点 x^g_i，有 x^g_i = G * (z_i)</li>
-<li>x^g_i 与样本流型（Manifolds）之间的距离在图中表示为 D = ‖x^g_i−x^^g_i‖，其中 x^^g_i 表示 x^g_i 在流型上的投影，生成器的目标是减少此距离，可以将此距离定义为生成器的损失（Loss）</li>
+<li>在一个已知的、可控的随机分布 q(z) (e.g.: 多维正态分布 q(z)&#x3D;N(μ,σ^2))采样，得到z_i</li>
+<li>zi 经过生成器映射 G(z_i) 得到在样本空间（高维空间）的一个数据点 x^g_i，有 x^g_i &#x3D; G * (z_i)</li>
+<li>x^g_i 与样本流型（Manifolds）之间的距离在图中表示为 D &#x3D; ‖x^g_i−x^^g_i‖，其中 x^^g_i 表示 x^g_i 在流型上的投影，生成器的目标是减少此距离，可以将此距离定义为生成器的损失（Loss）</li>
 <li>因为不能直接得到样本的流型，因而需要借助判别器 (Discriminator) 间接地告诉生成器（Generator）它生成的样本距样本流型是 “远了” 还是“近了”，即判别真（real）和假（fake）正确的概率，一方面要判别器提高判别准确性，一方面又要提高生成器的以假乱真的能力，由此形成了竞争导致的均衡，使判别器和生成器两者性能同时提高，最后我们可获得最优的生成器</li>
 <li>理想的最优生成器，能将生成的 x^g_i 映射到样本分布的流型中（即图中阴影部分）</li>
 </ol>
@@ -318,13 +318,13 @@
 <p>由 GAN 的生成过程，我们可以很直观地得到两个 GAN 缺陷的解释（详细分析可见《Wasserstein GAN》）：</p>
 <ol>
 <li>模型坍塌（Model collapse）<br> GAN 只要求将 x^g_i 映射至离样本分布流型尽可能近的地方，却不管是不是同一个点，于是生成器有将所有 z_i 都映射为一点的倾向，于是模型坍塌就发生了。</li>
-<li>不收敛 由于生成器的 Loss 依赖于判别器 Loss 后向传递，而不是直接来自距离 D = ‖x^g_i−x^^g_i‖ ，因而若判别器总是能准确地判别出真假，则向后传递的信息就非常少（体现为梯度为 0），则生成器便无法形成自己的 Loss，因而便无法有效地训练生成器。正是因为这个原因，《Wasserstein GAN》才提出了一个新的距离定义（Wasserstein Distance）应用于判别器，而不是原型中简单粗暴的<strong>对真伪样本的分辨正确的概率</strong>。Wasserstein Distance 所针对的就是找一个方法来度量 D = ‖x^g_i−x^^g_i‖</li>
+<li>不收敛 由于生成器的 Loss 依赖于判别器 Loss 后向传递，而不是直接来自距离 D &#x3D; ‖x^g_i−x^^g_i‖ ，因而若判别器总是能准确地判别出真假，则向后传递的信息就非常少（体现为梯度为 0），则生成器便无法形成自己的 Loss，因而便无法有效地训练生成器。正是因为这个原因，《Wasserstein GAN》才提出了一个新的距离定义（Wasserstein Distance）应用于判别器，而不是原型中简单粗暴的<strong>对真伪样本的分辨正确的概率</strong>。Wasserstein Distance 所针对的就是找一个方法来度量 D &#x3D; ‖x^g_i−x^^g_i‖</li>
 </ol>
 <p>比较 VAE 与 GAN 的效果，我们可以得到以下两点：</p>
 <ul>
 <li>GAN 生成的效果要优于 VAE<br>  我认为GAN和VAE的一个本质区别就是loss的区别<br>  VAE是pointwise loss，一个典型的特征就是pointwise loss常常会脱离数据流形面，因此看起来生成的图片会模糊<br>  GAN是分布匹配的loss，更能贴近流行面，看起来就会清晰<br>  但分布匹配的难度较大，一个例子就是经常发生mode collapse问题，小分布丢失，而pointwise loss就没有这个问题，可以用于做初始化或做纠正，因此发展了一系列GAN+VAE的工作<br>  VAE 是一个在数学上具有完美证明的模型，其优化目标和过程都是显式的。由于 VAE 设计的强预设性，其优化过程强制性地把数据拟合到有限维度的混合高斯或者其他分布上，这导致两个结果：<ol>
 <li>映射过程中必然导致信息损失，特别是次要信息的损失</li>
-<li>不符合预设分布的信息的编码和恢复效果差，如果强制性的把这样的分布投射到高斯分布上，就必然导致模糊<br>对应地，GAN 的训练中没有这样的强预设，它是通过判别器网络来进行优化的，让生成器产生数据的分布直接拟合训练数据的分布，而对具体的分布没有特别的要求。</li>
+<li>不符合预设分布的信息的编码和恢复效果差，如果强制性的把这样的分布投射到高斯分布上，就必然导致模糊<br>  对应地，GAN 的训练中没有这样的强预设，它是通过判别器网络来进行优化的，让生成器产生数据的分布直接拟合训练数据的分布，而对具体的分布没有特别的要求。</li>
 </ol>
 </li>
 <li>GAN 比 VAE 要难于训练<br>  文章：Variational Inference: A Unified Framework of Generative Models and Some Revelations，为两个生成模型建立了统一的框架，并提出一种为训练 Generator 而设计的正则项原理，它可以作为《Wasserstein GAN》的一个补充，因为 WGAN 给出的是 GAN 判别器 Loss 的改进意见，而该文却是对生成器下手，提出生成器的一个正则项原则。</li>
@@ -430,7 +430,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -504,7 +504,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

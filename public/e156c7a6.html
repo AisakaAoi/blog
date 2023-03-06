@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -301,7 +301,7 @@
 <p>下面是论文<strong>摘要</strong>，摘要总共七句话。</p>
 <ul>
 <li>前三句话介绍我们提出了一个新的 <strong>framework</strong>， 通过<strong>对抗过程</strong>估计生成模型；我们同时会训练两个模型，一个是生成模型 G，生成模型用来捕获数据的分布，另一个模型是辨别模型 D，辨别模型用来判断样本是<strong>来自于训练数据</strong>还是<strong>生成模型生成的</strong>。生成模型 G 的训练过程是使辨别模型犯错概率最大化实现的，<strong>当辨别模型犯错概率越大，则生成模型生成的数据越接近于真实数据</strong>。整个framework类似于博弈论里的二人对抗游戏。</li>
-<li>第四句话是说，在任意函数空间里，存在唯一解，G 能找出训练数据的真实分布，而 D 的预测概率为 1/2，此时辨别模型已经分辨不出样本的来源。</li>
+<li>第四句话是说，在任意函数空间里，存在唯一解，G 能找出训练数据的真实分布，而 D 的预测概率为 1&#x2F;2，此时辨别模型已经分辨不出样本的来源。</li>
 <li>最后就是说生成模型和辨别模型可以通过反向传播进行训练，实验也显示了提出的框架潜能。</li>
 </ul>
 <img src="/e156c7a6/2.png" class>
@@ -328,7 +328,7 @@
 </ul>
 <img src="/e156c7a6/4.png" class>
 
-<p>下图是对抗网络训练的直观示意图，黑色曲线是真实样本，绿色曲线为生成样本，蓝色曲线为判别概率。可以看到在（a）阶段，真实样本和生成样本分布不一致，此时判别器能够正确区分真实样本和生成样本。到（d）阶段，真实样本和生成样本分布几乎一致，此时判别器很难再区分二者，此时判别器输出概率为 1/2。</p>
+<p>下图是对抗网络训练的直观示意图，黑色曲线是真实样本，绿色曲线为生成样本，蓝色曲线为判别概率。可以看到在（a）阶段，真实样本和生成样本分布不一致，此时判别器能够正确区分真实样本和生成样本。到（d）阶段，真实样本和生成样本分布几乎一致，此时判别器很难再区分二者，此时判别器输出概率为 1&#x2F;2。</p>
 <img src="/e156c7a6/5.png" class>
 
 <p>算法1是整个对抗网络的正式描述，<strong>对于判别器，我们通过梯度上升来训练；对于生成器，我们通过梯度下降来训练</strong>。</p>
@@ -343,7 +343,7 @@
 <p>下面是证明过程，对于给定的生成器 G，判别器 D 通过<strong>最大化期望</strong> V(G,D) 来训练，V(G,D) 为：</p>
 <img src="/e156c7a6/9.png" class>
 
-<p>已知 (a, b)∈R^2，函数 y → a log(y) + b log(1−y) 在 a/(a+b) 处取得最大值。</p>
+<p>已知 (a, b)∈R^2，函数 y → a log(y) + b log(1−y) 在 a&#x2F;(a+b) 处取得最大值。</p>
 <img src="/e156c7a6/10.png" class>
 
 <p>根据上面的证明，在最优判别器处，则有<strong>最大期望值</strong> −log4。</p>
@@ -451,7 +451,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -525,7 +525,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

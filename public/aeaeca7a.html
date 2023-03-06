@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -261,7 +261,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.5k</span>
+              <span>5.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -330,7 +330,7 @@
 <p>为了识别出未曾见过的类别（图像或文本），Zero-shot这一概念可以追溯到十年前，而目前计算机视觉领域应用的重点是，利用自然语言作为灵活的预测空间，实现泛化和迁移。</p>
 <hr>
 <h3 id="文中多次提到的Zero-shot-transfer-of-CLIP-是什么意思？"><a href="#文中多次提到的Zero-shot-transfer-of-CLIP-是什么意思？" class="headerlink" title="文中多次提到的Zero shot transfer of CLIP 是什么意思？"></a>文中多次提到的Zero shot transfer of CLIP 是什么意思？</h3><p>本文的CLIP预训练时使用的数据集是WIT，而在ImageNet、STL10、Food101、CIFAR10、MNIST等其他数据集上直接测试。这意味着CLIP在训练时没有见过ImageNet这些数据集中的图像，那么这种测试实际上就是zero shot的。</p>
-<p>一个测试例子可以看下图，假设要测试的数据集是ImageNet，那么，因为CLIP在训练时用的所有数据来自WIT，而没有任何ImageNet的数据，所以CLIP在ImageNet上进行测试实际上就是Zero shot的。由于ImageNet中text数据只有表示图像类别的car，dog，bird等single word，而CLIP训练时text数据是sentence，为了弥补训练和测试的gap，作者将ImageNet中所有类别单词扩展为一句话“ A photo of a {car/dog/…/bird}. ” ，作为图像对应的sentence（该操作实际上是prompt engineering）。</p>
+<p>一个测试例子可以看下图，假设要测试的数据集是ImageNet，那么，因为CLIP在训练时用的所有数据来自WIT，而没有任何ImageNet的数据，所以CLIP在ImageNet上进行测试实际上就是Zero shot的。由于ImageNet中text数据只有表示图像类别的car，dog，bird等single word，而CLIP训练时text数据是sentence，为了弥补训练和测试的gap，作者将ImageNet中所有类别单词扩展为一句话“ A photo of a {car&#x2F;dog&#x2F;…&#x2F;bird}. ” ，作为图像对应的sentence（该操作实际上是prompt engineering）。</p>
 <p>下图中Text Encoder和Image Encoder是已经训练好的CLIP中的文本和图像编码器，要对任意一张来自ImageNet的图像进行分类，只需要将该图像输入Image Encoder中得到它的向量表示I1。然后将ImageNet数据集中所有类别标签扩展成的sentence输入Text Encoder，得到所有类别的向量表示T1—TN，然后计算I1与T1—TN的相似度，其中相似度最高的就是该图像对应的text数据，也就是该图像的分类结果。</p>
 <img src="/aeaeca7a/3.png" class>
 
@@ -349,7 +349,7 @@
 </ul>
 </li>
 <li><p>CLIP的“足”：高效且灵活通用</p>
-<p> CLIP需要从未经标注、变化多端的数据中进行预训练，且要在“zero-shot”，即零样本的情况下使用。GPT-2/3模型已经验证了该思路的可行性，但这类模型需要大量的模型计算，为了减少计算量，OpenAI的研究人员采用了两种算法：对比目标（contrastive objective）和Vision Transformer。前者是为了将文本和图像连接起来，后者使计算效率比标准分类模型提高了三倍。</p>
+<p> CLIP需要从未经标注、变化多端的数据中进行预训练，且要在“zero-shot”，即零样本的情况下使用。GPT-2&#x2F;3模型已经验证了该思路的可行性，但这类模型需要大量的模型计算，为了减少计算量，OpenAI的研究人员采用了两种算法：对比目标（contrastive objective）和Vision Transformer。前者是为了将文本和图像连接起来，后者使计算效率比标准分类模型提高了三倍。</p>
 </li>
 <li><p>CLIP的“不足”：复杂任务仍有差距</p>
 <p> 尽管CLIP在识别常见物体上表现良好，但在如计算图像中物品数量、预测图片中物品的位置距离等更抽象、复杂的任务上，“zero-shot”CLIP表现仅略胜于随机分类，而在区分汽车模型、飞机型号或者花卉种类时，CLIP也不好。</p>
@@ -458,7 +458,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -532,7 +532,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

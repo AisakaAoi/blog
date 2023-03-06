@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -161,7 +161,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -312,7 +312,7 @@
 <hr>
 <span id="more"></span>
 
-<h3 id="深度学习奠基作之一：AlexNet"><a href="#深度学习奠基作之一：AlexNet" class="headerlink" title="深度学习奠基作之一：AlexNet"></a>深度学习奠基作之一：AlexNet</h3><h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><p><strong>标题：</strong>ImageNet Classification with Deep Convolutional Neural Networks<br><strong>时间：</strong>2012<br><strong>出版源：</strong>Neural Information Processing Systems (NIPS)<br><strong>论文领域：</strong>深度学习，计算机视觉<br><strong>论文链接：</strong><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3065386">https://dl.acm.org/doi/10.1145/3065386</a><br><strong>引用格式：</strong>Krizhevsky A, Sutskever I, Hinton G E. Imagenet classification with deep convolutional neural networks[C]//Advances in neural information processing systems. 2012: 1097-1105.</p>
+<h3 id="深度学习奠基作之一：AlexNet"><a href="#深度学习奠基作之一：AlexNet" class="headerlink" title="深度学习奠基作之一：AlexNet"></a>深度学习奠基作之一：AlexNet</h3><h4 id="基本信息"><a href="#基本信息" class="headerlink" title="基本信息"></a>基本信息</h4><p><strong>标题：</strong>ImageNet Classification with Deep Convolutional Neural Networks<br><strong>时间：</strong>2012<br><strong>出版源：</strong>Neural Information Processing Systems (NIPS)<br><strong>论文领域：</strong>深度学习，计算机视觉<br><strong>论文链接：</strong><a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/3065386">https://dl.acm.org/doi/10.1145/3065386</a><br><strong>引用格式：</strong>Krizhevsky A, Sutskever I, Hinton G E. Imagenet classification with deep convolutional neural networks[C]&#x2F;&#x2F;Advances in neural information processing systems. 2012: 1097-1105.</p>
 <h4 id="研究背景"><a href="#研究背景" class="headerlink" title="研究背景"></a>研究背景</h4><ul>
 <li><strong>数据集：</strong>出现imageNet这样的大数据集，可以用来训练更复杂的模型 。</li>
 <li><strong>CNN：</strong>而CNNs它们的能力可以通过改变深度和广度来控制，它们还对图像的本质（即统计的平稳性和像素依赖性的局部性）做出了强有力且基本正确的假设。与具有类似大小层的标准前馈神经网络相比，CNNs具有更少的连接和参数，因此更容易训练，而其理论上最好的性能可能只会稍微差一些。</li>
@@ -328,13 +328,13 @@
 <h5 id="Local-Response-Normalization-局部响应归一化（没啥用）"><a href="#Local-Response-Normalization-局部响应归一化（没啥用）" class="headerlink" title="Local Response Normalization 局部响应归一化（没啥用）"></a>Local Response Normalization 局部响应归一化（没啥用）</h5><img src="/de804d7a/28.png" class>
 
 <p>此方案有助于泛化，CNN在未归一化的情况下，测试错误率为13%;在归一化的情况下，测试错误率为11%。</p>
-<p>大致意思就是当今kernel的map的(x, y)像素位置在周围邻居相同kernel的map的(x, y)像素。然后把这些邻居pixel的值平方再加和。乘以一个系数 α 再加上一个常数k, 然后 β 次幂就是分母，分子就是kernel对应的map的(x, y)位置的pixel值。关键是参数 α, β, k如何确定, 论文中说在验证集中确定, 最终确定的结果为: k = 2, n = 5, α = 0.0001, β = 0.75</p>
+<p>大致意思就是当今kernel的map的(x, y)像素位置在周围邻居相同kernel的map的(x, y)像素。然后把这些邻居pixel的值平方再加和。乘以一个系数 α 再加上一个常数k, 然后 β 次幂就是分母，分子就是kernel对应的map的(x, y)位置的pixel值。关键是参数 α, β, k如何确定, 论文中说在验证集中确定, 最终确定的结果为: k &#x3D; 2, n &#x3D; 5, α &#x3D; 0.0001, β &#x3D; 0.75</p>
 <h5 id="Overlapping-Pooling-重叠池化"><a href="#Overlapping-Pooling-重叠池化" class="headerlink" title="Overlapping Pooling 重叠池化"></a>Overlapping Pooling 重叠池化</h5><p>初步理解：假如池化单元为zxz</p>
 <ul>
-<li>步长s = z，就是传统的池化</li>
+<li>步长s &#x3D; z，就是传统的池化</li>
 <li>步长s &lt; z，就是重叠池化</li>
 </ul>
-<p>作者提到当s = 2, z = 3时，对比s = z = 2，错误率减少了0.4%(top-1) 和 0.3%(top-5)<strong>（使用重叠池化可以减少过拟合）</strong></p>
+<p>作者提到当s &#x3D; 2, z &#x3D; 3时，对比s &#x3D; z &#x3D; 2，错误率减少了0.4%(top-1) 和 0.3%(top-5)<strong>（使用重叠池化可以减少过拟合）</strong></p>
 <h5 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h5><img src="/de804d7a/29.png" class>
 
 <p>一共8层，前5层是卷积层，后3层是全连接层：</p>
@@ -399,7 +399,7 @@
 
 <p><strong>中文翻译：</strong></p>
 <p><strong>1 引言</strong></p>
-<p><strong>当前的目标识别方法基本上都使用了机器学习方法。为了提高目标识别的性能，我们必须收集更大的数据集，学习更强大的模型，使用更好的技术来防止过拟合。直到最近，标注图像的数据集都相对较小——都在几万张图像的数量级上（例如，NORB[16]，Caltech-101/256 [8, 9]和CIFAR-10/100 [12]）。简单的识别任务在这样大小的数据集上可以被解决的相当好，尤其是如果通过标签保留变换进行数据增强的情况下。例如，目前在MNIST数字识别任务上（&lt;0.3%）的最好准确率已经接近了人类水平[4]。但真实环境中的对象表现出了相当大的可变性，因此为了学习识别它们，有必要使用更大的训练数据集。实际上，小图像数据集的缺点已经被广泛认识到（例如，Pinto et al. [21]），但收集上百万图像的标注数据仅在最近才变得的可能。新的更大的数据集包括LabelMe [23]，它包含了数十万张完全分割的图像，以及包含了22000个类别上的超过1500万张标注的高分辨率的图像ImageNet[6]。</strong></p>
+<p><strong>当前的目标识别方法基本上都使用了机器学习方法。为了提高目标识别的性能，我们必须收集更大的数据集，学习更强大的模型，使用更好的技术来防止过拟合。直到最近，标注图像的数据集都相对较小——都在几万张图像的数量级上（例如，NORB[16]，Caltech-101&#x2F;256 [8, 9]和CIFAR-10&#x2F;100 [12]）。简单的识别任务在这样大小的数据集上可以被解决的相当好，尤其是如果通过标签保留变换进行数据增强的情况下。例如，目前在MNIST数字识别任务上（&lt;0.3%）的最好准确率已经接近了人类水平[4]。但真实环境中的对象表现出了相当大的可变性，因此为了学习识别它们，有必要使用更大的训练数据集。实际上，小图像数据集的缺点已经被广泛认识到（例如，Pinto et al. [21]），但收集上百万图像的标注数据仅在最近才变得的可能。新的更大的数据集包括LabelMe [23]，它包含了数十万张完全分割的图像，以及包含了22000个类别上的超过1500万张标注的高分辨率的图像ImageNet[6]。</strong></p>
 <p>大数据集、大模型、更好的技术来防止过拟合，这基本是机器学习正常的途径。当时深度学习界认为，大模型+正则来防止过拟合，并且在之后几年内大家也是这么做的。但现在观点来看，好像正则又不是很重要，关键是整个神经网络的设计，使得很大的神经网络在没有很好的正则情况下也能训练的很好。这部分的理论和实践工作还在推进，坐等以后新的结论。后面吹了一下它这个ImageNet特别好，毕竟题目就说了本文用的是ImageNet，吹一下它数据量大、类别多。</p>
 <hr>
 <img src="/de804d7a/6.png" class>
@@ -456,9 +456,9 @@
 
 <p><strong>中文翻译：</strong></p>
 <p><strong>3.1 ReLU非线性</strong></p>
-<p><strong>将神经元输出f建模为输入x的函数的标准方式是用f(x) = tanh(x)或f(x) = (1 + e−x)−1。考虑到梯度下降的训练时间，这些饱和的非线性比非饱和非线性f(x) = max(0,x)更慢。根据Nair和Hinton[20]的说法，我们将这种非线性神经元称为修正线性单元(ReLU)。采用ReLU的深度卷积神经网络训练时间比等价的tanh单元要快好几倍。在图1中，对于一个特定的四层卷积网络，在CIFAR-10数据集上达到25%的训练误差所需要的迭代次数可以证实这一点。这幅图表明，如果我们采用传统的饱和神经元模型，我们将不能在如此大的神经网络上实验该工作。</strong></p>
+<p><strong>将神经元输出f建模为输入x的函数的标准方式是用f(x) &#x3D; tanh(x)或f(x) &#x3D; (1 + e−x)−1。考虑到梯度下降的训练时间，这些饱和的非线性比非饱和非线性f(x) &#x3D; max(0,x)更慢。根据Nair和Hinton[20]的说法，我们将这种非线性神经元称为修正线性单元(ReLU)。采用ReLU的深度卷积神经网络训练时间比等价的tanh单元要快好几倍。在图1中，对于一个特定的四层卷积网络，在CIFAR-10数据集上达到25%的训练误差所需要的迭代次数可以证实这一点。这幅图表明，如果我们采用传统的饱和神经元模型，我们将不能在如此大的神经网络上实验该工作。</strong></p>
 <p><strong>图1：使用ReLU的四层卷积神经网络在CIFAR-10数据集上达到25%的训练误差比使用tanh神经元的等价网络（虚线）快六倍。为了使训练尽可能快，每个网络的学习率是单独选择的。没有采用任何类型的正则化。影响的大小随着网络结构的变化而变化，这一点已得到证实，但使用ReLU的网络一直比等价的饱和神经元快几倍。</strong></p>
-<p><strong>我们不是第一个考虑替代CNN中传统神经元模型的人。例如，Jarrett等人[11]声称非线性函数f(x) = |tanh(x)|与对比归一化以及局部均值池化在Caltech-101数据集上表现甚好。然而，在这个数据集上主要的关注点是防止过拟合，因此他们观测到的影响（预防过拟合）不同于我们使用ReLU拟合数据集时的反映的加速能力。更快的学习速率对大型模型在大型数据集上的性能有很大的影响。</strong></p>
+<p><strong>我们不是第一个考虑替代CNN中传统神经元模型的人。例如，Jarrett等人[11]声称非线性函数f(x) &#x3D; |tanh(x)|与对比归一化以及局部均值池化在Caltech-101数据集上表现甚好。然而，在这个数据集上主要的关注点是防止过拟合，因此他们观测到的影响（预防过拟合）不同于我们使用ReLU拟合数据集时的反映的加速能力。更快的学习速率对大型模型在大型数据集上的性能有很大的影响。</strong></p>
 <p>本小节标题是ReLU非线性激活函数，它说正常都是用tanh和sigmoid，但这些饱和的非线性激活函数会比非饱和的非线性激活函数慢（比如ReLU：max(0, x)）。可能有些人饱和和非饱和这些 saturating nonlinearities 、 non-saturating nonlinearity 没懂，但我们第二遍就不死挖到底了。</p>
 <p>文章说用了ReLU特别好、特别快，图1也就表示出了它好的效果，随着epoch训练轮数的增加下降得更快。为什么非饱和更快，文章没有详细说明，有个引用标注，之后可以再看[20]的引用论文。</p>
 <p>也分析了其他人的激活函数比如|tanh(x)|也不错，但还是不如ReLU快，毕竟数据集很大。在那时训练个ImageNet代价还是比较大的，快一点当然比较喜欢。不过在现在看来ReLU也没有说快多少，而且当时觉得ReLU快的原因在现在看来也不是那么正确，现在换个激活函数问题也不大。但大家还是用ReLU是单纯因为它简单。</p>
@@ -477,7 +477,7 @@
 <p><strong>中文翻译：</strong></p>
 <p><strong>3.3 局部响应归一化（译者注：后来的研究表明，LRN几乎没有用处，因此读者可以跳过此部分）</strong></p>
 <p><strong>ReLU具有让人满意的特性，即它不需要通过输入归一化来防止饱和。如果至少一些训练样本对ReLU产生了正输入，那么那个神经元上将发生学习。然而，我们仍然发现接下来的局部归一化有助于泛化。 表示神经元激活，通过在(x,y)位置应用核i，然后应用ReLU非线性来计算，响应归一化激活 通过下式给定：</strong></p>
-<p><strong>求和运算在n个“毗邻的”核映射的同一位置上执行，N是本层的卷积核数目。核映射的顺序当然是任意的，在训练开始前确定。响应归一化的顺序实现了一种侧抑制形式，灵感来自于真实神经元中发现的类型，为使用不同核进行神经元输出计算的较大活动创造了竞争。常量k，n，α，β是超参数，它们的值通过验证集确定；我们设k=2，n=5，α=0.0001，β=0.75。我们在特定的层使用的ReLU非线性之后应用了这种归一化（请看3.5小节）。</strong></p>
+<p><strong>求和运算在n个“毗邻的”核映射的同一位置上执行，N是本层的卷积核数目。核映射的顺序当然是任意的，在训练开始前确定。响应归一化的顺序实现了一种侧抑制形式，灵感来自于真实神经元中发现的类型，为使用不同核进行神经元输出计算的较大活动创造了竞争。常量k，n，α，β是超参数，它们的值通过验证集确定；我们设k&#x3D;2，n&#x3D;5，α&#x3D;0.0001，β&#x3D;0.75。我们在特定的层使用的ReLU非线性之后应用了这种归一化（请看3.5小节）。</strong></p>
 <p><strong>这个方案与Jarrett等人[11]的局部对比度归一化方案有一定的相似性，但我们更恰当的称其为“亮度归一化”，因为我们没有减去均值。响应归一化分别减少了top-1 1.4%，top-5 1.2%的错误率。我们也在CIFAR-10数据集上验证了这个方案的有效性：没有归一化的四层CNN取得了13%的错误率，而使用归一化取得了11%的错误率。</strong></p>
 <p>“不需要通过输入归一化来防止饱和”，看不太懂，可以圈出来第三遍再看。它只讲了怎么定义怎么用这些细节，但没说为什么一定要用它以及它的效果。第二遍看不太懂，可以忽略一下，知道它是个normalization就可以。</p>
 <p>如果以现在的眼光来看，这个东西已经不重要了，在之后的研究几乎没有人用到它。现在我们也有更好的normalization的技术。</p>
@@ -486,7 +486,7 @@
 
 <p><strong>中文翻译：</strong></p>
 <p><strong>3.4 重叠池化</strong></p>
-<p><strong>CNN中的池化层使用相同的核映射归纳了神经元相邻组的输出。习惯上，相邻池化单元归纳的区域是不重叠的（例如[17, 11, 4]）。更确切的说，池化层可看作由池化单元网格组成，网格间距为s个像素，每个网格归纳池化单元中心位置z × z大小的邻居。如果设置s = z，我们会得到通常在CNN中采用的传统局部池化。如果设置s &lt; z，我们会得到重叠池化。这就是我们网络中使用的方法，设置s = 2，z = 3。这个方案与非重叠方案s = 2, z = 2相比，分别降低了top-1 0.4%，top-5 0.3%的错误率，两者的输出维度是相等的。我们在训练过程发现，采用重叠池化的模型更难以过拟合。</strong></p>
+<p><strong>CNN中的池化层使用相同的核映射归纳了神经元相邻组的输出。习惯上，相邻池化单元归纳的区域是不重叠的（例如[17, 11, 4]）。更确切的说，池化层可看作由池化单元网格组成，网格间距为s个像素，每个网格归纳池化单元中心位置z × z大小的邻居。如果设置s &#x3D; z，我们会得到通常在CNN中采用的传统局部池化。如果设置s &lt; z，我们会得到重叠池化。这就是我们网络中使用的方法，设置s &#x3D; 2，z &#x3D; 3。这个方案与非重叠方案s &#x3D; 2, z &#x3D; 2相比，分别降低了top-1 0.4%，top-5 0.3%的错误率，两者的输出维度是相等的。我们在训练过程发现，采用重叠池化的模型更难以过拟合。</strong></p>
 <p>一般来说pooling是不会overlapping的，但这说要重叠一下。也有可能不了解什么是pooling是干什么的，都第三遍之前先看一下。本文在传统池化方法上做了一点改动，虽然说改动不大，但文章说效果很好。</p>
 <hr>
 <img src="/de804d7a/17.png" class>
@@ -599,8 +599,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/8c7d5916.html" rel="prev" title="学习报告-博睿康脑电设备的试用报告">
-      <i class="fa fa-chevron-left"></i> 学习报告-博睿康脑电设备的试用报告
+    <a href="/a3fd2a72.html" rel="prev" title="脑机接口与混合智能-学习报告-博睿康脑电设备的试用报告">
+      <i class="fa fa-chevron-left"></i> 脑机接口与混合智能-学习报告-博睿康脑电设备的试用报告
     </a></div>
       <div class="post-nav-item">
     <a href="/b2f3cb6a.html" rel="next" title="第九艺术-微软Xbox科普指南（2021版）">
@@ -681,7 +681,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -755,7 +755,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -177,7 +177,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -304,7 +304,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4k</span>
+              <span>4.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -451,10 +451,10 @@
 <p>那怎么加限制呢？我们来思考一个现实问题。马克吐温认为，如果一把一段话从英文翻译成法文，再从法文翻译回英文，那么你应该得到跟之前原始输入的英文一样的内容。这里也是一样，如果我们把马变成斑马，然后再变回马，那么最后的马和开始输入的马应该是一样的。</p>
 <img src="/70ef60f6/27.png" class>
 
-<p>下面讲一下具体技术细节。除了之前提到的把<strong>马变成斑马</strong>的网络 G，我们还需要一个把<strong>斑马变回马</strong>的网络  F。<br>那么，一匹马 x 用 G 变成斑马 s = G(x)，然后再用 F 把它变回马 F(s)，得到的马和一开始的马应该是一样的，也就是 x = F(G(x))。</p>
+<p>下面讲一下具体技术细节。除了之前提到的把<strong>马变成斑马</strong>的网络 G，我们还需要一个把<strong>斑马变回马</strong>的网络  F。<br>那么，一匹马 x 用 G 变成斑马 s &#x3D; G(x)，然后再用 F 把它变回马 F(s)，得到的马和一开始的马应该是一样的，也就是 x &#x3D; F(G(x))。</p>
 <img src="/70ef60f6/28.png" class>
 
-<p>反过来，斑马变马再变回斑马也要满足要求，注意这一步最好不要省略。虽然理论上只用一个条件是可以的，但是现实实现中，有很多因素，比如计算的准备度，优化的问题，应用中都是把所有约束都加上。比如说 a = b = c，理论上我们只要要求 (a-b)^2 + (a-c)^2 = 0，但现实中我们都是做 (a-b)^2 + (a-c)^2 + (b-c)^2 = 0。</p>
+<p>反过来，斑马变马再变回斑马也要满足要求，注意这一步最好不要省略。虽然理论上只用一个条件是可以的，但是现实实现中，有很多因素，比如计算的准备度，优化的问题，应用中都是把所有约束都加上。比如说 a &#x3D; b &#x3D; c，理论上我们只要要求 (a-b)^2 + (a-c)^2 &#x3D; 0，但现实中我们都是做 (a-b)^2 + (a-c)^2 + (b-c)^2 &#x3D; 0。</p>
 <img src="/70ef60f6/29.png" class>
 
 <p>我们同时优化 G 和 F，最后就能拿到一个想要的网络 G。</p>
@@ -487,7 +487,7 @@
 <p>目前暂且的解决办法是先用Mask R-CNN做图像分割之后再针对马进行变化，不过这个效果也不好，因为人和马在图像上有重叠的部分。</p>
 <hr>
 <h3 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h3><p>这里给出<a target="_blank" rel="noopener" href="https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix">CycleGAN和pix2pix的github项目</a>，这是2017年github最受欢迎的项目之一。</p>
-<p>不过这里存在一个严重的问题：CycleGAN只能输出256p/512p的低分辨率图像。</p>
+<p>不过这里存在一个严重的问题：CycleGAN只能输出256p&#x2F;512p的低分辨率图像。</p>
 <hr>
 <h3 id="pix2pixHD"><a href="#pix2pixHD" class="headerlink" title="pix2pixHD"></a>pix2pixHD</h3><p>我们还剩一个悬而未决的问题：分辨率和图像质量。pix2pixHD就是用来解决这个问题的！</p>
 <p>假设我们输入一张高分辨率的草图：</p>
@@ -635,7 +635,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -709,7 +709,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

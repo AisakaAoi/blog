@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -153,7 +153,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -287,7 +287,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>37 分钟</span>
+              <span>38 分钟</span>
             </span>
 
         </div>
@@ -342,7 +342,7 @@
 </ul>
 <p>四种情况 ViT 都能处理：<br>遮挡、数据分布的偏移（纹理的去除）、鸟头部+对抗的patch、图片打散重新排列组合</p>
 <hr>
-<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>*<em>An image is worth 16 * 16 words*</em></p>
+<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p><strong>An image is worth 16 * 16 words</strong></p>
 <p>每一个方格都是 16 * 16 大小，图片有很多 16 * 16 方格 patches –&gt; an image is worth 16 * 16 words</p>
 <p>Transformers for image recognition at scale </p>
 <p>transformer 去做大规模的图像识别</p>
@@ -352,7 +352,7 @@
 <p>CV 里的 attention 是怎么用的呢？<br>attention + CNN, or attention 替换 CNN components 但依然保持 CNN 整体结构。</p>
 <p>如何理解 CNN 整体结构不变？<br>ResNet 50 有 4 个 stages (res2 res3 res4 res5), stage 不变，attention 取代 每一个 stage 每一个 block 里的这个操作。</p>
 <p>本文怎么看 CV 里的 attention?<br>attention 不用和 CNN 绑在一起，和 我 transformer 组队，在 CV 领域 大杀四方。<br>esp, 大规模数据集做预训练，mid-sized or small 数据集做微调，ViT  SOTA</p>
-<p>ViT fewer computational resources to train, really?<br>少的训练资源 ==  TPUv 3 + 2500 天。<br>“fewer” 相对来说</p>
+<p>ViT fewer computational resources to train, really?<br>少的训练资源 &#x3D;&#x3D;  TPUv 3 + 2500 天。<br>“fewer” 相对来说</p>
 <hr>
 <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>self-attention 架构， esp Transformers，是 NLP 必选模型。主流方式是 BERT 提出的，大规模数据集预训练，在 特定领域的小数据集 做微调。 Transformer 的 计算高效和可扩展性，1000亿参数都还没有 性能饱和 的现象。<br>i.e., MT-N;P 5300亿参数，SOTA，也没有性能饱和的现象。</p>
 <p>Transformer 应用在 CV 有<strong>难点</strong>吗？<br>计算像素的 self-attention，序列长，维度爆炸<br>Trnasformer 的计算复杂度是 序列长度 n 的 平方 O（n^2）<br>224 分辨率的图片，有 50176 个像素点，（2d 图片 flatten）序列长度是 BERT 的近 100 倍。</p>
@@ -362,16 +362,16 @@
 <p>CVPR Wang et al. 2018, Local Network, 网络中的特征图 输入 Transformer<br>ResNet 50 最后一个 stage, res4 的 feature map 14 * 14， 196</p>
 <p>降低序列长度的方式：用特征图做 transformer 输入（Wang et al 2018）, replacing the convolutions entirely (Ramachandran et al., 2019 stand-alone attention 孤立自注意力; Wang et al., 2020 axial attention 轴注意力)</p>
 <p>stand-alone attention 孤立自注意力<br>用 local window 局部小窗口 控制 transformer 的计算复杂度，有点像 卷积， 卷积也有 locality，局部窗口卷积。</p>
-<p>axial attention 轴注意力 –&gt; 2 个 1d 顺序操作，降低计算复杂度<br>图片的序列长度 n = H * W<br>2d 矩阵 拆分为 2个1d 向量，先在 H 高度 dimension 做一次 self-attention，再 W 宽度 dimension 做一次 self-attention</p>
+<p>axial attention 轴注意力 –&gt; 2 个 1d 顺序操作，降低计算复杂度<br>图片的序列长度 n &#x3D; H * W<br>2d 矩阵 拆分为 2个1d 向量，先在 H 高度 dimension 做一次 self-attention，再 W 宽度 dimension 做一次 self-attention</p>
 <p><strong>replacing the convolutions entirely 好不好呢？</strong><br>理论高效，但硬件无法加速 –&gt; 此类模型都还没有太大。<br>本段（第二段）总结：在大规模的图像识别上，ResNet 还是效果最好的。</p>
 <p><strong>本文 ViT 的工作是什么？</strong><br><strong>现状：</strong>attention 已经在 CV 领域有应用，甚至也有 attention 替代卷积的操作<br><strong>讲故事的角度：</strong>Inspired by the Transformer scaling 可扩展性 success in NLP, we experiment with applying a standard Transformer directly to images, with the fewest possible modifications.<br>标准 Transformer 直接应用于图片，做最少的修改，不做任何针对视觉任务的特定的改变。</p>
-<p>The fewest possible modifications 是什么呢？<br>把图片划分成很多 patches，每个 patch 元素 是 16 * 16，序列长度 14 * 14 = 196个元素</p>
+<p>The fewest possible modifications 是什么呢？<br>把图片划分成很多 patches，每个 patch 元素 是 16 * 16，序列长度 14 * 14 &#x3D; 196个元素</p>
 <p>每一个 patch 经过一个 FC layer(fully connected layer)得到一个 linear embedding，patches 的 linear embeddings 是 Transformer 的输入。</p>
 <p>一个 224 * 224 图片 变成一个 196 个的 16 * 16 图片块（words in NLP）。</p>
 <p><strong>为什么 transformer 的训练是 supervised fashion？</strong><br>NLP 的 Transformer 无监督训练 by language model LM or mask language model MLM；CV 任务的 benchmark 使用有监督训练。 </p>
 <p>ViT 把 CV 任务当成 NLP 任务，模型使用的是 BERT, Transformer encoder 简洁框架。Transformer 在视觉也有很好的效果。</p>
 <p><strong>Transformer in CV，之前有人做吗？</strong><br>ICLR 2020 从输入图片里抽取 2 * 2 patches。 2 * 2 size enough：CIFAR-10 32 * 32 图片，16 * 16 会过大。 抽好 patch 之后，在 patches 上 做 self-attention。 –&gt; 技术上的 Vision Transformer</p>
-<p>*<em>ViT 和 ICLR 2 * 2 patches 的区别？*</em></p>
+<p><strong>ViT 和 ICLR 2 * 2 patches 的区别？</strong></p>
 <ul>
 <li>ViT证明了 大规模数据集预训练 （NLP 常用）之后的 Transformer，不需要做 针对视觉任务的 修改，比最好的 CNNs 效果差不多 or 甚至更好。</li>
 <li>2 * 2 patches applicable only to small-resolution images, ViT handles medium-resolution images as well. </li>
@@ -381,7 +381,7 @@
 <p><strong>ViT 任何情况都很强吗？</strong><br>No<br>mid-sized datasets ImageNet without strong regularization，ViT 比 ResNet of comparable size 弱几个点。</p>
 <p><strong>Why 弱？ expected</strong><br>Transformer 比 CNN 少 inductive biases 归纳偏置<br>inductive biases 归纳偏置：先验知识 or 提前的假设<br>CNN 的 inductive biases 是 locality 和 平移等变性 translation equaivariance（平移不变性 spatial invariance）。</p>
 <p>locality: CNN用滑动窗口在图片上做卷积。假设是图片相邻的区域有相似的特征。i.e., 桌椅在一起的概率大，距离近的物品 相关性越强。</p>
-<p>translation equaivariance：f(g(x)) = g(f(x))<br>f 和 g 函数的顺序不影响结果。<br>f：卷积 g：平移; 无论先做平移 g 还是先做卷积 f , 最后结果一样。<br>CNN 的卷积核 像一个 template 模板，同样的物体无论移动到哪里，遇到了相同的卷积核，它的输出一致。</p>
+<p>translation equaivariance：f(g(x)) &#x3D; g(f(x))<br>f 和 g 函数的顺序不影响结果。<br>f：卷积 g：平移; 无论先做平移 g 还是先做卷积 f , 最后结果一样。<br>CNN 的卷积核 像一个 template 模板，同样的物体无论移动到哪里，遇到了相同的卷积核，它的输出一致。</p>
 <p>CNN 有 locality 和 translation equivariance 归纳偏置，–&gt; CNN 有 很多先验信息 –&gt; 需要较少的数据去学好一个模型。</p>
 <p>Transformer 没有这些先验信息，只能 从图片数据里，自己学习对 视觉世界 的感知。</p>
 <p><strong>怎么验证 Transformer 无 inductive bias 的假设？</strong><br>在 1400万(ImageNet-21K) - 3000 万(JFT-300)得到图片数据集上预训练 trumps inductive bias, ViT +足够训练数据，CV SOTA。</p>
@@ -406,7 +406,7 @@
 <hr>
 <h3 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h3><p>Transformer 在 NLP 领域的应用：BERT, GPT<br>Transformer 先在大规模语料库上做预训练，再根据具体的任务数据集进行微调。<br>BERT: denosing mask挖词、完形填空，把masked的词预测出来<br>GPT: language modelling, 预测下一个词 next word prediction<br>完形填空 or 预测下一个词，人为设定。语料句子是完整的，去掉某些词（完形填空） or 最后词（预测下一个词） –&gt; 自监督的训练方式。</p>
 <p>self-attention 在视觉领域的应用</p>
-<p>self-attention to each pixel：❌<br>224 * 224 image: O(n^2 = 50176)<br>1k, 4k image: 维度爆炸</p>
+<p>self-attention to each pixel：❌<br>224 * 224 image: O(n^2 &#x3D; 50176)<br>1k, 4k image: 维度爆炸</p>
 <p>self-attention to each image with approximations： </p>
 <ul>
 <li>不用整张图，只用 local neighborhoods，降低序列长度</li>
@@ -444,7 +444,7 @@
 <img src="/b2650d22/9.png" class>
 
 <p><strong>Input:</strong> 1 张图<br><strong>Process:</strong> 九宫格 9 patches –&gt; Flattened Patches (3 * 3 –&gt; 1 * 9 拍平) –&gt; Linear Projections —&gt; Patch embedding<br><strong>Why need position embedding?</strong><br>self-attention 所有元素两两算自注意力，和顺序位置无关。但图片的 patches 是有顺序的，+ position embedding</p>
-<p>Patch embedding + position embedding == token 包含 图片 patch 信息 和 patch 在原图中的位置信息。</p>
+<p>Patch embedding + position embedding &#x3D;&#x3D; token 包含 图片 patch 信息 和 patch 在原图中的位置信息。</p>
 <p><strong>ViT 对 图片的操作：</strong> 划分 patches，flatten patches 的线性投影 + patches 的位置信息，得到输入 transformer 的 tokens</p>
 <p>得到 tokens 之后，对 visual tokens 进行 NLP 操作：<br>tokens 传入 Transformer encoder，得到很多输出。</p>
 <p><strong>Q: 每一个 token 都有输出，用哪个输出分类呢？</strong><br>借鉴 BERT， extra learnable {class} embedding –&gt;, a special classification token, * in figure 1.<br>也有 position embedding, 0(永远是0)</p>
@@ -452,12 +452,12 @@
 <p><strong>Q: 从怎么得到最后的分类？ 通用MLP Head</strong><br>输入 一个通用的 MLP Head，得到 Class，cross-entropy 损失函数训练模型。</p>
 <p><strong>Q: ViT 用了标准的 transformer 结构，ViT的特点是什么？</strong><br>图片 patches 化 + position embedding 转化为 tokens</p>
 <p><strong>ViT 前向过程</strong><br><strong>Vision 问题 变成 NLP 问题</strong></p>
-<p>图片 X： 224 * 224 * 3 (RGB, 3 channels)<br>patches 数 N： 224 ^ 2 /  16 ^ 2 = 14 ^ 2 = 196<br>每一个 patch 的维度：16 * 16 * 3 (RGB, 3 channels) = 768<br>Linear Projection 全连接层 E: 768( 不变，patch 计算而来 ) * D(embedding_dim) 768 或 更大<br>图片 X * E = patches (196 patches 个数 * 768 每个 patch 的维度) * E ( 768 * D ) = 196 * D (768)</p>
+<p>图片 X： 224 * 224 * 3 (RGB, 3 channels)<br>patches 数 N： 224 ^ 2 &#x2F;  16 ^ 2 &#x3D; 14 ^ 2 &#x3D; 196<br>每一个 patch 的维度：16 * 16 * 3 (RGB, 3 channels) &#x3D; 768<br>Linear Projection 全连接层 E: 768( 不变，patch 计算而来 ) * D(embedding_dim) 768 或 更大<br>图片 X * E &#x3D; patches (196 patches 个数 * 768 每个 patch 的维度) * E ( 768 * D ) &#x3D; 196 * D (768)</p>
 <img src="/b2650d22/10.png" class>
 
 <p>**Vision to NLP done! **<br>a 2d image –&gt; a sequence 1d tokens </p>
-<p><strong>Q: 进入 transformer encoder 的序列长度？</strong><br>196 * 768(图片对应的 tokens) 拼接 concatenate [CLS] token (1 * 768) = 197 * 768</p>
-<p><strong>Q: position embedding 怎么加 patch embedding？sum()</strong><br>图1 的 1-9 不是真正使用的 position embedding，实际的 position embedding 表，1 - 5 行 代表 图1 的 1 - 5 值。<br>每行向量的维度是 1 * 768<br><strong>相加 sum：</strong><br>patch embedding（197 * 768） + position embedding （(1 CLS + 196 patches) * 768）= （197 * 768）</p>
+<p><strong>Q: 进入 transformer encoder 的序列长度？</strong><br>196 * 768(图片对应的 tokens) 拼接 concatenate [CLS] token (1 * 768) &#x3D; 197 * 768</p>
+<p><strong>Q: position embedding 怎么加 patch embedding？sum()</strong><br>图1 的 1-9 不是真正使用的 position embedding，实际的 position embedding 表，1 - 5 行 代表 图1 的 1 - 5 值。<br>每行向量的维度是 1 * 768<br><strong>相加 sum：</strong><br>patch embedding（197 * 768） + position embedding （(1 CLS + 196 patches) * 768）&#x3D; （197 * 768）</p>
 <img src="/b2650d22/11.png" class>
 
 <p>ViT base: 12 heads<br>MLP：放大 4 倍，再缩小到原维度大小<br>Transfomer encoder 输入输出维度一致，可以直接叠加 L 个</p>
@@ -468,13 +468,13 @@
 <p>ViT 用的是 BERT 1d position embedding，图片 2d aware position embedding 结果也差不多。</p>
 <p><strong>D.3 Head type and class token 作者的消融实验</strong><br>ViT 除了标准的 transformer，关键部分是 怎么对图片进行预处理 和 怎么对图片最后的输出进行后处理。</p>
 <p><strong>class token：证明 标准的 transformer 做视觉，没问题！</strong><br>控制和 NLP 的差异：使用 BERT 的 CLS，CLS 在 NLP 理解为 一个全局的对句子理解的特征；ViT 的 CLS 理解为 一个图像的整体特征。</p>
-<p>CLS token + MLP (tanh acitvation) == 分类</p>
+<p>CLS token + MLP (tanh acitvation) &#x3D;&#x3D; 分类</p>
 <p>CV 通常的 全局特征：i.e., Res50<br>feature map (14 * 14) –&gt; GAP globally average-pooling 全局平均池化 –&gt; a flatten vector 全局的图片特征向量 –&gt; MLP 分类</p>
 <p>类似的，Transformer 的 输出元素 + GAP 可以用做全局信息 + 分类吗？ Ok</p>
 <p><strong>CV 的 CLS GAP 和 NLP 的 CLS 效果差异不大。</strong></p>
 <p>CLS-Token 和 GAP 的 适用参数 不一样。</p>
 <p><strong>位置编码： 1d 2d relative 无所谓</strong></p>
-<p><strong>1d：</strong>NLP 1, 2, 3, …, 9 D<br><strong>2d：</strong>D / 2 * D / 2<br>11 12 13<br>21 22 23<br>31 32 33</p>
+<p><strong>1d：</strong>NLP 1, 2, 3, …, 9 D<br><strong>2d：</strong>D &#x2F; 2 * D &#x2F; 2<br>11 12 13<br>21 22 23<br>31 32 33</p>
 <img src="/b2650d22/13.png" class>
 
 <p><strong>relative: offset</strong><br>绝对距离转相对距离，1 - 9 和 -4, …, 0, …, 4</p>
@@ -487,12 +487,12 @@
 <img src="/b2650d22/14.png" class>
 
 <p><strong>Inductive bias</strong></p>
-<p>CNN 的 inductive bias: locality 局部性, translation equivalence 平移等变性。在 CNN 模型每一层都有所体现，==》模型的先验知识从头到尾，贯穿整个模型。</p>
+<p>CNN 的 inductive bias: locality 局部性, translation equivalence 平移等变性。在 CNN 模型每一层都有所体现，&#x3D;&#x3D;》模型的先验知识从头到尾，贯穿整个模型。</p>
 <p><strong>ViT 比 CNN 的 inductive bias 少, only MLP</strong><br>In ViT, only MLP layers are local and translationally equivariant, <strong>while the self-attention layers are global.</strong></p>
 <p>ViT 的 inductive bias in images：<br>图片 切成 patches；+ position embedding（随机初始化，没有携带 2d 位置信息）</p>
-<p>ViT 的 patches 块的 2d 位置信息 + spatial relations 图像块之间的场景信息，都需要重新学。 ==》 <strong>ViT 没有很多 inductive bias</strong> ==》中小型数据集训练 ViT 效果不如 CNN</p>
+<p>ViT 的 patches 块的 2d 位置信息 + spatial relations 图像块之间的场景信息，都需要重新学。 &#x3D;&#x3D;》 <strong>ViT 没有很多 inductive bias</strong> &#x3D;&#x3D;》中小型数据集训练 ViT 效果不如 CNN</p>
 <p><strong>Hybrid architecture</strong><br>Transformer: 全局建模能力强<br>CNN: data-efficient 不用那么多训练数据</p>
-<p>前 CNN + 后 Transformer –&gt; Hybrid archtecture<br><strong>不同的图片预处理方式：</strong>不划分 patches，采用 CNN (Res50 的 feature map 14 * 14 = 196)，过全连接层 <strong>E</strong> Linear projections 得到图片的 embedding</p>
+<p>前 CNN + 后 Transformer –&gt; Hybrid archtecture<br><strong>不同的图片预处理方式：</strong>不划分 patches，采用 CNN (Res50 的 feature map 14 * 14 &#x3D; 196)，过全连接层 <strong>E</strong> Linear projections 得到图片的 embedding</p>
 <img src="/b2650d22/15.png" class>
 
 <p><strong>ViT 的图片预处理方式：</strong><br>把一张图划分成 patches，直接过全连接层 fc</p>
@@ -513,19 +513,19 @@
 <p>下游任务：分类 CFIAR etc.</p>
 <p><strong>Model variants</strong></p>
 <p>ViT Base, Large, Huge<br>Layers, Hidden size D, MLP size, Heads 相应增加</p>
-<p>模型变体 = (Base, Large, Hugh) + (patch size 表示)<br>ViT-L/16 使用 Large 参数 和 patch 16 * 16 输入</p>
+<p>模型变体 &#x3D; (Base, Large, Hugh) + (patch size 表示)<br>ViT-L&#x2F;16 使用 Large 参数 和 patch 16 * 16 输入</p>
 <p>Q: Why patch size in name of model variants?<br>ViT 模型的 patch size 变化时, i.e., 16 * 16 –&gt; 32 * 32 or 8 * 8, 模型的位置编码会变化</p>
 <ul>
 <li>transformer 输入的序列长度 与 patch size 成反比</li>
 <li>patch size 越小，一张图片的 patches 数越多，训练越贵 because of 序列长度的增加</li>
 </ul>
 <p><strong>结果</strong></p>
-<p>ViT-H/4 秀肌肉 刷榜</p>
+<p>ViT-H&#x2F;4 秀肌肉 刷榜</p>
 <img src="/b2650d22/16.png" class>
 
 <p>和 CNN 的工作 BiT-L, Noisy Student 做对比<br><strong>BiT-L:</strong> CNN比较大的模型，ViT论文作者团队自己的工作<br><strong>Noisy Student:</strong> ImageNet 当时表现最好的方法。用 伪标签 pseudo-label 去 self-training</p>
-<p>ViT-H/14 训练比 ViT-H/16 贵，效果和 BiT-L 差不多，优势不明显。怎么突出 ViT 的好呢？</p>
-<p>ViT 训练更便宜。TPUv3 天数：ViT-H/14 2.5K, BiT-L 9.9K, Noisy Student 12.3K </p>
+<p>ViT-H&#x2F;14 训练比 ViT-H&#x2F;16 贵，效果和 BiT-L 差不多，优势不明显。怎么突出 ViT 的好呢？</p>
+<p>ViT 训练更便宜。TPUv3 天数：ViT-H&#x2F;14 2.5K, BiT-L 9.9K, Noisy Student 12.3K </p>
 <p>ViT 优点：效果好 + 训练快</p>
 <p><strong>结果分析</strong></p>
 <p>Vision Transformer 到底需要多少数据才能训练好？<br>图3 灰色区域 ResNet 的效果，圆圈 ViT 的效果</p>
@@ -551,9 +551,8 @@
 <p><strong>Q: Hybrid 模型，CNN 抽取出来的特征，能不能帮助 Transformer 更好的学习呢？</strong></p>
 <ul>
 <li>小模型，Hybrid 模型吸收 CNN 和 Transformer 的优点，效果好。不需要很多的数据预训练，达到 Transformer 的效果 </li>
-<li>大模型，Hybrid 模型 和 Transformer 差不多，甚至不如 Transformer 模型。<strong>Why？</strong></li>
+<li>大模型，Hybrid 模型 和 Transformer 差不多，甚至不如 Transformer 模型。<strong>Why？</strong><br><strong>如何 预处理图像，如何做 tokenization 很重要</strong>，后续论文有研究</li>
 </ul>
-<p><strong>如何 预处理图像，如何做 tokenization 很重要</strong>，后续论文有研究</p>
 <p>整体趋势：模型增加，除了 Hybrid 模型有点饱和（饱和：增加到一个平台值后，不增加了）。ResNet 和 Transformer 都没有饱和。</p>
 <p><strong>4.5 Inspecting Vision Transformer</strong></p>
 <p>可视化分析 ViT 内部表征 internal representations: <strong>Patch embedding, position embedding</strong><br><strong>ViT 第一层 Linear projection E 学到了什么？</strong></p>
@@ -581,10 +580,10 @@
 <li>NLP 一个很长的句子里，开头的一个词和结尾的一个词 可能互相有关联。</li>
 <li>CV 里 很远的两个像素点之间 也能做自注意力。</li>
 </ul>
-<p><strong>ViT 的 self-attention 是不是 很远的像素点也能有交互？</strong><br>ViT-L/16 有 24 层（横坐标值），五颜六色的点：transformer 每层 multi-head 的heads，ViT-L 16 heads, 每一列有 16 个点</p>
+<p><strong>ViT 的 self-attention 是不是 很远的像素点也能有交互？</strong><br>ViT-L&#x2F;16 有 24 层（横坐标值），五颜六色的点：transformer 每层 multi-head 的heads，ViT-L 16 heads, 每一列有 16 个点</p>
 <img src="/b2650d22/21.png" class>
 
-<p>纵轴是 mean attention distance<br>d_ab = l_ab * A_ab = ab 两点 pixel 之间的距离差 * ab 两点之间的attention weights<br>d_ab 的大小，反映模型能不能注意到很远的 2 个 pixels</p>
+<p>纵轴是 mean attention distance<br>d_ab &#x3D; l_ab * A_ab &#x3D; ab 两点 pixel 之间的距离差 * ab 两点之间的attention weights<br>d_ab 的大小，反映模型能不能注意到很远的 2 个 pixels</p>
 <ul>
 <li>self-attention 刚开始能注意到 10 - 110 pixels</li>
 <li>self-attention 刚开始就注意到全局的信息；CNN 刚开始第一层的感受野 receptive filed 很小，只能看到附近的 pixel</li>
@@ -604,7 +603,7 @@
 <p><strong>NLP 的 自监督：</strong>BERT 完形填空 Mask language model，GPT 生成，<strong>预测下一个词</strong> by language model</p>
 <p>ViT 借鉴 BERT，创建一个专属于 vision 的目标函数，masked patch prediction。一张图片的某些 patches 随机抹掉，ViT 重建缺失的patches</p>
 <p>Note：从 模型、目标函数上，CV 和 NLP 的大一统。</p>
-<p>但是，ViT-B/16 with masked patch prediction 在 ImageNet <del>80% 准确率。</del>80% 比 从头训练 ViT 好 2%，比 supervised pre-training 低 4%。</p>
+<p>但是，ViT-B&#x2F;16 with masked patch prediction 在 ImageNet <del>80% 准确率。</del>80% 比 从头训练 ViT 好 2%，比 supervised pre-training 低 4%。</p>
 <p><strong>ViT 和 contrastive pre-training 的结合： future work</strong> i.e., MOCOv3, DINO</p>
 <p><strong>contrastive learning:</strong> 2020 年 CV 最火的 topic，是所有 自监督学习方法表现最好的。</p>
 <hr>
@@ -731,7 +730,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -805,7 +804,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

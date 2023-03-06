@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -136,7 +136,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -299,7 +299,7 @@
 <p>其中 (2) 到 (3) 遵循 Jensen 不等式。</p>
 <hr>
 <h3 id="为什么要优化-KL-散度？"><a href="#为什么要优化-KL-散度？" class="headerlink" title="为什么要优化 KL 散度？"></a>为什么要优化 KL 散度？</h3><p>除了原博文中给出的优化二项分布匹配的案例，我会给出另一个可能需要散度优化的案例。先简单介绍一下原博文的内容，其中本质上是想求解以下问题：</p>
-<p>p_optimal = argmin_{p} D(q||p)</p>
+<p>p_optimal &#x3D; argmin_{p} D(q||p)</p>
 <p>其中 q 是根据观察得到的分布，p 是二项分布。从下图可以看到，当 D(q||p) 取最小值时，你应该得到你应该近似求取的二项分布的 p。</p>
 <img src="/499acef4/2.jpg" class>
 
@@ -311,13 +311,13 @@
 <p>从信息论的角度看，散度是无损地编码信息所需的额外比特。让我用以下例子说明一下：</p>
 <p>假设问题定义如下：</p>
 <ul>
-<li>X 是采样自某个有限集 X = x1,x2,…,xn 的一个随机变量</li>
-<li>p 是 X 的真实分布，其中 p(x_i) 是 x_i ∈ X, i = 1,…,N 的概率，且 0 ≤ p(x_i) ≤ 1, ∀i</li>
+<li>X 是采样自某个有限集 X &#x3D; x1,x2,…,xn 的一个随机变量</li>
+<li>p 是 X 的真实分布，其中 p(x_i) 是 x_i ∈ X, i &#x3D; 1,…,N 的概率，且 0 ≤ p(x_i) ≤ 1, ∀i</li>
 <li><img src="/499acef4/3.png" class> 上式是随机变量 X 的熵，是无损编码信息所需的最小比特数</li>
 <li>l_i 是用于编码 x_i 时使用的比特数或比特长度，而 x_i 则是随机变量 X 的一个实例</li>
 <li>所有对数的基数都假定为 2</li>
 </ul>
-<p>为了得到编码给定概率分布 p 的最优 H(p) 比特数，我们必须将每个码字的长度 l_i 设计成与 log 1/p(x) 成正比。因此，我们按以下方式计算编码 X 的期望长度：</p>
+<p>为了得到编码给定概率分布 p 的最优 H(p) 比特数，我们必须将每个码字的长度 l_i 设计成与 log 1&#x2F;p(x) 成正比。因此，我们按以下方式计算编码 X 的期望长度：</p>
 <img src="/499acef4/4.png" class>
 
 <p>这里的 ceiling 函数负责处理不是 2 的幂的码字长度。这是因为我们只能为任意码字的比特数分配一个整数值。</p>
@@ -440,7 +440,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -514,7 +514,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

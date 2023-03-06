@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -23,12 +23,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="CS231n - Loss Functions and Optimization  损失函数–Loss Function– SVM 损失函数模型：  对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签 损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示：     在得到score之后，可以使用多分类线性SVM  对于xi，yi，令s&#x3D;f(xi,W)，那么SVM可以表示">
+  <meta name="description" content="CS231n - Loss Functions and Optimization  损失函数–Loss Function– SVM 损失函数模型：  对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签 损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示：    在得到score之后，可以使用多分类线性SVM  对于xi，yi，令s&#x3D;f(xi,W)，那么SVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深度学习-CS231n Lecture 3 [2017版]">
 <meta property="og:url" content="http://example.com/8dbb3082.html">
 <meta property="og:site_name" content="逢坂葵的个人博客">
-<meta property="og:description" content="CS231n - Loss Functions and Optimization  损失函数–Loss Function– SVM 损失函数模型：  对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签 损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示：     在得到score之后，可以使用多分类线性SVM  对于xi，yi，令s&#x3D;f(xi,W)，那么SVM可以表示">
+<meta property="og:description" content="CS231n - Loss Functions and Optimization  损失函数–Loss Function– SVM 损失函数模型：  对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签 损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示：    在得到score之后，可以使用多分类线性SVM  对于xi，yi，令s&#x3D;f(xi,W)，那么SVM">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/8dbb3082/1.png">
 <meta property="og:image" content="http://example.com/8dbb3082/2.png">
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -297,13 +297,12 @@
 <li><p>损失函数模型：</p>
 <ol>
 <li>对于N张图片的数据集：其中xi是第i个图像，yi是对应的第i个标签</li>
-<li>损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示： <img src="/8dbb3082/1.png" class>
-</li>
+<li>损失函数应该是每一张图片的损失函数之和，可以用下面的公式来表示： <img src="/8dbb3082/1.png" class></li>
 </ol>
 </li>
 <li><p>在得到score之后，可以使用多分类线性SVM</p>
 <ol>
-<li>对于xi，yi，令s=f(xi,W)，那么SVM可以表示为： <img src="/8dbb3082/2.png" class>
+<li>对于xi，yi，令s&#x3D;f(xi,W)，那么SVM可以表示为： <img src="/8dbb3082/2.png" class>
  其中syi代表的是第i张图像正确标签分类所在的scores对应的列，yi对应的值在scores列中对应的C类相同<br> syi≥sj+1的含义是正确的分类要比错误分类的score大1，该项贡献的损失函数为0；反之损失函数正值</li>
 <li>详细的一列的计算过程如下，在作业中使用循环和向量化（vectorization）两种，计算方法很巧妙，这里使用循环的理解方式： <img src="/8dbb3082/3.png" class>
  <span id="more"></span>
@@ -354,12 +353,12 @@
 <li>不理智的策略：采用随机的方式去寻找最佳W矩阵，能够寻找到合适的点，但是准确率不高</li>
 </ul>
 </li>
-<li>跟随斜率/梯度<ul>
+<li>跟随斜率&#x2F;梯度<ul>
 <li>数值计算斜率的方法如下：  <img src="/8dbb3082/10.png" class>
 <ol>
 <li>多维的情况下，梯度等同于偏导数，独立对每一维度进行计算</li>
 <li>但是对于一个损失函数和W，步长是不确定，同时对于上面的损失函数，是一个W的函数</li>
-<li>对于求梯度，可以转换为使用微积分（calculus）求取解析解，(反向传播),再使用学习率进行更新<img src="/8dbb3082/11.png" class></li>
+<li>对于求梯度，可以转换为使用微积分（calculus）求取解析解，(反向传播),再使用学习率进行更新  <img src="/8dbb3082/11.png" class></li>
 <li>数值法优缺点：估算；速度慢；易于coding</li>
 <li>解析法优缺点：准确；速度快；易出错（特别是在某些函数不可导点）</li>
 </ol>
@@ -372,7 +371,7 @@
 </li>
 <li>梯度下降法–随机梯度下降法（SGD-stochastic）<ul>
 <li>当数据集比较大的时候，计算代价非常大(占用内存)；计算会非常慢（图像越多，需要优化的参数成倍增长）</li>
-<li>使用mini-batch进行训练，通常一组为32/64/128，大小与内存大小成比例，使用这种方法损失函数会在波动中下降。</li>
+<li>使用mini-batch进行训练，通常一组为32&#x2F;64&#x2F;128，大小与内存大小成比例，使用这种方法损失函数会在波动中下降。</li>
 <li>学习率不同优化速度不同：太高跨度大无法收敛；太小收敛速度慢；较高无法收敛到最佳点，会找到局部最优；合适的值才能有快又好。</li>
 <li>其他的梯度下降法还有：Momentum（冲量法）、NAG（牛顿法）、Adagrad、Adadelta、RMSprop等</li>
 </ul>
@@ -512,7 +511,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -586,7 +585,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

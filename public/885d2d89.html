@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -149,7 +149,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -302,7 +302,7 @@
 
 <iframe src="//player.bilibili.com/player.html?aid=422340209&bvid=BV1C3411s7t9&cid=461830701&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<p>这次论文精读李沐博士继续邀请了亚马逊计算机视觉专家朱毅博士来精读 <strong>Momentum Contrast（MoCo)**，强烈推荐大家去看本次的论文精读视频。朱毅博士和上次一样讲解地非常详细，几乎是逐词逐句地讲解，在讲解时把 **MoCo</strong> 相关领域的研究也都介绍了，听完之后收获满满。</p>
+<p>这次论文精读李沐博士继续邀请了亚马逊计算机视觉专家朱毅博士来精读 **Momentum Contrast（MoCo)**，强烈推荐大家去看本次的论文精读视频。朱毅博士和上次一样讲解地非常详细，几乎是逐词逐句地讲解，在讲解时把 <strong>MoCo</strong> 相关领域的研究也都介绍了，听完之后收获满满。</p>
 <p><strong>MoCo</strong> 获得了 CVPR2020 最佳论文提名，是视觉领域使用<strong>对比学习</strong>的一个里程碑工作。<strong>对比学习</strong>目前也是机器学习领域最炙手可热（？）的一个研究方向，由于其简单、有用、强大，以一己之力盘活了从2017年开始就卷的非常厉害的计算机视觉领域。<strong>MoCo 是一个无监督表征学习的工作，其不仅在分类任务，在检测、分割和人体关键点检测任务上都逼近或超越了有监督学习模型</strong>；<strong>MoCo</strong> 的出现证明我们可能<strong>并不需要大量标注好的数据去预训练</strong>。下图中 <strong>Yann LeCun</strong> 将机器学习比作一块蛋糕，强化学习是蛋糕上的樱桃、有监督学习是蛋糕上的奶油、无监督学习才是那块大蛋糕，才是问题的本质，目前很多的大模型都是通过自监督学习得到的。</p>
 <img src="/885d2d89/1.png" class>
 
@@ -314,7 +314,7 @@
 <img src="/885d2d89/3.png" class>
 
 <hr>
-<h3 id="标题、摘要、引言、结论"><a href="#标题、摘要、引言、结论" class="headerlink" title="标题、摘要、引言、结论"></a>标题、摘要、引言、结论</h3><p>先是论文<strong>标题</strong>，论文标题的意思是：使用动量对比去做无监督视觉表征学习，<strong>MoCo</strong> 就来自于论文前两个单词前两个字母。简单介绍什么是<strong>动量</strong>，<strong>动量</strong>在数学上就是加权移动平均。例如 yₜ = m × yₜ₋₁ + (1 − m) × xₜ，yₜ₋₁ 为上一时刻的输出，xₜ 为当前输入，m 为动量参数；当 m 很大时，yₜ 就取决于上一时刻输出，其更新就很缓慢；当 m 很小时，yₜ 就取决于当前时刻输入。</p>
+<h3 id="标题、摘要、引言、结论"><a href="#标题、摘要、引言、结论" class="headerlink" title="标题、摘要、引言、结论"></a>标题、摘要、引言、结论</h3><p>先是论文<strong>标题</strong>，论文标题的意思是：使用动量对比去做无监督视觉表征学习，<strong>MoCo</strong> 就来自于论文前两个单词前两个字母。简单介绍什么是<strong>动量</strong>，<strong>动量</strong>在数学上就是加权移动平均。例如 yₜ &#x3D; m × yₜ₋₁ + (1 − m) × xₜ，yₜ₋₁ 为上一时刻的输出，xₜ 为当前输入，m 为动量参数；当 m 很大时，yₜ 就取决于上一时刻输出，其更新就很缓慢；当 m 很小时，yₜ 就取决于当前时刻输入。</p>
 <p>作者团队来自于<strong>FAIR</strong>，就不过多介绍了，五个人谷歌学术引用数达到了50万+。</p>
 <img src="/885d2d89/4.png" class>
 
@@ -337,7 +337,7 @@
 </ul>
 <img src="/885d2d89/6.png" class>
 
-<p>第4段说我们提出了 <strong>MoCo</strong> 模型，如下图所示，通过比较 <strong>query</strong> 和 <strong>key</strong> 地相似性来训练编码器。我们用<strong>队列</strong>来存储字典数据，当前时刻数据编码后新的特征入队，最老的数据特征出队，这样字典大小和mini-batch大小就解耦了，就能保证构建一个大的字典；同时使用动量去更新编码器参数，能保证字典中的特征尽可能地一致。使用数学公式表达的话就是：θₖ = mθₖ₋₁ + (1 − m)θq。</p>
+<p>第4段说我们提出了 <strong>MoCo</strong> 模型，如下图所示，通过比较 <strong>query</strong> 和 <strong>key</strong> 地相似性来训练编码器。我们用<strong>队列</strong>来存储字典数据，当前时刻数据编码后新的特征入队，最老的数据特征出队，这样字典大小和mini-batch大小就解耦了，就能保证构建一个大的字典；同时使用动量去更新编码器参数，能保证字典中的特征尽可能地一致。使用数学公式表达的话就是：θₖ &#x3D; mθₖ₋₁ + (1 − m)θq。</p>
 <img src="/885d2d89/7.png" class>
 
 <p>第5段介绍了<strong>代理任务</strong>，作者使用个体判别作为代理任务，即同一张图片不同视角的 <strong>query</strong> 和 <strong>key</strong> 看作是相似的。在 <strong>ImageNet</strong> 数据线性分类问题上 <strong>MoCo</strong> 显示出了很有竞争力的结果。第6段作者说无监督学习最主要的目的是将预训练好的特征迁移到下游任务中。在7个检测和分割任务上，<strong>MoCo</strong> 都有着很好的效果。无论是百万张图片还是10亿张图片，<strong>MoCo</strong> 都工作地很好。意味着无监督学习和有监督学习之间的差距越来越小了，在许多应用中逐渐可以替代有监督预训练模型。</p>
@@ -509,7 +509,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -583,7 +583,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

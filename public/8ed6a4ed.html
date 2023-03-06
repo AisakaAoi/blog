@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -173,7 +173,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -300,7 +300,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>27k</span>
+              <span>28k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -341,7 +341,7 @@
 <hr>
 <h3 id="现有脑电特征的定义与计算方法"><a href="#现有脑电特征的定义与计算方法" class="headerlink" title="现有脑电特征的定义与计算方法"></a>现有脑电特征的定义与计算方法</h3><p>在情绪识别领域，EEG传统特征主要分为时域(time domain)特征、频域(frequency domain)特征、时频域(time-frequency domain)特征3类。考虑到脑区的不对称性也可以反映情绪信息, 空间域(space domain)特征也因此逐渐用于识别情绪。本节将从时域、频域、时频域、空间域4个角度介绍常用于情绪识别的脑电特征。</p>
 <h4 id="时域特征"><a href="#时域特征" class="headerlink" title="时域特征"></a>时域特征</h4><p>大多数脑电设备以时域形式采集 EEG 信号，故时域特征最直观易得，其主要包括：事件相关电位、信号统计量、能量、功率、高阶过零分析、Hjorth参数特征、不稳定指数和分形维数。</p>
-<p>脑电设备根据一定的采样频率对原连续信号进行采样, 得到离散序。 我们约定，用 s(n) 表示某个电极上第 n 次采样得到的 EEG 信号值, n = 1, 2, . . . , N , N 表示总采样数。</p>
+<p>脑电设备根据一定的采样频率对原连续信号进行采样, 得到离散序。 我们约定，用 s(n) 表示某个电极上第 n 次采样得到的 EEG 信号值, n &#x3D; 1, 2, . . . , N , N 表示总采样数。</p>
 <h5 id="事件相关电位"><a href="#事件相关电位" class="headerlink" title="事件相关电位"></a>事件相关电位</h5><p>事件相关电位 (event related potential, ERP) 是指由离散刺激事件引发的脑电电压波动，可反映认知加工的过程[8]。与不间断的脑电电压波动幅度相比，大多数 ERP 幅度小，因此通常取多段由相同刺激引发的 EEG 的平均值分析 ERP [9]。</p>
 <p>ERP 的波形随时间变化呈现具有不同持续时间、振幅和极性的波峰，因而通常从 3 个方面来衡量：潜伏期 (latency)、振幅 (amplitude)、正负极性 (polarity)。图 2 是在 0 ms 时发生的刺激事件引发的 ERP 波形示意图。</p>
 <ol>
@@ -387,7 +387,7 @@
 
 <p>其中, μ_s 表示信号平均值, s′(n) 表示一阶导数, var 表示方差。</p>
 <hr>
-<h5 id="高阶过零分析"><a href="#高阶过零分析" class="headerlink" title="高阶过零分析"></a>高阶过零分析</h5><p>Petrantonakis 等 [29] 提出高阶过零分析 (higher order crossings, HOC) 的方法, 用信号通过零点的次数来反映信号的振荡程度。将 EEG 序列 s(n) 转换为均值为 0 的序列 Z(n), n = 1, 2, . . . , N , 将该序列通过 M 个高通滤波器, k 表示滤波器的顺序, k = 1, 2, . . . , M :</p>
+<h5 id="高阶过零分析"><a href="#高阶过零分析" class="headerlink" title="高阶过零分析"></a>高阶过零分析</h5><p>Petrantonakis 等 [29] 提出高阶过零分析 (higher order crossings, HOC) 的方法, 用信号通过零点的次数来反映信号的振荡程度。将 EEG 序列 s(n) 转换为均值为 0 的序列 Z(n), n &#x3D; 1, 2, . . . , N , 将该序列通过 M 个高通滤波器, k 表示滤波器的顺序, k &#x3D; 1, 2, . . . , M :</p>
 <img src="/8ed6a4ed/12.png" class>
 
 <p>再根据 L_k{Z(n)} 构建二值序列</p>
@@ -400,7 +400,7 @@
 <hr>
 <h5 id="不稳定指数"><a href="#不稳定指数" class="headerlink" title="不稳定指数"></a>不稳定指数</h5><p>不稳定指数 (non-stationary index, NSI) 衡量局部平均值随时间的变化 [26]。将信号分成 n 段并计算各段的均值, NSI 定义为这 n 个平均值的标准差。NSI 越大表示局部平均值振荡越大. Hausdorff 等[30] 发现在不同的分割时长上, 得到的 NSI 值是类似的。</p>
 <hr>
-<h5 id="分形维数"><a href="#分形维数" class="headerlink" title="分形维数"></a>分形维数</h5><p>分形维数 (fractal dimension, FD) 可用来表示时域信号的复杂程度。Sevcik 方法 [31]、分形布朗运动 (fractal Brownian motion) [32]、计盒法 (box-counting) [33]、Higuchi 算法 [34] 都可用来计算 FD, 而 Higuchi 算法的效果更好 [22], 使用该算法计算 EEG 的分形维数特征 FDs 的过程如下: 首先将时域信号序列 s(n), n = 1, 2, … , N 重写为 {s(m), s(m + k), … , s(m + ⌊ (N−m)/k ⌋ · k)}, 其中, m = 1, … , k 是起始时间, k 是时间间隔。在每个 m 的取值上, 令</p>
+<h5 id="分形维数"><a href="#分形维数" class="headerlink" title="分形维数"></a>分形维数</h5><p>分形维数 (fractal dimension, FD) 可用来表示时域信号的复杂程度。Sevcik 方法 [31]、分形布朗运动 (fractal Brownian motion) [32]、计盒法 (box-counting) [33]、Higuchi 算法 [34] 都可用来计算 FD, 而 Higuchi 算法的效果更好 [22], 使用该算法计算 EEG 的分形维数特征 FDs 的过程如下: 首先将时域信号序列 s(n), n &#x3D; 1, 2, … , N 重写为 {s(m), s(m + k), … , s(m + ⌊ (N−m)&#x2F;k ⌋ · k)}, 其中, m &#x3D; 1, … , k 是起始时间, k 是时间间隔。在每个 m 的取值上, 令</p>
 <img src="/8ed6a4ed/15.png" class>
 
 <p>用 H(k) 表示 H_m(k) 的平均值, 取 FD_s 为</p>
@@ -412,11 +412,11 @@
 <p>由于采集到的 EEG 信号为离散序列 s(n), 实际操作中多使用离散傅里叶变换法 (discrete Fourier transfer, DFT), 用求和代替积分运算, 使计算机能够处理傅里叶变换 [5]。应用于 EEG 信号可得频谱</p>
 <img src="/8ed6a4ed/17.png" class>
 
-<p>其中 k 表示样本点序号, k = 0, 1, … , N − 1。记 WN = e^[−j( 2π/N )] 为变换矩阵。从式中可看出, 每个 S(k) 需要 N − 1 次复数加法和 N 次乘法运算, 整个序列的 DFT 运算需要 N (N − 1) 次复数加法和 N^2 次复数乘法, 运算复杂度高。</p>
-<p>快速傅里叶变换 (fast Fourier transfer, FFT) 也称库利 – 图基 (Cooley-Tukey) 算法, 利用 WN 的周期性 W^nk_N = W^[(nk) mod N]_N 和对称性 W^[nk + (N/2)]_N = −W^nk_N , 将 DFT 运算按照奇偶性逐级分解, 第 1 级将 N 个点分为各 N/2 个采样点的两组, 第 2 级再细分为各 N/4 个采样点的四组, 以此类推, 运算流程如图 3 所示, 自图的左端向右运算, 两条线的汇合点表示数值相加, 线旁标注的 W^k 表示与相应的数值相乘。例如</p>
+<p>其中 k 表示样本点序号, k &#x3D; 0, 1, … , N − 1。记 WN &#x3D; e^[−j( 2π&#x2F;N )] 为变换矩阵。从式中可看出, 每个 S(k) 需要 N − 1 次复数加法和 N 次乘法运算, 整个序列的 DFT 运算需要 N (N − 1) 次复数加法和 N^2 次复数乘法, 运算复杂度高。</p>
+<p>快速傅里叶变换 (fast Fourier transfer, FFT) 也称库利 – 图基 (Cooley-Tukey) 算法, 利用 WN 的周期性 W^nk_N &#x3D; W^[(nk) mod N]_N 和对称性 W^[nk + (N&#x2F;2)]_N &#x3D; −W^nk_N , 将 DFT 运算按照奇偶性逐级分解, 第 1 级将 N 个点分为各 N&#x2F;2 个采样点的两组, 第 2 级再细分为各 N&#x2F;4 个采样点的四组, 以此类推, 运算流程如图 3 所示, 自图的左端向右运算, 两条线的汇合点表示数值相加, 线旁标注的 W^k 表示与相应的数值相乘。例如</p>
 <img src="/8ed6a4ed/18.png" class>
 
-<p>从上式可看出, 单元包含一个复数乘和两个复数加操作。对于 N 个采样点, 共 log N 层, 每层 N/2 个单元, 因而整个 FFT 算法只需要 N/2 * log N 次乘和 N * log N 次加法, 且 N 越大, FFT 的优越性越显著 [37]。</p>
+<p>从上式可看出, 单元包含一个复数乘和两个复数加操作。对于 N 个采样点, 共 log N 层, 每层 N&#x2F;2 个单元, 因而整个 FFT 算法只需要 N&#x2F;2 * log N 次乘和 N * log N 次加法, 且 N 越大, FFT 的优越性越显著 [37]。</p>
 <img src="/8ed6a4ed/19.png" class>
 
 <p>由上述步骤处理后得到的频段经过分解, 得到 5 个子频段 δ (1∼4 Hz), θ (4∼8 Hz), α (8∼12 Hz), β (13∼30 Hz), γ (31∼45 Hz), 在不同实验中, 各频段的边界略有几赫兹的差异。EEG 的不同频段与不同的意识状态有关: δ 波与无意识的状态有关, 常出现于深度无梦的睡眠; θ 波与潜意识有关, 例如有梦境的睡眠或浅度睡眠、困倦, 当诱发积极情绪时, 额中线上的 θ 波功率会增强 [38]; α 波多出现于较为放松的有意识状态, 额叶上 α 波的不对称性可反映情绪的不同效价 [39, 40]; β 波与活跃的意识状态例如注意力集中的活动有关, 在额叶区域较为显著, 可反映情绪的效价 [6, 41, 42]; γ 波则与大脑的过度活跃现象、特定的认知或运动有关 [43∼45]。中性情绪和消极情绪在 β 和 γ 波段有相似的振荡模式, 但其在 α 波段的振荡能量更高 [46]。</p>
@@ -446,7 +446,7 @@
 <p>其中, f_1, f_2 指两个信号各自的频率, F(f) 指傅里叶变换, E[x] 为期望, ∗ 表示共轭复数。双相干谱是双谱的归一化形式</p>
 <img src="/8ed6a4ed/22.png" class>
 
-<p>其中, P(f) = E[F(f) F∗(f)] 是功率谱。Bis 与 Bic 各自的模或模的平方都可以作为高阶谱特征 [22]。</p>
+<p>其中, P(f) &#x3D; E[F(f) F∗(f)] 是功率谱。Bis 与 Bic 各自的模或模的平方都可以作为高阶谱特征 [22]。</p>
 <hr>
 <h5 id="微分熵"><a href="#微分熵" class="headerlink" title="微分熵"></a>微分熵</h5><p>微分熵 (differential entropy, DE) 是香农 (Shannon) 信息熵 − ∑_x p(x) log(p(x)) 在连续变量上的推广形式</p>
 <img src="/8ed6a4ed/23.png" class>
@@ -466,17 +466,17 @@
 <p>选择合适的窗长度至关重要, 短的时间窗提供的信息量不足, 导致频域分辨率差; 长的时间窗又会导致各窗差异大, 时域分辨率差。目前情绪识别研究中效果好的时间窗长度多为 1 ∼ 2 s [5, 54, 55]。</p>
 <hr>
 <h5 id="小波变换"><a href="#小波变换" class="headerlink" title="小波变换"></a>小波变换</h5><p>由于 STFT 的时间窗长度对效果有明显影响, 且无法同时在时域和频域获得高分辨率, 故引入小波变换。主要有两种基本类型: 连续小波变换 (continuous wavelet transform, CWT) 和离散小波变换 (discrete wavelet transform, DWT) [56]。</p>
-<p>基本小波, 或称小波母函数 φ(t) 应平方可积, 且其傅里叶变换满足 ( |φ(ω)|2 / |ω| ) dω &lt; ∞。平移 τ 可使小波函数在时间轴上移动; α 变大或变小会使其变窄或变宽 [57], 其中, α, τ ∈ R, α &gt; 0。由此得到变换后的函数</p>
+<p>基本小波, 或称小波母函数 φ(t) 应平方可积, 且其傅里叶变换满足 ( |φ(ω)|2 &#x2F; |ω| ) dω &lt; ∞。平移 τ 可使小波函数在时间轴上移动; α 变大或变小会使其变窄或变宽 [57], 其中, α, τ ∈ R, α &gt; 0。由此得到变换后的函数</p>
 <img src="/8ed6a4ed/26.png" class>
 
-<p>称为参数为 α 和 τ 的小波基函数。1/√α 将能量归一化。当参数可连续取值时, 称为连续小波变换; 当参数只能取离散值时, 称为离散小波变换。</p>
+<p>称为参数为 α 和 τ 的小波基函数。1&#x2F;√α 将能量归一化。当参数可连续取值时, 称为连续小波变换; 当参数只能取离散值时, 称为离散小波变换。</p>
 <hr>
 <h5 id="小波包变换"><a href="#小波包变换" class="headerlink" title="小波包变换"></a>小波包变换</h5><p>小波变换将信号分成低频和高频两个部分, 只分解低频部分, 导致忽略表征信号细节的高频部分, 使高频分辨率差, 丢失细节信息。因此引入 WPT, 仍将信号分解为低频和高频部分, 但两部分都会继续分解, 低频上丢失的信息可以在高频中补充。因此, 小波包变换可以提供更丰富的信号分析, 提高分辨率 [58]。</p>
 <hr>
 <h5 id="Hilbert-Huang-谱"><a href="#Hilbert-Huang-谱" class="headerlink" title="Hilbert-Huang 谱"></a>Hilbert-Huang 谱</h5><p>Hilbert-Huang 是一种非线性的时频域特征提取方法, 与 STFT 相比, 抵抗噪声干扰的能力更强 [22, 59]。首先用经验模式分解 (empirical mode decomposition, EMD) 得到固有模态函数 (intrinsic mode functions, IMFs) 来表征原 EEG 信号 X(t), 假设共分解出 k 个固有模态函数:</p>
 <img src="/8ed6a4ed/27.png" class>
 
-<p>其中, r(t) 表示剩余的单调或常数的部分。再对每个 IMF_i(t) 计算 Hilbert 变换, 解析信号可用振幅 A_i(t) 和瞬时相位 θ_i(t) 来表征, 瞬时频率 f_i(t) = (1/2π) (dθ_i/dt) , 则原信号可表示为</p>
+<p>其中, r(t) 表示剩余的单调或常数的部分。再对每个 IMF_i(t) 计算 Hilbert 变换, 解析信号可用振幅 A_i(t) 和瞬时相位 θ_i(t) 来表征, 瞬时频率 f_i(t) &#x3D; (1&#x2F;2π) (dθ_i&#x2F;dt) , 则原信号可表示为</p>
 <img src="/8ed6a4ed/28.png" class>
 
 <p>通过上述方法将 EEG 按时间段变换至频域后, 再提取如前所述的频域特征, 例如功率、功率谱密度的均值、最值等。除此之外, 也可根据时间窗提取时频域上的相对能量</p>
@@ -491,31 +491,29 @@
 <hr>
 <h5 id="空频域"><a href="#空频域" class="headerlink" title="空频域"></a>空频域</h5><p>先提取各电极上的频域特征, 再用共同空间模式 (common spatial patterns, CSP) 等算法与空间域结合, 计算空频域特征。</p>
 <p><strong>共同空间模式</strong>。CSP 常用于二分类问题, 根据信号所属的类别标签, 设计特殊的空间滤波器, 使两类信号的功率最大, 继而得到区分度高的特征 [64, 65] 以及各电极信号的权重 [66]。</p>
-<p>假设 n 段 EEG 信号分为正性和负性效价两类, 每段信号都表示为通道数 × 采样点个数的矩阵形式, 将两种分类下信号的协方差矩阵分别取平均得到 Σ+ 和 Σ−, 并进行特征值分解 Σ+ + Σ− = U (DU)T, U 是特征向量矩阵, D 是特征值构成的对角矩阵, 则白化值矩阵为 P = √D^−1 U T, 白化后的信号的协方差矩阵为</p>
+<p>假设 n 段 EEG 信号分为正性和负性效价两类, 每段信号都表示为通道数 × 采样点个数的矩阵形式, 将两种分类下信号的协方差矩阵分别取平均得到 Σ+ 和 Σ−, 并进行特征值分解 Σ+ + Σ− &#x3D; U (DU)T, U 是特征向量矩阵, D 是特征值构成的对角矩阵, 则白化值矩阵为 P &#x3D; √D^−1 U T, 白化后的信号的协方差矩阵为</p>
 <img src="/8ed6a4ed/31.png" class>
 
 <p>二者特征向量相同, 且特征值加和为 1。I 表示单位矩阵, B 表示特征向量矩阵, Λ 表示特征值构成的对角矩阵, 那么</p>
 <img src="/8ed6a4ed/32.png" class>
 
-<p>因此, 称投影矩阵 W = BTP 中的每个行向量 wj 就是一个空间滤波器, 越大的特征值表示 wj 在两类上可以得到差距越大的方差。而 W^(−1) 的每一列称为共同空间模式 [66]。</p>
-<p>Koelstra 等 [65] 在效价 (valence)、唤醒度 (arousal) 和喜爱度 (like/dislike) 3 项上, 分别以原始 PSD 和 CSP 作为特征, 用支持向量机 (support vector machine, SVM) 进行二分类, CSP 得到的分类准确率高于 PSD。</p>
+<p>因此, 称投影矩阵 W &#x3D; BTP 中的每个行向量 wj 就是一个空间滤波器, 越大的特征值表示 wj 在两类上可以得到差距越大的方差。而 W^(−1) 的每一列称为共同空间模式 [66]。</p>
+<p>Koelstra 等 [65] 在效价 (valence)、唤醒度 (arousal) 和喜爱度 (like&#x2F;dislike) 3 项上, 分别以原始 PSD 和 CSP 作为特征, 用支持向量机 (support vector machine, SVM) 进行二分类, CSP 得到的分类准确率高于 PSD。</p>
 <p><strong>共同空间模式的改进</strong>。由于不同个体的脑电信号在各频段上的显著程度不同, 因此当被试较多且差异较大时, 为保证识别效果, 需要大量手动调整 CSP 的频段。为了解决这一问题, Novi 等 [67] 提出子波段共同空间模式 (sub-band common spatial pattern, SBCSP), 用基于傅里叶的 Gabor 滤波器组将信号分成不同频段, 在各波段上提取 CSP 特征, 使用 LDA 算法自动选择显著的频段和相应的 CSP 特征, 最后用分类器对 CSP 特征进行分类。SBCSP 可以实现自动调整且保证识别准确率。</p>
 <p>Ang 等 [68] 进一步改进了 SBCSP 算法, 提出了滤波器组共同空间模式 (filter bank common spatial pattern, FBCSP), 其与 SBCSP 的区别在于使用零相位切比雪夫 (Chebyshev) 滤波器组作为滤波器, 克服了 IIR (infinite impulse response) 滤波器造成的非线性相移; 在特征选择和分类中, 可广泛使用现有的特征选择和分类器算法, 具有普适性。</p>
 <hr>
 <h5 id="电极组合"><a href="#电极组合" class="headerlink" title="电极组合"></a>电极组合</h5><p>计算电极组合特征时, 先对各电极信号计算前述时域、频域或时频域特征作为初步特征值, 再将若干电极组合成对, 进一步计算特征。电极对的组合方式包括对称和不对称两种, 对称方式又分为前后对称和左右对称。为了便于论述, 以 32 导 NeuroScan Quik-cap 脑电帽的电极位置为例。该设备包括 2 个参考电极和 30 个采样电极, 如图 4 所示。</p>
 <img src="/8ed6a4ed/33.png" class>
 
-<p><strong>左右位置对称</strong>。以中间的灰色竖线为对称轴, 剩余 24 个电极左右对称, 可得到 12 对电极, 绿色线标识的两列电极互为电极对, 蓝色线标识的两列同理。用 L 列举出所有电极对中的左侧电极, R 为相应的右侧电极: L = {FP1, F3, FC3, C3, CP3, P3, O1, F7, FT7, T7, TP7, P7}, R = {FP2, F4, FC4, C4, CP4, P4, O2, F8, FT8, T8, TP8, P8}。</p>
+<p><strong>左右位置对称</strong>。以中间的灰色竖线为对称轴, 剩余 24 个电极左右对称, 可得到 12 对电极, 绿色线标识的两列电极互为电极对, 蓝色线标识的两列同理。用 L 列举出所有电极对中的左侧电极, R 为相应的右侧电极: L &#x3D; {FP1, F3, FC3, C3, CP3, P3, O1, F7, FT7, T7, TP7, P7}, R &#x3D; {FP2, F4, FC4, C4, CP4, P4, O2, F8, FT8, T8, TP8, P8}。</p>
 <ol>
-<li>不对称差/不对称商。<br> 不对称差 (differential asymmetry, DASM) 和不对称商 (rational asymmetry, RASM) 分别指左右对称电极上特征的差分和比值 [69] <img src="/8ed6a4ed/34.png" class>
+<li>不对称差&#x2F;不对称商。<br> 不对称差 (differential asymmetry, DASM) 和不对称商 (rational asymmetry, RASM) 分别指左右对称电极上特征的差分和比值 [69] <img src="/8ed6a4ed/34.png" class>
  或者更复杂的计算方法, 用左右特征的差除以和, 此处称为不对称系数 [18]: <img src="/8ed6a4ed/35.png" class>
  其中, X_L 和 X_R 分别表示左侧和右侧电极采集到的 EEG 信号, Feature(X) 表示在信号 X 上提取的初步特征值。</li>
 <li>多维度有向信息。<br> Sakata 等 [70] 提出了多维度有向信息 (multidimensional directed information, MDI), 反映从某个电极流向其他电极的信息量, 通常测量左右电极对之间流动的信息量。MDI 的优势在于可以表示各电极之间信号量的绝对量而非相对量 [71]。首先将两个电极上长度为 N 的 EEG 信号平均划分为 n 段, 每段以 xk 和 yk 界定 <img src="/8ed6a4ed/36.png" class>
- 那么两序列的互信息为 <img src="/8ed6a4ed/37.png" class>
-
-</li>
+ 那么两序列的互信息为 <img src="/8ed6a4ed/37.png" class></li>
 </ol>
-<p><strong>前后位置对称</strong>。以图 4 中间横向的灰色横线为对称轴, 并舍弃 OZ 电极, 剩余 24 个电极前后对称, 可得到 12 对电极, 紫色线标识的两行电极互为电极对, 红色线、橙色线同理。用 F 列举出所有电极对中的前部电极, P 为相应的后部电极: F = {FP1, FP2, F7, F3, FZ, F4, F8, FT7, FC3, FCZ, FC4, FT8}, P = {O1, O2, P7, P3, PZ, P4, P8, TP7, CP3, CPZ, CP4, TP8}。</p>
+<p><strong>前后位置对称</strong>。以图 4 中间横向的灰色横线为对称轴, 并舍弃 OZ 电极, 剩余 24 个电极前后对称, 可得到 12 对电极, 紫色线标识的两行电极互为电极对, 红色线、橙色线同理。用 F 列举出所有电极对中的前部电极, P 为相应的后部电极: F &#x3D; {FP1, FP2, F7, F3, FZ, F4, F8, FT7, FC3, FCZ, FC4, FT8}, P &#x3D; {O1, O2, P7, P3, PZ, P4, P8, TP7, CP3, CPZ, CP4, TP8}。</p>
 <p>DCAU (differential caudality) 可以用来描述前后电极上的不对称性 [46]</p>
 <img src="/8ed6a4ed/38.png" class>
 
@@ -540,7 +538,7 @@
 <img src="/8ed6a4ed/41.png" class>
 
 <hr>
-<h4 id="计算特征重要程度"><a href="#计算特征重要程度" class="headerlink" title="计算特征重要程度"></a>计算特征重要程度</h4><p>令 n×p 的矩阵 X 表示提取的 EEG 特征, n 表示样本数, 每一行样本都属于一类效价。属于第 j 类的样本下标为 C_j, 数量为 n_j; p 为特征维数, 即表 1 最后一行的 “总计” 维数, 例如 pSEED = 2423。线性判别分析 (linear discriminant analysis, LDA) 从 Fisher 线性判别法的角度寻找判别向量, 使类间方差相对类内方差最大化, 即</p>
+<h4 id="计算特征重要程度"><a href="#计算特征重要程度" class="headerlink" title="计算特征重要程度"></a>计算特征重要程度</h4><p>令 n×p 的矩阵 X 表示提取的 EEG 特征, n 表示样本数, 每一行样本都属于一类效价。属于第 j 类的样本下标为 C_j, 数量为 n_j; p 为特征维数, 即表 1 最后一行的 “总计” 维数, 例如 pSEED &#x3D; 2423。线性判别分析 (linear discriminant analysis, LDA) 从 Fisher 线性判别法的角度寻找判别向量, 使类间方差相对类内方差最大化, 即</p>
 <img src="/8ed6a4ed/39.png" class>
 
 <p>但是, 当所选特征的数量大于观测数量时, 特征的类内协方差矩阵会变得单一。可应用稀疏的 LDA (sparse LDA, SLDA) [72], 添加 l1 罚项对判别向量施加稀疏约束, 以解决这个问题。</p>
@@ -550,11 +548,11 @@
 <p><strong>定义1</strong> (重要程度) 若某特征共有 p_i 维, 其中有 m_i 维排在所有维度的前 x%, 则该特征的重要程度值为</p>
 <img src="/8ed6a4ed/42.png" class>
 
-<p>例如, 由表 1 可知, pSEED = 2423, 其中 310 列是功率谱密度 (PSD), 令 x = 10, 则关注权重排在前 2423 × 10% ≈ 242 位的特征, 若 242 列中有 100 列来自 PSD, 则 PSD 特征的重要程度值 d_10 = 100/310 ≈ 0.32。x 值越小, 越可以反映特征的重要程度。</p>
+<p>例如, 由表 1 可知, pSEED &#x3D; 2423, 其中 310 列是功率谱密度 (PSD), 令 x &#x3D; 10, 则关注权重排在前 2423 × 10% ≈ 242 位的特征, 若 242 列中有 100 列来自 PSD, 则 PSD 特征的重要程度值 d_10 &#x3D; 100&#x2F;310 ≈ 0.32。x 值越小, 越可以反映特征的重要程度。</p>
 <hr>
 <img src="/8ed6a4ed/43.png" class>
 
-<h4 id="结果分析和讨论"><a href="#结果分析和讨论" class="headerlink" title="结果分析和讨论"></a>结果分析和讨论</h4><p>将各类特征按照 x = 10, 30, 50 分别计算重要程度并排序; 统计在 2 个或全部 3 个数据库上都排在前 10 位的特征。需要注意的是, CSP 为 DREAMER 数据集独有的特征, 故不参与排名。最终结果如表 2 所示。可看出时域特征中的一阶差分、二阶差分、Hjorth 特征, 以及不稳定指数的重要程度最高, 其次是归一化的一阶差分、归一化的二阶差分, 以及分形维数; 频域中的微分熵, 空间域中的 DASM 和 RASM 也有较好的表现。时域特征对效价的分辨能力强于时频域和空间域。</p>
+<h4 id="结果分析和讨论"><a href="#结果分析和讨论" class="headerlink" title="结果分析和讨论"></a>结果分析和讨论</h4><p>将各类特征按照 x &#x3D; 10, 30, 50 分别计算重要程度并排序; 统计在 2 个或全部 3 个数据库上都排在前 10 位的特征。需要注意的是, CSP 为 DREAMER 数据集独有的特征, 故不参与排名。最终结果如表 2 所示。可看出时域特征中的一阶差分、二阶差分、Hjorth 特征, 以及不稳定指数的重要程度最高, 其次是归一化的一阶差分、归一化的二阶差分, 以及分形维数; 频域中的微分熵, 空间域中的 DASM 和 RASM 也有较好的表现。时域特征对效价的分辨能力强于时频域和空间域。</p>
 <p>对于 CSP 特征, 当 x 取 10 时, 其重要程度排在 DREAMER 所有 23 类特征中的第 16 位; 当 x 取 30 时, 排在第 5 位; x 取 50 时排在第 2 位。说明 CSP 在该数据库上可以较好地表征效价, 但表征能力并不突出。</p>
 <p>根据以上结果可知, 时域特征对情绪效价的分辨能力最强, 因而在后续相关研究中, 研究者可考虑加入时域特征来优化情绪识别效果。此外在所有时域特征中, 统计特征的重要程度高, 原因之一在于, 不同数据库中同效价的影片唤醒度可能有异。例如诱发正性情绪的两部影片, 其产生正性情绪的强烈程度可能不同, 即此处效价的分类会受到唤醒度的影响。</p>
 <hr>
@@ -583,7 +581,7 @@
 <p>[3] Posner J, Russell J A, Peterson B S. The circumplex model of affect: an integrative approach to affective neuroscience, cognitive development, and psychopathology. Develop Psychopathol, 2005, 17: 715–734</p>
 <p>[4] Lang P J. The emotion probe: studies of motivation and attention. Am Psychol, 1995, 50: 372–385</p>
 <p>[5] Zhao G Z, Song J J, Ge Y, et al. Advances in emotion recognition based on physiological big data. J Comput Res Dev, 2016, 53: 80–92 [赵国朕, 宋金晶, 葛燕, 等. 基于生理大数据的情绪识别研究进展. 计算机研究与发展, 2016, 53: 80–92]</p>
-<p>[6] Alarcao S M, Fonseca M J. Emotions recognition using EEG signals: a survey. IEEE Trans Affect Comput, 2017. doi: 10.1109/TAFFC.2017.2714671</p>
+<p>[6] Alarcao S M, Fonseca M J. Emotions recognition using EEG signals: a survey. IEEE Trans Affect Comput, 2017. doi: 10.1109&#x2F;TAFFC.2017.2714671</p>
 <p>[7] Chanel G, Kierkels J J M, Soleymani M, et al. Short-term emotion assessment in a recall paradigm. Int J HumanComput Stud, 2009, 67: 607–627</p>
 <p>[8] Hruby T, Marsalek P. Event-related potentials-the P3 wave. Acta Neurobiol Exp, 2002, 63: 55–63</p>
 <p>[9] Luck S J, Kappenman E S. The Oxford Handbook of Event-Related Potential Components. Oxford: Oxford University Press, 2011</p>
@@ -593,7 +591,7 @@
 <p>[13] Olofsson J K, Nordin S, Sequeira H, et al. Affective picture processing: an integrative review of ERP findings. Biol Psychol, 2008, 77: 247–265</p>
 <p>[14] Olofsson J K, Polich J. Affective visual event-related potentials: arousal, repetition, and time-on-task. Biol Psychol, 2007, 75: 101–108</p>
 <p>[15] Gianotti L R R, Faber P L, Schuler M, et al. First valence, then arousal: the temporal dynamics of brain electric activity evoked by emotional stimuli. Brain Topogr, 2008, 20: 143–156</p>
-<p>[16] Jiang J F, Zeng Y, Tong L, et al. Single-trial ERP detecting for emotion recognition. In: Proceedings of the 17th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing (SNPD), Shanghai, 2016. 105–108</p>
+<p>[16] Jiang J F, Zeng Y, Tong L, et al. Single-trial ERP detecting for emotion recognition. In: Proceedings of the 17th IEEE&#x2F;ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel&#x2F;Distributed Computing (SNPD), Shanghai, 2016. 105–108</p>
 <p>[17] Smith N K, Cacioppo J T, Larsen J T, et al. May I have your attention, please: electrocortical responses to positive and negative stimuli. Neuropsychologia, 2003, 41: 171–183</p>
 <p>[18] Kim M K, Kim M, Oh E, et al. A review on the computational methods for emotional state estimation from the human EEG. Comput Math Method Med, 2013, 2013: 13</p>
 <p>[19] Bernat E, Bunce S, Shevrin H. Event-related brain potentials differentiate positive and negative mood adjectives during both supraliminal and subliminal visual processing. Int J Psychophysiol, 2001, 42: 11–34</p>
@@ -627,7 +625,7 @@
 <p>[47] Bekkedal M Y V, Rossi III J, Panksepp J. Human brain EEG indices of emotions: delineating responses to affective vocalizations by measuring frontal theta event-related synchronization. Neurosci Biobehaval Rev, 2011, 35: 1959–1970</p>
 <p>[48] Graimann B, Pfurtscheller G. Quantification and visualization of event-related changes in oscillatory brain activity in the time-frequency domain. Progress Brain Res, 2006, 159: 79–97</p>
 <p>[49] Balconi M, Lucchiari C. EEG correlates (event-related desynchronization) of emotional face elaboration: a temporal analysis. Neurosci Lett, 2006, 392: 118–123</p>
-<p>[50] Duan R N, Zhu J Y, Lu B L. Differential entropy feature for EEG-based emotion classification. In: Proceedings of the 6th International IEEE/EMBS Conference on Neural Engineering (NER), San Diego, 2013. 81–84</p>
+<p>[50] Duan R N, Zhu J Y, Lu B L. Differential entropy feature for EEG-based emotion classification. In: Proceedings of the 6th International IEEE&#x2F;EMBS Conference on Neural Engineering (NER), San Diego, 2013. 81–84</p>
 <p>[51] Shi L C, Jiao Y Y, Lu B L. Differential entropy feature for EEG-based vigilance estimation. In: Proceedings of the 35th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), Osaka, 2013. 6627–6630</p>
 <p>[52] Behnam H, Sheikhani A, Mohammadi M R, et al. Analyses of EEG background activity in Autism disorders with fast Fourier transform and short time Fourier measure. In: Proceedings of International Conference on Intelligent and Advanced Systems, Kuala Lumpur, 2007. 1240–1244</p>
 <p>[53] Kıymık M K, Guler I, Dizibuyuk A, et al. Comparison of STFT and wavelet transform methods in determining epileptic seizure activity in EEG signals for real-time application. Comput Biol Med, 2005, 35: 603–616</p>
@@ -644,14 +642,14 @@
 <p>[64] Blankertz B, Tomioka R, Lemm S, et al. Optimizing spatial filters for robust EEG single-trial analysis. IEEE Signal Process Mag, 2008, 25: 41–56</p>
 <p>[65] Koelstra S, Yazdani A, Soleymani M, et al. Single trial classification of EEG and peripheral physiological signals for recognition of emotions induced by music videos. In: Proceedings of International Conference on Brain Informatics, Berlin, 2010. 89–100</p>
 <p>[66] Winkler I, J ̈ager M, Mihajlovic V, et al. Frontal EEG asymmetry based classification of emotional valence using common spatial patterns. World Acad Sci Eng Technol, 2010, 45: 373–378</p>
-<p>[67] Novi Q, Guan C, Dat T H, et al. Sub-band common spatial pattern (SBCSP) for brain-computer interface. In: Proceedings of the 3rd International IEEE/EMBS Conference on Neural Engineering, Kohala Coast, 2007. 204–207</p>
+<p>[67] Novi Q, Guan C, Dat T H, et al. Sub-band common spatial pattern (SBCSP) for brain-computer interface. In: Proceedings of the 3rd International IEEE&#x2F;EMBS Conference on Neural Engineering, Kohala Coast, 2007. 204–207</p>
 <p>[68] Ang K K, Chin Z Y, Zhang H, et al. Filter bank common spatial pattern (FBCSP) in brain-computer interface. In: Proceedings of IEEE International Joint Conference on Neural Networks (IEEE World Congress on Computational Intelligence), Hong Kong, 2008. 2390–2397</p>
 <p>[69] Duan R N, Wang X W, Lu B L. EEG-based emotion recognition in listening music by using support vector machine and linear dynamic system. In: Proceedings of International Conference on Neural Information Processing, Berlin, 2012. 468–475</p>
 <p>[70] Sakata O, Shiina T, Saito Y. Multidimensional directed information and its application. Electron Commum Jpn, 2002, 85: 45–55</p>
 <p>[71] Petrantonakis P C, Hadjileontiadis L J. A novel emotion elicitation index using frontal brain asymmetry for enhanced EEG-based emotion recognition. IEEE Trans Inform Technol Biomed, 2011, 15: 737–746</p>
 <p>[72] Clemmensen L, Hastie T, Witten D, et al. Sparse discriminant analysis. Technometrics, 2011, 53: 406–413</p>
 <p>[73] Katsigiannis S, Ramzan N. DREAMER: a database for emotion recognition through EEG and ECG signals from wireless low-cost off-the-shelf devices. IEEE J Biomed Health Inform, 2018, 22: 98–107</p>
-<p>[74] Song T F, Zheng W M, Song P, et al. EEG emotion recognition using dynamical graph convolutional neural networks. IEEE Trans Affect Comput, 2018. doi: 10.1109/TAFFC.2018.2817622</p>
+<p>[74] Song T F, Zheng W M, Song P, et al. EEG emotion recognition using dynamical graph convolutional neural networks. IEEE Trans Affect Comput, 2018. doi: 10.1109&#x2F;TAFFC.2018.2817622</p>
 <p>[75] Delorme A, Makeig S. EEGLAB: an open source toolbox for analysis of single-trial EEG dynamics including independent component analysis. J Neurosci Methods, 2004, 134: 9–21</p>
 <p>[76] Liu Y J, Yu M, Zhao G, et al. Real-time movie-induced discrete emotion recognition from EEG signals. IEEE Trans Affect Comput, 2018, 9: 550–562</p>
 <p>[77] Swami A, Mendel C, Nikias C. Higher-order spectral analysis (HOSA) toolbox. Version, 2000, 2: 3</p>
@@ -667,7 +665,7 @@
 <hr>
 <h3 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h3><div class="pdfobject-container" data-target="./file/paper/2019-A-review-of-EEG-features-for-emotion-recognition.pdf" data-height="500px"></div>
 
-<p>引用：张冠华, 余旻婧, 陈果, 等. 面向情绪识别的脑电特征研究综述. 中国科学: 信息科学, 2019, doi: 10.1360/N112018-00337 Zhang G H, Yu M J, Chen G, et al. A review of EEG features for emotion recognition (in Chinese). Sci Sin Inform, 2019, doi: 10.1360/N112018-00337<br>Reference: Guanhua ZHANG, Minjing YU, Guo CHEN, Yiheng HAN, Dan ZHANG, Guozhen ZHAO, Yong-Jin LIU, A review of EEG features for emotion recognition, In Journal of SCIENTIA SINICA Informationis, Volume 49, Issue 9, 2019, Pages 1097-1118, ISSN 1674-7267, <a target="_blank" rel="noopener" href="https://doi.org/10.1360/N112018-00337">https://doi.org/10.1360/N112018-00337</a>.</p>
+<p>引用：张冠华, 余旻婧, 陈果, 等. 面向情绪识别的脑电特征研究综述. 中国科学: 信息科学, 2019, doi: 10.1360&#x2F;N112018-00337 Zhang G H, Yu M J, Chen G, et al. A review of EEG features for emotion recognition (in Chinese). Sci Sin Inform, 2019, doi: 10.1360&#x2F;N112018-00337<br>Reference: Guanhua ZHANG, Minjing YU, Guo CHEN, Yiheng HAN, Dan ZHANG, Guozhen ZHAO, Yong-Jin LIU, A review of EEG features for emotion recognition, In Journal of SCIENTIA SINICA Informationis, Volume 49, Issue 9, 2019, Pages 1097-1118, ISSN 1674-7267, <a target="_blank" rel="noopener" href="https://doi.org/10.1360/N112018-00337">https://doi.org/10.1360/N112018-00337</a>.</p>
 <hr>
 
     </div>
@@ -766,7 +764,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -840,7 +838,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

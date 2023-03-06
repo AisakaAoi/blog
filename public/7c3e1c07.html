@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -285,7 +285,7 @@
 
 <h4 id="SurfaceView简介"><a href="#SurfaceView简介" class="headerlink" title="SurfaceView简介"></a>SurfaceView简介</h4><p>简单的说SurfaceView就是一个<strong>有Surface的View里面内嵌了一个专门用于绘制的Surface</strong>，SurfaceView 控制这个 Surface 的格式和尺寸以及绘制位置。</p>
 <p><strong>SurfaceView 就是在 Window 上挖一个洞，它就是显示在这个洞里，其他的View是显示在Window上，所以View可以显式在 SurfaceView之上，你也可以添加一些层在SurfaceView之上。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mWindow == <span class="keyword">null</span>) &#123;  </span><br><span class="line">    mWindow = <span class="keyword">new</span> MyWindow(<span class="keyword">this</span>);  </span><br><span class="line">    mLayout.type = mWindowType;  </span><br><span class="line">    mLayout.gravity = Gravity.LEFT|Gravity.TOP;  </span><br><span class="line">    mSession.addWithoutInputChannel(mWindow, mWindow.mSeq, mLayout,  </span><br><span class="line">    mVisible ? VISIBLE : GONE, mContentInsets);  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (mWindow == <span class="literal">null</span>) &#123;  </span><br><span class="line">    mWindow = <span class="keyword">new</span> <span class="title class_">MyWindow</span>(<span class="built_in">this</span>);  </span><br><span class="line">    mLayout.type = mWindowType;  </span><br><span class="line">    mLayout.gravity = Gravity.LEFT|Gravity.TOP;  </span><br><span class="line">    mSession.addWithoutInputChannel(mWindow, mWindow.mSeq, mLayout,  </span><br><span class="line">    mVisible ? VISIBLE : GONE, mContentInsets);  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
 <p>很明显，<strong>每个SurfaceView创建的时候都会创建一个MyWindow，new MyWindow(this)中的this正是SurfaceView自身</strong>，因此将SurfaceView和window绑定在一起，而前面提到过每个window对应一个Surface。</p>
 <p><strong>所以SurfaceView也就内嵌了一个自己的Surface，可以认为SurfaceView是来控制Surface的位置和尺寸。</strong>传统View及其派生类的更新只能在UI线程，然而UI线程还同时处理其他交互逻辑，这就无法保证view更新的速度和帧率了，而SurfaceView可以用独立的线程来进行绘制。</p>
@@ -465,7 +465,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -539,7 +539,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

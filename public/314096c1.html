@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -147,7 +147,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -347,7 +347,7 @@
 
 <img src="/314096c1/12.jpg" class>
 
-<p>任意数据维度的一般操作。通过改变输入坐标 c_i 的维数 D，核生成器网络 G_Kernel 可用于构造任意维数的卷积核。因此可以使用相同的操作来处理序列 D=1、视觉 D=2 和更高维数据 D≥3。</p>
+<p>任意数据维度的一般操作。通过改变输入坐标 c_i 的维数 D，核生成器网络 G_Kernel 可用于构造任意维数的卷积核。因此可以使用相同的操作来处理序列 D&#x3D;1、视觉 D&#x3D;2 和更高维数据 D≥3。</p>
 <p>不同输入分辨率的等效响应。如果输入信号 x 有分辨率变化，例如最初在 8KHz 观察到的音频现在在 16KHz 观察到，则与离散卷积核进行卷积以产生不同的响应，因为核将在每个分辨率下覆盖不同的输入子集。另一方面，连续核是分辨率无关的，因此无论输入的分辨率如何，它都能够识别输入。</p>
 <p>当以不同的分辨率（例如更高的分辨率）呈现输入时，通过核生成器网络传递更精细的坐标网格就足够了，以便以相应的分辨率构造相同的核。对于以分辨率 r (1) 和 r (2) 采样的信号 x 和连续卷积核 K，两种分辨率下的卷积大约等于与分辨率变化成比例的因子：</p>
 <img src="/314096c1/13.png" class>
@@ -360,9 +360,9 @@
 <img src="/314096c1/15.png" class>
 
 <p>生成的核计算的，之后是从 N_in 到 N_out 进行逐点卷积。这种变化允许构建更广泛的 CCNN—— 从 30 到 110 个隐藏通道，而不会增加网络参数或计算复杂度。</p>
-<p>正确初始化核生成器网络 G_Kernel。该研究观察到，在以前的研究中核生成器网络没有正确初始化。在初始化前，人们希望卷积层的输入和输出的方差保持相等，以避免梯度爆炸和消失，即 Var (x)=Var (y)。因此，卷积核被初始化为具有方差 Var (K)=gain^2 /(in channels ⋅ kernel size) 的形式，其增益取决于所使用的非线性。</p>
-<p>然而，神经网络的初始化使输入的 unitary 方差保留在输出。因此，当用作核生成器网络时，标准初始化方法导致核具有 unitary 方差，即 Var (K)=1。结果，使用神经网络作为核生成器网络的 CNN 经历了与通道⋅内核大小成比例的特征表示方差的逐层增长。例如，研究者观察到 CKCNNs 和 FlexNets 在初始化时的 logits 大约为 1e^19。这是不可取的，这可能导致训练不稳定和需要低学习率。</p>
-<p>为了解决这个问题，该研究要求 G_Kernel 输出方差等于 gain^2 / (in_channels⋅kernel_size) 而不是 1。他们通过 gain / sqrt(in_channels⋅kernel_size) 重新加权核生成器网络的最后一层。因此，核生成器网络输出的方差遵循传统卷积核的初始化，而 CCNN 的 logits 在初始化时呈现单一方差。</p>
+<p>正确初始化核生成器网络 G_Kernel。该研究观察到，在以前的研究中核生成器网络没有正确初始化。在初始化前，人们希望卷积层的输入和输出的方差保持相等，以避免梯度爆炸和消失，即 Var (x)&#x3D;Var (y)。因此，卷积核被初始化为具有方差 Var (K)&#x3D;gain^2 &#x2F;(in channels ⋅ kernel size) 的形式，其增益取决于所使用的非线性。</p>
+<p>然而，神经网络的初始化使输入的 unitary 方差保留在输出。因此，当用作核生成器网络时，标准初始化方法导致核具有 unitary 方差，即 Var (K)&#x3D;1。结果，使用神经网络作为核生成器网络的 CNN 经历了与通道⋅内核大小成比例的特征表示方差的逐层增长。例如，研究者观察到 CKCNNs 和 FlexNets 在初始化时的 logits 大约为 1e^19。这是不可取的，这可能导致训练不稳定和需要低学习率。</p>
+<p>为了解决这个问题，该研究要求 G_Kernel 输出方差等于 gain^2 &#x2F; (in_channels⋅kernel_size) 而不是 1。他们通过 gain &#x2F; sqrt(in_channels⋅kernel_size) 重新加权核生成器网络的最后一层。因此，核生成器网络输出的方差遵循传统卷积核的初始化，而 CCNN 的 logits 在初始化时呈现单一方差。</p>
 <hr>
 <h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p>如下表 1-4 所示，CCNN 模型在所有任务中都表现良好。</p>
 <p>首先是 1D 图像分类 CCNN 在多个连续基准上获得 SOTA，例如 Long Range Arena、语音识别、1D 图像分类，所有这些都在单一架构中实现的。CCNN 通常比其他方法模型更小架构更简单。</p>
@@ -475,7 +475,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -549,7 +549,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -748,7 +748,7 @@
 <p>这项研究通过研究使用面部微表情策略与EEG和生理信号相结合进行多模态情感识别的最佳方式来解决这一问题，还探讨了如何利用面部微表情来识别面部视频、EEG和生理数据中最具情感的部分。此外，创建了一个新的面部视频、生理信号和EEG信号的数据集，这有助于开发情感识别的稳健模型。还探索了从OpenBCI EEG headset收集的数据的性能和质量，这是一个用于识别情绪的低成本EEG headset。此外，提出了使用多模态数据进行情感识别的策略，并最终对其进行了评估。</p>
 <p>总的来说，这项研究的<strong>主要创新之处</strong>在于<strong>将面部微表情识别与EEG和生理信号相融合</strong>。这项工作的另一个重要贡献是<strong>利用面部微表情来识别中性状态和情绪状态，以提高使用EEG和生理信号的情绪识别</strong>。</p>
 <hr>
-<h3 id="Experimental-Setup-实验设置"><a href="#Experimental-Setup-实验设置" class="headerlink" title="Experimental Setup 实验设置"></a>Experimental Setup 实验设置</h3><p>创建了一个新的多模态数据集，用于使用轻型可穿戴设备和网络摄像头进行情感识别。从大学生和工作人员中招募了23名志愿者（12名女性和11名男性），年龄在21至44岁之间（μ=30，σ=6）。只针对六种基本情绪中的四种，包括快乐、悲伤、愤怒和恐惧，外加一个中性状态。在观看视频的任务中收集了面部视频、EEG、PPG和GSR信号。使用唤醒-价值模型来测量情绪，自我报告数据也被用作基础真实值。</p>
+<h3 id="Experimental-Setup-实验设置"><a href="#Experimental-Setup-实验设置" class="headerlink" title="Experimental Setup 实验设置"></a>Experimental Setup 实验设置</h3><p>创建了一个新的多模态数据集，用于使用轻型可穿戴设备和网络摄像头进行情感识别。从大学生和工作人员中招募了23名志愿者（12名女性和11名男性），年龄在21至44岁之间（μ&#x3D;30，σ&#x3D;6）。只针对六种基本情绪中的四种，包括快乐、悲伤、愤怒和恐惧，外加一个中性状态。在观看视频的任务中收集了面部视频、EEG、PPG和GSR信号。使用唤醒-价值模型来测量情绪，自我报告数据也被用作基础真实值。</p>
 <p>（其它详见原文）</p>
 <hr>
 <h3 id="Methodology-方法"><a href="#Methodology-方法" class="headerlink" title="Methodology 方法"></a>Methodology 方法</h3><h4 id="Ground-Truth-Labeling-正确标签"><a href="#Ground-Truth-Labeling-正确标签" class="headerlink" title="Ground Truth Labeling 正确标签"></a>Ground Truth Labeling 正确标签</h4><p>使用来自SAM调查问卷的自我报告数据进行基础真实标记。只使用DEAP和自采数据集的报告的唤醒和价值。为了对唤醒和情感水平进行分类，尽管在SAM问卷中有九个级别的唤醒和情感，但与以前的研究类似，使用二进制分类。认为五个是创建二进制标签的阈值，对应于高和低的唤醒和价值。</p>
@@ -805,7 +805,7 @@
 <p>还使用SVM、KNN和RF分类器对窗口大小为15和考虑整个数据时的ROI部分进行分类。在表6中比较了这些分类器与LSTM方法在所有数据或只考虑ROI部分进行分类时的F-Score。表5中报告的窗口大小为60的面部微表情的F-Score已被考虑在融合策略中。将面部微表情方法的预测结果与使用的所有分类器进行了融合。从这些表格中可以看出，LSTM方法在两个数据集的唤醒和价值方面都取得了最佳结果。这表明，利用时间和空间特征可以帮助检测情绪。同时，融合策略的结果也大大优于单一模式。在自采数据集中，大多数人对唤醒和情感的融合进行投票，而在DEAP中只有情感的融合优于加权的融合。当应用于ROI数据时，结合PPG和GSR只提高了LSTM方法在价值水平分类中的性能。另外，基于ROI的LSTM的FScore相对接近于或有时优于在整个数据上使用LSTM。这表明，使用一小部分数据可以像使用全部数据一样具有信息量。</p>
 <p>虽然其他分类器在其中一个数据集中的唤醒或情感的某些模式产生了良好的结果，但与LSTM方法相比，他们的预测在与其他模式融合后并没有改善。当预测精度低于或接近随机预测或二元分类的50%时，它无法在数据中找到任何特定的模式。因此，单模态预测之间的不匹配性增加，导致融合策略的f-score下降。根据表6，SVM、KNN或RFC对某些模式的f-scores低于或接近50%。因此，这导致了无效的融合。</p>
 <hr>
-<h4 id="Computation-Cost-计算成本"><a href="#Computation-Cost-计算成本" class="headerlink" title="Computation Cost 计算成本"></a>Computation Cost 计算成本</h4><p>没有使用所有的帧作为3D卷积模型的输入，而是只使用了每个视频的60个帧作为模型的输入。DEAP数据集在每个视频中有3,000帧，而自采数据集在每个视频中有2,400帧。通过提取微表情的ROI，减少了DEAP的输入大小，比率为（60/3000），自采数据集为（60/2400）。输入规模的下降导致了计算成本的大幅下降。自采数据集有230（23 * 10）次试验，而DEAP的数据集有720（18 * 40）次试验，适用于所有参与者。两个数据集的人脸模型的输入都是（60 * 64 * 64），其中60是每个试验的帧数，64 * 64是人脸区域灰度的帧的尺寸。对DEAP数据集的六折人脸模型进行并行训练花了1小时37分钟（每个历时235秒）。由于每个参与者的试验次数较少，自采数据集的训练时间为33分钟（每个震荡期为79秒）。</p>
+<h4 id="Computation-Cost-计算成本"><a href="#Computation-Cost-计算成本" class="headerlink" title="Computation Cost 计算成本"></a>Computation Cost 计算成本</h4><p>没有使用所有的帧作为3D卷积模型的输入，而是只使用了每个视频的60个帧作为模型的输入。DEAP数据集在每个视频中有3,000帧，而自采数据集在每个视频中有2,400帧。通过提取微表情的ROI，减少了DEAP的输入大小，比率为（60&#x2F;3000），自采数据集为（60&#x2F;2400）。输入规模的下降导致了计算成本的大幅下降。自采数据集有230（23 * 10）次试验，而DEAP的数据集有720（18 * 40）次试验，适用于所有参与者。两个数据集的人脸模型的输入都是（60 * 64 * 64），其中60是每个试验的帧数，64 * 64是人脸区域灰度的帧的尺寸。对DEAP数据集的六折人脸模型进行并行训练花了1小时37分钟（每个历时235秒）。由于每个参与者的试验次数较少，自采数据集的训练时间为33分钟（每个震荡期为79秒）。</p>
 <p>此外，尽管以前的研究使用LSTM网络对EEG信号进行分类，并将原始信号作为网络的输入（Ma等人，2019年），但从每秒钟的数据中提取了有限的特征，以减少输入规模。创建了一个新的数据序列，该序列比原始数据小得多，同时仍然具有信息量。例如，对于EEG数据，每个试验的大小是（持续时间（秒） * 采样率 * 通道）。将这一大小减少到（持续时间（秒） * 五个功率段）。这种减少对生理学数据也是一样的。脑电图、PPG和GSR的LSTM模型的训练是以六倍的方式平行进行的。为DEAP数据集训练所有这些模型需要12分钟和14秒，而每个历时大约需要1-3秒。自采数据集的训练时间为5分钟，每个历时的运行时间在25到100ms之间。</p>
 <hr>
 <h4 id="Final-Result-最终结果"><a href="#Final-Result-最终结果" class="headerlink" title="Final Result 最终结果"></a>Final Result 最终结果</h4><p>表7显示了当ROI窗口大小为15秒时，单一模式或融合策略对ROI部分进行分类的最终结果。可以看出，在两个数据集中，将微表情与EEG和生理信号融合，比使用单一模式有更高的准确性和F-Score。与使用独立于主体的策略的相关作品相比，在识别唤醒和情绪水平方面取得了类似或更好的准确性。</p>
@@ -842,8 +842,8 @@
       <i class="fa fa-chevron-left"></i> 深度学习-图像处理特征融合相关延伸
     </a></div>
       <div class="post-nav-item">
-    <a href="/3e62d3a3.html" rel="next" title="Python-JC1001 Assessment 2">
-      Python-JC1001 Assessment 2 <i class="fa fa-chevron-right"></i>
+    <a href="/532a606e.html" rel="next" title="脑机接口与混合智能-新闻-加州大学圣地亚哥分校健康中心瞄准远程医疗、移动医疗创新">
+      脑机接口与混合智能-新闻-加州大学圣地亚哥分校健康中心瞄准远程医疗、移动医疗创新 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -920,7 +920,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -994,7 +994,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -132,7 +132,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -255,7 +255,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>5.9k</span>
+              <span>6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -296,7 +296,7 @@
 <p>如果日常工作或学习并不必要使用1,000多个库，那么可以考虑安装<a target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>，这里不过多介绍Miniconda的安装及使用。</p>
 <h4 id="Anaconda、conda、pip、virtualenv的区别"><a href="#Anaconda、conda、pip、virtualenv的区别" class="headerlink" title="Anaconda、conda、pip、virtualenv的区别"></a>Anaconda、conda、pip、virtualenv的区别</h4><h5 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h5><p>Anaconda是一个包含180+的科学包及其依赖项的发行版本。其包含的科学包包括：conda, numpy, scipy, ipython notebook等。</p>
 <h5 id="conda"><a href="#conda" class="headerlink" title="conda"></a>conda</h5><p>conda是包及其依赖项和环境的管理工具。</p>
-<p>适用语言：Python, R, Ruby, Lua, Scala, Java, JavaScript, C/C++, FORTRAN。<br>适用平台：Windows, macOS, Linux</p>
+<p>适用语言：Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。<br>适用平台：Windows, macOS, Linux</p>
 <p>用途：</p>
 <ul>
 <li>快速安装、运行和升级包及其依赖项。</li>
@@ -321,7 +321,7 @@
 <p>解决问题：</p>
 <ol>
 <li>当一个程序需要使用Python 2.7版本，而另一个程序需要使用Python 3.6版本，如何同时使用这两个程序？</li>
-<li>如果将所有程序都安装在系统下的默认路径，如：/usr/lib/python2.7/site-packages，当不小心升级了本不该升级的程序时，将会对其他的程序造成影响。</li>
+<li>如果将所有程序都安装在系统下的默认路径，如：&#x2F;usr&#x2F;lib&#x2F;python2.7&#x2F;site-packages，当不小心升级了本不该升级的程序时，将会对其他的程序造成影响。</li>
 <li>如果想要安装程序并在程序运行时对其库或库的版本进行修改，都会导致程序的中断。</li>
 <li>在共享主机时，无法在全局site-packages目录中安装包。</li>
 </ol>
@@ -341,9 +341,9 @@
 <p><strong>环境管理</strong></p>
 <p>pip：维护多个环境难度较大。<br>conda：比较方便地在不同环境之间进行切换，环境管理较为简单。</p>
 <p><strong>对系统自带Python的影响</strong></p>
-<p>pip：在系统自带Python中包的**更新/回退版本/卸载将影响其他程序。<br>conda：不会影响系统自带Python。</p>
+<p>pip：在系统自带Python中包的**更新&#x2F;回退版本&#x2F;卸载将影响其他程序。<br>conda：不会影响系统自带Python。</p>
 <p><strong>适用语言</strong></p>
-<p>pip：仅适用于Python。<br>conda：适用于Python, R, Ruby, Lua, Scala, Java, JavaScript, C/C++, FORTRAN。</p>
+<p>pip：仅适用于Python。<br>conda：适用于Python, R, Ruby, Lua, Scala, Java, JavaScript, C&#x2F;C++, FORTRAN。</p>
 <h5 id="conda与pip、virtualenv的关系"><a href="#conda与pip、virtualenv的关系" class="headerlink" title="conda与pip、virtualenv的关系"></a>conda与pip、virtualenv的关系</h5><p>conda结合了pip和virtualenv的功能。</p>
 <hr>
 <h3 id="管理conda"><a href="#管理conda" class="headerlink" title="管理conda"></a>管理conda</h3><p>接下来均是以命令行模式进行介绍，Windows用户请打开“Anaconda Prompt”；macOS和Linux用户请打开“Terminal”（“终端”）进行操作。</p>
@@ -358,7 +358,7 @@
 <h4 id="更新conda至最新版本"><a href="#更新conda至最新版本" class="headerlink" title="更新conda至最新版本"></a>更新conda至最新版本</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda update conda</span><br></pre></td></tr></table></figure>
 
 <p>执行命令后，conda将会对版本进行比较并列出可以升级的版本。同时，也会告知用户其他相关包也会升级到相应版本。</p>
-<p>当较新的版本可以用于升级时，终端会显示Proceed ([y]/n)?，此时输入y即可进行升级。</p>
+<p>当较新的版本可以用于升级时，终端会显示Proceed ([y]&#x2F;n)?，此时输入y即可进行升级。</p>
 <h4 id="查看conda帮助信息"><a href="#查看conda帮助信息" class="headerlink" title="查看conda帮助信息"></a>查看conda帮助信息</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda --<span class="built_in">help</span></span><br><span class="line">// or</span><br><span class="line">conda -h</span><br></pre></td></tr></table></figure>
 
 <h4 id="卸载conda"><a href="#卸载conda" class="headerlink" title="卸载conda"></a>卸载conda</h4><h5 id="Linux-或-macOS"><a href="#Linux-或-macOS" class="headerlink" title="Linux 或 macOS"></a>Linux 或 macOS</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ~/anaconda3</span><br></pre></td></tr></table></figure>
@@ -373,13 +373,13 @@
 <ul>
 <li>env_name即创建的环境名。建议以英文命名，且不加空格，名称两边不加尖括号“&lt;&gt;”。</li>
 <li>package_names即安装在环境中的包名。名称两边不加尖括号“&lt;&gt;”。<ul>
-<li>如果要安装指定的版本号，则只需要在包名后面以=和版本号的形式执行。如：conda create –name python2 python=2.7，即创建一个名为“python2”的环境，环境中安装版本为2.7的python。</li>
-<li>如果要在新创建的环境中创建多个包，则直接在package_names后以空格隔开，添加多个包名即可。如：conda create -n python3 python=3.5 numpy pandas，即创建一个名为“python3”的环境，环境中安装版本为3.5的python，同时也安装了numpy和pandas。</li>
+<li>如果要安装指定的版本号，则只需要在包名后面以&#x3D;和版本号的形式执行。如：conda create –name python2 python&#x3D;2.7，即创建一个名为“python2”的环境，环境中安装版本为2.7的python。</li>
+<li>如果要在新创建的环境中创建多个包，则直接在package_names后以空格隔开，添加多个包名即可。如：conda create -n python3 python&#x3D;3.5 numpy pandas，即创建一个名为“python3”的环境，环境中安装版本为3.5的python，同时也安装了numpy和pandas。</li>
 </ul>
 </li>
 <li>–name同样可以替换为-n。</li>
 </ul>
-<p>提示：默认情况下，新创建的环境将会被保存在/Users/user_name/anaconda3/env目录下，其中，user_name为当前用户的用户名。</p>
+<p>提示：默认情况下，新创建的环境将会被保存在&#x2F;Users&#x2F;user_name&#x2F;anaconda3&#x2F;env目录下，其中，user_name为当前用户的用户名。</p>
 <h4 id="切换环境"><a href="#切换环境" class="headerlink" title="切换环境"></a>切换环境</h4><h5 id="Linux-或-macOS-1"><a href="#Linux-或-macOS-1" class="headerlink" title="Linux 或 macOS"></a>Linux 或 macOS</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
 
 <h5 id="Windows-1"><a href="#Windows-1" class="headerlink" title="Windows"></a>Windows</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">activate &lt;env_name&gt;</span><br></pre></td></tr></table></figure>
@@ -402,7 +402,7 @@
 
 <p>注意：</p>
 <ol>
-<li>copied_env_name即为被复制/克隆环境名。环境名两边不加尖括号“&lt;&gt;”。</li>
+<li>copied_env_name即为被复制&#x2F;克隆环境名。环境名两边不加尖括号“&lt;&gt;”。</li>
 <li>new_env_name即为复制之后新环境的名称。环境名两边不加尖括号“&lt;&gt;”。</li>
 <li>如：conda create –name py2 –clone python2，即为克隆名为“python2”的环境，克隆后的新环境名为“py2”。此时，环境中将同时存在“python2”和“py2”环境，且两个环境的配置相同。</li>
 </ol>
@@ -461,9 +461,7 @@
 <li>在新页面“Anaconda Cloud”的上方搜索框中输入要安装的包名，然后点击右边“放大镜”标志。<img src="/5ead0eb4/1.webp" class></li>
 <li>搜索结果中有数以千计的包可供选择，此时点击“Downloads”可根据下载量进行排序，最上面的为下载最多的包。</li>
 <li>选择满足需求的包或下载量最多的包，点击包名。</li>
-<li>复制“To install this package with conda run:”下方的命令，并粘贴在终端中执行。<img src="/5ead0eb4/2.webp" class>
-
-</li>
+<li>复制“To install this package with conda run:”下方的命令，并粘贴在终端中执行。<img src="/5ead0eb4/2.webp" class></li>
 </ol>
 <h4 id="卸载包"><a href="#卸载包" class="headerlink" title="卸载包"></a>卸载包</h4><h5 id="卸载指定环境中的包"><a href="#卸载指定环境中的包" class="headerlink" title="卸载指定环境中的包"></a>卸载指定环境中的包</h5><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda remove --name &lt;env_name&gt; &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
 
@@ -592,7 +590,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -666,7 +664,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

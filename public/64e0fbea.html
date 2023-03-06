@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -139,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -307,7 +307,7 @@
 <h3 id="变分自编码是怎么炼成的"><a href="#变分自编码是怎么炼成的" class="headerlink" title="变分自编码是怎么炼成的"></a>变分自编码是怎么炼成的</h3><p>读了上面的内容之后，你应该对VAE模型有了一个较为直观和感性的认知，但是可能会疑惑所谓的变分到底在哪里？</p>
 <p>放心，变分并没有被作者吃掉，接下来，我们就从变分推断的角度，对VAE进行一个理性的推导。有了上面的基础，再读下面的内容时就会轻松愉快很多。</p>
 <h4 id="变分推断"><a href="#变分推断" class="headerlink" title="变分推断"></a>变分推断</h4><p>变分自编码器（VAE）的想法和名字的由来便是变分推断了，那么什么是变分推断呢？</p>
-<p>变分推断是 MCMC 搞不定场景的一种替代算法，它考虑一个贝叶斯推断问题，给定观测变量 x∈R^k 和潜变量 z∈R^d，其联合概率分布为 p(z, x) = p(z)p(x|z)，目标是计算后验分布 p(z|x)。然后我们可以假设一个变分分布 q(z) 来自分布族 Q，通过最小化 KL 散度来近似后验分布 p(z|x)：</p>
+<p>变分推断是 MCMC 搞不定场景的一种替代算法，它考虑一个贝叶斯推断问题，给定观测变量 x∈R^k 和潜变量 z∈R^d，其联合概率分布为 p(z, x) &#x3D; p(z)p(x|z)，目标是计算后验分布 p(z|x)。然后我们可以假设一个变分分布 q(z) 来自分布族 Q，通过最小化 KL 散度来近似后验分布 p(z|x)：</p>
 <img src="/64e0fbea/3.svg" class>
 
 <p>这么一来，就成功的将一个贝叶斯推断问题转化为了一个优化问题~</p>
@@ -327,7 +327,7 @@
 <p>显然，跟我们希望解码准确的目标是一致的。要解码的准，则 p(z|x) 应该尽可能的小，编码特征 z 的分布 q_x(z) 同 p(z) 尽可能的接近，此时恰好 -log~p(x|z) 和 KL(q_x(z)||p(z)) 都尽可能的小，与损失的优化的目标也一致。</p>
 <hr>
 <h3 id="如何计算极值"><a href="#如何计算极值" class="headerlink" title="如何计算极值"></a>如何计算极值</h3><p>正如前面所提到的AE潜变量的局限性，我们希望VAE的潜变量分布 p(z) 应该能满足海量的输入数据 x 并且相互独立，基于中心极限定理，以及为了方便采样，我们有理由直接假设 p(z) 是一个标准的高斯分布 N(0,1)。</p>
-<h4 id="编码部分"><a href="#编码部分" class="headerlink" title="编码部分"></a>编码部分</h4><p>我们先来看一下编码部分，我们希望拟合一个分布 q_x(z) = N(μ, σ) 尽可能接近 p(z) = N(0, 1)，关键就在于基于输入 x 计算 μ 和 σ，直接算有点困难，于是就使用两个神经网络 f(x) 和 g(x) 来无脑拟合 μ 和 σ。</p>
+<h4 id="编码部分"><a href="#编码部分" class="headerlink" title="编码部分"></a>编码部分</h4><p>我们先来看一下编码部分，我们希望拟合一个分布 q_x(z) &#x3D; N(μ, σ) 尽可能接近 p(z) &#x3D; N(0, 1)，关键就在于基于输入 x 计算 μ 和 σ，直接算有点困难，于是就使用两个神经网络 f(x) 和 g(x) 来无脑拟合 μ 和 σ。</p>
 <p>值得一提的是，很多地方实际使用的 f(x)、g(x) 两部分神经网络并不是独立的，而是有一部分交集，即他们都先通过一个 h(x) 映射到一个中间层 h，然后分别对 h 计算 f(h) 和 g(h)。这样做的好处的话一方面是可以减少参数数量，另外这样算应该会导致拟合的效果差一些，算是防止过拟合吧。</p>
 <hr>
 <h4 id="解码部分"><a href="#解码部分" class="headerlink" title="解码部分"></a>解码部分</h4><p>解码，即从潜变量 z 生成数据 x 的过程，在于最大化似然 p(x|z)，那这应该是个什么分布呢？通常我们假设它是一个伯努利分布或是高斯分布。伯努利分布十分简单，熟悉的人也多，高斯分布接近大自然了，用起来又方便。</p>
@@ -456,7 +456,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -530,7 +530,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

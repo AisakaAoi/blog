@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -131,7 +131,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -254,7 +254,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.9k</span>
+              <span>4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -289,8 +289,8 @@
 <h3 id="声道数（channels）"><a href="#声道数（channels）" class="headerlink" title="声道数（channels）"></a>声道数（channels）</h3><p>音频的采集和播放是可以叠加的，因此可以同时从多个音频源采集声音，并分别输出到不同的扬声器，故声道数一般表示声音录制时的音源数量或回放时相应的扬声器数量。</p>
 <p>常见：<strong>单声道</strong>（Mono）、<strong>双声道</strong>（Stereo）、<strong>2.1声道</strong>（在双声道基础上加入一个低音声道）、<strong>5.1声道</strong>（正面、左前、右前、左环绕、右环绕、低音，最早应用于早期的电影院）、<strong>7.1声道</strong>（在5.1声道的基础上，把左右环绕拆分为左右环绕以及左右后置，主要应用于BD以及现代的电影院）</p>
 <hr>
-<h3 id="音频帧（frame）"><a href="#音频帧（frame）" class="headerlink" title="音频帧（frame）"></a>音频帧（frame）</h3><p>视频每一帧就是一张图像，而<strong>音频数据是流式的</strong>，本身没有明确的一帧帧的概念。在实际的应用中，为了音频算法处理/传输的方便，一般约定俗成<strong>取2.5ms~60ms为单位的数据量为一帧音频</strong>，这个时间被称之为“<strong>采样时间</strong>”。</p>
-<p>假设某通道的音频信号是采样率为8kHz，位宽为16bit，20ms一帧，双通道，则一帧音频数据的大小为：int size = 8000 x 16bit x 0.02s x 2 = 5120 bit = 640 byte</p>
+<h3 id="音频帧（frame）"><a href="#音频帧（frame）" class="headerlink" title="音频帧（frame）"></a>音频帧（frame）</h3><p>视频每一帧就是一张图像，而<strong>音频数据是流式的</strong>，本身没有明确的一帧帧的概念。在实际的应用中，为了音频算法处理&#x2F;传输的方便，一般约定俗成<strong>取2.5ms~60ms为单位的数据量为一帧音频</strong>，这个时间被称之为“<strong>采样时间</strong>”。</p>
+<p>假设某通道的音频信号是采样率为8kHz，位宽为16bit，20ms一帧，双通道，则一帧音频数据的大小为：int size &#x3D; 8000 x 16bit x 0.02s x 2 &#x3D; 5120 bit &#x3D; 640 byte</p>
 <hr>
 <h3 id="音频编码"><a href="#音频编码" class="headerlink" title="音频编码"></a>音频编码</h3><p>模拟的音频信号转换为数字信号需要经过采样和量化，量化的过程被称之为编码，根据不同的量化策略，产生了许多不同的编码方式，常见的编码方式有：<strong>波形编码</strong>（PCM等）、<strong>参数编码</strong>（LPC）、<strong>混合编码</strong>。</p>
 <table>
@@ -321,7 +321,7 @@
 <td></td>
 <td>SB-ADPCM</td>
 <td>G.721</td>
-<td>64/56/48</td>
+<td>64&#x2F;56&#x2F;48</td>
 <td>-</td>
 </tr>
 <tr>
@@ -377,9 +377,9 @@
 </li>
 </ol>
 <p>个人理解：</p>
-<p>压缩比：aac &gt; ogg &gt; mp3(wma) &gt; ape &gt; flac &gt; wav （128kbps WMA = 192kbps MP3）</p>
-<p>音质：wav = flac = ape &gt; aac &gt; ogg &gt; mp3 &gt; wma</p>
-<p>综合：aac &gt; ogg &gt; flac &gt; ape &gt; mp3 &gt; wav = wma</p>
+<p>压缩比：aac &gt; ogg &gt; mp3(wma) &gt; ape &gt; flac &gt; wav （128kbps WMA &#x3D; 192kbps MP3）</p>
+<p>音质：wav &#x3D; flac &#x3D; ape &gt; aac &gt; ogg &gt; mp3 &gt; wma</p>
+<p>综合：aac &gt; ogg &gt; flac &gt; ape &gt; mp3 &gt; wav &#x3D; wma</p>
 <p>128kbps以下选AAC，128~192kbps选WMA，192kbps以上选MP3。</p>
 <table>
 <thead>
@@ -449,7 +449,7 @@
 </tr>
 <tr>
 <td></td>
-<td>AIF/AIFF</td>
+<td>AIF&#x2F;AIFF</td>
 <td>-</td>
 <td>-</td>
 <td>苹果公司开发的一种声音文件格式，和WAV非常相像，支持MAC平台，支持16位44.1kHz立体声。</td>
@@ -494,25 +494,25 @@
 <td>CDA</td>
 <td>1411.2kbps</td>
 <td>-</td>
-<td>CD音轨文件。标准CD格式为44.1K的采样，速率88K/秒，16位量化位数，可以说是近似无损的。</td>
+<td>CD音轨文件。标准CD格式为44.1K的采样，速率88K&#x2F;秒，16位量化位数，可以说是近似无损的。</td>
 </tr>
 </tbody></table>
 <hr>
 <h3 id="Android支持的音频格式和版本"><a href="#Android支持的音频格式和版本" class="headerlink" title="Android支持的音频格式和版本"></a>Android支持的音频格式和版本</h3><table>
 <thead>
 <tr>
-<th>格式/编解码器</th>
+<th>格式&#x2F;编解码器</th>
 <th>编码器</th>
 <th>解码器</th>
 <th>详细信息</th>
-<th>支持的文件类型/容器格式</th>
+<th>支持的文件类型&#x2F;容器格式</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>AAC LC</td>
 <td>-</td>
 <td>-</td>
-<td>支持单声道/立体声/5.0/5.1 内容，标准采样率为 8-48 kHz。</td>
+<td>支持单声道&#x2F;立体声&#x2F;5.0&#x2F;5.1 内容，标准采样率为 8-48 kHz。</td>
 <td>• 3GPP (.3gp) • MPEG-4（.mp4、.m4a） • ADTS 原始 AAC（.aac、在 Android 3.1 及更高版本中解码、在 Android 4.0 及更高版本中编码、不支持 ADIF） • MPEG-TS（.ts、不可查找、Android 3.0 及更高版本）</td>
 </tr>
 <tr>
@@ -526,14 +526,14 @@
 <td>HE-AACv2（增强型 AAC+）</td>
 <td>-</td>
 <td>-</td>
-<td>支持立体声/5.0/5.1 内容，标准采样率为 8-48 kHz。</td>
+<td>支持立体声&#x2F;5.0&#x2F;5.1 内容，标准采样率为 8-48 kHz。</td>
 <td></td>
 </tr>
 <tr>
 <td>AAC ELD（增强型低延迟 AAC）</td>
 <td>Android 4.1 及更高版本</td>
 <td>Android 4.1 及更高版本</td>
-<td>支持单声道/立体声内容，标准采样率为 16-48 kHz</td>
+<td>支持单声道&#x2F;立体声内容，标准采样率为 16-48 kHz</td>
 <td></td>
 </tr>
 <tr>
@@ -547,14 +547,14 @@
 <td>AMR-WB</td>
 <td>-</td>
 <td>-</td>
-<td>有 9 个比特率（介于 6.60-23.85 kbit/s 之间）可供选择，采样率为 16 kHz</td>
+<td>有 9 个比特率（介于 6.60-23.85 kbit&#x2F;s 之间）可供选择，采样率为 16 kHz</td>
 <td>3GPP (.3gp)</td>
 </tr>
 <tr>
 <td>FLAC</td>
 <td>Android 4.1 及更高版本</td>
 <td>Android 3.1 及更高版本</td>
-<td>单声道/立体声（非多声道）。采样率最高可达 48 kHz（但对于输出为 44.1 kHz 的设备，则建议最高不超过 44.1 kHz，因为 48-44.1 kHz 的降采样器不包含低通滤波器）。建议使用 16 位；对于 24 位，不会应用任何抖动。</td>
+<td>单声道&#x2F;立体声（非多声道）。采样率最高可达 48 kHz（但对于输出为 44.1 kHz 的设备，则建议最高不超过 44.1 kHz，因为 48-44.1 kHz 的降采样器不包含低通滤波器）。建议使用 16 位；对于 24 位，不会应用任何抖动。</td>
 <td>仅支持 FLAC (.flac)</td>
 </tr>
 <tr>
@@ -568,14 +568,14 @@
 <td>MIDI</td>
 <td>-</td>
 <td>-</td>
-<td>MIDI 类型 0 和 1。DLS 版本 1 和 2。XMF 和 Mobile XMF。支持铃声格式 RTTTL/RTX、OTA 和 iMelody</td>
-<td>• 类型 0 和 1（.mid、.xmf、.mxmf） • RTTTL/RTX（.rtttl、.rtx） • OTA (.ota) • iMelody (.imy)</td>
+<td>MIDI 类型 0 和 1。DLS 版本 1 和 2。XMF 和 Mobile XMF。支持铃声格式 RTTTL&#x2F;RTX、OTA 和 iMelody</td>
+<td>• 类型 0 和 1（.mid、.xmf、.mxmf） • RTTTL&#x2F;RTX（.rtttl、.rtx） • OTA (.ota) • iMelody (.imy)</td>
 </tr>
 <tr>
 <td>MP3</td>
 <td>-</td>
 <td>-</td>
-<td>单声道/立体声 8-320 Kbps 恒定 (CBR) 或可变比特率 (VBR)</td>
+<td>单声道&#x2F;立体声 8-320 Kbps 恒定 (CBR) 或可变比特率 (VBR)</td>
 <td>MP3 (.mp3)</td>
 </tr>
 <tr>
@@ -586,7 +586,7 @@
 <td>Matroska (.mkv)</td>
 </tr>
 <tr>
-<td>PCM/WAVE</td>
+<td>PCM&#x2F;WAVE</td>
 <td>Android 4.1 及更高版本</td>
 <td>-</td>
 <td>8 位和 16 位线性 PCM（比特率最高可达到硬件上限）。以 8000、16000 和 44100 Hz 录制原始 PCM 所需的采样率。</td>
@@ -697,7 +697,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -771,7 +771,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

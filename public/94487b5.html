@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -152,7 +152,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -346,7 +346,7 @@
 <img src="/94487b5/13.png" class>
 
 <hr>
-<h4 id="VAE和GAN之间的区别"><a href="#VAE和GAN之间的区别" class="headerlink" title="VAE和GAN之间的区别"></a>VAE和GAN之间的区别</h4><p>首先GAN和VAE之间在输入数据和生成数据上存在不同，VAE需要两者一一对应方可求其重构损失/误差，而GAN中不需要二者一一对应；其次VAE中隐向量事实上是对输入数据特征的一种表达，在抽象的语义层面上比如改变人的发色特征没那么VAE可直接通过在隐变量空间上插值或嵌入式操作来实现。</p>
+<h4 id="VAE和GAN之间的区别"><a href="#VAE和GAN之间的区别" class="headerlink" title="VAE和GAN之间的区别"></a>VAE和GAN之间的区别</h4><p>首先GAN和VAE之间在输入数据和生成数据上存在不同，VAE需要两者一一对应方可求其重构损失&#x2F;误差，而GAN中不需要二者一一对应；其次VAE中隐向量事实上是对输入数据特征的一种表达，在抽象的语义层面上比如改变人的发色特征没那么VAE可直接通过在隐变量空间上插值或嵌入式操作来实现。</p>
 <hr>
 <h4 id="原始GAN的优化目标"><a href="#原始GAN的优化目标" class="headerlink" title="原始GAN的优化目标"></a>原始GAN的优化目标</h4><img src="/94487b5/14.png" class>
 
@@ -372,9 +372,9 @@
 <h4 id="基于f-散度的GAN目标函数的改进"><a href="#基于f-散度的GAN目标函数的改进" class="headerlink" title="基于f-散度的GAN目标函数的改进"></a>基于f-散度的GAN目标函数的改进</h4><p><strong>f-散度：</strong>f-散度可以理解为KL散度的一般化形式(当对应的f取值为xlogx时即为KL散度)，如下公式所示：</p>
 <img src="/94487b5/19.png" class>
 
-<p>当然f-散度具有以下特点：①都是非负实数到实数的映射 ②f(1)=0 ③都是凸函数<br>由于原始GAN函数中使用的是JS散度且损失函数为交叉熵损失函数因此较难使得梯度能够稳定下降使得生成数据推向真实分布，所以出现了其他的f-散度的GAN网络使得最小化生成器中目标函数的散度值以此达到生成分布接近真实分布的目的，例如LSGAN中使用的就是均方误差的f函数，EBGAN使用的是绝对误差的f函数。</p>
+<p>当然f-散度具有以下特点：①都是非负实数到实数的映射 ②f(1)&#x3D;0 ③都是凸函数<br>由于原始GAN函数中使用的是JS散度且损失函数为交叉熵损失函数因此较难使得梯度能够稳定下降使得生成数据推向真实分布，所以出现了其他的f-散度的GAN网络使得最小化生成器中目标函数的散度值以此达到生成分布接近真实分布的目的，例如LSGAN中使用的就是均方误差的f函数，EBGAN使用的是绝对误差的f函数。</p>
 <hr>
-<h4 id="Lipschitz连续性"><a href="#Lipschitz连续性" class="headerlink" title="Lipschitz连续性"></a>Lipschitz连续性</h4><p><strong>Lipschitz连续性：</strong>Lipschitz连续的定义较为简单，简单来说就是限制f函数的导函数绝对值不超过K其中K&gt;=0，从定义中很明显可以看出Lipschitz连续性的作用就是为了限制连续函数的局部变化最大幅度：</p>
+<h4 id="Lipschitz连续性"><a href="#Lipschitz连续性" class="headerlink" title="Lipschitz连续性"></a>Lipschitz连续性</h4><p><strong>Lipschitz连续性：</strong>Lipschitz连续的定义较为简单，简单来说就是限制f函数的导函数绝对值不超过K其中K&gt;&#x3D;0，从定义中很明显可以看出Lipschitz连续性的作用就是为了限制连续函数的局部变化最大幅度：</p>
 <img src="/94487b5/20.png" class>
 
 <p><strong>谱归一化：</strong>谱归一化常用来归一化判别器的权重，目的是为了让判别器满足Lipschitz连续性，在训练过程中谱归一化会对每一层的权重做奇异值分解，并对奇异值做归一化将其限制在1内，从而使得整个GAN训练网络更加稳定不容易崩塌。</p>
@@ -486,7 +486,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -560,7 +560,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

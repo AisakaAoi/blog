@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -145,7 +145,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -332,7 +332,7 @@
 <h4 id="T2T-module"><a href="#T2T-module" class="headerlink" title="T2T module"></a>T2T module</h4><p>通过交替执行上述Re-structurization与Soft Split操作，T2T模块可以逐渐的减少Token的长度、变换图像的空间结构。T2T模块可以表示为如下形式：</p>
 <img src="/96cdc0f0/7.png" class>
 
-<p>对于输入图像I_o，我们采用SoftSplit操作将其拆分为Token：T_1 = SS(I_o)。在完成最后的迭代后，输出Token T_f具有固定IG长度，因此T2T-ViT可以在T_f上建模全局相关性。</p>
+<p>对于输入图像I_o，我们采用SoftSplit操作将其拆分为Token：T_1 &#x3D; SS(I_o)。在完成最后的迭代后，输出Token T_f具有固定IG长度，因此T2T-ViT可以在T_f上建模全局相关性。</p>
 <p>另外，由于T2T模块中的Token长度要比常规形式的更大，故而MAC与内存占用会非常大。为克服该局限性，在T2T模块中，我们设置通道维度为32(或者64)以降低MACs。</p>
 <h4 id="T2T-ViT-Backbone"><a href="#T2T-ViT-Backbone" class="headerlink" title="T2T-ViT Backbone"></a>T2T-ViT Backbone</h4><p>由于ViT骨干中的不少通道是无效的，故而我们计划设计一种高效骨干以降低冗余提升特征丰富性。我们将CNN架构设计思想引入到ViT骨干设计以提升骨干的高效性、增强所学习特征的丰富性。由于每个Transformer具有类似ResNet的跳过连接，一个最直接的想法是采用类似DenseNet的稠密连接提升特征丰富性；或者采用Wide-ResNet、ResNeXt结构改变通道维度。本文从以下五个角度进行了系统性的比较：</p>
 <ul>
@@ -348,7 +348,7 @@
 
 <h4 id="T2T-ViT-Architecture"><a href="#T2T-ViT-Architecture" class="headerlink" title="T2T-ViT Architecture"></a>T2T-ViT Architecture</h4><img src="/96cdc0f0/9.webp" class>
 
-<p>上图给出了T2T-ViT的网络结构示意图，它包含T2T模块与T2T骨干两部分。上图给出了n=2的结构示意图(即n+1=3个soft split，n个Re-structurization)。每个Soft Split的块大小分别为[7, 3, 3]，重叠为[3, 1, 1]。</p>
+<p>上图给出了T2T-ViT的网络结构示意图，它包含T2T模块与T2T骨干两部分。上图给出了n&#x3D;2的结构示意图(即n+1&#x3D;3个soft split，n个Re-structurization)。每个Soft Split的块大小分别为[7, 3, 3]，重叠为[3, 1, 1]。</p>
 <img src="/96cdc0f0/10.webp" class>
 
 <p>为更好的与常见手动设计CNN进行对比，我们设计了不同复杂度的T2T-ViT模型，见上表。比如对标ResNet50的T2T-ViT-14，对标ResNet101的T2T-ViT-19，对标ResNet152的T2T-ViT-24，对标MobileNetV1、MoblieNetV2的T2T-ViT-7，T2T-ViT-10，T2T-ViT-12。</p>
@@ -403,8 +403,8 @@
       <i class="fa fa-chevron-left"></i> UCB CS61A: Computer Programs [Fall 2020] (PART I)
     </a></div>
       <div class="post-nav-item">
-    <a href="/e9b82e5e.html" rel="next" title="“情感脑机接口”线上研讨会-清华大学张丹教授作“基于对比学习的跨个体脑电情绪识别方法”的主题报告">
-      “情感脑机接口”线上研讨会-清华大学张丹教授作“基于对比学习的跨个体脑电情绪识别方法”的主题报告 <i class="fa fa-chevron-right"></i>
+    <a href="/a7383611.html" rel="next" title="脑机接口与混合智能-新闻-提出实时面捕，精细到微表情，上科大打造数字人新标杆">
+      脑机接口与混合智能-新闻-提出实时面捕，精细到微表情，上科大打造数字人新标杆 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -481,7 +481,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -555,7 +555,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

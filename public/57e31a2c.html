@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -259,7 +259,7 @@
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>15 分钟</span>
+              <span>14 分钟</span>
             </span>
 
         </div>
@@ -323,7 +323,43 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">条件</span><br><span class="line">    查询所有数据                &#123;&#125;或者不写</span><br><span class="line">    查询age=6的数据             &#123;age: 6&#125;</span><br><span class="line">    既要age=6又要性别=男        &#123;age: 6, sex: &#x27;男&#x27;&#125;</span><br><span class="line"></span><br><span class="line">查询的列（可选参数）</span><br><span class="line">    不写        只查询全部列（字段）</span><br><span class="line">    &#123;age: 1&#125;    只显示age列（字段）</span><br><span class="line">    &#123;age: 0&#125;    除了age列（字段都显示）</span><br><span class="line">    留心：不管怎么写 系统自定义的_id都会存在</span><br></pre></td></tr></table></figure>
 
 <p>升级语法：db.集合名.find({键: {运算符: 值}})</p>
-<p>说明：<br>| 运算符 | 作用 |<br>| :——: | :—-: |<br>| $gt | 大于 |<br>| $gte | 大于等于 |<br>| $lt | 小于 |<br>| $lte | 小于等于 |<br>| $ne | 不等于 |<br>| $in | in |<br>| $nin | not in |</p>
+<p>说明：</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$gt</td>
+<td align="center">大于</td>
+</tr>
+<tr>
+<td align="center">$gte</td>
+<td align="center">大于等于</td>
+</tr>
+<tr>
+<td align="center">$lt</td>
+<td align="center">小于</td>
+</tr>
+<tr>
+<td align="center">$lte</td>
+<td align="center">小于等于</td>
+</tr>
+<tr>
+<td align="center">$ne</td>
+<td align="center">不等于</td>
+</tr>
+<tr>
+<td align="center">$in</td>
+<td align="center">in</td>
+</tr>
+<tr>
+<td align="center">$nin</td>
+<td align="center">not in</td>
+</tr>
+</tbody></table>
 <p>练习1：查询所有数据</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.c1.find()</span><br></pre></td></tr></table></figure>
 
@@ -340,7 +376,31 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">是否新增：指条件匹配不到数据则插入 true插入 false不插入（默认）</span><br><span class="line">是否修改多条：指将匹配成功的数据都修改 true修改多条 false不修改多条（默认）</span><br></pre></td></tr></table></figure>
 
 <p>升级语法：db.集合名.update(条件, {修改器: {键: 值}})</p>
-<p>说明：<br>| 运算符 | 作用 |<br>| :——: | :—-: |<br>| $inc | 递增 |<br>| $rename | 重命名列 |<br>| $set | 修改列值 |<br>| $unset | 删除列 |</p>
+<p>说明：</p>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">$inc</td>
+<td align="center">递增</td>
+</tr>
+<tr>
+<td align="center">$rename</td>
+<td align="center">重命名列</td>
+</tr>
+<tr>
+<td align="center">$set</td>
+<td align="center">修改列值</td>
+</tr>
+<tr>
+<td align="center">$unset</td>
+<td align="center">删除列</td>
+</tr>
+</tbody></table>
 <p>练习1：将{uname: “zc1”}改为{uname: “zc2”}</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.c3.update(&#123;uname: &quot;zc1&quot;&#125;, &#123;uname: &quot;zc2&quot;&#125;)              // 这是替换</span><br><span class="line">&gt; db.c3.update(&#123;uname: &quot;zc1&quot;&#125;, &#123;$set: &#123;uname: &quot;zc2&quot;&#125;&#125;)      // 这是修改</span><br></pre></td></tr></table></figure>
 
@@ -367,7 +427,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.集合名.find(条件 [,查询的列])</span><br></pre></td></tr></table></figure>
 
 <h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a><strong>排序</strong></h4><p>语法：db.集合名.find().sort(JSON数据)</p>
-<p>说明：键 就是要排序的列/字段 值 1升序 -1降序</p>
+<p>说明：键 就是要排序的列&#x2F;字段 值 1升序 -1降序</p>
 <p>练习1：年龄升序&amp;降序</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.c1.find().sort(&#123;age: 1&#125;)</span><br><span class="line">&gt; db.c1.find().sort(&#123;age: -1&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -533,7 +593,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -607,7 +667,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -271,7 +271,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -339,7 +339,7 @@
 
 <hr>
 <h3 id="ViT模型、实验"><a href="#ViT模型、实验" class="headerlink" title="ViT模型、实验"></a>ViT模型、实验</h3><p>下面是<strong>ViT模型</strong>介绍，模型总览图如下图所示。输入为一张图片，将图片划分成9个<strong>patch</strong>，划分后的 <strong>patch</strong> 序列经过线性投射层变换得到 <strong>patch embedding</strong> ，与此同时对这些 <strong>patch</strong> 还添加了 <strong>position embedding</strong>，这样每一个 <strong>token</strong> 既包括图像信息又包括了位置信息。这里作者还借鉴了 <strong>BERT</strong>，添加了 <strong>class embedding</strong>，也包括位置信息，最终将这些 <strong>token</strong> 输入到 <strong>Transformer</strong>，最后 <strong>class embedding</strong> 对应的输出经过 <strong>MLP Head</strong> 进行类别判断，整个模型包括 L 个 <strong>Transformer</strong>。</p>
-<p>下面是具体实现，假设图像大小是 224 × 224 × 3，划分成 16 × 16 × 3 的 <strong>patch</strong>，则最终会有196个 <strong>patch</strong>。将每一个 <strong>patch</strong> 拉平，则每一个 <strong>patch</strong> 维度变为 768。线性投射层使用 E 表示，维度为 768 × 768 （ D ），D 是参数。则经过线性变换后输出为： X E = 196 × 768 × 768 × 768 = 196 × 768，输出为196个 <strong>token</strong>，每个 <strong>token</strong> 维度为768。因为还有一个 <strong>class token</strong>，位置编码维度为 1 × 768，和 <strong>patch embedding</strong> 直接相加（sum），则最终输入维度为 197 × 768。</p>
+<p>下面是具体实现，假设图像大小是 224 × 224 × 3，划分成 16 × 16 × 3 的 <strong>patch</strong>，则最终会有196个 <strong>patch</strong>。将每一个 <strong>patch</strong> 拉平，则每一个 <strong>patch</strong> 维度变为 768。线性投射层使用 E 表示，维度为 768 × 768 （ D ），D 是参数。则经过线性变换后输出为： X E &#x3D; 196 × 768 × 768 × 768 &#x3D; 196 × 768，输出为196个 <strong>token</strong>，每个 <strong>token</strong> 维度为768。因为还有一个 <strong>class token</strong>，位置编码维度为 1 × 768，和 <strong>patch embedding</strong> 直接相加（sum），则最终输入维度为 197 × 768。</p>
 <img src="/a5c1ffe6/8.png" class>
 
 <p>下面是论文原文介绍，首先是 <strong>patch embedding</strong> 的处理，然后是 <strong>class embedding</strong> 的处理，最后是 <strong>position embedding</strong> 的处理。 在附录里作者比较了各种 <strong>position embedding</strong> 的实验结果，以及 <strong>class token</strong> 的使用对最终分类结果的影响。为了减少对 <strong>Transformer</strong> 的改动，作者这里还是使用了 <strong>class token</strong> 和 <strong>1D position embedding</strong>。</p>
@@ -351,7 +351,7 @@
 <p>下面是论文<strong>实验部分</strong>。这里作者主要设计了三种不同大小的 <strong>ViT</strong> 模型，如下表所示。</p>
 <img src="/a5c1ffe6/11.png" class>
 
-<p>第一个实验结果是作者分别将 <strong>ViT</strong> 模型在不同的数据集上去预训练，然后在基准数据集上去比较，虽然从表中看到 <strong>ViT-H/14</strong> 比卷积模型 <strong>BiT-L</strong> 准确率高得并不多，但是从训练天数可以看到，<strong>ViT-H/14</strong> 需要的训练天数是 BiTL-L 的 1/4 左右，<strong>训练代价更小</strong>。</p>
+<p>第一个实验结果是作者分别将 <strong>ViT</strong> 模型在不同的数据集上去预训练，然后在基准数据集上去比较，虽然从表中看到 <strong>ViT-H&#x2F;14</strong> 比卷积模型 <strong>BiT-L</strong> 准确率高得并不多，但是从训练天数可以看到，<strong>ViT-H&#x2F;14</strong> 需要的训练天数是 BiTL-L 的 1&#x2F;4 左右，<strong>训练代价更小</strong>。</p>
 <img src="/a5c1ffe6/12.png" class>
 
 <p>图3、4 表明随着预训练数据集的增大，<strong>Transformer</strong> 的效果会渐渐好于 <strong>ResNet</strong>，这表明 <strong>Transformer 有很好的可扩展性</strong>。图5表示，在同样运算能力下，<strong>Transformer</strong> 的效果也是好于 <strong>ResNet</strong>。</p>
@@ -458,7 +458,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -532,7 +532,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

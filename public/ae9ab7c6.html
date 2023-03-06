@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -191,7 +191,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -440,7 +440,7 @@
 <img src="/ae9ab7c6/17.png" class>
 
 <p>在这个例子中，我们只是显示地说明了X和Y，它们分别是数据和标签的占位符。</p>
-<p>现在我们使用h=tf.layers.dense，（相当于定义了隐藏层），我们把X作为输入，单元数为H， 在这一行里，它设置了w1和b1（也就是偏差），它设置了形状正确的变量，并让这些变量存在于计算图中，但对于我们来说可以是隐藏的（这一整句话博主没听懂，如果有错误希望大家能帮忙指出来）。这段代码使用xavier.intializer()来为这些变量建立一个初始化策略，在之前的代码里，我们用tf.randomnormal来做这些事，但现在这种做法帮我们处理了一些细节，而且只是输出了一个h，我们可以看到，这个层里的激活函数是relue激活函数，所以这种方法可以定义很多细节。</p>
+<p>现在我们使用h&#x3D;tf.layers.dense，（相当于定义了隐藏层），我们把X作为输入，单元数为H， 在这一行里，它设置了w1和b1（也就是偏差），它设置了形状正确的变量，并让这些变量存在于计算图中，但对于我们来说可以是隐藏的（这一整句话博主没听懂，如果有错误希望大家能帮忙指出来）。这段代码使用xavier.intializer()来为这些变量建立一个初始化策略，在之前的代码里，我们用tf.randomnormal来做这些事，但现在这种做法帮我们处理了一些细节，而且只是输出了一个h，我们可以看到，这个层里的激活函数是relue激活函数，所以这种方法可以定义很多细节。</p>
 <p>人们在tf上建立了许多不同的高级库，其中计算图是相对较低级水平的事物，当我们正在使用神经网络时，我们有层和权重的概念，比起原始的计算图，这些概念是稍微高一点的层次，我们通常考虑的也是稍微高一些的层次，所以这些包可以从高一些的层次出发帮助我们运行神经网络。</p>
 <hr>
 <h5 id="tensorboard和分布式运行"><a href="#tensorboard和分布式运行" class="headerlink" title="tensorboard和分布式运行"></a>tensorboard和分布式运行</h5><p>我们可以在tf中添加一些代码，从而使用tensorboard画出训练过程中的loss曲线和其他一些内容。tf也可以分布式运行，可以将一张计算图图分块，从而在不同的计算机上运行，目前进行分布式运行，tf是最合适地选择</p>
@@ -552,7 +552,7 @@
 
 <p>然后我们迭代dataloader对象，每次迭代的过程中都可以产生分批数据，然后在其内部重排数据，多线程加载数据。</p>
 <hr>
-<h5 id="预训练模型"><a href="#预训练模型" class="headerlink" title="预训练模型"></a>预训练模型</h5><p>pytorch提供了一些预先训练好的模型，如下图，只要让torchvision.model.alexnet(pretrained=True)</p>
+<h5 id="预训练模型"><a href="#预训练模型" class="headerlink" title="预训练模型"></a>预训练模型</h5><p>pytorch提供了一些预先训练好的模型，如下图，只要让torchvision.model.alexnet(pretrained&#x3D;True)</p>
 <img src="/ae9ab7c6/48.png" class>
 
 <p>然后让它在后台跑，下载预先训练好的权重，然后我们再训练自己的模型。</p>
@@ -603,7 +603,7 @@
 <p>在tensorflow中就比较复杂了，因为我们只建一次图，这样的控制流操作就需要在tf图中一个明确地操作，所以有tf.cond在tf中，就像是if语句，但它被放到计算图中而不是python那样的控制流中，问题就是我们只会建一次图，所有的可能的控制流路径我们都需要提前建立好，在我们运行前放到图的函数中，这就意味着控制流的操作比较特殊，与python控制流操作不同</p>
 <img src="/ae9ab7c6/53.png" class>
 
-<p>在循环关系式中，比如yt=（y(t-1)+xt）*w，每次次我们计算这个公式得到不同大小的数据序列，因为输入序列X的大小不一。</p>
+<p>在循环关系式中，比如yt&#x3D;（y(t-1)+xt）*w，每次次我们计算这个公式得到不同大小的数据序列，因为输入序列X的大小不一。</p>
 <img src="/ae9ab7c6/54.png" class>
 
 <p>在pytorch中我们可以不关心输入序列的大小，只希望计算相同的关系式。我们在pytorch中只需要一个普通的python循环去循环我们希望展开的次数，并不依赖输入数据的大小，我们的计算图会最终是不同的大小，但是没关系，因为一次只进行一个单元的一次反向传播</p>
@@ -733,7 +733,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -807,7 +807,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

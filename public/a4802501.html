@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -146,7 +146,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -335,22 +335,22 @@
 <ol start="6">
 <li><p>向量的梯度计算–雅克比矩阵逆推</p>
 <ul>
-<li>以max函数为例<img src="/a4802501/8.png" class>
-实际上max函数的矩阵是一个单位矩阵上，在对角线上max取值正确的为1，错误的为0，反向求导赋予就很方便；因此不需要求雅克比矩阵的所有维度，实际上1个mini-batch的大小为100，矩阵可能为 409600 * 409600，这样一个维度较大，超出内存。实际上并不需要去求一个矩阵，见下面这个例子。</li>
-<li>以二次平方项为例<img src="/a4802501/9.png" class>
-如上图可见，实际上在反向传播过程，大部分使用的前向函数参数的转置就ok。</li>
+<li>以max函数为例 <img src="/a4802501/8.png" class>
+ 实际上max函数的矩阵是一个单位矩阵上，在对角线上max取值正确的为1，错误的为0，反向求导赋予就很方便；因此不需要求雅克比矩阵的所有维度，实际上1个mini-batch的大小为100，矩阵可能为 409600 * 409600，这样一个维度较大，超出内存。实际上并不需要去求一个矩阵，见下面这个例子。</li>
+<li>以二次平方项为例 <img src="/a4802501/9.png" class>
+ 如上图可见，实际上在反向传播过程，大部分使用的前向函数参数的转置就ok。</li>
 </ul>
 </li>
 <li><p>公式法+一步步逆推讲解矩阵乘法运算</p>
 </li>
 </ol>
-<p>实际上对于一个包含scores和loss函数的公式及求响应的∂L/∂W如下：</p>
+<p>实际上对于一个包含scores和loss函数的公式及求响应的∂L&#x2F;∂W如下：</p>
 <img src="/a4802501/10.png" class>
 
 <p>那么只对于单纯的一个f值而言，那么满足如下公式：</p>
 <img src="/a4802501/11.png" class>
 
-<p>那么只对W(1,1)求导而言，f的所有1行都包含对W(1,1)与x一行的乘积，而f中的每个值都是W的一行和x的一列的乘积，无法单纯的表示w(1,1)，但是如果求df/dw(1,1)，由于线性其他项消失，只剩下x(1,:)，因此满足一下公式：</p>
+<p>那么只对W(1,1)求导而言，f的所有1行都包含对W(1,1)与x一行的乘积，而f中的每个值都是W的一行和x的一列的乘积，无法单纯的表示w(1,1)，但是如果求df&#x2F;dw(1,1)，由于线性其他项消失，只剩下x(1,:)，因此满足一下公式：</p>
 <img src="/a4802501/12.png" class>
 
 <ol start="8">
@@ -482,7 +482,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -556,7 +556,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

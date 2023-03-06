@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -144,7 +144,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -295,9 +295,9 @@
 <span id="more"></span>
 
 <hr>
-<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p><strong>Context Encoder (CE)是第一个基于GAN的修复算法。</strong>它强调了在修复任务中理解整个图像的上下文的重要性，并使用(channel-wise)全连接层来实现这一功能。文章链接：(用生成模型来做图像恢复的介绍和回顾：上下文编码器)[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;chksm=c06a62fef71debe8414ef6d0a5653ec546f1953e3905a7fbdfcf7d1a3bc5720828673ded9dff&amp;idx=1&amp;mid=2247494307&amp;scene=21&amp;sn=6259effaf115c4255be3827beb890fa1#wechat_redirect]">https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg%3D%3D&amp;chksm=c06a62fef71debe8414ef6d0a5653ec546f1953e3905a7fbdfcf7d1a3bc5720828673ded9dff&amp;idx=1&amp;mid=2247494307&amp;scene=21&amp;sn=6259effaf115c4255be3827beb890fa1#wechat_redirect]</a></p>
-<p>**Multi-scale Neural Patch Synthesis (MNPS)**可以看作是CE的改进版本。它由两个网络组成，即内容网络和纹理网络。内容网络是CE，纹理网络是预先训练好的用于分类任务的VGG-19。使用纹理网络的想法来自于最近成功的神经风格迁移。简单地说，对于高级视觉任务(如对象分类)，预训练网络的神经响应包含有关图像模式的信息。通过鼓励在缺失区域内外产生相似的神经响应，我们可以进一步增强生成像素的纹理细节，因此完成的图像将更真实。文章链接：(使用多尺度patch合成来做高分辨率的图像复原)[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;chksm=c06a62e3f71debf50f82afafc8e5739568ce4f11b327c6c09ffdb5c05658c032e02b9b00b371&amp;idx=2&amp;mid=2247494334&amp;scene=21&amp;sn=7954763a1e6b53fe384eb17d97a0ecb8#wechat_redirect]">https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg%3D%3D&amp;chksm=c06a62e3f71debf50f82afafc8e5739568ce4f11b327c6c09ffdb5c05658c032e02b9b00b371&amp;idx=2&amp;mid=2247494334&amp;scene=21&amp;sn=7954763a1e6b53fe384eb17d97a0ecb8#wechat_redirect]</a></p>
-<p>**Globally and Locally Consistent Image Completion (GLCIC)**是深度图像修复任务中的一个里程碑。作者采用完全卷积网络(FCN)与扩张卷积(DilatedConv)作为他们提出的模型的框架。FCN允许不同的输入大小和带膨胀的conv来替换通道全连接层，用于理解整个图像上下文。在此基础上，采用两种鉴别器对两种尺度下的完整图像和真实图像进行区分。一个全局判别器着眼于整个图像，而一个局部判别器着眼于局部填充后的图像patch。文章链接：(图像修复中的一个里程碑：全局和局部一致性的图像补全)[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&amp;chksm=c06a6283f71deb954cee27dd70d6342f783d5712c3ba7668ff28dd9e417af40d33bfcbbf0099&amp;idx=1&amp;mid=2247494366&amp;scene=21&amp;sn=19cb9e7f28898655c0ee604db5112fd3#wechat_redirect]">https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg%3D%3D&amp;chksm=c06a6283f71deb954cee27dd70d6342f783d5712c3ba7668ff28dd9e417af40d33bfcbbf0099&amp;idx=1&amp;mid=2247494366&amp;scene=21&amp;sn=19cb9e7f28898655c0ee604db5112fd3#wechat_redirect]</a></p>
+<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h3><p><strong>Context Encoder (CE)是第一个基于GAN的修复算法。</strong>它强调了在修复任务中理解整个图像的上下文的重要性，并使用(channel-wise)全连接层来实现这一功能。文章链接：(用生成模型来做图像恢复的介绍和回顾：上下文编码器)[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&chksm=c06a62fef71debe8414ef6d0a5653ec546f1953e3905a7fbdfcf7d1a3bc5720828673ded9dff&idx=1&mid=2247494307&scene=21&sn=6259effaf115c4255be3827beb890fa1#wechat_redirect]">https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg%3D%3D&amp;chksm=c06a62fef71debe8414ef6d0a5653ec546f1953e3905a7fbdfcf7d1a3bc5720828673ded9dff&amp;idx=1&amp;mid=2247494307&amp;scene=21&amp;sn=6259effaf115c4255be3827beb890fa1#wechat_redirect]</a></p>
+<p>**Multi-scale Neural Patch Synthesis (MNPS)**可以看作是CE的改进版本。它由两个网络组成，即内容网络和纹理网络。内容网络是CE，纹理网络是预先训练好的用于分类任务的VGG-19。使用纹理网络的想法来自于最近成功的神经风格迁移。简单地说，对于高级视觉任务(如对象分类)，预训练网络的神经响应包含有关图像模式的信息。通过鼓励在缺失区域内外产生相似的神经响应，我们可以进一步增强生成像素的纹理细节，因此完成的图像将更真实。文章链接：(使用多尺度patch合成来做高分辨率的图像复原)[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&chksm=c06a62e3f71debf50f82afafc8e5739568ce4f11b327c6c09ffdb5c05658c032e02b9b00b371&idx=2&mid=2247494334&scene=21&sn=7954763a1e6b53fe384eb17d97a0ecb8#wechat_redirect]">https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg%3D%3D&amp;chksm=c06a62e3f71debf50f82afafc8e5739568ce4f11b327c6c09ffdb5c05658c032e02b9b00b371&amp;idx=2&amp;mid=2247494334&amp;scene=21&amp;sn=7954763a1e6b53fe384eb17d97a0ecb8#wechat_redirect]</a></p>
+<p>**Globally and Locally Consistent Image Completion (GLCIC)**是深度图像修复任务中的一个里程碑。作者采用完全卷积网络(FCN)与扩张卷积(DilatedConv)作为他们提出的模型的框架。FCN允许不同的输入大小和带膨胀的conv来替换通道全连接层，用于理解整个图像上下文。在此基础上，采用两种鉴别器对两种尺度下的完整图像和真实图像进行区分。一个全局判别器着眼于整个图像，而一个局部判别器着眼于局部填充后的图像patch。文章链接：(图像修复中的一个里程碑：全局和局部一致性的图像补全)[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg==&chksm=c06a6283f71deb954cee27dd70d6342f783d5712c3ba7668ff28dd9e417af40d33bfcbbf0099&idx=1&mid=2247494366&scene=21&sn=19cb9e7f28898655c0ee604db5112fd3#wechat_redirect]">https://mp.weixin.qq.com/s?__biz=Mzg5ODAzMTkyMg%3D%3D&amp;chksm=c06a6283f71deb954cee27dd70d6342f783d5712c3ba7668ff28dd9e417af40d33bfcbbf0099&amp;idx=1&amp;mid=2247494366&amp;scene=21&amp;sn=19cb9e7f28898655c0ee604db5112fd3#wechat_redirect]</a></p>
 <p>今天，我们将回顾这篇论文，<strong>《Patch-Based Image Inpainting with Generative Adversarial Networks》</strong>。这可以看作是GLCIC的一种变体，因此我们可以对这种典型的网络结构做了一些修改。</p>
 <hr>
 <h3 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h3><p>本文作者希望利用残差链接和PatchGAN鉴别器的优势，进一步提高其修复效果。图像识别的深度残差学习(Deep Residual Learning for Image Recognition， ResNet)在深度学习方面取得了显著的成就。</p>
@@ -327,9 +327,9 @@
 <hr>
 <h4 id="膨胀残差块"><a href="#膨胀残差块" class="headerlink" title="膨胀残差块"></a>膨胀残差块</h4><p>在之前的文章中，我已经介绍过CNN的膨胀卷积。简单回忆一下，<strong>膨胀卷积通过跳过连续的空间位置增加感受野，而不添加额外的参数。</strong></p>
 <img src="/607c14e8/4.png" class>
-<p>图4，残差块类型，从上到下依次为：标准残差块、扩张卷积在前的残差块、扩张卷积在后的剩余块<br>简单地说，残差块可以写成Y = X + F(X)，其中Y是输出，X是输入，F是几个层次的序列。在图4的基本残差块中，F为conv - norm - relu - conv。这意味着我们将X输入一个卷积层，然后是一个归一化层，一个ReLU激活层，最后是另一个卷积层得到F(X)。一个要点是，输入X是直接添加到输出Y上的，这就是我们称之为跳跃连接的原因。由于在这条路径上没有任何可训练的参数，我们可以确保在反向传播过程中必须有足够的梯度传递到早期的层。因此，我们可以训练一个非常深度的网络而不会遇到梯度消失的问题。</p>
+<p>图4，残差块类型，从上到下依次为：标准残差块、扩张卷积在前的残差块、扩张卷积在后的剩余块<br>简单地说，残差块可以写成Y &#x3D; X + F(X)，其中Y是输出，X是输入，F是几个层次的序列。在图4的基本残差块中，F为conv - norm - relu - conv。这意味着我们将X输入一个卷积层，然后是一个归一化层，一个ReLU激活层，最后是另一个卷积层得到F(X)。一个要点是，输入X是直接添加到输出Y上的，这就是我们称之为跳跃连接的原因。由于在这条路径上没有任何可训练的参数，我们可以确保在反向传播过程中必须有足够的梯度传递到早期的层。因此，我们可以训练一个非常深度的网络而不会遇到梯度消失的问题。</p>
 <hr>
-<h4 id="为什么要用残差块？"><a href="#为什么要用残差块？" class="headerlink" title="为什么要用残差块？"></a>为什么要用残差块？</h4><p>你可能想知道使用残差块的好处。你们中的一些人可能已经知道答案了。以下是我的看法。让我们比较一下Y = X + F(X)和Y = F(X)，对于Y = X + F(X)，我们学习的实际上是F(X) = Y - X, Y和X的差值。这就是所谓的残差学习，X可以作为残差学习的参考。另一方面，对于Y = F(X)，我们直接学习在没有参考的情况下将输入X映射到输出Y。所以，人们认为残差学习是比较容易的。更重要的是，很多论文已经证明了残差学习可以带来更好的效果！</p>
+<h4 id="为什么要用残差块？"><a href="#为什么要用残差块？" class="headerlink" title="为什么要用残差块？"></a>为什么要用残差块？</h4><p>你可能想知道使用残差块的好处。你们中的一些人可能已经知道答案了。以下是我的看法。让我们比较一下Y &#x3D; X + F(X)和Y &#x3D; F(X)，对于Y &#x3D; X + F(X)，我们学习的实际上是F(X) &#x3D; Y - X, Y和X的差值。这就是所谓的残差学习，X可以作为残差学习的参考。另一方面，对于Y &#x3D; F(X)，我们直接学习在没有参考的情况下将输入X映射到输出Y。所以，人们认为残差学习是比较容易的。更重要的是，很多论文已经证明了残差学习可以带来更好的效果！</p>
 <p>由于膨胀卷积有助于增加感受野，这对修复任务很重要，作者用膨胀卷积层替换了两个标准卷积层中的一个，如图4所示。膨胀残差块有两种类型，i) 以膨胀卷积在前，ii) 膨胀卷积在后。在本文中，根据膨胀残差块的数量，膨胀率从1开始每次增加2倍，例如，如果有4膨胀残差块，膨胀率为1,2,4,8。</p>
 <hr>
 <h4 id="插值卷积"><a href="#插值卷积" class="headerlink" title="插值卷积"></a>插值卷积</h4><p>为了解决标准反卷积(即转置卷积)造成的伪影，作者在这项工作中采用了插值卷积。对于插值卷积，首先使用典型的插值方法，如双线性和双三次插值，将输入调整到所需的大小。然后，应用标准卷积。下面的图5显示了转置卷积和插值卷积的区别。</p>
@@ -481,7 +481,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -555,7 +555,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

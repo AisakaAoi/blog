@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -137,7 +137,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -264,7 +264,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.2k</span>
+              <span>3.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -305,10 +305,10 @@
 <li>究竟使用卷积层代替全连接层会带来什么好处呢？答案：可以让卷积网络在一张更大的输入图片上滑动，得到每个区域的输出（这样就突破了输入尺寸的限制）。</li>
 </ol>
 <p>论文里 Fully Convolutional Networks for Semantic Segmentation 介绍的很清楚，解读如下：</p>
-<p>以 Alexnet 为例，最后一层为 7 x 7 x 256，得到后面 4096 个神经元；但是如果使用 7 x 7 的卷积核对前面的 featuremap 继续卷积（padding=0），不也可以得到 1 x 1 x 4096 的向量吗。如果图片大一点，例如 384 x 384，那么 Alexnet 最后一层大小就是 12 x 12 x 256，经过 7 x 7 卷积核就是 6 x 6 x 4096，这时 6 x 6 = 36 个神经元就有了位置信息，如下图所示：</p>
+<p>以 Alexnet 为例，最后一层为 7 x 7 x 256，得到后面 4096 个神经元；但是如果使用 7 x 7 的卷积核对前面的 featuremap 继续卷积（padding&#x3D;0），不也可以得到 1 x 1 x 4096 的向量吗。如果图片大一点，例如 384 x 384，那么 Alexnet 最后一层大小就是 12 x 12 x 256，经过 7 x 7 卷积核就是 6 x 6 x 4096，这时 6 x 6 &#x3D; 36 个神经元就有了位置信息，如下图所示：</p>
 <img src="/fbfabfe3/3.jpg" class>
 
-<p>第一个连接区域是 [7 x 7 x 512] 的全连接层，令其滤波器尺寸为 Kernel = 7，这样输出数据体就为 [1 x 1 x 4096] 了；第二个全连接层，令其滤波器尺寸为 Kernel = 1，这样输出数据体为 [1 x 1 x 4096]；最后一个全连接层也做类似的，令其 Kernel = 1，最终输出为 [1 x 1 x 1000]。</p>
+<p>第一个连接区域是 [7 x 7 x 512] 的全连接层，令其滤波器尺寸为 Kernel &#x3D; 7，这样输出数据体就为 [1 x 1 x 4096] 了；第二个全连接层，令其滤波器尺寸为 Kernel &#x3D; 1，这样输出数据体为 [1 x 1 x 4096]；最后一个全连接层也做类似的，令其 Kernel &#x3D; 1，最终输出为 [1 x 1 x 1000]。</p>
 <p>实际操作中，每次这样的变换都需要把全连接层的权重 W 重塑成卷积层的滤波器。</p>
 <p>经过多次卷积（还有 pooling）以后，得到的图像越来越小,分辨率越来越低（粗略的图像），那么 FCN 是如何得到图像中每一个像素的类别的呢？为了从这个分辨率低的粗略图像恢复到原图的分辨率，FCN 使用了上采样。例如经过 5 次卷积(和pooling)以后，图像的分辨率依次缩小了2, 4, 8, 16, 32倍。对于最后一层的输出图像，需要进行 32 倍的上采样，以得到原图一样的大小。</p>
 <hr>
@@ -320,8 +320,8 @@
 <p>解释一下三次上采样：</p>
 <img src="/fbfabfe3/5.jpg" class>
 
-<p>如上图所示，对原图像进行卷积 conv1、pool1 后原图像缩小为 1/2；之后对图像进行第二次 conv2、pool2 后图像缩小为 1/4；接着继续对图像进行第三次卷积操作 conv3、pool3 缩小为原图像的 1/8，此时保留 pool3 的 featureMap；接着继续对图像进行第四次卷积操作 conv4、pool4，缩小为原图像的 1/16，保留 pool4 的 featureMap；最后对图像进行第五次卷积操作 conv5、pool5，缩小为原图像的 1/32，然后把原来 CNN 操作中的全连接变成卷积操作 conv6、conv7，图像的 featureMap 数量改变但是图像大小依然为原图的 1/32，此时图像不再叫 featureMap 而是叫 heatMap。</p>
-<p>现在我们有 1/32 尺寸的 heatMap，1/16 尺寸的 featureMap 和 1/8 尺寸的 featureMap，1/32 尺寸的 heatMap 进行 upsampling 操作之后，因为这样的操作还原的图片仅仅是 conv5 中的卷积核中的特征，限于精度问题不能够很好地还原图像当中的特征，因此在这里向前迭代。把 conv4 中的卷积核对上一次 upsampling 之后的图进行反卷积补充细节（相当于一个插值过程），最后把 conv3 中的卷积核对刚才 upsampling 之后的图像进行再次反卷积补充细节，最后就完成了整个图像的还原。</p>
+<p>如上图所示，对原图像进行卷积 conv1、pool1 后原图像缩小为 1&#x2F;2；之后对图像进行第二次 conv2、pool2 后图像缩小为 1&#x2F;4；接着继续对图像进行第三次卷积操作 conv3、pool3 缩小为原图像的 1&#x2F;8，此时保留 pool3 的 featureMap；接着继续对图像进行第四次卷积操作 conv4、pool4，缩小为原图像的 1&#x2F;16，保留 pool4 的 featureMap；最后对图像进行第五次卷积操作 conv5、pool5，缩小为原图像的 1&#x2F;32，然后把原来 CNN 操作中的全连接变成卷积操作 conv6、conv7，图像的 featureMap 数量改变但是图像大小依然为原图的 1&#x2F;32，此时图像不再叫 featureMap 而是叫 heatMap。</p>
+<p>现在我们有 1&#x2F;32 尺寸的 heatMap，1&#x2F;16 尺寸的 featureMap 和 1&#x2F;8 尺寸的 featureMap，1&#x2F;32 尺寸的 heatMap 进行 upsampling 操作之后，因为这样的操作还原的图片仅仅是 conv5 中的卷积核中的特征，限于精度问题不能够很好地还原图像当中的特征，因此在这里向前迭代。把 conv4 中的卷积核对上一次 upsampling 之后的图进行反卷积补充细节（相当于一个插值过程），最后把 conv3 中的卷积核对刚才 upsampling 之后的图像进行再次反卷积补充细节，最后就完成了整个图像的还原。</p>
 <p>下图是 32 倍、16 倍和 8 倍上采样得到的结果的对比，可以看到它们得到的结果越来越精确：</p>
 <img src="/fbfabfe3/6.jpg" class>
 
@@ -434,7 +434,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -508,7 +508,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

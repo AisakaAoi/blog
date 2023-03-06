@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -151,7 +151,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -333,7 +333,7 @@
 
 <ul>
 <li>引入速度V的概念，将以前的梯度考虑进去，给当前梯度更新增加一定的动量，就是梯度实际下降比当前计算的值大，这样即使在鞍点和局部最优点位置也会由于额外引入的动量冲过去，当然如果极致和鞍点区域很大，那么将会导致实际上无法冲过，这样需要增大动量的影响。</li>
-<li>实际上如果考虑系数0.1以下时之前的梯度不会再产生影响，那么0.9^22=0.098,0.99^229=0.099,这样实际上动量的影响会不会比较大，实际上在后期时动量的影响增大，可能无法趋近与最佳值，但实际上后期的梯度都很小，一般不会出现这样问题。</li>
+<li>实际上如果考虑系数0.1以下时之前的梯度不会再产生影响，那么0.9^22&#x3D;0.098,0.99^229&#x3D;0.099,这样实际上动量的影响会不会比较大，实际上在后期时动量的影响增大，可能无法趋近与最佳值，但实际上后期的梯度都很小，一般不会出现这样问题。</li>
 <li>实际上从信号处理的角度来讲，相当于给梯度更新增加了一个滑动滤波器，前面的梯度会被一次次以不同的系数划过，这也是能够降低噪声的原因。实际上可以设计一个模板，只取若干梯度及衰减进行更新，但实际上也没有太大意义。</li>
 </ul>
 <img src="/fcec9cc0/5.png" class>
@@ -367,12 +367,12 @@
 <hr>
 <h4 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h4><img src="/fcec9cc0/9.png" class>
 
-<p>该算法将Momentum与AdaGrad/RMSProp结合起来，结合两者的优点。</p>
+<p>该算法将Momentum与AdaGrad&#x2F;RMSProp结合起来，结合两者的优点。</p>
 <hr>
 <h4 id="学习率衰减"><a href="#学习率衰减" class="headerlink" title="学习率衰减"></a>学习率衰减</h4><img src="/fcec9cc0/10.png" class>
 
 <ul>
-<li>包括步进下降法；指数衰减法；1/t衰减法</li>
+<li>包括步进下降法；指数衰减法；1&#x2F;t衰减法</li>
 <li>实际上学习率的衰减更适用于Momentum等算法，毕竟Ada类算法都是自带学习率下降的。</li>
 </ul>
 <hr>
@@ -547,7 +547,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -621,7 +621,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -134,7 +134,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -261,7 +261,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.1k</span>
+              <span>4.2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -291,7 +291,7 @@
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>卷积神经网络 (CNNs)是一类广泛用于机器学习应用的深度学习模型。它们的流行源于其高性能和高效率，使其在跨序列、视觉和高维数据的多个应用程序中实现l了最好的性能。然而，CNN和一般的神经网络的一个重要限制是，它们的架构必须针对特定的应用进行定制，以处理不同的数据长度、分辨率和维度。这反过来又导致了大量特定于任务的CNN架构。</p>
 <p>数据可以有许多不同的长度，例如，图像可以是32x32或1024x1024，音频可以是每秒16000个样本。标准的CNN的问题是，它们的卷积内核是局部的，这需要为每个长度定制一个步长和池化层来捕获整个上下文的自定义架构。此外，许多类型的数据本质上是连续的，在不同的分辨率下具有相同的语义意义，例如，图像可以在任意分辨率下捕获，并具有相同的语义内容，音频可以在16kHz或44.1kHz任意采样，但人耳听起来仍然是相同的。然而，由于卷积核的离散性，传统的CNN被限制在分辨率上，不能跨分辨率使用。当考虑具有相同CNN的不同维数数据时，这两个问题进一步加剧，例如序列(1D)、视觉(2D)和高维数据(3D, 4D)，因为不同维数具有不同的特征长度和分辨率。</p>
 <p><strong>迈向通用CNN架构。</strong>在这项工作中，我们的目标是构建一个单一的CNN架构，可以用于任意分辨率、长度和维度的数据。由于其卷积核的离散性质，标准的CNNs需要特定任务的架构，这将核绑定到特定的数据分辨率，并使它们不适合建模全局上下文，因为构造大型离散卷积核需要大量的参数。因此，为了构建一个通用的CNN架构，开发一个分辨率不可知的卷积层是至关重要的，它能够以参数高效的方式建模远程依赖关系。</p>
-<p><strong>对连续参数化的需要。</strong>离散卷积核在每个核位置用Nout×Nin独立可学习权值定义。因此，大型卷积核需要大量的参数，而传统的CNN依赖于局部卷积核，结合任务相关的深度值和池化层来建模远程依赖。或者，我们可以通过使用一个小的神经网络来构建连续的卷积核，该网络将位置映射到这些位置的核值(图1a)。这种方法将卷积核的大小与构造它所需的参数数量解耦（解除耦合关系），从而允许以参数高效的方式构造任意长的核。此外，这种参数化克服了标准核的离散性，允许构造分辨率不可知的卷积核，它在任意分辨率的坐标上操作。因此，无论输入长度和分辨率如何，都可以使用相同的内核生成器网络——从而使用相同的CNN。此外，只需改变输入坐标的维度，同样的核生成器网络就可以构造序列D=1(图1b)、视觉D=2(图1c)和高维D≥3(图1d)任务的卷积核。总之，连续卷积核的特性允许构建一个单一的CNN架构，可以跨数据长度、分辨率和维度使用。</p>
+<p><strong>对连续参数化的需要。</strong>离散卷积核在每个核位置用Nout×Nin独立可学习权值定义。因此，大型卷积核需要大量的参数，而传统的CNN依赖于局部卷积核，结合任务相关的深度值和池化层来建模远程依赖。或者，我们可以通过使用一个小的神经网络来构建连续的卷积核，该网络将位置映射到这些位置的核值(图1a)。这种方法将卷积核的大小与构造它所需的参数数量解耦（解除耦合关系），从而允许以参数高效的方式构造任意长的核。此外，这种参数化克服了标准核的离散性，允许构造分辨率不可知的卷积核，它在任意分辨率的坐标上操作。因此，无论输入长度和分辨率如何，都可以使用相同的内核生成器网络——从而使用相同的CNN。此外，只需改变输入坐标的维度，同样的核生成器网络就可以构造序列D&#x3D;1(图1b)、视觉D&#x3D;2(图1c)和高维D≥3(图1d)任务的卷积核。总之，连续卷积核的特性允许构建一个单一的CNN架构，可以跨数据长度、分辨率和维度使用。</p>
 <img src="/ed1ba0e7/1.png" class>
 
 <p><strong>本文的贡献如下：</strong></p>
@@ -302,7 +302,7 @@
 <hr>
 <h3 id="Continuous-Kernel-Convolutions"><a href="#Continuous-Kernel-Convolutions" class="headerlink" title="Continuous Kernel Convolutions"></a>Continuous Kernel Convolutions</h3><img src="/ed1ba0e7/2.png" class>
 
-<h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4><p><strong>对任意数据维度的一般操作。</strong>通过改变输入坐标c_i的维数D，可以使用核生成器网络G_Kernel构造任意维数的卷积核。因此，对于序列D=1、视觉D=2、高维D≥3的数据，可以采用相同的操作进行处理。</p>
+<h4 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h4><p><strong>对任意数据维度的一般操作。</strong>通过改变输入坐标c_i的维数D，可以使用核生成器网络G_Kernel构造任意维数的卷积核。因此，对于序列D&#x3D;1、视觉D&#x3D;2、高维D≥3的数据，可以采用相同的操作进行处理。</p>
 <p><strong>每一层的参数和计算高效的远程依赖建模。</strong>我们可以使用核生成器网络G_Kernel来构造与输入信号一样大的卷积核，以便对每一层的长距离依赖进行建模。G_Kernel中参数的数量与卷积核的长度无关，因此可以在固定的参数计数下构造任意大小的核。利用卷积定理可以有效地计算具有大卷积核的卷积，该定理指出，时域的卷积等于频域的点积。</p>
 <p><strong>无规律采样的数据。</strong>对于某些应用，输入x可能不在规律的网格上，例如医疗数据。离散卷积核不适合这种应用，因为它们的值只在某些预设位置已知，而不适合任意坐标c_i。相反，连续核在任何地方都被定义，因此可以处理无规律的数据。</p>
 <p><strong>不同输入分辨率的等效响应。</strong>如果输入信号x的分辨率发生变化，例如，最初观察到的音频是8KHz，现在观察到的音频是16KHz，与离散卷积核进行卷积将产生不同的响应，因为在每个分辨率下，内核将覆盖不同的输入子集。另一方面，连续内核是分辨率无关的，因此无论输入的分辨率如何，它都能够识别输入。当以不同的分辨率呈现一个输入时，例如，更高的分辨率，通过核生成器网络传递更细的坐标网格就足以构建相应分辨率的相同核。</p>
@@ -313,8 +313,8 @@
 
 <p><strong>深度可分连续核卷积。</strong>可分离卷积早已被证明可以提高CNNs的参数和计算效率。最近，它们的使用在CNN中比传统卷积有了改善，这是因为空间和信道维度的分离，降低了卷积的计算和参数复杂性，允许更广泛的网络和更高的性能。</p>
 <p>基于这些观察，我们构建了一个深度可分版本的FlexConv ，其中信道卷积由核生成器网络生成的核计算，然后从N_in到N_out进行点卷积。这一变化允许建设一个更大的CCNN，从30到110个隐藏通道而不增加网络的参数或计算复杂性。</p>
-<p><strong>正确初始化内核生成器网络G_Kernel。</strong>我们观察到，在之前的工作中，内核生成器网络没有为参数化卷积核而正确初始化。在初始化时，我们希望卷积层的输入和输出方差保持相等，以避免梯度爆炸和梯度消失，即Var(x)=Var(y)。因此，卷积核的方差被初始化为Var(K)=(gain^2)/(inchannels·kernelsize)，gain取决于使用的非线性。然而，神经网络的初始化使输入的单位方差保留在输出。因此，当用作核生成器网络时，标准的初始化方法会导致核存在单位方差，即Var(K)=1。结果表明，使用神经网络作为核生成网络的CNN的特征表示方差逐层增长，与in_channels·kernel_size成正比。例如，我们观察到CKCNNs和FlexNets在初始化时的 logits 大约为 e^19。这是不可取的，因为它会导致不稳定的训练和需要较低的学习率。</p>
-<p>为了解决这个问题，我们要求G_Kernel输出的方差等于(gain^2)/(inchannels·kernelsize)，而不是1。为此，我们用gain/sqrt(inchannels·kernelsize)重新加权内核生成器网络的最后一层。因此，核生成器网络输出处的方差跟随传统卷积核的初始化，而CCNN的logits在初始化时呈现单位方差。</p>
+<p><strong>正确初始化内核生成器网络G_Kernel。</strong>我们观察到，在之前的工作中，内核生成器网络没有为参数化卷积核而正确初始化。在初始化时，我们希望卷积层的输入和输出方差保持相等，以避免梯度爆炸和梯度消失，即Var(x)&#x3D;Var(y)。因此，卷积核的方差被初始化为Var(K)&#x3D;(gain^2)&#x2F;(inchannels·kernelsize)，gain取决于使用的非线性。然而，神经网络的初始化使输入的单位方差保留在输出。因此，当用作核生成器网络时，标准的初始化方法会导致核存在单位方差，即Var(K)&#x3D;1。结果表明，使用神经网络作为核生成网络的CNN的特征表示方差逐层增长，与in_channels·kernel_size成正比。例如，我们观察到CKCNNs和FlexNets在初始化时的 logits 大约为 e^19。这是不可取的，因为它会导致不稳定的训练和需要较低的学习率。</p>
+<p>为了解决这个问题，我们要求G_Kernel输出的方差等于(gain^2)&#x2F;(inchannels·kernelsize)，而不是1。为此，我们用gain&#x2F;sqrt(inchannels·kernelsize)重新加权内核生成器网络的最后一层。因此，核生成器网络输出处的方差跟随传统卷积核的初始化，而CCNN的logits在初始化时呈现单位方差。</p>
 <hr>
 <h3 id="Experiments-and-discussion"><a href="#Experiments-and-discussion" class="headerlink" title="Experiments and discussion"></a>Experiments and discussion</h3><img src="/ed1ba0e7/4.png" class>
 
@@ -425,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -499,7 +499,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

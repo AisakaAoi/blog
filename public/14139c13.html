@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -140,7 +140,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -296,9 +296,11 @@
 <li><p>提出一种利用双分支的分离GAN(TDGAN)进行表情识别。</p>
 </li>
 <li><p>面部表情识别任务与人脸检测任务不同。</p>
-<p>当前工业上常用的人脸检测模型例如MTCNN，提出利用面部额外的属性信息例如表情、年龄等作为辅助任务，可以增强面部人脸识别(人脸ID)的表征能力，并且通过自监督的方式监督模型的训练过程，提高模型的泛化能力和性能，也取得了很好的效果。</p>
-<p>然而，对于表情识别任务来说，核心是为了识别面部的表情，最理想的情况是相同的表情在不同的脸上都能完美识别。与个人信息有强关联的面部特征会对识别模型误导，也就是说，模型需要能够忽略面部与个人身份信息有强关联的特征。</p>
 </li>
+</ol>
+<p>  当前工业上常用的人脸检测模型例如MTCNN，提出利用面部额外的属性信息例如表情、年龄等作为辅助任务，可以增强面部人脸识别(人脸ID)的表征能力，并且通过自监督的方式监督模型的训练过程，提高模型的泛化能力和性能，也取得了很好的效果。</p>
+<p>  然而，对于表情识别任务来说，核心是为了识别面部的表情，最理想的情况是相同的表情在不同的脸上都能完美识别。与个人信息有强关联的面部特征会对识别模型误导，也就是说，模型需要能够忽略面部与个人身份信息有强关联的特征。</p>
+<ol start="3">
 <li><p>2中的内容也就是提出本文方法的初衷：通过对抗学习的方式，同时学习面部表情特征和面部ID属性特征，通过表情迁移的方式把表情从一个脸上迁移到另一个脸上(图片生成)，让模型能够更好的分离面部ID信息和面部表情信息。</p>
 </li>
 <li><p>本文提出了自监督方式提升表征学习能力，增强特征分离能力。</p>
@@ -364,7 +366,7 @@
 <li>双分支模型，双分支的收敛速度不一致</li>
 <li>双分支模型，表情分支学习的效果比面部特征学习效果好</li>
 </ol>
-<p>作者给出解决方案：面部分支使用更深/更加精细的模型进行训练；或者使用与训练模型</p>
+<p>作者给出解决方案：面部分支使用更深&#x2F;更加精细的模型进行训练；或者使用与训练模型</p>
 <h5 id="迁移性能问题"><a href="#迁移性能问题" class="headerlink" title="迁移性能问题"></a>迁移性能问题</h5><p>有些图片的迁移效果较差的原因：</p>
 <ol>
 <li>识别对象极端姿势</li>
@@ -472,7 +474,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -546,7 +548,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

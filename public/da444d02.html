@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -143,7 +143,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -270,7 +270,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.3k</span>
+              <span>3.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -315,7 +315,7 @@
 <h3 id="pass-2"><a href="#pass-2" class="headerlink" title="pass 2"></a>pass 2</h3><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>总共9段。第一段介绍故事背景，第二段引出第一个问题：堆叠更多的层数以后网络是否学习效果更好？但是堆叠更多的层后往往会遇到<strong>梯度爆炸、梯度消失</strong>问题，会从一开始就阻止收敛。好在这个问题可以通过归一化初始化或中间层归一化来解决。第三段介绍了另一个问题：当网络开始收敛时，往往会出现<strong>退化现象</strong>。随着网络深度的增加，准确率趋近饱和，然后迅速下降。意外的是，这不是由于过拟合造成的，更深的模型反而会有更高的训练误差。</p>
 <img src="/da444d02/3.png" class>
 
-<p>第4-6段，为了解决深度学习的退化问题，作者提出了<strong>深度残差学习框架</strong>，让网络层去<strong>拟合残差映射</strong>。如果我们想要得到的映射为 H(x)，则我们让添加的非线性网络层去拟合<strong>残差映射</strong> F(x) = H(x) − x，则原始的映射就可以写成 F(x) + x。残差映射的实现可以通过图2所示的连接块实现，<strong>跳跃连接</strong>是一个恒等映射，没有引入额外的参数和计算复杂度，整个网络很容易实现（最初<strong>ResNet</strong>是使用<strong>Caffe</strong>库实现的）。</p>
+<p>第4-6段，为了解决深度学习的退化问题，作者提出了<strong>深度残差学习框架</strong>，让网络层去<strong>拟合残差映射</strong>。如果我们想要得到的映射为 H(x)，则我们让添加的非线性网络层去拟合<strong>残差映射</strong> F(x) &#x3D; H(x) − x，则原始的映射就可以写成 F(x) + x。残差映射的实现可以通过图2所示的连接块实现，<strong>跳跃连接</strong>是一个恒等映射，没有引入额外的参数和计算复杂度，整个网络很容易实现（最初<strong>ResNet</strong>是使用<strong>Caffe</strong>库实现的）。</p>
 <p>后面三段是本文设计的网络在<strong>ImageNet</strong>、<strong>CIFAR-10</strong>、<strong>COCO</strong>数据集上的实验结果，大量的实验结果表明作者设计的<strong>残差学习框架</strong>的通用性，一方面不仅使得网络更容易优化，另一方面随着网络深度的增加，网络复杂度并没有明显增加，准确率却会提高很多。</p>
 <img src="/da444d02/4.png" class>
 
@@ -329,10 +329,10 @@
 <li>接着是<strong>六个残差连接块</strong>，每一个连接块由两层卷积网络组成，卷积核大小为 3 × 3，卷积核个数为256</li>
 <li>然后是<strong>三个残差连接块</strong>，每一个连接块由两层卷积网络组成，卷积核大小为 3 × 3，卷积核个数为512</li>
 </ul>
-<p>最后是全局平均池化层和具有softmax的1000维度的全连接层，这样整个网络包含 1 + 1 + (3 + 4 + 6 + 3) × 2 = 34 个卷积层。尽管网络深度相比<strong>VGG-19</strong>要深了许多，但是<strong>FLOPs</strong>只是<strong>VGG-19</strong>的18%左右。</p>
+<p>最后是全局平均池化层和具有softmax的1000维度的全连接层，这样整个网络包含 1 + 1 + (3 + 4 + 6 + 3) × 2 &#x3D; 34 个卷积层。尽管网络深度相比<strong>VGG-19</strong>要深了许多，但是<strong>FLOPs</strong>只是<strong>VGG-19</strong>的18%左右。</p>
 <img src="/da444d02/5.png" class>
 
-<p>从表1可以看到，<strong>ResNet-18</strong>和<strong>ResNet-34</strong>具有相同的残差连接块，每个连接块包含两个卷积层。而<strong>ResNet-50/101/152</strong>的每个连接块包含3个卷积层。作者把这种连接块称为<strong>bottleneck</strong>，这里主要使用了1 × 1的卷积核，主要是用于匹配特征图维度以及从实践出发能够承担的起训练时间。（之前听过论文通信作者的一个报告，据说这个网络训练时间为一个月，具体一个月是指纯训练还是指训练+测试+调参就不太清楚了）。</p>
+<p>从表1可以看到，<strong>ResNet-18</strong>和<strong>ResNet-34</strong>具有相同的残差连接块，每个连接块包含两个卷积层。而<strong>ResNet-50&#x2F;101&#x2F;152</strong>的每个连接块包含3个卷积层。作者把这种连接块称为<strong>bottleneck</strong>，这里主要使用了1 × 1的卷积核，主要是用于匹配特征图维度以及从实践出发能够承担的起训练时间。（之前听过论文通信作者的一个报告，据说这个网络训练时间为一个月，具体一个月是指纯训练还是指训练+测试+调参就不太清楚了）。</p>
 <img src="/da444d02/6.png" class>
 
 <hr>
@@ -340,19 +340,19 @@
 <img src="/da444d02/7.png" class>
 
 <hr>
-<h4 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h4><p>从论文中可以看到作者做了大量实验。首先是<strong>ImageNet Classification</strong>，首先评估了<strong>plain-18/34</strong>两个网络，从表2可以看到，<strong>plain-34</strong>网络比<strong>plain-18</strong>有更高的错误率，从图4左图也可以看到，在训练过程中，出现了<strong>退化现象</strong>，随着网络深度的增加，训练误差反而变大。作者在论文中解释到：退化现象应该不是<strong>梯度消失</strong>引起的，因为整个训练使用了<strong>BN</strong>来训练，也查验了反向传播时梯度幅值也是正常的，作者怀疑<strong>可能是因为更深的网络有着更低的收敛速度，影响着训练误差的减小，这个问题未来会进一步研究</strong>。</p>
-<p>接着是<strong>ResNet-18/34</strong>两个网络的评估，从表2和图4右图可以观察到三个现象：</p>
+<h4 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h4><p>从论文中可以看到作者做了大量实验。首先是<strong>ImageNet Classification</strong>，首先评估了<strong>plain-18&#x2F;34</strong>两个网络，从表2可以看到，<strong>plain-34</strong>网络比<strong>plain-18</strong>有更高的错误率，从图4左图也可以看到，在训练过程中，出现了<strong>退化现象</strong>，随着网络深度的增加，训练误差反而变大。作者在论文中解释到：退化现象应该不是<strong>梯度消失</strong>引起的，因为整个训练使用了<strong>BN</strong>来训练，也查验了反向传播时梯度幅值也是正常的，作者怀疑<strong>可能是因为更深的网络有着更低的收敛速度，影响着训练误差的减小，这个问题未来会进一步研究</strong>。</p>
+<p>接着是<strong>ResNet-18&#x2F;34</strong>两个网络的评估，从表2和图4右图可以观察到三个现象：</p>
 <ul>
 <li>网络越深，训练误差反而越小，<strong>退化问题可以通过残差学习得到解决</strong></li>
 <li>与<strong>plain-34</strong>网络相比，训练误差下降了3.5%，随着网络深度的不断增加，网络性能进一步提高</li>
-<li>与<strong>palin-18/34</strong>网络相比，残差网络收敛速度更快</li>
+<li>与<strong>palin-18&#x2F;34</strong>网络相比，残差网络收敛速度更快</li>
 </ul>
 <img src="/da444d02/8.png" class>
 
 <p>然后是<strong>恒等跳跃连接和投影跳跃连接</strong>的对比，可以看到三种连接都有助于提高网络性能，但是为了不增加网络结构的复杂度，作者这里主要选择恒等跳跃连接进行后续的实验。</p>
 <img src="/da444d02/9.png" class>
 
-<p>下面是<strong>ResNet-50/101/152</strong>网络的评估，首先可以看到，尽管网络深度不断增加，但是复杂度依然低于<strong>VGG-16/19</strong>。随着网络深度的不断增加，错误率不断下降，同时在训练过程中也没有出现退化现象，在单个模型上取得了4.49%的错误率，在<strong>ImageNet2015</strong>比赛上，通过集成6个不同的模型，取得了3.57%的错误率（这是一个很了不起的结果，因为ImageNet数据集在人工标注时，可能就会有1%的错误率。）</p>
+<p>下面是<strong>ResNet-50&#x2F;101&#x2F;152</strong>网络的评估，首先可以看到，尽管网络深度不断增加，但是复杂度依然低于<strong>VGG-16&#x2F;19</strong>。随着网络深度的不断增加，错误率不断下降，同时在训练过程中也没有出现退化现象，在单个模型上取得了4.49%的错误率，在<strong>ImageNet2015</strong>比赛上，通过集成6个不同的模型，取得了3.57%的错误率（这是一个很了不起的结果，因为ImageNet数据集在人工标注时，可能就会有1%的错误率。）</p>
 <img src="/da444d02/10.png" class>
 
 <p>最后总结一下，<strong>ResNet</strong>解决了网络训练退化的问题，找到了可以训练更深网络的办法，目前已经成为了深度学习中最重要的一种模型。</p>
@@ -468,7 +468,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -542,7 +542,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

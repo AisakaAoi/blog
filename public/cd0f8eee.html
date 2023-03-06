@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -133,7 +133,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -322,12 +322,11 @@
 <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p><strong>数学套路</strong>：发现一些模式、把这些模式公式化 or 证明一些猜想，最后推导定理</p>
 <ul>
 <li>先有结论、提出猜想；再试图证明猜想<ul>
-<li>数学归纳法：n=1、2、3的简单例子，找规律；泛化到 n 的情况；再试图证明结论</li>
+<li>数学归纳法：n&#x3D;1、2、3的简单例子，找规律；泛化到 n 的情况；再试图证明结论</li>
 </ul>
 </li>
-<li>数学有很多公开的、未解决的问题</li>
+<li>数学有很多公开的、未解决的问题<br><strong>AI套路</strong>：拿点数据、跑跑实验、看看实验结果；根据结果找可解释性的结论</li>
 </ul>
-<p><strong>AI套路</strong>：拿点数据、跑跑实验、看看实验结果；根据结果找可解释性的结论</p>
 <p>1960 年 已经有<strong>数学家用计算机辅助</strong>来发现模式和公式化猜想</p>
 <ul>
 <li>BSD猜想，千禧年 2000年 （美国克雷数学研究所 (Clay Mathematics Institute,CMI)）提出的七大问题之一</li>
@@ -340,7 +339,7 @@
 <li>图论：按照某种性质的图有多少个，计算机遍历所有的组合、统计结果；根据计算得到的图个数结果，猜想数学结论</li>
 <li>Richard 计算机理论研究者，一个算法的复杂度的上下限，通过计算机模拟逼近曲线的形状，然后猜想数学结论 or 证明的思路是什么</li>
 </ul>
-<p><strong>摘要 1 + 2 句 == 背景</strong><br><strong>细化本文主题</strong>：2个例子显示了 ML 对数学领域的结论的证明的有用性<br>本文觉得应该如何用 ML 来帮助数学家发现新的猜想 or 定理？</p>
+<p><strong>摘要 1 + 2 句 &#x3D;&#x3D; 背景</strong><br><strong>细化本文主题</strong>：2个例子显示了 ML 对数学领域的结论的证明的有用性<br>本文觉得应该如何用 ML 来帮助数学家发现新的猜想 or 定理？</p>
 <ul>
 <li>ML 发现潜在的猜想 or 定理模式和数学对象之间的关系</li>
 <li>归因技术找到最重要的数学对象，数学家可以着重考虑这几个重要的成份</li>
@@ -424,7 +423,7 @@
 <li>x(z) 是 （顶点数 int、边数 int、体积 R、表面积 R）</li>
 <li>y(z) 是 凸多面体 z 的 面 的数量</li>
 </ul>
-<p>x(z) * (-1, 1, 0, 0) + 2 = y(z)<br>凸多面体的边数 - 其定点数 + 2 = 该凸面体的面数<br>线性回归：和一个 四维向量 做点积 + 2<br>ML 学习 1个 四维的常数值，得到学习的常数值后，用严格的数学推理来证明猜想</p>
+<p>x(z) * (-1, 1, 0, 0) + 2 &#x3D; y(z)<br>凸多面体的边数 - 其定点数 + 2 &#x3D; 该凸面体的面数<br>线性回归：和一个 四维向量 做点积 + 2<br>ML 学习 1个 四维的常数值，得到学习的常数值后，用严格的数学推理来证明猜想</p>
 <p><strong>更复杂的例子，ML 要学的函数 f 更复杂、维度更高；需要更复杂的机器学习模型</strong></p>
 <hr>
 <h3 id="一篇新闻"><a href="#一篇新闻" class="headerlink" title="一篇新闻"></a>一篇新闻</h3><p>作者 | Ben Dickson<br>译者 | Sambodhi</p>
@@ -462,7 +461,7 @@
 <p>关于 DeepMind 的论文中提出的第一个结果，Davis 观察到，纽结理论并不是深度学习优于其他机器学习或统计方法的典型问题。</p>
 <p>纽结问题只有 12 个输入特征，其中只有三个是相关的。而输入特征和目标变量之间的数学关系很简单。</p>
 <p>Davis 写道：“很难理解为什么有 20 万个参数的神经网络会成为首选的方法；简单、传统的统计方法或支持向量机更适合。”</p>
-<p>在第二个项目中，深度学习的作用更为重要。“与使用通用深度学习架构的纽结理论项目不同，神经网络被精心设计，以满足对这个问题更深层次的数学知识。此外，深度学习在预处理数据上比在原始数据上工作得更好，错误率大约是 1/40。”他写道。</p>
+<p>在第二个项目中，深度学习的作用更为重要。“与使用通用深度学习架构的纽结理论项目不同，神经网络被精心设计，以满足对这个问题更深层次的数学知识。此外，深度学习在预处理数据上比在原始数据上工作得更好，错误率大约是 1&#x2F;40。”他写道。</p>
 <p>Davis 称，一方面，这些研究结果与那些批评的观点形成了鲜明的对比，即把领域知识纳入深度学习中是非常困难的。他写道：“另一方面，深度学习的爱好者经常称赞深度学习是一种‘即插即用’的学习方法，它可以用原始数据来解决手头的任何问题；这与这种赞誉相悖。”</p>
 <p>在这些任务中，要成功应用深度学习，可能在很大程度上依赖于训练数据的生成方式和数学结构的编码方式。这说明该框架可能适用于一小类数学问题。</p>
 <p>“寻找生成和编码数据的最佳方式涉及理论、经验、艺术和实验的混合。这一切的重担都落在了人类专家身上，”他写道。“深度学习可以是一种强大的工具，但也不是万能的。”</p>
@@ -577,7 +576,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -651,7 +650,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

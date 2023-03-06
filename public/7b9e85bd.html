@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.0">
+<meta name="generator" content="Hexo 6.3.0">
 
 <meta name="baidu-site-verification" content="code-KCMz4b3cnd" />
 <meta name="google-site-verification" content="MTp8U7dJ1uzrfz8Mu6rgqX1CIm3HjqPWd0xaRcv1tFg" />
@@ -159,7 +159,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">254</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">258</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -456,7 +456,7 @@
 <hr>
 <h4 id="前向过程"><a href="#前向过程" class="headerlink" title="前向过程"></a>前向过程</h4><ul>
 <li>假设说有一张 224 * 224 * 3（ImageNet 标准尺寸）的输入图片</li>
-<li>第一步就是像 ViT 那样把图片打成 patch，在 Swin Transformer 这篇论文里，它的 patch size 是 4 * 4，而不是像 ViT 一样 16 * 16，所以说它经过 patch partition 打成 patch 之后，得到图片的尺寸是 56 * 56 * 48，56 就是 224 / 4，因为 patch size 是 4，向量的维度 48，因为 4 * 4 * 3，3 是图片的 RGB 通道</li>
+<li>第一步就是像 ViT 那样把图片打成 patch，在 Swin Transformer 这篇论文里，它的 patch size 是 4 * 4，而不是像 ViT 一样 16 * 16，所以说它经过 patch partition 打成 patch 之后，得到图片的尺寸是 56 * 56 * 48，56 就是 224 &#x2F; 4，因为 patch size 是 4，向量的维度 48，因为 4 * 4 * 3，3 是图片的 RGB 通道</li>
 <li>打完了 patch ，接下来就要做 Linear Embedding，也就是说要把向量的维度变成一个预先设置好的值，就是 Transformer 能够接受的值，在 Swin Transformer 的论文里把这个超参数设为 c，对于 Swin tiny 网络来说，也就是上图中画的网络总览图，它的 c 是 96，所以经历完 Linear Embedding 之后，输入的尺寸就变成了 56 * 56 * 96，前面的 56 * 56 就会拉直变成 3136，变成了序列长度，后面的 96 就变成了每一个 token 向量的维度，其实 Patch Partition 和 Linear Embedding 就相当于是 ViT 里的 Patch Projection 操作，而在代码里也是用一次卷积操作就完成了</li>
 <li>第一部分跟 ViT 其实还是没有区别的，但紧接着区别就来了</li>
 <li>首先序列长度是 3136，对于 ViT 来说，用 patch size 16 * 16，它的序列长度就只有 196，是相对短很多的，这里的 3136 就太长了，是目前来说 Transformer 不能接受的序列长度，所以 Swin Transformer 就引入了基于窗口的自注意力计算，每个窗口按照默认来说，都只有七七四十九个 patch，所以说序列长度就只有 49 就相当小了，这样就解决了计算复杂度的问题</li>
@@ -475,13 +475,13 @@
 
 <ul>
 <li>其实在这里的 1、2、3、4 并不是矩阵里有的值，而是给它的一个序号，同样序号位置上的 patch 就会被 merge 到一起，这个序号只是为了帮助理解</li>
-<li>经过隔一个点采一个样之后，原来的这个张量就变成了四个张量，也就是说所有的 1 都在一起了，2 在一起，3 在一起，4 在一起，如果原张量的维度是 h * w * c ，当然这里 c 没有画出来，经过这次采样之后就得到了 4 个张量，每个张量的大小是 h/2、w/2，它的尺寸都缩小了一倍</li>
-<li>现在把这四个张量在 c 的维度上拼接起来，也就变成了下图中红线所画出来的形式，张量的大小就变成了 h/2 * w/2 * 4c，相当于用空间上的维度换了更多的通道数</li>
+<li>经过隔一个点采一个样之后，原来的这个张量就变成了四个张量，也就是说所有的 1 都在一起了，2 在一起，3 在一起，4 在一起，如果原张量的维度是 h * w * c ，当然这里 c 没有画出来，经过这次采样之后就得到了 4 个张量，每个张量的大小是 h&#x2F;2、w&#x2F;2，它的尺寸都缩小了一倍</li>
+<li>现在把这四个张量在 c 的维度上拼接起来，也就变成了下图中红线所画出来的形式，张量的大小就变成了 h&#x2F;2 * w&#x2F;2 * 4c，相当于用空间上的维度换了更多的通道数</li>
 </ul>
 <img src="/7b9e85bd/13.png" class>
 
 <ul>
-<li>通过这个操作，就把原来一个大的张量变小了，就像卷积神经网络里的池化操作一样，为了跟卷积神经网络那边保持一致（不论是 VGGNet 还是 ResNet，一般在池化操作降维之后，通道数都会翻倍，从 128 变成 256，从 256 再变成 512），所以这里也只想让他翻倍，而不是变成 4 倍，所以紧接着又再做了一次操作，就是在 c 的维度上用一个 1 * 1 的卷积，把通道数降下来变成 2c，通过这个操作就能把原来一个大小为 h * w * c 的张量变成 h/2 * w/2 * 2c 的一个张量，也就是说空间大小减半，但是通道数乘 2，这样就跟卷积神经网络完全对等起来了</li>
+<li>通过这个操作，就把原来一个大的张量变小了，就像卷积神经网络里的池化操作一样，为了跟卷积神经网络那边保持一致（不论是 VGGNet 还是 ResNet，一般在池化操作降维之后，通道数都会翻倍，从 128 变成 256，从 256 再变成 512），所以这里也只想让他翻倍，而不是变成 4 倍，所以紧接着又再做了一次操作，就是在 c 的维度上用一个 1 * 1 的卷积，把通道数降下来变成 2c，通过这个操作就能把原来一个大小为 h * w * c 的张量变成 h&#x2F;2 * w&#x2F;2 * 2c 的一个张量，也就是说空间大小减半，但是通道数乘 2，这样就跟卷积神经网络完全对等起来了</li>
 </ul>
 <p>整个这个过程就是 Patch Merging，经历过这次 Patch Merging 操作之后，输出的大小就从 56 * 56 * 96 变成了 28 * 28 * 192，经过 stage2 中的 Transformer block，尺寸是不变的，所以出来之后还是 28 * 28 * 192</p>
 <img src="/7b9e85bd/14.png" class>
@@ -509,7 +509,7 @@
 <ul>
 <li>每一个橘黄色的方格就是一个窗口，但是这个窗口并不是最小的计算单元，最小的计算单元其实还是之前的那个 patch，也就意味着每一个小窗口里其实还有 m * m 个 patch，在 Swin Transformer 这篇论文里一般 m 默认为 7，也就是说，一个橘黄色的小方格里有七七四十九个小 patch</li>
 <li>现在所有自注意力的计算都是在这些小窗口里完成的，就是说序列长度永远都是七七四十九</li>
-<li>原来大的整体特征图到底里面会有多少个窗口呢？其实也就是每条边 56 / 7 就 8 个窗口，也就是说一共会有 8 * 8 等于 64 个窗口，就是说会在这 64 个窗口里分别去算它们的自注意力</li>
+<li>原来大的整体特征图到底里面会有多少个窗口呢？其实也就是每条边 56 &#x2F; 7 就 8 个窗口，也就是说一共会有 8 * 8 等于 64 个窗口，就是说会在这 64 个窗口里分别去算它们的自注意力</li>
 </ul>
 <hr>
 <h4 id="基于窗口的自注意力模式的计算复杂度"><a href="#基于窗口的自注意力模式的计算复杂度" class="headerlink" title="基于窗口的自注意力模式的计算复杂度"></a>基于窗口的自注意力模式的计算复杂度</h4><p>说到底，基于窗口的自注意力计算方式能比全局的自注意力方式省多少呢？在 Swin Transformer 这篇论文里作者就给出了一个大概的估计，它给出了两个公式如下图所示</p>
@@ -544,7 +544,7 @@
 <ul>
 <li>因为在每个窗口里算的还是多头自注意力，所以可以直接套用公式（1），只不过高度和宽度变化了，现在高度和宽度不再是 h * w，而是变成窗口有多大了，也就是 M * M，也就是说现在 h 变成了 M，w 也是 M，它的序列长度只有 M * M 这么大</li>
 <li>所以当把 M 值带入到公式（1）之后，就得到计算复杂度是 4 * M^2 * c^2 + 2 * M^4 * c，这个就是在一个窗口里算多头自注意力所需要的计算复杂度</li>
-<li>那我们现在一共有 h/M * w/M 个窗口，现在用这么多个窗口乘以每个窗口所需要的计算复杂度就能得到公式（2）了</li>
+<li>那我们现在一共有 h&#x2F;M * w&#x2F;M 个窗口，现在用这么多个窗口乘以每个窗口所需要的计算复杂度就能得到公式（2）了</li>
 </ul>
 <p>对比公式（1）和公式（2），虽然这两个公式前面这两项是一样的，只有后面从 (h * w)^2 变成了 M^2 * h * w，看起来好像差别不大，但其实如果仔细带入数字进去计算就会发现，计算复杂的差距是相当巨大的，因为这里的 h * w 如果是 56 * 56 的话， M^2 其实只有 49，所以是相差了几十甚至上百倍的</p>
 <p>这种基于窗口计算自注意力的方式虽然很好地解决了内存和计算量的问题，但是窗口和窗口之间没有通信，这样就达不到全局建模了，也就文章里说的会限制模型的能力，所以最好还是要有一种方式能让窗口和窗口之间互相通信起来，这样效果应该会更好，因为具有上下文的信息，所以作者就提出移动窗口的方式</p>
@@ -768,7 +768,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">254</span>
+          <span class="site-state-item-count">258</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -842,7 +842,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">46:55</span>
+    <span title="站点阅读时长">47:34</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
