@@ -12,7 +12,7 @@
     "version": "5.4.0"
   },
   "dependencies": {
-    "core-js": "^3.8.1",
+    "core-js": "^3.29.0",
     "eslint": "^8.0.0",
     "hexo": "^5.0.0",
     "hexo-abbrlink": "^2.2.1",
