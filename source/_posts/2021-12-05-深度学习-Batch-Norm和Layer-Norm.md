@@ -3,7 +3,7 @@ title: 深度学习-Batch Norm和Layer Norm
 categories:
   - 🌙进阶学习
   - ⭐人工智能
-  - 💫深度学习
+  - 💫深度学习 Deep Learning
 abbrlink: 5a7353d9
 date: 2021-12-05 22:09:14
 tags:
