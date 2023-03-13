@@ -3,7 +3,7 @@ title: 深度学习-ProGAN、StyleGAN、Diffusion GAN…你都掌握了吗？一
 categories:
   - 🌙进阶学习
   - ⭐人工智能
-  - 💫深度学习
+  - 💫深度学习 Deep Learning
 abbrlink: f9495119
 date: 2022-11-20 19:12:07
 tags:

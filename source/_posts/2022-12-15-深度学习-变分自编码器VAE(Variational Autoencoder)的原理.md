@@ -3,7 +3,7 @@ title: 深度学习-变分自编码器VAE(Variational Autoencoder)的原理
 categories:
   - 🌙进阶学习
   - ⭐人工智能
-  - 💫深度学习
+  - 💫深度学习 Deep Learning
 abbrlink: 4bb99d46
 date: 2022-12-15 11:50:31
 tags:
