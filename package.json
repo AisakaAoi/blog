@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "core-js": "^3.29.0",
-    "eslint": "^8.35.0",
+    "eslint": "^8.36.0",
     "hexo": "^6.3.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-admin": "^2.3.0",
