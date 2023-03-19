@@ -2,7 +2,7 @@
 title: Linux-部署Node.js和Express框架
 categories:
   - 🌙基础学习
-  - ⭐Android
+  - ⭐Linux
 abbrlink: e3e12799
 date: 2020-12-22 00:29:14
 ---

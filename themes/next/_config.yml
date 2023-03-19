@@ -179,16 +179,16 @@ site_state: true
 social:
   GitHub 👨‍💻: https://github.com/AisakaAoi || fab fa-github
   GitHub 👩‍💻: https://github.com/AisakaManatsu || fab fa-github
+  E-Mail 🏫: mailto:chenzongnan@m.scnu.edu.cn || fa fa-envelope
+  E-Mail 📧: mailto:aisakaaoi@qq.com || fa fa-envelope
   Bilibili 📺: https://space.bilibili.com/91560309 || fab fa-bilibili
   Bilibili 🎮: https://space.bilibili.com/198562921 || fab fa-bilibili
   YouTube 📺: https://www.youtube.com/channel/UCALvyn5Cl76GCotO9pczvjg || fab fa-youtube
-  E-Mail 📧: mailto:aisakaaoi@qq.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
   #FB Page: https://www.facebook.com/yourname || fab fa-facebook
   #StackOverflow: https://stackoverflow.com/yourname || fab fa-stack-overflow
-  
   #Instagram: https://instagram.com/yourname || fab fa-instagram
   #Skype: skype:yourname?call|chat || fab fa-skype
 
