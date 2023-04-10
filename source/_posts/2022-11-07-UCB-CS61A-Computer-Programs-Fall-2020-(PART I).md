@@ -2,6 +2,7 @@
 title: 'UCB CS61A: Computer Programs [Fall 2020] (PART I)'
 categories:
   - 🌙优秀学习资源
+  - ⭐UCB CS61A
 abbrlink: 8977a093
 date: 2022-11-07 15:59:08
 tags:

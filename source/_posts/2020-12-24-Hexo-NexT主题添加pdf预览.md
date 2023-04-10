@@ -1,7 +1,8 @@
 ---
 title: Hexo-NexT主题添加pdf预览
 categories:
-  - 🌙兴趣杂谈
+  - 🌙基础学习
+  - ⭐Git&Hexo
 abbrlink: 182775a5
 date: 2020-12-24 14:57:12
 tags:
