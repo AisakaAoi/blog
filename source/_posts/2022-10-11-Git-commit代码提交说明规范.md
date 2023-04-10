@@ -2,7 +2,7 @@
 title: Git-commit代码提交说明规范
 categories:
   - 🌙基础学习
-  - ⭐Git
+  - ⭐Git&Hexo
 abbrlink: b1b30ed3
 date: 2022-10-11 21:24:04
 tags:
