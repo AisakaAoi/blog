@@ -2,6 +2,7 @@
 title: 跟李沐学AI-动手学深度学习 PyTorch版(PART VIII)
 categories:
   - 🌙优秀学习资源
+  - ⭐动手学深度学习 PyTorch版
 abbrlink: 3c3d28e4
 date: 2021-07-27 15:35:16
 tags:
