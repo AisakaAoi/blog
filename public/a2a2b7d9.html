@@ -23,19 +23,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="《动手学深度学习》v2 课本《动手学深度学习》v2 课本">
+  <meta name="description" content="《动手学深度学习》v2 课本《动手学深度学习》v2 课本  25 使用块的网络 VGGVGG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跟李沐学AI-动手学深度学习 PyTorch版(PART V)">
-<meta property="og:url" content="http://example.com/34c4644c.html">
+<meta property="og:title" content="跟李沐学AI-动手学深度学习 PyTorch版-25 使用块的网络 VGG">
+<meta property="og:url" content="http://example.com/a2a2b7d9.html">
 <meta property="og:site_name" content="逢坂葵的个人博客">
-<meta property="og:description" content="《动手学深度学习》v2 课本《动手学深度学习》v2 课本">
+<meta property="og:description" content="《动手学深度学习》v2 课本《动手学深度学习》v2 课本  25 使用块的网络 VGGVGG">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-06-05T07:35:16.000Z">
-<meta property="article:modified_time" content="2023-03-15T18:48:27.517Z">
+<meta property="article:published_time" content="2021-05-23T07:35:25.000Z">
+<meta property="article:modified_time" content="2023-04-11T22:29:36.492Z">
 <meta property="article:author" content="Aisaka Aoi">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/34c4644c.html">
+<link rel="canonical" href="http://example.com/a2a2b7d9.html">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>跟李沐学AI-动手学深度学习 PyTorch版(PART V) | 逢坂葵的个人博客</title>
+  <title>跟李沐学AI-动手学深度学习 PyTorch版-25 使用块的网络 VGG | 逢坂葵的个人博客</title>
   
 
 
@@ -129,7 +129,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">295</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">318</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -186,7 +186,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/34c4644c.html">
+    <link itemprop="mainEntityOfPage" href="http://example.com/a2a2b7d9.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/manatsu.jpg">
@@ -199,7 +199,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          跟李沐学AI-动手学深度学习 PyTorch版(PART V)
+          跟李沐学AI-动手学深度学习 PyTorch版-25 使用块的网络 VGG
         </h1>
 
         <div class="post-meta">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-06-05 15:35:16" itemprop="dateCreated datePublished" datetime="2021-06-05T15:35:16+08:00">2021-06-05</time>
+              <time title="创建时间：2021-05-23 15:35:25" itemprop="dateCreated datePublished" datetime="2021-05-23T15:35:25+08:00">2021-05-23</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -219,10 +219,14 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%F0%9F%8C%99%E4%BC%98%E7%A7%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/" itemprop="url" rel="index"><span itemprop="name">🌙优秀学习资源</span></a>
                 </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%F0%9F%8C%99%E4%BC%98%E7%A7%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/%E2%AD%90%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-PyTorch%E7%89%88/" itemprop="url" rel="index"><span itemprop="name">⭐动手学深度学习 PyTorch版</span></a>
+                </span>
             </span>
 
           
-            <span id="/34c4644c.html" class="post-meta-item leancloud_visitors" data-flag-title="跟李沐学AI-动手学深度学习 PyTorch版(PART V)" title="阅读次数">
+            <span id="/a2a2b7d9.html" class="post-meta-item leancloud_visitors" data-flag-title="跟李沐学AI-动手学深度学习 PyTorch版-25 使用块的网络 VGG" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -237,8 +241,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/34c4644c.html#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/34c4644c.html" itemprop="commentCount"></span>
+    <a title="valine" href="/a2a2b7d9.html#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/a2a2b7d9.html" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -248,7 +252,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>255</span>
+              <span>44</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -268,61 +272,14 @@
 
       
         <h3 id="《动手学深度学习》v2-课本"><a href="#《动手学深度学习》v2-课本" class="headerlink" title="《动手学深度学习》v2 课本"></a>《动手学深度学习》v2 课本</h3><p><a target="_blank" rel="noopener" href="http://zh.d2l.ai/">《动手学深度学习》v2 课本</a></p>
+<hr>
+<h3 id="25-使用块的网络-VGG"><a href="#25-使用块的网络-VGG" class="headerlink" title="25 使用块的网络 VGG"></a>25 使用块的网络 VGG</h3><h4 id="VGG"><a href="#VGG" class="headerlink" title="VGG"></a>VGG</h4><iframe src="//player.bilibili.com/player.html?aid=375682529&bvid=BV1Ao4y117Pd&cid=342942152&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
 <span id="more"></span>
 
-<hr>
-<h3 id="31-深度学习硬件：CPU-和-GPU"><a href="#31-深度学习硬件：CPU-和-GPU" class="headerlink" title="31 深度学习硬件：CPU 和 GPU"></a>31 深度学习硬件：CPU 和 GPU</h3><h4 id="CPU-和-GPU"><a href="#CPU-和-GPU" class="headerlink" title="CPU 和 GPU"></a>CPU 和 GPU</h4><iframe src="//player.bilibili.com/player.html?aid=673440227&bvid=BV1TU4y1j7Wd&cid=349230699&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><iframe src="//player.bilibili.com/player.html?aid=375682529&bvid=BV1Ao4y117Pd&cid=342950623&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
-<h4 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=673440227&bvid=BV1TU4y1j7Wd&cid=349236760&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="32-深度学习硬件：TPU和其他"><a href="#32-深度学习硬件：TPU和其他" class="headerlink" title="32 深度学习硬件：TPU和其他"></a>32 深度学习硬件：TPU和其他</h3><h4 id="更多的芯片"><a href="#更多的芯片" class="headerlink" title="更多的芯片"></a>更多的芯片</h4><iframe src="//player.bilibili.com/player.html?aid=418495005&bvid=BV1VV41147PC&cid=349737728&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-1"><a href="#QA-1" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=418495005&bvid=BV1VV41147PC&cid=349742249&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="33-单机多卡并行"><a href="#33-单机多卡并行" class="headerlink" title="33 单机多卡并行"></a>33 单机多卡并行</h3><h4 id="单机多卡并行"><a href="#单机多卡并行" class="headerlink" title="单机多卡并行"></a>单机多卡并行</h4><iframe src="//player.bilibili.com/player.html?aid=673475005&bvid=BV1vU4y1V7rd&cid=349741612&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-2"><a href="#QA-2" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=673475005&bvid=BV1vU4y1V7rd&cid=349742102&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="34-多GPU训练实现"><a href="#34-多GPU训练实现" class="headerlink" title="34 多GPU训练实现"></a>34 多GPU训练实现</h3><h4 id="从零开始"><a href="#从零开始" class="headerlink" title="从零开始"></a>从零开始</h4><iframe src="//player.bilibili.com/player.html?aid=716153757&bvid=BV1MQ4y1R7Qg&cid=356484743&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="简洁实现"><a href="#简洁实现" class="headerlink" title="简洁实现"></a>简洁实现</h4><iframe src="//player.bilibili.com/player.html?aid=716153757&bvid=BV1MQ4y1R7Qg&cid=356489308&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-3"><a href="#QA-3" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=716153757&bvid=BV1MQ4y1R7Qg&cid=356491300&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="35-分布式训练"><a href="#35-分布式训练" class="headerlink" title="35 分布式训练"></a>35 分布式训练</h3><h4 id="分布式训练"><a href="#分布式训练" class="headerlink" title="分布式训练"></a>分布式训练</h4><iframe src="//player.bilibili.com/player.html?aid=673739196&bvid=BV1jU4y1G7iu&cid=356491827&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-4"><a href="#QA-4" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=673739196&bvid=BV1jU4y1G7iu&cid=356491978&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="36-数据增广"><a href="#36-数据增广" class="headerlink" title="36 数据增广"></a>36 数据增广</h3><h4 id="数据增广"><a href="#数据增广" class="headerlink" title="数据增广"></a>数据增广</h4><iframe src="//player.bilibili.com/player.html?aid=803728933&bvid=BV17y4y1g76q&cid=356993232&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><iframe src="//player.bilibili.com/player.html?aid=803728933&bvid=BV17y4y1g76q&cid=356996025&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-5"><a href="#QA-5" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=803728933&bvid=BV17y4y1g76q&cid=356999447&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="37-微调"><a href="#37-微调" class="headerlink" title="37 微调"></a>37 微调</h3><h4 id="微调"><a href="#微调" class="headerlink" title="微调"></a>微调</h4><iframe src="//player.bilibili.com/player.html?aid=631134930&bvid=BV1Sb4y1d7CR&cid=357000346&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><iframe src="//player.bilibili.com/player.html?aid=631134930&bvid=BV1Sb4y1d7CR&cid=357000451&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-6"><a href="#QA-6" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=631134930&bvid=BV1Sb4y1d7CR&cid=357000547&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="38-第二次竞赛-树叶分类结果"><a href="#38-第二次竞赛-树叶分类结果" class="headerlink" title="38 第二次竞赛 树叶分类结果"></a>38 第二次竞赛 树叶分类结果</h3><iframe src="//player.bilibili.com/player.html?aid=631276695&bvid=BV1Eb4y1C7Fn&cid=359960472&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="39-实战-Kaggle-比赛：图像分类（CIFAR-10）"><a href="#39-实战-Kaggle-比赛：图像分类（CIFAR-10）" class="headerlink" title="39 实战 Kaggle 比赛：图像分类（CIFAR-10）"></a>39 实战 Kaggle 比赛：图像分类（CIFAR-10）</h3><h4 id="Kaggle-CIFAR-10"><a href="#Kaggle-CIFAR-10" class="headerlink" title="Kaggle CIFAR-10"></a>Kaggle CIFAR-10</h4><iframe src="//player.bilibili.com/player.html?aid=803807574&bvid=BV1Gy4y1M7Cu&cid=359962250&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-7"><a href="#QA-7" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=803807574&bvid=BV1Gy4y1M7Cu&cid=359967377&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<hr>
-<h3 id="40-实战-Kaggle-比赛：狗的品种识别（ImageNet-Dogs）"><a href="#40-实战-Kaggle-比赛：狗的品种识别（ImageNet-Dogs）" class="headerlink" title="40 实战 Kaggle 比赛：狗的品种识别（ImageNet Dogs）"></a>40 实战 Kaggle 比赛：狗的品种识别（ImageNet Dogs）</h3><h4 id="Kaggle-ImageNet-Dog"><a href="#Kaggle-ImageNet-Dog" class="headerlink" title="Kaggle ImageNet Dog"></a>Kaggle ImageNet Dog</h4><iframe src="//player.bilibili.com/player.html?aid=461272350&bvid=BV1j5411T7wx&cid=359967655&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
-<h4 id="QA-8"><a href="#QA-8" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=461272350&bvid=BV1j5411T7wx&cid=359970791&page=2" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<h4 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h4><iframe src="//player.bilibili.com/player.html?aid=375682529&bvid=BV1Ao4y117Pd&cid=342952293&page=3" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 <hr>
 
@@ -340,12 +297,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/50333f4a.html" rel="prev" title="跟李沐学AI-动手学深度学习 PyTorch版(PART IV)">
-      <i class="fa fa-chevron-left"></i> 跟李沐学AI-动手学深度学习 PyTorch版(PART IV)
+    <a href="/48779986.html" rel="prev" title="跟李沐学AI-动手学深度学习 PyTorch版-24 深度卷积神经网络 AlexNet">
+      <i class="fa fa-chevron-left"></i> 跟李沐学AI-动手学深度学习 PyTorch版-24 深度卷积神经网络 AlexNet
     </a></div>
       <div class="post-nav-item">
-    <a href="/e0d395a6.html" rel="next" title="软件过程管理-知识点快速复习">
-      软件过程管理-知识点快速复习 <i class="fa fa-chevron-right"></i>
+    <a href="/2d26f426.html" rel="next" title="跟李沐学AI-动手学深度学习 PyTorch版-26 网络中的网络 NiN">
+      跟李沐学AI-动手学深度学习 PyTorch版-26 网络中的网络 NiN <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -406,7 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%8A%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8Bv2-%E8%AF%BE%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">《动手学深度学习》v2 课本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%A1%AC%E4%BB%B6%EF%BC%9ACPU-%E5%92%8C-GPU"><span class="nav-number">2.</span> <span class="nav-text">31 深度学习硬件：CPU 和 GPU</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CPU-%E5%92%8C-GPU"><span class="nav-number">2.1.</span> <span class="nav-text">CPU 和 GPU</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA"><span class="nav-number">2.2.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%A1%AC%E4%BB%B6%EF%BC%9ATPU%E5%92%8C%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">32 深度学习硬件：TPU和其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E7%9A%84%E8%8A%AF%E7%89%87"><span class="nav-number">3.1.</span> <span class="nav-text">更多的芯片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-1"><span class="nav-number">3.2.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-%E5%8D%95%E6%9C%BA%E5%A4%9A%E5%8D%A1%E5%B9%B6%E8%A1%8C"><span class="nav-number">4.</span> <span class="nav-text">33 单机多卡并行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E6%9C%BA%E5%A4%9A%E5%8D%A1%E5%B9%B6%E8%A1%8C"><span class="nav-number">4.1.</span> <span class="nav-text">单机多卡并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-2"><span class="nav-number">4.2.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-%E5%A4%9AGPU%E8%AE%AD%E7%BB%83%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.</span> <span class="nav-text">34 多GPU训练实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B"><span class="nav-number">5.1.</span> <span class="nav-text">从零开始</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E6%B4%81%E5%AE%9E%E7%8E%B0"><span class="nav-number">5.2.</span> <span class="nav-text">简洁实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-3"><span class="nav-number">5.3.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83"><span class="nav-number">6.</span> <span class="nav-text">35 分布式训练</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%AD%E7%BB%83"><span class="nav-number">6.1.</span> <span class="nav-text">分布式训练</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-4"><span class="nav-number">6.2.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36-%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF"><span class="nav-number">7.</span> <span class="nav-text">36 数据增广</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF"><span class="nav-number">7.1.</span> <span class="nav-text">数据增广</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">7.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-5"><span class="nav-number">7.3.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-%E5%BE%AE%E8%B0%83"><span class="nav-number">8.</span> <span class="nav-text">37 微调</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AE%E8%B0%83"><span class="nav-number">8.1.</span> <span class="nav-text">微调</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">8.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-6"><span class="nav-number">8.3.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%AB%9E%E8%B5%9B-%E6%A0%91%E5%8F%B6%E5%88%86%E7%B1%BB%E7%BB%93%E6%9E%9C"><span class="nav-number">9.</span> <span class="nav-text">38 第二次竞赛 树叶分类结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39-%E5%AE%9E%E6%88%98-Kaggle-%E6%AF%94%E8%B5%9B%EF%BC%9A%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%EF%BC%88CIFAR-10%EF%BC%89"><span class="nav-number">10.</span> <span class="nav-text">39 实战 Kaggle 比赛：图像分类（CIFAR-10）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kaggle-CIFAR-10"><span class="nav-number">10.1.</span> <span class="nav-text">Kaggle CIFAR-10</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-7"><span class="nav-number">10.2.</span> <span class="nav-text">QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#40-%E5%AE%9E%E6%88%98-Kaggle-%E6%AF%94%E8%B5%9B%EF%BC%9A%E7%8B%97%E7%9A%84%E5%93%81%E7%A7%8D%E8%AF%86%E5%88%AB%EF%BC%88ImageNet-Dogs%EF%BC%89"><span class="nav-number">11.</span> <span class="nav-text">40 实战 Kaggle 比赛：狗的品种识别（ImageNet Dogs）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Kaggle-ImageNet-Dog"><span class="nav-number">11.1.</span> <span class="nav-text">Kaggle ImageNet Dog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA-8"><span class="nav-number">11.2.</span> <span class="nav-text">QA</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%8A%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E3%80%8Bv2-%E8%AF%BE%E6%9C%AC"><span class="nav-number">1.</span> <span class="nav-text">《动手学深度学习》v2 课本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-%E4%BD%BF%E7%94%A8%E5%9D%97%E7%9A%84%E7%BD%91%E7%BB%9C-VGG"><span class="nav-number">2.</span> <span class="nav-text">25 使用块的网络 VGG</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VGG"><span class="nav-number">2.1.</span> <span class="nav-text">VGG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA"><span class="nav-number">2.3.</span> <span class="nav-text">QA</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -422,7 +379,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">295</span>
+          <span class="site-state-item-count">318</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -499,7 +456,7 @@
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">50:52</span>
+    <span title="站点阅读时长">50:54</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
