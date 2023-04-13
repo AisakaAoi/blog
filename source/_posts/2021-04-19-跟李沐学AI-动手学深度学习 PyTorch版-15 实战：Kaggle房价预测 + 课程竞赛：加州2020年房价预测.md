@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-15 实战：Kaggle房价预测 + 课程竞赛：加州2020年房价预测
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: b4d4ebbe
 date: 2021-04-19 15:35:15

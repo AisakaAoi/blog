@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-25 使用块的网络 VGG
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: a2a2b7d9
 date: 2021-05-23 15:35:25

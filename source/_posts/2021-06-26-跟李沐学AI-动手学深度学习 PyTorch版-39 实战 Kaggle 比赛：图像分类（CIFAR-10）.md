@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-39 实战 Kaggle 比赛：图像分类（CIFAR-10）
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: 5a04a1b8
 date: 2021-06-26 15:35:39

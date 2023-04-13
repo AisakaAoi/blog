@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-29 残差网络 ResNet
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: ea1b434a
 date: 2021-05-30 15:35:29

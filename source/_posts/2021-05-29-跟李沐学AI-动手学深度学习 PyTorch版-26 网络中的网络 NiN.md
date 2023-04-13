@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-26 网络中的网络 NiN
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: 2d26f426
 date: 2021-05-29 15:35:26

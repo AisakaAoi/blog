@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-27 含并行连结的网络 GoogLeNet / Inception V3
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: d53c6b85
 date: 2021-05-29 15:35:27
