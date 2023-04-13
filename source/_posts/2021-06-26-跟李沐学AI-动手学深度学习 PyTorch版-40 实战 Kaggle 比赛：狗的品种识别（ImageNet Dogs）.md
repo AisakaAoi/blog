@@ -1,7 +1,7 @@
 ---
 title: 跟李沐学AI-动手学深度学习 PyTorch版-40 实战 Kaggle 比赛：狗的品种识别（ImageNet Dogs）
 categories:
-  - 🌙优秀学习资源
+  - 🌙学习资源
   - ⭐动手学深度学习 PyTorch版
 abbrlink: 6d1c2834
 date: 2021-06-26 15:35:40
