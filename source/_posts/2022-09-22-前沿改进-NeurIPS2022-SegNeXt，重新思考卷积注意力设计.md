@@ -1,10 +1,10 @@
 ---
-title: 深度学习-NeurIPS2022 | SegNeXt，重新思考卷积注意力设计
+title: 前沿改进-NeurIPS2022 | SegNeXt，重新思考卷积注意力设计
 categories:
   - 🌙进阶学习
   - ⭐人工智能
-  - 💫深度学习 Deep Learning
-abbrlink: a9f981ee
+  - 💫前沿改进 Frontier Improvement
+abbrlink: 2a21242b
 date: 2022-09-22 13:27:50
 tags:
 ---

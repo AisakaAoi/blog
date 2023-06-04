@@ -1,10 +1,10 @@
 ---
-title: 深度学习-解决CNN固有缺陷，CCNN凭借单一架构，实现多项SOTA
+title: 前沿改进-解决CNN固有缺陷，CCNN凭借单一架构，实现多项SOTA
 categories:
   - 🌙进阶学习
   - ⭐人工智能
-  - 💫深度学习 Deep Learning
-abbrlink: 314096c1
+  - 💫前沿改进 Frontier Improvement
+abbrlink: 1ebe775b
 date: 2022-09-16 20:59:26
 tags:
 ---
