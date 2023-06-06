@@ -278,15 +278,15 @@ reward:
 # Subscribe through Telegram Channel, Twitter, etc.
 # Usage: `Key: permalink || icon` (Font Awesome)
 follow_me:
-  #Twitter: https://twitter.com/username || fab fa-twitter
-  #Telegram: https://t.me/channel_name || fab fa-telegram
-  #WeChat: /images/wechat_channel.jpg || fab fa-weixin
-  #RSS: /atom.xml || fa fa-rss
+  # Twitter: https://twitter.com/username || fab fa-twitter
+  # Telegram: https://t.me/channel_name || fab fa-telegram
+  # WeChat: /images/wechat_channel.jpg || fab fa-weixin
+  # RSS: /atom.xml || fa fa-rss
 
 # Related popular posts
 # Dependencies: https://github.com/tea3/hexo-related-popular-posts
 related_posts:
-  enable: false
+  enable: true
   title: # Custom header, leave empty to use the default one
   display_in_home: false
   params:
@@ -617,8 +617,8 @@ valine:
   enable: true
   appid: UqjWdRYbIUEUQRXhBUUIh1QE-gzGzoHsz
   appkey: gj89JXC485PFbpdHLKVkz6dm
-  notify: false # Mail notifier
-  verify: false # Verification code
+  notify: true # Mail notifier
+  verify: true # Verification code
   placeholder: 这里可以发送评论~（上面可以输入昵称、邮箱） # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
@@ -680,7 +680,7 @@ google_analytics:
   only_pageview: false
 
 # Baidu Analytics
-baidu_analytics: # <app_id>
+baidu_analytics: 7308ed05421777c301eefa3754da1b42
 
 # Growingio Analytics
 growingio_analytics: # <project_id>
