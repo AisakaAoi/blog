@@ -151,3 +151,31 @@ symbols_count_time:
   exclude_codeblock: false     # 排除代码字数统计
   awl: 2                   # 平均字长
   wpm: 200                 # 每分钟阅读字数
+
+# RSS订阅
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+
+# 用hexo-neat压缩文件
+neat_enable: true  #打开总开关
+neat_html:      
+  enable: true      #打开压缩html文件开关
+  exclude:          #html的排除列表
+neat_css:          
+  enable: true      #配置CSS文件开关
+  exclude:
+    - '**.min.css'   #配置排除文件  
+
+neat_js:
+  enable: true       #js压缩开关
+  mangle: true       #是否破坏文件名
+  output:            #是否输出log日志，默认为true
+  compress:
+  exclude:
+    - '*.min.js'     #js文件压缩排除列表
