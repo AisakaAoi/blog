@@ -4,7 +4,7 @@ title: >-
   using Shifted Windows》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: 7b9e85bd
 date: 2022-08-01 05:37:27

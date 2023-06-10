@@ -4,8 +4,8 @@ title: >-
   Recognition at Scale》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫精读经典
+  - ⭐人工智能 Artificial Intelligence
+  - 💫网络模型 Networks Model
 abbrlink: b2650d22
 date: 2022-01-29 17:28:10
 tags:
@@ -25,7 +25,7 @@ tags:
 
 #### 思想
 
-其实核心问题就是考虑如何把图像数据H*W*C,序列化成一个一个词那种结构，自然就想到将图片crop成一个一个patch，假设有N个patch,维度为p*p*C,reshape加concate一下就变成个N*p^2C,也就类似词向量。
+其实核心问题就是考虑如何把图像数据 H * W * C,序列化成一个一个词那种结构，自然就想到将图片crop成一个一个patch，假设有N个patch,维度为 p * p * C,reshape加concate一下就变成个N * p^2C,也就类似词向量。
 
 ***
 
@@ -37,7 +37,7 @@ tags:
 
 ##### 图像转序列
 
-将图片H*W*C,crop成Ｎ个patch,然后在转换成N*(p^2C),同时为了避免模型结构受到patch size的影响，采用Linear project将不同flatten patchs转换成D维向量。这样的话输入图片数据就成了N*D二维矩阵就和词向量矩阵对应上了。
+将图片 H * W * C,crop成Ｎ个patch,然后在转换成N * (p^2C),同时为了避免模型结构受到patch size的影响，采用Linear project将不同flatten patchs转换成D维向量。这样的话输入图片数据就成了N*D二维矩阵就和词向量矩阵对应上了。
 
 {% asset_img 2.png %}
 

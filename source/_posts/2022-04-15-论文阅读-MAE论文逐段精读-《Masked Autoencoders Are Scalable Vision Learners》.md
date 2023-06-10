@@ -2,7 +2,7 @@
 title: 论文阅读-MAE论文逐段精读-《Masked Autoencoders Are Scalable Vision Learners》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: 1a00eebb
 date: 2022-04-15 19:58:33

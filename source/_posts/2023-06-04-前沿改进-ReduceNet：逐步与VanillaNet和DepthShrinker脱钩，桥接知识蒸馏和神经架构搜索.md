@@ -2,7 +2,7 @@
 title: 前沿改进-ReduceNet：逐步与VanillaNet和DepthShrinker脱钩，桥接知识蒸馏和神经架构搜索
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
+  - ⭐人工智能 Artificial Intelligence
   - 💫前沿改进 Frontier Improvement
 abbrlink: 6d96441
 date: 2023-06-04 04:49:52

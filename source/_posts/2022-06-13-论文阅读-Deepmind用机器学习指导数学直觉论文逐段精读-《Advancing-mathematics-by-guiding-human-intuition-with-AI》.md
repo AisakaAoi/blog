@@ -4,7 +4,7 @@ title: >-
   intuition with AI》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: cd0f8eee
 date: 2022-06-13 00:07:05

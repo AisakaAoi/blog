@@ -2,7 +2,7 @@
 title: 论文阅读-MoCo论文逐段精读-Momentum Contrast for Unsupervised Visual Representation Learning
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: 885d2d89
 date: 2022-04-20 00:08:23

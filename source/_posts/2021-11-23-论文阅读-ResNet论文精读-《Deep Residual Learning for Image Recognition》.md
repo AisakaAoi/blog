@@ -2,7 +2,7 @@
 title: 论文阅读-ResNet论文精读-《Deep Residual Learning for Image Recognition》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: da444d02
 date: 2021-11-23 17:31:36

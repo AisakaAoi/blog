@@ -2,7 +2,7 @@
 title: 论文阅读-Transformer论文精读-《Attention Is All You Need》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: 98fdeece
 date: 2021-11-29 00:59:29

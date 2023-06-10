@@ -2,8 +2,8 @@
 title: '深度学习-读懂GAN, pix2pix, CycleGAN和pix2pixHD的关系'
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
-  - 💫深度学习 Deep Learning
+  - ⭐人工智能 Artificial Intelligence
+  - 💫网络模型 Networks Model
 abbrlink: 70ef60f6
 date: 2022-02-02 01:05:57
 tags:

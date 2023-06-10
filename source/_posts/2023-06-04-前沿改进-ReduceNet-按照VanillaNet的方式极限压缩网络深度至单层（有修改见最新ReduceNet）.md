@@ -2,7 +2,7 @@
 title: '前沿改进-ReduceNet: 按照VanillaNet的方式极限压缩网络深度至单层（有修改见最新ReduceNet）'
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
+  - ⭐人工智能 Artificial Intelligence
   - 💫前沿改进 Frontier Improvement
 abbrlink: 1f9c90df
 date: 2023-06-04 04:28:16

@@ -4,8 +4,9 @@ title: >-
   trends, challenges and solutions》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫自我提升
+  - ⭐人工智能 Artificial Intelligence
+  - 💫计算机视觉 Computer Vision
+  - 🛰️情绪识别 Emotion Recognition
 abbrlink: 6054b823
 date: 2022-12-14 17:04:23
 tags:

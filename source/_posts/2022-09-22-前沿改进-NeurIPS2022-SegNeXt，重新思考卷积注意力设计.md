@@ -2,7 +2,7 @@
 title: 前沿改进-NeurIPS2022 | SegNeXt，重新思考卷积注意力设计
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
+  - ⭐人工智能 Artificial Intelligence
   - 💫前沿改进 Frontier Improvement
 abbrlink: 2a21242b
 date: 2022-09-22 13:27:50

@@ -4,8 +4,8 @@ title: >-
   ND》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫自我提升
+  - ⭐人工智能 Artificial Intelligence
+  - 💫网络模型 Networks Model
 abbrlink: ed1ba0e7
 date: 2022-09-20 20:20:36
 tags:
