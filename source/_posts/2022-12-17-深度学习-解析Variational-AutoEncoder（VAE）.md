@@ -2,8 +2,8 @@
 title: 深度学习-解析Variational AutoEncoder（VAE）
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
-  - 💫深度学习 Deep Learning
+  - ⭐人工智能 Artificial Intelligence
+  - 💫网络模型 Networks Model
 abbrlink: 64e0fbea
 date: 2022-12-17 21:30:00
 tags:

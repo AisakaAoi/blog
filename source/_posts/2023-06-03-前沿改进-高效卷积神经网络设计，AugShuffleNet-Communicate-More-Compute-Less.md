@@ -2,7 +2,7 @@
 title: '前沿改进-高效卷积神经网络设计，AugShuffleNet: Communicate More, Compute Less'
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
+  - ⭐人工智能 Artificial Intelligence
   - 💫前沿改进 Frontier Improvement
 abbrlink: 27c49b54
 date: 2023-06-03 03:49:32

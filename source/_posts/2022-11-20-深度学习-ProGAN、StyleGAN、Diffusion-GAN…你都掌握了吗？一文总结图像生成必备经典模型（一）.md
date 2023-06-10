@@ -2,8 +2,9 @@
 title: 深度学习-ProGAN、StyleGAN、Diffusion GAN…你都掌握了吗？一文总结图像生成必备经典模型（一）
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
-  - 💫深度学习 Deep Learning
+  - ⭐人工智能 Artificial Intelligence
+  - 💫计算机视觉 Computer Vision
+  - 🛰️图像生成 Image Generation
 abbrlink: f9495119
 date: 2022-11-20 19:12:07
 tags:

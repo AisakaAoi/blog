@@ -2,8 +2,9 @@
 title: 深度学习-WGAN、CSGAN、ADC-GAN…你都掌握了吗？一文总结图像生成必备经典模型（二）
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
-  - 💫深度学习 Deep Learning
+  - ⭐人工智能 Artificial Intelligence
+  - 💫计算机视觉 Computer Vision
+  - 🛰️图像生成 Image Generation
 abbrlink: '20702606'
 date: 2022-11-22 21:00:24
 tags:

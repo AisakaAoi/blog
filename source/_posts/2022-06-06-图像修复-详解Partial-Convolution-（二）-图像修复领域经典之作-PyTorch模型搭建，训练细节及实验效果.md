@@ -2,8 +2,9 @@
 title: 图像修复-详解Partial Convolution （二） | 图像修复领域经典之作 | PyTorch模型搭建，训练细节及实验效果
 categories:
   - 🌙进阶学习
-  - ⭐人工智能
-  - 💫图像修复 Image Inpainting
+  - ⭐人工智能 Artificial Intelligence
+  - 💫计算机视觉 Computer Vision
+  - 🛰️图像修复 Image Inpainting
 abbrlink: 9d77de93
 date: 2022-06-06 05:16:33
 tags:

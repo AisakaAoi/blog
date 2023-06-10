@@ -4,8 +4,9 @@ title: >-
   With EEG and Physiological Signals for Emotion Recognition》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫自我提升
+  - ⭐人工智能 Artificial Intelligence
+  - 💫多模态学习 Multimodal Learning
+  - 🛰️情绪识别 Emotion Recognition
 abbrlink: a4775ace
 date: 2022-11-25 21:01:13
 tags:

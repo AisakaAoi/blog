@@ -3,7 +3,7 @@ title: >-
   论文阅读-BERT论文逐段精读-《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
+  - ⭐论文带读
   - 💫精读经典
 abbrlink: 5f1c011a
 date: 2022-01-21 02:46:11

@@ -4,8 +4,9 @@ title: >-
   using interpretable deep learning
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫自我提升
+  - ⭐人工智能 Artificial Intelligence
+  - 💫脑机接口 Brain-computer Interface
+  - 🛰️医学应用 Medical Applications
 abbrlink: a443a9c1
 date: 2022-07-09 19:54:34
 tags:

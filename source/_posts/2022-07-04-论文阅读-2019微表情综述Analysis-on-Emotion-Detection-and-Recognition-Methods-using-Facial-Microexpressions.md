@@ -4,8 +4,9 @@ title: >-
   Facial Microexpressions
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫自我提升
+  - ⭐人工智能 Artificial Intelligence
+  - 💫计算机视觉 Computer Vision
+  - 🛰️情绪识别 Emotion Recognition
 abbrlink: da2179f4
 date: 2022-07-04 14:50:40
 tags:

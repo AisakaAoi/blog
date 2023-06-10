@@ -2,8 +2,9 @@
 title: 论文阅读-一种Apex帧查找算法-《CapsuleNet for Micro Expression Recognition》
 categories:
   - 🌙进阶学习
-  - ⭐论文阅读
-  - 💫自我提升
+  - ⭐人工智能 Artificial Intelligence
+  - 💫计算机视觉 Computer Vision
+  - 🛰️情绪识别 Emotion Recognition
 abbrlink: '19376813'
 date: 2022-10-18 11:19:54
 tags:
