@@ -47,11 +47,11 @@ tags:
 
 本文提出的TDGAN模型，具有两个独立的分支：表情分支用于表情信息的处理，面部分支负责其他面部属性信息的编码。如Fig.1所示。模型以一对图片作为输入，图片对包括一个表情图片和一个面部图片(分别来自不同的数据集)。TDGAN的生成器分别学习两张图片的表情表征和面部表征后使用一个解码器融合，然后通过迁移表情图片中表情到面部面部图片的方式生成一张图片。最后，通过两个分支，一个用来判断面部信息，一个同来判断表情信息。
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 TDGAN的框架如下：
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特征融合并引入噪声(三块内容通过信道级拼接合成)。
 
@@ -70,7 +70,7 @@ TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特
 
 表情迁移分类的loss为LC：
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 ***
 
@@ -78,9 +78,9 @@ TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特
 
 使用图片的ground-truth进行训练。也就是如下图所示，训练过程中，Ig作为模型生成结果，分别与If(输入的面部图片)和Ie(输入的表情图片)编码后融合重建图片，其Loss为LD。
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 ***
 
@@ -88,15 +88,15 @@ TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特
 
 本文采用额外感知loss(additionally perceptual loss)来评估生成面部图片的差距。df是由面部编码器对面部图片编码后生成的高级语义特征，d(g,f)是生成的图片输入到面部编码器生成的高层语义特征。LP用于计算两个图片的差距。
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 因此，本文提出方法的生成器的loss最终计算为：
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 表情识别分支的loss：
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 使用方法：J. Johnson, A. Alahi, and L. Fei-Fei, “Perceptual losses for realtime style transfer and super-resolution,” in European Conference on Computer Vision, ECCV, 2016, pp. 694–711.
 
@@ -128,14 +128,14 @@ RAF-DB:数据集是大尺度面部表情数据集。只选取7种表情(6种基�
 
 网络结构如表所示:
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 本实验验证，改变表情的特征会影响生成图片的表情，而不影响面部的其他属性信息。
 1. 固定面部图片，不同表情插帧
 2. 固定表情图片
 并不同面部插帧通过插帧方法查看生成图片的过程图片。
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 ***
 

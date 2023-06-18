@@ -20,20 +20,20 @@ tags:
 
 ***
 
-{% asset_img 1.PNG %}
+{% asset_img 1.webp %}
 
-{% asset_img 2.PNG %}
+{% asset_img 2.webp %}
 
-{% asset_img 3.PNG %}
+{% asset_img 3.webp %}
 
-{% asset_img 4.PNG %}
+{% asset_img 4.webp %}
 
-{% asset_img 5.PNG %}
+{% asset_img 5.webp %}
 
-{% asset_img 6.PNG %}
+{% asset_img 6.webp %}
 
-{% asset_img 7.PNG %}
+{% asset_img 7.webp %}
 
-{% asset_img 8.PNG %}
+{% asset_img 8.webp %}
 
-{% asset_img 9.PNG %}
+{% asset_img 9.webp %}

@@ -22,7 +22,7 @@ tags:
 
 而本文将聚焦于YOLO系列Tricks知识的分享，希望能让江湖中的英雄豪杰获益。
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 ***
 
@@ -62,12 +62,12 @@ YOLO系列中使用的Tricks和Backbone以及输入侧一样，是通用性非�
 
 作为YOLO系列的开山之作，YOLOv1中并未用太多的Tricks，但是设计出YOLO的架构，已经足够伟大。
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 YOLOv1整体结构
 
 等到YOLOv2发布时，引入了当时来说比较有创造性的Tricks，**即设计了分类与检测的联合训练方法，使得YOLO能够实时检测多达9000种目标，在这种方法下输出的模型称为YOLO9000。**
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 YOLO9000联合训练逻辑
 
 YOLO9000主要在COCO和ImageNet数据集上进行训练，**首先在检测数据集上训练一定的epoch来让模型学习定位和检测目标的能力；再使用分类数据集进行训练，从而扩展模型对目标的识别能力。**
@@ -76,12 +76,12 @@ YOLO9000主要在COCO和ImageNet数据集上进行训练，**首先在检测数�
 
 **YOLO9000使用的联合训练不同于将Backbone在ImageNet上进行预训练**，联合训练可以扩充检测识别的目标类别。例如，当模型检测出车的位置后，更进一步将其细分类别轿车、卡车、客车、自行车、三轮车等。
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 Darknet-19网络结构
 
 等到YOLOv3发布时，YOLO系列的整体架构算是基本确定，**Adam优化器也开始逐渐流行起来。**
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 YOLOv3网络结构图
 
 Adam优化器结合了AdaGrad和RMSProp两种优化算法的优点。对梯度的一阶矩估计（First Moment Estimation，即梯度的均值）和二阶矩估计（Second Moment Estimation，即梯度的未中心化的方差）进行综合考虑，计算出更新步长。
@@ -97,7 +97,7 @@ Adam优化器结合了AdaGrad和RMSProp两种优化算法的优点。对梯度�
 8. 适用于梯度稀疏或梯度存在很大噪声的问题。
 
 **Adam的实现原理：**
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 【延伸思考】
 1. YOLOv1-v3中使用的Tricks无论是在业务向，竞赛向还是研究向，都可以作为入场Baseline。
@@ -108,12 +108,12 @@ Adam优化器结合了AdaGrad和RMSProp两种优化算法的优点。对梯度�
 
 YOLOv4在YOLOv3的基础上，**设计使用了SAT，CmBN和Label Smoothing等Tricks。**
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 YOLOv4网络结构图
 
 YOLOv4中的**SAT（self adversarial training）**使用基于FGSM原理的梯度攻击技术，生成对抗样本进行对抗训练。
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 首先，什么是对抗样本呢？对抗样本是在原图像中增加扰动噪声生成，如上图所示。对抗样本容易使得模型输出错误判断，这给模型的鲁棒性造成了重大挑战。
 
@@ -121,7 +121,7 @@ YOLOv4中的**SAT（self adversarial training）**使用基于FGSM原理的梯�
 
 生成对抗样本的方法主要分为三种，具体逻辑如下图所示。
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 **CmBN（Cross mini-Batch Normalization）**是CBN的修改版。
 
@@ -129,7 +129,7 @@ CBN主要用来解决在Batch-Size较小时，BN的效果不佳问题。CBN连�
 
 而CmBN是独立利用多个mini-batch内的数据进行BN操作。（每四个迭代后统一计算一次整体BN）
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 **Label Smooth**可以看作是一种防止过拟合的正则化方法。
 
@@ -137,7 +137,7 @@ CBN主要用来解决在Batch-Size较小时，BN的效果不佳问题。CBN连�
 
 通常参数设置如下图中的比例即可。
 
-{% asset_img 11.png %}
+{% asset_img 11.webp %}
 
 【延伸思考】
 1. YOLOv4中的Tricks具备在业务，竞赛以及研究中进行实验的价值。
@@ -148,12 +148,12 @@ CBN主要用来解决在Batch-Size较小时，BN的效果不佳问题。CBN连�
 
 YOLOv5中使用的Tricks基本上和YOLOv4一致，并在此基础上引入了更多的**工程优化逻辑。**
 
-{% asset_img 12.png %}
+{% asset_img 12.webp %}
 YOLOv5网络结构图
 
 YOLOv5通过不同的训练参数配置，用来获得不同复杂度的模型。
 
-{% asset_img 13.png %}
+{% asset_img 13.webp %}
 YOLOv5模型家族
 
 除此之外，YOLOv5还尝试了**混合精度训练和模型EMA（Exponential Moving Average）策略。**
@@ -171,7 +171,7 @@ YOLOv5模型家族
 
 YOLOx使用了YOLOv5中提到的模型EMA（Exponential Moving Average）策略，**并且使用余弦退火学习率优化训练过程。**
 
-{% asset_img 14.png %}
+{% asset_img 14.webp %}
 YOLOx网络结构图
 
 余弦退火学习率衰策略(CosineAnnealingLR)使得学习率呈周期性变化，但我们通常取它的一个余弦周期来完成整个训练过程。
@@ -180,7 +180,7 @@ YOLOx网络结构图
 
 固定步长衰减在每隔一定的步长或者epoch对学习率进行一定衰减，而多步长衰减策略比起固定步长衰减则更加灵活，它可以在不同阶段使用不同强度和频率的衰减策略。指数衰减策略是使用指数逻辑对学习率进行衰减。
 
-{% asset_img 15.png %}
+{% asset_img 15.webp %}
 
 ***
 
@@ -188,14 +188,14 @@ YOLOx网络结构图
 
 YOLOv6**进行了很多蒸馏方向上的尝试。**
 
-{% asset_img 16.png %}
+{% asset_img 16.webp %}
 YOLOv6网络结构图
 
 比如**Self-distillation，Reparameterizing Optimizer，使用 Channel-wise Distillation进行量化感知训练等方法**，进一步加强模型的整体性能。
 
 YOLOv7也使用了YOLOv5中提到的模型EMA（Exponential Moving Average）策略，**并引入了YOLOR中使用的隐性知识。**
 
-{% asset_img 17.png %}
+{% asset_img 17.webp %}
 YOLOv7网络结构图
 
 YOLOR中的隐式知识可以在推理阶段将计算值简化为向量。这个向量可以与前一层或后一层卷积层的偏差和权重相结合。

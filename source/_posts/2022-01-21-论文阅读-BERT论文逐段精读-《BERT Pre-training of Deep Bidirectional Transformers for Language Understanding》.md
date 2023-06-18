@@ -187,7 +187,7 @@ fine-tuning: 微调的 BERT 使用 预训练的参数 初始化，所有的权�
 **作者关于预训练和微调的介绍 好吗？**
 好！如果假设读者都知道论文的技术，而只一笔带过（给Ref），不太好。论文写作要自洽，简单的说明就好，避免读者不知道预训练和微调，增加理解文章的障碍。
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 预训练的输入：unlabelled sentence pair
 训练 BERT 的权重
@@ -277,7 +277,7 @@ BERT 使用的是 transformer 的 encoder，self-attention layer 会看输入的
 
 最后一个 transformer 块的输出，表示 这个词源 token 的 BERT 的表示。在后面再添加额外的输出层，来得到想要的结果。
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 For a given token, 进入 BERT 的表示 = token 本身的表示 + segment 句子的表示 + position embedding 位置表示
 
@@ -288,7 +288,7 @@ Segement embeddings: 这个 token 属于第一句话 A还是第二句话 B。
 Position embeddings: 输入的大小 = 这个序列最长有多长？ i.e., 1024 
 Position embedding 的输入是 token 词源在这个序列 sequence 中的位置信息。从0开始 1 2 3 4 --> 1024
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 BERT input representation = token embeddings + segment embeddings + position embeddings 
 

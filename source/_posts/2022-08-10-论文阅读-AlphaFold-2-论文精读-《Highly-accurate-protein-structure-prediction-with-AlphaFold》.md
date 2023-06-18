@@ -73,7 +73,7 @@ tags:
 
 #### 导论
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 **a 图**
 - x 轴: 参赛队伍
@@ -87,7 +87,7 @@ tags:
 **e 图**
 - 模型大概
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 PDB 数据集上 AlphaFold2 的精度
 - a 图: 描述数据误差分布结果
@@ -96,7 +96,7 @@ PDB 数据集上 AlphaFold2 的精度
 
 #### 模型和训练
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 ##### AlphaFold2算法总览图
 
@@ -124,7 +124,7 @@ PDB 数据集上 AlphaFold2 的精度
 
 ##### 编码器
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 **编码器的架构(一块)**
 - 多头自注意力的模块
@@ -133,28 +133,28 @@ PDB 数据集上 AlphaFold2 的精度
 - 自注意力机制，序列中按行和按列的自注意力机制，氨基酸对中通过物理信息(三角不等式)来设计QKV
 - 不共享权重
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 **编码器第一个模块(MSA row-wise gated self-attention with pair bias)详细的示意图**
 - row-wise: 在 MSA 中每次拿出一行做一个序列, 做多头自注意力机制
 - gated: 将每个头做一次线性投影以及 sigmoid 计算, 之后和 attention 的输出点乘, 完成门的操作
 - pair bias: QK 是 Q 的氨基酸和K的氨基酸的相似度, 这个和 pair 表示有一定的相似的, 将 pair 经过线性投影到 h 维, 从而添加到 QK 中
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 **编码器第二个模块(MSA column-wise gated self-attention)**
 - 和之前的区别: 按行, 无对信息做偏移加入
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 **编码器第三个模块MLP(MSA transition layer)**
 - 自注意力机制主要是混合不同元素之间的信息，做信息的提炼主要还是在 MLP 的模块中
 - 将 c 转变为 4c(来自 transform), relu, 之后变为 c
 - 线性层的权重对每个元素是共享的
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 **编码器第四个模块(Outer product mean)**
 - 序列信息融入到氨基酸对的表示中
@@ -163,7 +163,7 @@ PDB 数据集上 AlphaFold2 的精度
 - 在 s 维度上取均值
 - 矩阵拉直, 再投影到 c_z, 加入到对表示
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 **编码器第五个模块(Triangular self-attention around starting node)**
 - 和 MSA row-wise gated self-attention with pair bias 比较像
@@ -173,7 +173,7 @@ PDB 数据集上 AlphaFold2 的精度
 - 和 Triangular self-attention around starting node 的区别从按行做 softmax 转变为按列做 softmax
 - 由于先做行后做列, 使得向量是不对称的
 
-{% asset_img 11.png %}
+{% asset_img 11.webp %}
 
 **编码器第六个模块(triangular multiplicative update using “outgoing” edges)**
 - 氨基酸对信息进行交互, 为了替代自注意力模块, 但是没能替换成
@@ -192,11 +192,11 @@ PDB 数据集上 AlphaFold2 的精度
 - 每个原子的空间的绝对值, 不能使用
 - 使用相对位置, 下一个氨基酸相对于上一个氨基酸的位置, 使用了欧几里得变换或者说刚体变换
 
-{% asset_img 12.png %}
+{% asset_img 12.webp %}
 
 关系氨基酸下面每个原子可以旋转的角度
 
-{% asset_img 13.png %}
+{% asset_img 13.webp %}
 
 **解码器**
 - 预测主干的旋转和偏移和枝叶的旋转
@@ -205,9 +205,9 @@ PDB 数据集上 AlphaFold2 的精度
 - 原始认为在原点
 - 共享权重, 像 lstm
 
-{% asset_img 14.png %}
+{% asset_img 14.webp %}
 
-{% asset_img 15.png %}
+{% asset_img 15.webp %}
 
 **解码器模块-IPA, Invariant Point Attention**
 - 不动点: 计算距离时不管做什么样的全局变换都不会影响 softmax 里或者输出的值
@@ -215,7 +215,7 @@ PDB 数据集上 AlphaFold2 的精度
 - 解码器中显示的加入了位置的信息
 - 经过 IPA 的序列信息理由有位置信息
 
-{% asset_img 16.png %}
+{% asset_img 16.webp %}
 
 **解码器模块 - Backbone update**
 - 对第 i 个氨基酸预测它的变换, R 旋转, t 偏移
@@ -259,7 +259,7 @@ PDB 数据集上 AlphaFold2 的精度
 
 #### 结果
 
-{% asset_img 17.png %}
+{% asset_img 17.webp %}
 
 **消融实验**
 - A, casp-14 和 PDB 的结果, 其中灰线是基线, 比 0 大结果好, 比 0 小结果差

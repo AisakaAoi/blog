@@ -33,31 +33,31 @@ tags:
 
 如下图所示：
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 ##### 图像转序列
 
 将图片 H * W * C,crop成Ｎ个patch,然后在转换成N * (p^2C),同时为了避免模型结构受到patch size的影响，采用Linear project将不同flatten patchs转换成D维向量。这样的话输入图片数据就成了N*D二维矩阵就和词向量矩阵对应上了。
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 ##### Position embeddings
 
 作者用一个可学习的embedding向量去将图像位置信息加入到序列中。
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 ##### learnable embedding
 
 上图中，带*号的粉色框是一个可学习的embedding，记住Xclass,经过encoder后的结果作为整张图像的表示。之所以不用其中一个patch的embedding是因为，这种embedding不可避免带有path的信息，而新增的这个没有语义信息，能更佳反映整张图片。
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 ##### 输入transformer encoder
 
 整个公式如下：
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 ***
 
@@ -65,9 +65,9 @@ tags:
 
 在中等数据集（例如ImageNet），效果不如resnet，但是在大规模数据集上，表现更佳。
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 ***
 
@@ -130,7 +130,7 @@ Transformer 应用在 CV 有**难点**吗？
 Trnasformer 的计算复杂度是 序列长度 n 的 平方 O（n^2）
 224 分辨率的图片，有 50176 个像素点，（2d 图片 flatten）序列长度是 BERT 的近 100 倍。
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 呼应摘要+文献：**CNN 在 CV 领域 火， Transformer, self-attention 在 NLP 领域 火。CV 如何用 attention 呢？**
 CNN 结构 + self-attention or attention 替代卷积
@@ -328,7 +328,7 @@ NLP 中 Transformer 很火，有很多 Transformer 的高效实现
 Model overview
 好图：以图读论文，讲解 ViT 直接复制
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 **Input:** 1 张图
 **Process:** 九宫格 9 patches --> Flattened Patches (3 * 3 --> 1 * 9 拍平) --> Linear Projections ---> Patch embedding 
@@ -364,7 +364,7 @@ patches 数 N： 224 ^ 2 /  16 ^ 2 = 14 ^ 2 = 196
 Linear Projection 全连接层 E: 768( 不变，patch 计算而来 ) * D(embedding_dim) 768 或 更大
 图片 X * E = patches (196 patches 个数 * 768 每个 patch 的维度) * E ( 768 * D ) = 196 * D (768)
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 **Vision to NLP done! **
 a 2d image --> a sequence 1d tokens 
@@ -378,13 +378,13 @@ a 2d image --> a sequence 1d tokens
 **相加 sum：**
 patch embedding（197 * 768） + position embedding （(1 CLS + 196 patches) * 768）= （197 * 768）
 
-{% asset_img 11.png %}
+{% asset_img 11.webp %}
 
 ViT base: 12 heads
 MLP：放大 4 倍，再缩小到原维度大小
 Transfomer encoder 输入输出维度一致，可以直接叠加 L 个
 
-{% asset_img 12.png %}
+{% asset_img 12.webp %}
 
 ***
 
@@ -420,7 +420,7 @@ CLS-Token 和 GAP 的 适用参数 不一样。
 21 22 23 
 31 32 33
 
-{% asset_img 13.png %}
+{% asset_img 13.webp %}
 
 **relative: offset**
 绝对距离转相对距离，1 - 9 和 -4, ..., 0, ..., 4
@@ -441,7 +441,7 @@ Appendix: Transformer multi-head 解释，i.e., 卷积解释 in CNN papers
 
 **公式总结 ViT 的前向传播过程**
 
-{% asset_img 14.png %}
+{% asset_img 14.webp %}
 
 **Inductive bias**
 
@@ -462,7 +462,7 @@ CNN: data-efficient 不用那么多训练数据
 前 CNN + 后 Transformer --> Hybrid archtecture
 **不同的图片预处理方式：**不划分 patches，采用 CNN (Res50 的 feature map 14 * 14 = 196)，过全连接层 **E** Linear projections 得到图片的 embedding
 
-{% asset_img 15.png %}
+{% asset_img 15.webp %}
 
 **ViT 的图片预处理方式：**
 把一张图划分成 patches，直接过全连接层 fc
@@ -526,7 +526,7 @@ ViT 模型的 patch size 变化时, i.e., 16 * 16 --> 32 * 32 or 8 * 8, 模型�
 
 ViT-H/4 秀肌肉 刷榜
 
-{% asset_img 16.png %}
+{% asset_img 16.webp %}
 
 和 CNN 的工作 BiT-L, Noisy Student 做对比
 **BiT-L:** CNN比较大的模型，ViT论文作者团队自己的工作
@@ -550,7 +550,7 @@ Vision Transformer 到底需要多少数据才能训练好？
 
 数据集规模比 ImageNet-21K 更大时，Vision Transformer 效果更好，因为可扩展性 scaling 更好。
 
-{% asset_img 17.png %}
+{% asset_img 17.webp %}
 
 **图 4 Linear few-shot evaluation**
 
@@ -567,7 +567,7 @@ ViT 图4 效果 和 图3 差不多。**如何用 ViT 做小样本学习，未来
 **图 5 用 ViT 比 CNNs 便宜 的实验支持**
 大家的印象：Transformer 又大又贵，很难训练
 
-{% asset_img 18.png %}
+{% asset_img 18.webp %}
 
 average-5：ImageNet-real, Pets, Flower, CIFAR10, CIFAR100 平均
 ImageNet 单独的对比
@@ -588,7 +588,7 @@ ImageNet 单独的对比
 
 Figure 7 (left) embed RGB value 前 28 个主成分
 
-{% asset_img 19.png %}
+{% asset_img 19.webp %}
 
 Vision Transformer 和 CNN 学到的很像，类似 gabor filter 有颜色、纹理， 可以做 plausible basis functions，可以描述每个图像块的底层信息 a low-dimensional representation of the fine structure within each patch.
 
@@ -600,7 +600,7 @@ Vision Transformer 和 CNN 学到的很像，类似 gabor filter 有颜色、纹
   - 同行同列，颜色条 的表示
 虽然是 1d 的 position  embedding，但已经学到了 2d 的图像位置概念；所以换成 2d position 提升不多。
 
-{% asset_img 20.png %}
+{% asset_img 20.webp %}
 
 **Self-attention 有没有起作用？**
 
@@ -611,7 +611,7 @@ Vision Transformer 和 CNN 学到的很像，类似 gabor filter 有颜色、纹
 **ViT 的 self-attention 是不是 很远的像素点也能有交互？**
 ViT-L/16 有 24 层（横坐标值），五颜六色的点：transformer 每层 multi-head 的heads，ViT-L 16 heads, 每一列有 16 个点
 
-{% asset_img 21.png %}
+{% asset_img 21.webp %}
 
 纵轴是 mean attention distance 
 d_ab = l_ab * A_ab = ab 两点 pixel 之间的距离差 * ab 两点之间的attention weights
@@ -619,7 +619,7 @@ d_ab 的大小，反映模型能不能注意到很远的 2 个 pixels
 - self-attention 刚开始能注意到 10 - 110 pixels
 - self-attention 刚开始就注意到全局的信息；CNN 刚开始第一层的感受野 receptive filed 很小，只能看到附近的 pixel
 
-{% asset_img 22.png %}
+{% asset_img 22.webp %}
 
 网络加深，模型学到的特征越来越 high level，越来越有语义信息，像素的自注意力距离 越来越远，不是靠邻近的像素点做判断。
 
@@ -627,7 +627,7 @@ d_ab 的大小，反映模型能不能注意到很远的 2 个 pixels
 
 ViT 最后一层 output 的 token 的 self-attention 折射（逆向映射）回 原来的输入图片。ViT 真的学到了一些概念：狗、飞机
 
-{% asset_img 23.png %}
+{% asset_img 23.webp %}
 
 Globally 全局来说，输出的 token 是融合全局的特征信息，ViT 模型可以关注到 和 classfication 分类相关的图像区域。
 

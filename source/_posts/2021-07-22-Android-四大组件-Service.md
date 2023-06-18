@@ -52,7 +52,7 @@ Service并不是运行在一个独立的进程当中，而是依赖于创建服�
 
 Service并不会自动开启线程，所有的代码都是默认允许在主线程当中的，也就是说需要在服务的内部手动创建子线程，并在里面执行具体的任务，否则就会出现主线程被阻塞的情况。
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 **服务适用场景：**
 
@@ -72,7 +72,7 @@ Bound：当Android的应用程序组件通过bindService()绑定了服务，则�
 
 服务拥有生命周期方法，可以实现监控服务状态的改变，可以在适合的阶段执行工作。左图为服务通过startService()被创建时的生命周期（onStart()被弃用，现在用onStartCommand()），右图则显示了服务通过bindService()被创建时的生命周期：
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 
 **服务的回调函数：**
 
@@ -94,7 +94,7 @@ Bound：当Android的应用程序组件通过bindService()绑定了服务，则�
 
 应用调起第三方支付的模拟alipay服务进行支付（该demo写完有bug，绑定alipay服务失败）
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 **BUG原因：**
 

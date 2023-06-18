@@ -34,9 +34,9 @@ onTouchEvent方法时重载的Activity的方法。重写了Acitivity的onTouchEv
 
 如果onTouch返回值为false,表示这个Touch事件没有被tv完全处理，onTouch返回以后，Touch事件被传递给Activity，onTouchEvent方法调用（当把手放到屏幕上后，onTouch方法调用一次后，onTouchEvent方法被一遍一遍的调用）
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 ### 总结
 

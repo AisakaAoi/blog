@@ -9,7 +9,7 @@ date: 2023-06-02 04:32:20
 tags:
 ---
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 **Title:** DA-BEV: Depth Aware BEV Transformer for 3D Object Detection
 **Paper:** https://arxiv.org/pdf/2302.13002v1.pdf
@@ -25,7 +25,7 @@ tags:
 
 #### BEV感知
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 相当于给自动驾驶开启了“上帝视角”，能够让车辆无遮挡的“看清”道路上的实况信息，在BEV视角下统一完成感知和预测任务。
 
@@ -61,14 +61,14 @@ tags:
 
 #### 动机
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 <div align='center'>图1. 基于 DETR 的 3D 检测器中常见歧义问题</div>
 
 DA-BEV 的设计动机来自于以往 DETR-based 3D 检测器的常见问题。具体来说，以 BEVFormer 为例，其会将同一光线上的不同 3D 参考点被映射到相同的摄像机参考点上，导致检测头难以确定目标在深度方向上的确切位置，可能导致重复预测。
 
 #### 概述
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 <div align='center'>图2. 本文方法的训练Pipeline</div>
 
 本文方法主要解决的是，之前 DETR-based 3D 检测器在处理图像特征时存在的深度信息缺失问题。本方法将深度信息编码到**查询** (query) 和**值** (value) 中，并提出了一个深度感知的空间交叉注意力模块和一个深度感知的对比学习方法，以增强深度信息的学习和比较。
@@ -77,7 +77,7 @@ DA-BEV 的训练流程分为四个部分，包括**特征提取**、**BEV编码�
 
 #### 深度感知的空间交叉注意力
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 <div align='center'>图3. DA-SCA与以往作品中SCA的对比</div>
 
 在传统的 DETR-based 3D 检测器中，**空间交叉注意力**（SCA）没有考虑深度信息。本文提出了**深度感知的空间交叉注意力**（DA-SCA），通过在查询和值中引入深度编码来解决这一问题。与此前的方法相比，本文的 DA-SCA 采用的是不均匀的深度采样方式，可以更好地提取深度信息。**实验结果表明，本文方法可以显著提高目标检测的性能。**
@@ -97,23 +97,23 @@ DCL 为每个对象分配一个对象射线，然后将其上的点映射到BEV�
 ### 实验
 
 <div align='center'>表1. 在nuScenes数据集的验证集上对比结果</div>
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 - DA-BEV-S 模型相比于 BEVFormer 模型，在NDS和mAP上分别提升了2.2和1.2个点。
 - **虽然 BEVDet4D-Based 模型的 NDS 与 DA-BEV 相同，但 GFLOPS 要高得多，并且mAP 低于 DA-BEV。**
 
 <div align='center'>表2. 模型可扩展性对比</div>
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 - DA-BEV 的 mAP 比之前的最优模型 BEVDepth 高1.2个点。
 - 此外，之前的 baseline 模型 BEVFormer 与 DA-BEV: DA-BEV在 mAP 和 NDS 两个指标上分别比 BEVFormer 高出 3.4 和 3.1。**这说明 DA-BEV 可以适应更强的预训练模型，并在各项指标上表现出色。**
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 - 表.3 & 表.4 展示了模型的每个组成部分的有效性。
 - 通过逐步增加不同的组件，模型性能都获得了进一步的提升。
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 <div align='center'>图4. DA-BEV和基线模型BEVFormer的预测可视化</div>
 
 - 在图4（b）中，沿深度轴的重复预测被减少了。这个可视化证实了我们的模型可以解决在**动机小节**中提到的歧义问题。

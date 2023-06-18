@@ -12,7 +12,7 @@ tags:
 
 内容提供者组件通过请求从一个应用程序向其他的应用程序提供数据。这些请求由类 ContentResolver 的方法来处理。内容提供者可以使用不同的方式来存储数据。数据可以被存放在数据库，文件，甚至是网络。
 
-{% asset_img 1.jpg %}
+{% asset_img 1.webp %}
 
 <!--more-->
 
@@ -38,7 +38,7 @@ tags:
 
 **id：**这个指定特定的请求记录。例如：你在内容提供者Contacts中查找联系人的ID号为5，那么URI看起来是这样：content://contacts/people/5
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 
 ***
 
@@ -52,7 +52,7 @@ tags:
 
 4. 使用&lt;provider.../&gt;标签在AndroidManifest.xml中注册内容提供者。
 
-{% asset_img 3.jpg %}
+{% asset_img 3.webp %}
 
 以下是让内容提供者正常工作，需要在类ContentProvider中重写的一些方法：
 

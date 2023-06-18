@@ -9,7 +9,7 @@ date: 2021-12-05 22:09:14
 tags:
 ---
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 前阵子读了Transformer的论文，发现自己对BN和LN并不是很清楚，故博众家所长作此文。
 
@@ -98,11 +98,11 @@ BN的学习参数包含rescale和shift两个参数。
 
 BN实际使用时需要计算并且保存某一层神经网络batch的均值和方差等统计信息，对于对一个固定深度的前向神经网络（DNN，CNN）使用BN，很方便；但对于RNN来说，sequence的长度是不一致的，换句话说RNN的深度不是固定的，不同的time-step需要保存不同的statics特征，可能存在一个特殊sequence比其他sequence长很多，这样training时，计算很麻烦。
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 ***
 
@@ -154,7 +154,7 @@ class LayerNorm(nn.Module):
 
 Batch Normalization 的处理对象是对一批样本， Layer Normalization 的处理对象是单个样本。Batch Normalization 是对这批样本的同一维度特征做归一化， Layer Normalization 是对这单个样本的所有维度特征做归一化。
 
-{% asset_img 8.jpg %}
+{% asset_img 8.webp %}
 
 BN、LN可以看作横向和纵向的区别。
 

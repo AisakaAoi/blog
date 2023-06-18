@@ -44,7 +44,7 @@ CS231n的全称是[CS231n: Convolutional Neural Networks for Visual Recognition]
 
 引用一下学习金字塔的图，意思大家都懂的：
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 ***
 

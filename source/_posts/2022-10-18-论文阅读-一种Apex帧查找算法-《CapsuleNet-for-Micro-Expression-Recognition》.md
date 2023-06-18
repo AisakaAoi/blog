@@ -108,11 +108,11 @@ CASMEⅡ 微表情数据集已经对其中的微表情序列Apex帧进行了人�
 2. 运行代码得到预测的Apex 帧序号数组pred_apex_id_list，图3 显示了某个微表情序列的Apex帧标注过程
 3. 通过人工标注的Apex帧序号数组groundtruth_apex_id_list 和自动预测的Apex帧序号数组 pred_apex_id_list，得到绝对差值数组absolute_difference_list, 观察其平均值（也即两组数据的**平均绝对误差，MAE**）、无偏标准差(两组数组的**均方根误差, RMSE**)、中位数。
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 其平均值7.91, 中位数4.0，无偏标准差10.0, 反应了其集中趋势和波动大小。
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 ***
 

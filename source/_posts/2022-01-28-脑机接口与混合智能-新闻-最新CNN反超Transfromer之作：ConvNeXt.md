@@ -11,14 +11,14 @@ tags:
 
 FAIR于近日（2022年1月13日）提出了仅依靠卷积神经网络构建的ConvNeXt[1]，这个依靠CNN且以传统ResNet为出发点搭建的模型在ImageNet的舞台上超过了Swin-Transfromer而引起广泛关注。（ConvNeXt与Swin-Transfromer基于ImageNet1K/22K数据集的对比如在下图1[1]。）
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 图1 在ImageNet上各网络准确率对比
 
 <!--more-->
 
 ConvNeXt的主要设计思路是模仿Swin-Transfromer的设计策略，同时“取其精华，去其糟粕“，整个优化方案可参考下图2[1]。
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 图2 基于ResNet的ConvNeXt优化流程
 
 根据图2，我们展开描述优化方案。
@@ -57,7 +57,7 @@ ConvNeXt的主要设计思路是模仿Swin-Transfromer的设计策略，同时�
 
 使用了类似于MobileNetv2中的逆瓶颈层，即按升维-深度卷积-降维的顺序进行卷积操作，值得一说的是ConvNeXt还额外提供了一种不同的逆瓶颈结构，它把深度卷积的顺序提到了首位，这样做是为了后面使用与Swin-Transfromer同样大小的卷积，方便对比的同时防止参数量上升。瓶颈/逆瓶颈的结构可参考下图3[1]。
 
-{% asset_img 3.jpg %}
+{% asset_img 3.webp %}
 图3. (a) ResNeXt的瓶颈层架构，(b) ConvNeXt的逆瓶颈层架构，(c)ConvNeXt逆瓶颈结构2
 
 使用逆瓶颈结构的Block后，准确率获得了0.1%的提升，达到80.6%。
@@ -88,7 +88,7 @@ Swin-Transfromer的MLP Block中只有一个激活函数，效仿这种设计Conv
 
 最后整合以上的优化，ConvNeXt的Block的结构如下图4[1]（b）。
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 图4： （a）ResNet单个Block （b）ConvNeXt单个Block
 
 ### 总结

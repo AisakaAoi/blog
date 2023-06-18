@@ -12,9 +12,9 @@ tags:
 
 小程序的生命周期（左图）与Android Activity生命周期（右图）类似
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 <!--more-->
 
