@@ -12,7 +12,7 @@ tags:
 
 异步编程允许我们在执行一个长时间任务时，程序不需要进行等待，而是继续执行之后的代码，直到这些任务完成之后再回来通知你，通常是以回调函数（callback）的形式。
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 ``` javascript
 getUserPost(function(userPost) {
@@ -24,7 +24,7 @@ getUserPost(function(userPost) {
 
 这种编程模式避免了程序的阻塞，大大提高了CPU的执行效率，尤其适用于IO密集的操作，例如需要经常进行网络操作、数据库访问的应用。
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 本文将以JavaScript为例介绍异步编程的概念，Promise以及新标准中更优雅的async、await语法糖。
 
@@ -32,7 +32,7 @@ getUserPost(function(userPost) {
 
 如果还不是特别清楚并发、并行、异步、同步的概念，请看之后的blog（可能会写）。
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 ***
 
@@ -55,15 +55,15 @@ console.log('你会马上看见这句话！');
 
 需要注意的是JavaScript从设计之初就是一个单线程的编程语言，即便看上去这里的回调函数和主程序在并发执行，但它们都运行在同一个主线程中。实际上主线程中还运行了我们写的其它代码，包括界面逻辑、网络请求、数据处理等等。
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 虽然只有单个线程在执行，但这种单线程的异步编程方式其实有诸多优点，由于所有操作都运行在同一个线程中，因此我们无需考虑线程同步或者资源竞争的问题。
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 并且从源头上避免了线程之间的频繁切换，从而降低了线程自身的开销。
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 回调函数虽然简单好理解，但它有一个明显的缺点，如果我们需要依次执行多个异步操作，我们的程序可能会写成这样：
 
@@ -95,13 +95,13 @@ fetch('http://...')
 
 它用来发起一个请求来获取服务器数据，我们可以用它动态更新页面的内容，也就是我们平时说的Ajax技术（Asynchronous JavaScript and XML）
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 例如我们调用fetch()去获取一个测试地址的数据，可以看到fetch()立刻返回了一个Promise对象，这里的promise几乎就是它的字面意思，promise->承诺，“承诺”这个请求会在未来某个时刻返回数据。
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 我们随后可以调用它的then方法并传递一个回调函数，如果这个请求在未来成功完成，那么回调函数会被调起，请求的结果也会以参数的形式传递进来。
 
@@ -124,15 +124,15 @@ fetch('https://jsonplaceholder.typicode.com/posts/1')
     .then((json) => console.log(json));
 ```
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 Promise的链式调用避免了代码的层层嵌套，即便是我们有一个很长的链，代码也不过是向下方增长而并非向右，因此可读性会提升很多。
 
-{% asset_img 11.png %}
+{% asset_img 11.webp %}
 
 在使用异步操作的时候，我们也可能遇到错误，比如各种网络问题或者返回的数据格式不正确。
 
-{% asset_img 12.png %}
+{% asset_img 12.webp %}
 
 如果我们想要捕获这些错误，最简单的方法是附加一个catch在链式结构的末尾，如果之前任意一个阶段发生了错误，那么catch将会被触发，而之后的then()将不会执行。这和同步编程中用到的try/catch块很类似。
 

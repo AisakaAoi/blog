@@ -19,7 +19,7 @@ tags:
 
 <!--more-->
 
-{% asset_img 1.jpg %}
+{% asset_img 1.webp %}
 
 ### 背景
 
@@ -33,7 +33,7 @@ tags:
 
 因此，为了构建一个通用的 CNN 架构，关键是开发一个分辨率不可知的卷积层，该卷积层能够以参数有效的方式对远程依赖关系进行建模。该研究入选 ICML 2022 。
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 
 - 论文地址：<https://arxiv.org/pdf/2206.03398.pdf>
 - 代码地址：<https://github.com/david-knigge/ccnn>
@@ -51,41 +51,41 @@ tags:
 
 连续核卷积将小型神经网络
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 作为核生成器网络，同时将卷积核参数化为连续函数。该网络将坐标
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 映射到该位置的卷积核值：
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 （图 1a）。通过将 K 个坐标
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 的向量通过 G_Kernel，可以构造一个大小相等的卷积核 K，即
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 随后，在输入信号
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 和生成的卷积核
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 之间进行卷积运算，以构造输出特征表示
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 即
 
-{% asset_img 11.png %}
+{% asset_img 11.webp %}
 
-{% asset_img 12.jpg %}
+{% asset_img 12.webp %}
 
 任意数据维度的一般操作。通过改变输入坐标 c_i 的维数 D，核生成器网络 G_Kernel 可用于构造任意维数的卷积核。因此可以使用相同的操作来处理序列 D=1、视觉 D=2 和更高维数据 D≥3。
 
@@ -93,7 +93,7 @@ tags:
 
 当以不同的分辨率（例如更高的分辨率）呈现输入时，通过核生成器网络传递更精细的坐标网格就足够了，以便以相应的分辨率构造相同的核。对于以分辨率 r (1) 和 r (2) 采样的信号 x 和连续卷积核 K，两种分辨率下的卷积大约等于与分辨率变化成比例的因子：
 
-{% asset_img 13.png %}
+{% asset_img 13.webp %}
 
 ***
 
@@ -101,11 +101,11 @@ tags:
 
 具有连续核卷积的残差块改进。该研究对 FlexNet 架构进行了修改 ，其残差网络由类似于 S4 网络的块组成。CCNN 架构如下图 2 所示。
 
-{% asset_img 14.jpg %}
+{% asset_img 14.webp %}
 
 基于这些观察，该研究构建了 FlexConv 的深度（depth-wise）可分离版本，其中通道（channel-wise）卷积是使用核生成器网络
 
-{% asset_img 15.png %}
+{% asset_img 15.webp %}
 
 生成的核计算的，之后是从 N_in 到 N_out 进行逐点卷积。这种变化允许构建更广泛的 CCNN—— 从 30 到 110 个隐藏通道，而不会增加网络参数或计算复杂度。
 
@@ -125,7 +125,7 @@ tags:
 
 然后是 2D 图像分类：通过单一架构，CCNN 可以匹配并超越更深的 CNN。
 
-{% asset_img 16.jpg %}
+{% asset_img 16.webp %}
 
 对 ND 进行远程依赖建模的重要性。原则上可以将所有任务视为不考虑 2D 结构的序列任务，该研究只需改变进入核生成器网络的坐标维数，就可以在多维空间上轻松定义 CCNN。有趣的是，该研究观察到，通过在 LRA 基准测试中考虑图像和 Pathfinder 任务的 2D 特性，可以获得更好的结果（上表 3）。
 
@@ -133,7 +133,7 @@ tags:
 
 此外，在原始 2D 数据上训练的模型显示出比它们的序列对应物更快的收敛（图 3）。具有小卷积核的 2D CNN，例如 ResNet-18，由于中间池化层缺乏细粒度的全局上下文建模，无法解决 Pathfinder。
 
-{% asset_img 17.jpg %}
+{% asset_img 17.webp %}
 
 ***
 

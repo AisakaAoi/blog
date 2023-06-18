@@ -41,7 +41,7 @@ tags:
 
 每一层PConv的运算可以用以下公式来表达：
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 {% asset_img 4.webp %}
 
@@ -49,7 +49,7 @@ tags:
 
 #### Mask更新
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 ***
 

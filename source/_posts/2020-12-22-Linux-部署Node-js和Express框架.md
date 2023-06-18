@@ -25,7 +25,7 @@ date: 2020-12-22 00:29:14
 
 - 重置密码
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 ***
 

@@ -132,21 +132,21 @@ affect issues 指明是否影响了某个问题。例如我们使用 jira 时，
 
 在 settings->plugins，搜索 Git Commit Message Helper，点击 install 并重启即可
 
-{% asset_img 1.jpg %}
+{% asset_img 1.webp %}
 
 #### 使用
 
 在 git 提交页面，点击 create commit message 按钮，弹出如下窗口，编辑之后，点击 ok
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 
 在以下弹窗输入信息
 
-{% asset_img 3.jpg %}
+{% asset_img 3.webp %}
 
 提交的message如下
 
-{% asset_img 4.jpg %}
+{% asset_img 4.webp %}
 
 ***
 

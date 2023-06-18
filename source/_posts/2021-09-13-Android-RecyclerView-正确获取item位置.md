@@ -107,7 +107,7 @@ ViewHolder为我们提供了 getAdapterPosition 方法来获取 ViewHolder 的�
 
 ### 相对位置与绝对位置，getBindindAdapterPosition 与 getAbsoluteAdapterPosition
 
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 官方提供的两个方法getBindingAdapterPostion与getAbsoluteAdapterPosition就是用来获取ViewHolder的相对位置和绝对位置的。
 

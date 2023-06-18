@@ -54,13 +54,13 @@ Code传送门：<https://github.com/openai/CLIP>
 
 海量的（image，text）数据有了，问题是怎么设计并高效地训练模型。作者提出CLIP的模型，可以认为是ConVIRT[1]的简化版。这里先简单回顾下ConVIRT (咋一看是不是觉得CLIP和ConVIRT一模一样)
 
-{% asset_img 1.jpg %}
+{% asset_img 1.webp %}
 
 VonVIRT用（image，text）对来训练模型，其有一个image encoder和一个text encoder，训练目标是让两路的representation尽可能得一致（对偶地最大化表征的agreement），其中gv和gu函数是一个non-linear得projection head，负责分别将图像和文本表征投影到一个shared的空间，从而计算距离。
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 
-{% asset_img 3.jpg %}
+{% asset_img 3.webp %}
 
 其实就是构造了一个对称的contrastive loss，在一个batch内预测谁是正样本。
 
@@ -73,11 +73,11 @@ VonVIRT用（image，text）对来训练模型，其有一个image encoder和一
 
 于是CLIP的预训练模型就有了：
 
-{% asset_img 4.jpg %}
+{% asset_img 4.webp %}
 
 一个batch里有N对（image，text），然后和ConVIRT一样做对称的contrastive learning，伪代码如下：
 
-{% asset_img 5.jpg %}
+{% asset_img 5.webp %}
 
 ***
 
@@ -85,7 +85,7 @@ VonVIRT用（image，text）对来训练模型，其有一个image encoder和一
 
 一旦CLIP训练好了，我们就可以做zero-shot prediction了，如图所示：
 
-{% asset_img 6.jpg %}
+{% asset_img 6.webp %}
 
 步骤可以整理成下面这样：
 
@@ -172,7 +172,7 @@ _MODELS = {
 
 #### Zero-shot CLIP v.s. Linear Probe on ResNet50
 
-{% asset_img 7.jpg %}
+{% asset_img 7.webp %}
 
 CLIP的胜率在16/27，已经很强了，因为CLIP是zero-shot的，即没有用下游任务的数据，而linear probed ResNet50用了下游数据进行finetune逻辑回归分类器的参数。
 
@@ -184,7 +184,7 @@ CLIP的胜率在16/27，已经很强了，因为CLIP是zero-shot的，即没有�
 
 从另一个角度，一张图的text描述其实有很多种的，只要text的核心语义和image相同就行，那么我们还可以做一些ensemble，比如ensemble一下"A photo of a big {label}."和"A photo of a small {label}."。
 
-{% asset_img 8.jpg %}
+{% asset_img 8.webp %}
 
 可以发现，采用Prompt engineering+ensembling的效果比只用没有上下文的类别名好得多。
 
@@ -194,7 +194,7 @@ CLIP的胜率在16/27，已经很强了，因为CLIP是zero-shot的，即没有�
 
 #### Few-shot CLIP v.s. SOTA (ImageNet) SSL methods
 
-{% asset_img 9.jpg %}
+{% asset_img 9.webp %}
 
 y: 20个测试数据集上的平均得分; x: shots
 
@@ -205,7 +205,7 @@ y: 20个测试数据集上的平均得分; x: shots
 
 #### How many shots is needed for achieving zero-shot performance
 
-{% asset_img 10.jpg %}
+{% asset_img 10.webp %}
 
 Few-shot (linear probing) CLIP （保持CLIP encoder 参数fixed，加一层逻辑回归分类器微调）平均需要20.8-shots才能match zero-shot CLIP性能。这里相当于保持了the same CLIP feature space上，观察few-shot finetuning和zero-shot的性能差异。这里其实说明通过自然语言学到的视觉概念比少量样本finetune学到的好。
 
@@ -215,13 +215,13 @@ Few-shot (linear probing) CLIP （保持CLIP encoder 参数fixed，加一层逻�
 
 这里不再是few-shot linear probing了，而是全量数据的linear probing，我们来看下其跟zero-shot性能的对比：
 
-{% asset_img 11.jpg %}
+{% asset_img 11.webp %}
 
 总体上，两者的性能是正相关的，此外，大部分情况下linear probing的性能要好不少。
 
 再来一个linear probing的天梯图：
 
-{% asset_img 12.jpg %}
+{% asset_img 12.webp %}
 
 CLIP GOAT！！！
 
@@ -231,7 +231,7 @@ CLIP GOAT！！！
 
 作者在ImageNet的7个shift datasets上观察各模型的平均性能。
 
-{% asset_img 13.jpg %}
+{% asset_img 13.webp %}
 
 说实话，做domain adaptation（DA）/generalization（DG）的人看到这里应该挺兴奋，新的鲁棒特征来啦。不过问题来了，左边这张图是不是也反映了representation learning比DA、DG technique更重要呢？（那么，我们真的需要花那么大力气去卷DA嘛... 说不定通过这种大规模pretraining就能很大程度上解决domain shift的问题。但另一方面，DA、DG也可以在这些pretraining得到的表征上锦上添花。怎么说都有道理，但我更prefer to CLIP这类表征学习的意义。
 

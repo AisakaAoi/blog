@@ -25,7 +25,7 @@ tags:
 
 上一篇Partial Convolution（PConv）博文中[1]中，我们介绍了PConv的运作机制。其公式可以写为：
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 其中包括两个步骤：PConv卷积运算和Mask更新过程。我们看[NVIDIA的源代码](https://github.com/NVIDIA/partialconv)是如何实现PConv卷积的:
 
@@ -205,19 +205,19 @@ Partial Convolution的作者采用了自监督学习的方法，而没有采用G
 
 - 首先计算其L1 loss：
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 - 再次，是和perceptual loss类似的style loss:
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 - 最后是一项total variation (TV) loss：
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 - 总损失为上述损失的综合：
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 
 ***
 

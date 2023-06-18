@@ -14,11 +14,11 @@ tags:
 
 A flexible view for providing a limited window into a large data set.
 
-{% asset_img 1.jpg %}
+{% asset_img 1.webp %}
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 <!--more-->
 
@@ -36,15 +36,15 @@ Recyclerview通过内部类Recycler管理的缓存，缓存的是ViewHolder（�
 
 ListView缓存机制，对应到屏幕上：
 
-{% asset_img 4.jpg %}
+{% asset_img 4.webp %}
 
-{% asset_img 5.jpg %}
+{% asset_img 5.webp %}
 
 RecyclerView缓存机制，对应到屏幕上，以及可自定义部分：
 
-{% asset_img 6.jpg %}
+{% asset_img 6.webp %}
 
-{% asset_img 7.jpg %}
+{% asset_img 7.webp %}
 
 | ListView的局限 | RecyclerView的优势 |
 |  -----------  | -----------------  |
@@ -86,7 +86,7 @@ RecyclerView的Adapter可以针对不同Item的ViewType来缓存不同的Item
 
 在手机端使用RecyclerView比较简单，但是在TV端就会出现不少的问题，例如焦点显示不全，无法定位到某个position等等
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 #### RecyclerView刷新数据的时候，焦点错乱问题
 
@@ -147,7 +147,7 @@ RecyclerView提供了一个smoothScrollToPosition(int position)方法，该方�
 
 实现一种节目列表选中自动居中放大的功能
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 **方法1：** 重写RecyclerView的layoutManager的smoothScrollToPosition函数，该方法通过修改滑动Scroller里面的偏移量来达到居中的效果
 
@@ -169,7 +169,7 @@ RecyclerView提供了一个smoothScrollToPosition(int position)方法，该方�
 
 **RecycledViewPool mRecycledViewPool** → ViewHolder缓存池，本质上是一个SparseArray，其中Key是ViewType（Int类型），value存放的是ArrayList<ViewHolder>，默认每个ArrayList中最多存放5个ViewHolder
 
-{% asset_img 10.jpg %}
+{% asset_img 10.webp %}
 
 通过mAttachedScrap（1）、mCachedViews（2）获取的ViewHolder不需要重新创建布局及绑定数据
 
@@ -202,7 +202,7 @@ RecyclerView提供了一个smoothScrollToPosition(int position)方法，该方�
     | -> Recycler.getViewForPosition(int, boolean) |
     | -> Recycler.tryGetViewHolderForPositionByDeadline(...) |
 
-    {% asset_img 11.png %}
+    {% asset_img 11.webp %}
 
 2. 缓存
 
@@ -221,7 +221,7 @@ RecyclerView提供了一个smoothScrollToPosition(int position)方法，该方�
     | -> getRecycledViewPool().putRecycledView() |
     | -> 已满直接return，未满就清除数据后add |
 
-    {% asset_img 12.png %}
+    {% asset_img 12.webp %}
 
 ### 补充
 

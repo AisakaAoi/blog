@@ -20,11 +20,11 @@ tags:
 - **GroupNorm**将 channel 分组，有点类似于 LN，只是 GN 把 channel 也进行了划分，细化，然后再做归一化
 - **SwitchableNorm**是将 BN、LN、IN 结合，赋予权重，让网络自己去学习归一化层应该使用什么方法
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 <!--more-->
 
-{% asset_img 6.jpg %}
+{% asset_img 6.webp %}
 
 - 图中每一个正方体块表示一个数据（比如说这里一个正方体就是一个图像）
 - 每一个正方体中的**C**, **H**, **W**分别表示**channel**(通道个数), **height**(图像的高), **weight**(图像的宽)
@@ -43,7 +43,7 @@ tags:
 
 此外，internal corvariate shift和covariate shift是两回事，前者是网络内部，后者是针对输入数据，比如我们在训练数据前做归一化等预处理操作。
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
 **算法过程：**
 1. 沿着通道计算每个 batch 的均值 u
@@ -91,7 +91,7 @@ Batch Normalization 存在以下缺点：
 
 与 BN 不同，**LN** 是针对深度网络的**某一层的所有神经元的输入**按以下公式进行 normalize 操作。
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 
 BN与LN的区别在于：
 - LN 中同层神经元输入拥有相同的均值和方差，不同的输入样本有不同的均值和方差；
@@ -158,7 +158,7 @@ def Instancenorm(x, gamma, beta):
 
 主要是针对 Batch Normalization 对小 batchsize 效果差，GN 将 **channel 方向分 group**，然后每个 **group 内做归一化**，算 (C // G) * H * W 的均值，这样**与 batchsize 无关，不受其约束**。
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 
 ``` python
 def GroupNorm(x, gamma, beta, G=16):
@@ -232,7 +232,7 @@ torch.nn.BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_r
 | **track_running_stats** | 布尔值，当设为true，记录训练过程中的均值和方差。 |
 
 **实现公式：**
-{% asset_img 2.png %}
+{% asset_img 2.webp %}
 
 ***
 
@@ -249,7 +249,7 @@ torch.nn.LayerNorm(normalized_shape, eps=1e-05, elementwise_affine=True)
 | **elementwise_affine** | 布尔值，当设为true，给该层添加可学习的仿射变换参数。 |
 
 **实现公式：**
-{% asset_img 3.png %}
+{% asset_img 3.webp %}
 
 ***
 
@@ -270,7 +270,7 @@ torch.nn.InstanceNorm3d(num_features, eps=1e-05, momentum=0.1, affine=False, tra
 | **track_running_stats** | 布尔值，当设为true，记录训练过程中的均值和方差。 |
 
 **实现公式：**
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 ***
 
@@ -289,7 +289,7 @@ torch.nn.GroupNorm(num_groups, num_channels, eps=1e-05, affine=True)
 | **affine** | 布尔值，当设为true，给该层添加可学习的仿射变换参数。 |
 
 **实现公式：**
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 ***
 
@@ -307,7 +307,7 @@ torch.nn.GroupNorm(num_groups, num_channels, eps=1e-05, affine=True)
 - InstanceNorm 在图像像素上，用在风格化迁移
 - GroupNorm 将 channel 分组，然后再做归一化, 在 batchsize < 16 的时候, 可以使用这种归一化
 
-{% asset_img 10.png %}
+{% asset_img 10.webp %}
 
 ***
 

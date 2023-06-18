@@ -9,7 +9,7 @@ date: 2023-06-03 03:49:32
 tags:
 ---
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 
 <!--more-->
 
@@ -73,7 +73,7 @@ AugShuffleNet继承了 ShuffleNetV2的设计优点，通过分析后者的设计
 
 下面会更加详细地理论分析Shuffle Block的通道冗余。冗余来自于不合理的计算分支的设计。
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 <div align='center'>图4 ShuffleNetV2 Shuffle Block计算分支的通道依赖图</div>
 
 如图4,其计算分支有3个卷积：1×1 regular convolution, 3×3 depth-wise convolution, 1×1 regualr convolution。 而且，三层卷积的输入和输出通道数量被强制要保持相当。这实际上是不合理的设计原则，也是ShuffleNetV2冗余的导火索。如图4，**由于模块中首尾两个标准卷积存在通道全连接结构（depth-wise convolution相当于通道上一对一的scale因子，可忽略），这个规定会放大整个模块的通道冗余，在加宽网络时尤为严重。**
@@ -102,7 +102,7 @@ AugShuffleNet继承了 ShuffleNetV2的设计优点，通过分析后者的设计
 
 #### 模块理论效率分析
 
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 <div align='center'>图5 模块效率分析</div>
 
 图5分析了改良模块相对于原始 Shuffle Block 的效率（计算量和参数量）。总而言之，channel split 的通道分割率 r，决定了效率, r 越小，其效率就比原始 Shuffle Block 更高。
@@ -123,10 +123,10 @@ AugShuffleNet继承了 ShuffleNetV2的设计优点，通过分析后者的设计
 
 默认情况下，分割率为0.375，改良模块会代替原始ShuffleNetV2中Stage3和Stage4中不包括下采样的Shuffle Block，替代了10个模块，所以在计算量，参数量和延时方面的改善是相当可观的。Stage2不替换是因为浅层通道特征很重要，破坏了伤害模型表现，通道数量太少，替换了又提升不了多少效率，换了得不偿失。
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 <div align='center'>图6 网络架构</div>
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 <div align='center'>图7 分类效果</div>
 
 AugShuffleNet各种指标都超过ShuffleNetV2, 延时暂时没给结果，笔记本电脑上实际测试还是更快的。
@@ -138,7 +138,7 @@ AugShuffleNet各种指标都超过ShuffleNetV2, 延时暂时没给结果，笔�
 {% asset_img 10.webp %}
 <div align='center'>图8</div>
 
-{% asset_img 11.png %}
+{% asset_img 11.webp %}
 <div align='center'>图9</div>
 
 如图8和9所示, 我们基于AugShuffleNet 1.5x 继续降低split ratio和ShuffleNetV2进行比较。这本质是在证明ShuffleNetV2的冗余性。实验设置了0.375, 0.25, 0.125三种slit ratio参数，数值越小，AugShuffleNet就被压缩得越狠 。

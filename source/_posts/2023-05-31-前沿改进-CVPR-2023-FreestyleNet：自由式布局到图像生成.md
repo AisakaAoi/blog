@@ -69,7 +69,7 @@ tags:
 2. 本文提出了一个无参数的RCA模块，通过将其插入预训练模型中，在充分利用生成先验的同时实现了从指定的布局生成逼真的图像。
 3. 丰富的实验证明了本文方法在FLIS上的有效性。如图1所示，FreestyleNet可以生成全新的语义，包括但不局限于：（1）生成训练集中未见过的物体；（2）绑定新的属性到已有物体上；（3）将图像渲染为全新的风格。
 
-{% asset_img 1.png %}
+{% asset_img 1.webp %}
 <div align='center'>图1 使用FreestyleNet得到的自由式布局到图像生成结果</div>
 
 ***
@@ -78,7 +78,7 @@ tags:
 
 基于 Stable Diffusion，本文提出了一个自由式布局到图像生成框架——FreestyleNet，整体结构如图2所示。Stable Diffusion使用CLIP的文本编码器从输入得到文本嵌入，进而通过交叉注意力将它们注入到去噪U-Net网络中，经过T步的去噪后得到生成图像。为了令Stable Diffusion能够生成符合指定布局的图像，本文提出了一个修正交叉注意力（RCA）层，以在计算交叉注意力时引入布局，使得语义被放置在指定的区域。
 
-{% asset_img 2.jpg %}
+{% asset_img 2.webp %}
 <div align='center'>图2 FreestyleNet整体框架</div>
 
 ***
@@ -93,12 +93,12 @@ Stable Diffusion 能够把文本转换为逼真的图像，为了尽可能保留
 
 有了语义和布局，RCA 需要做的便是将每个语义放置在布局指定的区域中。RCA 的设计思想来源于对 Stable Diffusion中交叉注意力（Cross-Attention，CA）机制的观察。CA接收文本嵌入（text embeddings）和图像特征（image features）两个输入，计算出两者之间的注意力图（attention map），最终输出对文本值（text values）的加权和。注意力图中的每个通道都对应着一个文本嵌入，举例来说，对于输入文本中的一个单词 “cat”，我们可以找到其在注意力图中的那个通道，并且该通道和最终生成图像中猫的空间分布是类似的。因此，通过改变该通道的激活值，我们便可以操纵这只猫在生成图像中的形状和位置。RCA便是利用这一点，通过限制注意力图的空间分布，使得最终生成图像的空间分布和输入布局一致。
 
-{% asset_img 3.jpg %}
+{% asset_img 3.webp %}
 <div align='center'>图3 RCA框图</div>
 
 如图 3 所示，RCA 接收三个输入：输入图像特征，文本嵌入和布局。通过线性层分别得到图像查询 Q，文本键 K 和文本值 V 后，我们可以使用下式计算attention score maps：
 
-{% asset_img 4.png %}
+{% asset_img 4.webp %}
 
 ***
 
@@ -106,7 +106,7 @@ Stable Diffusion 能够把文本转换为逼真的图像，为了尽可能保留
 
 将 CA 替换为 RCA 后，模型便可以在有布局标注的数据集上进行微调了。微调所用的目标函数和 Stable Diffusion 预训练时所用的保持一致，即：
 
-{% asset_img 5.png %}
+{% asset_img 5.webp %}
 
 ***
 
@@ -116,7 +116,7 @@ Stable Diffusion 能够把文本转换为逼真的图像，为了尽可能保留
 
 图 4 展示了 FreestyleNet 在 FLIS 任务上的效果，其中 in-distribution 表示输入文本仅仅包含训练集中的语义（COCO-Stuff 中的 182 个物体类别），而 out-of-distribution 的输入文本则有着训练集外的多样语义。可以看出，FreestyleNet 能够（a）给目标绑定新的属性，（b）指定图像的风格，（c）生成全新的物体。生成图像均有着较高的保真度，同时在保证符合输入布局的前提下忠实反映了输入文本中包含的语义，使得用户可以自由地创造图像。
 
-{% asset_img 6.png %}
+{% asset_img 6.webp %}
 <div align='center'>图4 FreestyleNet 在 FLIS 上的结果</div>
 
 ***
@@ -126,9 +126,9 @@ Stable Diffusion 能够把文本转换为逼真的图像，为了尽可能保留
 我们也将 FreestyleNet 与传统的 LIS 模型在 in-distribution 的设置下进行了对比，所使用的数据集为 COCO-Stuff 和 ADE20K。定量指标选择了常用的 Fréchet Inception Distance（FID） 和 mean Intersection-over-Union（mIoU），它们分别用来衡量生成图像是否真实以及是否实现了与输入布局的对齐。图 5 和表 1 展示了对比结果，可以看出，FreestyleNet 在 LIS 上也有着优良的表现。
 
 <div align='center'>表1 FreestyleNet与其他LIS模型的定量对比结果</div>
-{% asset_img 7.png %}
+{% asset_img 7.webp %}
 
-{% asset_img 8.png %}
+{% asset_img 8.webp %}
 <div align='center'>图5 FreestyleNet与其他LIS模型的定性对比结果</div>
 
 ***
@@ -137,7 +137,7 @@ Stable Diffusion 能够把文本转换为逼真的图像，为了尽可能保留
 
 为了更加直观地证明 RCA 的有效性，我们在图 6 中给出了两个例子。在第一行的例子中，如果我们令 “sky” 和 “drawn by Van Gogh” 共享同一个修正注意力图（AM），则只有天空的区域被渲染成梵高画的风格。第二行的例子表明我们还能够通过交换两个目标的修正注意力图来实现外貌的交换。它们都说明了RCA 可以让文本描述的语义出现在布局指定的区域中。
 
-{% asset_img 9.png %}
+{% asset_img 9.webp %}
 <div align='center'>图6 RCA的有效性</div>
 
 ***
