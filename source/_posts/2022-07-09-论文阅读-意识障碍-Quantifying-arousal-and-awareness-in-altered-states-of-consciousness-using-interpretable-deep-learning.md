@@ -1,20 +1,20 @@
 ---
 title: >-
-  论文阅读-Detecting Disorders of Consciousness in Brain Injuries From EEG
-  Connectivity Through Machine Learning
+  论文阅读-意识障碍-Quantifying arousal and awareness in altered states of consciousness
+  using interpretable deep learning
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
   - 💫脑机接口 Brain-computer Interface
   - 🛰️医学应用 Medical Applications
-abbrlink: de33d265
-date: 2022-07-09 19:25:06
+abbrlink: 8b15632
+date: 2022-07-09 19:54:34
 tags:
 ---
 
 ### 原文
 
-{% pdf ./file/paper/【2021_IEEE_Trans】Detecting_Disorders_of_Consciousness_in_Brain_Injuries_From_EEG_Connectivity_Through_Machine_Learning.pdf %}
+{% pdf ./file/paper/【2022_NatComm】Quantifying_arousal_and_awareness_in_altered_states_of_consciousness_using_interpretable_deep_learning.pdf %}
 
 <!--more-->
 
@@ -37,5 +37,3 @@ tags:
 {% asset_img 8.webp %}
 
 {% asset_img 9.webp %}
-
-{% asset_img 10.webp %}
