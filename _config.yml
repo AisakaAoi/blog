@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://aisakaaoi.top
 root: /
 permalink: :abbrlink.html
 abbrlink:
@@ -171,7 +171,6 @@ neat_css:
   enable: true      #配置CSS文件开关
   exclude:
     - '**.min.css'   #配置排除文件  
-
 neat_js:
   enable: true       #js压缩开关
   mangle: true       #是否破坏文件名

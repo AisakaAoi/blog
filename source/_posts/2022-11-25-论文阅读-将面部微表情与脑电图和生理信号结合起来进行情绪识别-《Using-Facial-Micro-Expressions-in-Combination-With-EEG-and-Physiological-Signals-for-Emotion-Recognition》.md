@@ -3,10 +3,18 @@ title: >-
   论文阅读-将面部微表情与脑电图和生理信号结合起来进行情绪识别-《Using Facial Micro-Expressions in Combination
   With EEG and Physiological Signals for Emotion Recognition》
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫多模态学习 Multimodal Learning
-  - 🛰️情绪识别 Emotion Recognition
+  - - 🌙进阶学习
+    - ⭐人工智能 Artificial Intelligence
+    - 💫脑机接口 Brain-computer Interface
+    - 🛰️情绪识别 Emotion Recognition
+  - - 🌙进阶学习
+    - ⭐人工智能 Artificial Intelligence
+    - 💫计算机视觉 Computer Vision
+    - 🛰️情绪识别 Emotion Recognition
+  - - 🌙进阶学习
+    - ⭐人工智能 Artificial Intelligence
+    - 💫计算机视觉 Computer Vision
+    - 🛰️微表情 Micro Expression
 abbrlink: a4775ace
 date: 2022-11-25 21:01:13
 tags:
