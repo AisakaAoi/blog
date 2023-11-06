@@ -1,11 +1,11 @@
 ---
 title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition - Lecture 9
-  Understanding and Visualizing Convolutional Neural Networks
+  CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
+  Lecture 9 Understanding and Visualizing Convolutional Neural Networks
 categories:
   - 🌙学习资源
-  - ⭐Stanford CS231n [2019中文]
-abbrlink: bab92c6b
+  - ⭐Stanford CS231n
+abbrlink: ac649775
 date: 2022-02-09 19:59:19
 tags:
 ---

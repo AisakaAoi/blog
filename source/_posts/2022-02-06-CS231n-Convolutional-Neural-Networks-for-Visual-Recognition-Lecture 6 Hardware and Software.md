@@ -1,11 +1,11 @@
 ---
 title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition - Lecture 6
-  Hardware and Software
+  CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
+  Lecture 6 Hardware and Software
 categories:
   - 🌙学习资源
-  - ⭐Stanford CS231n [2019中文]
-abbrlink: 25e170d0
+  - ⭐Stanford CS231n
+abbrlink: 3df78266
 date: 2022-02-06 19:59:19
 tags:
 ---
