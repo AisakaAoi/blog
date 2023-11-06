@@ -4,7 +4,7 @@ title: >-
   5
 categories:
   - 🌙学习资源
-  - ⭐Stanford CS231n [2017]
+  - ⭐Stanford CS231n
 abbrlink: cee81982
 date: 2022-03-07 18:06:57
 tags:

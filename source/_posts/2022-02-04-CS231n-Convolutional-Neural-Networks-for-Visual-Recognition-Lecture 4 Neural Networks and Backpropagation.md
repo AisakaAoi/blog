@@ -1,11 +1,11 @@
 ---
 title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition - Lecture 4
-  Neural Networks and Backpropagation
+  CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
+  Lecture 4 Neural Networks and Backpropagation
 categories:
   - 🌙学习资源
-  - ⭐Stanford CS231n [2019中文]
-abbrlink: 58d95266
+  - ⭐Stanford CS231n
+abbrlink: 56c33cc
 date: 2022-02-04 19:59:19
 tags:
 ---

@@ -4,7 +4,7 @@ title: >-
   4
 categories:
   - 🌙学习资源
-  - ⭐Stanford CS231n [2017]
+  - ⭐Stanford CS231n
 abbrlink: b9ef2914
 date: 2022-03-06 18:06:57
 tags:
