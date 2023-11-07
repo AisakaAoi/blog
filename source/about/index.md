@@ -3,7 +3,7 @@ title: 个人简介
 date: 2023-10-27 05:26:30
 ---
 
-<img alt="个人照片" src="/images/photo.webp" style="width:30%; border-radius:100%; overflow:hidden;">
+<img alt="个人照片" src="/images/photo.webp" style="width:32%; border-radius:100%; overflow:hidden;">
 
 陈宗楠，在读硕士研究生
 
