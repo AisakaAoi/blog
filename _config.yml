@@ -4,8 +4,10 @@
 
 # Site
 title: '逢坂葵的个人博客'
-subtitle: '逢坂葵葵'
-description: "Aisaka's Blog"
+# subtitle: '逢坂葵葵'
+subtitle: 'aoi学院'
+# description: "Aisaka's Blog"
+description: "Aisaka's Blog, School of Aoi, Aisaka University"
 keywords:
 author: Aisaka Aoi
 language: zh-CN

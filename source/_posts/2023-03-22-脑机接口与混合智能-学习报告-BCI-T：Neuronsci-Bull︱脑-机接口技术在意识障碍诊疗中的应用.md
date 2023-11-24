@@ -3,7 +3,7 @@ title: 脑机接口与混合智能-学习报告-BCI-T：Neuronsci Bull︱脑-机
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
-  - 💫知识分享
+  - 💫学习报告
 abbrlink: 5299cf98
 date: 2023-03-22 20:29:22
 tags:
