@@ -1,11 +1,11 @@
 ---
-title: 个人简介
+title: 防止阿尔兹海默症忘记自己是什么东西所以有此页面
 date: 2023-10-27 05:26:30
 ---
 
-<img alt="个人照片" src="/images/photo.webp" style="width:32%; border-radius:100%; overflow:hidden;">
+<!-- <img alt="个人照片" src="/images/photo.webp" style="width:32%; border-radius:100%; overflow:hidden;">
 
-陈宗楠，在读硕士研究生
+陈宗楠，在读硕士研究生 -->
 
 ***
 
@@ -22,13 +22,13 @@ date: 2023-10-27 05:26:30
 
 #### 期刊论文
 
-[1] 陈宗楠, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法.  计算机系统应用, 2023, 32(08): 126-132. DOI: 10.15888/j.cnki.csa.009195. (CCF T3)
+[1] 陈宗楠, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023, 32(08): 126-132. DOI: 10.15888/j.cnki.csa.009195. (CCF T3)
 
-[2] 叶耀光, 陈宗楠, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络.  计算机技术与发展, 2022,32(11):64-71. DOI: 10.3969/j.issn.1673-629X.2022.11.010.(CCF T3, CCF计算机应用大会优秀论文奖)
+[2] 叶耀光, 陈宗楠, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络. 计算机技术与发展, 2022,32(11):64-71. DOI: 10.3969/j.issn.1673-629X.2022.11.010.(CCF T3, CCF计算机应用大会优秀论文奖)
 
 #### 会议论文
 
-[1] Zongnan Chen, Jiarui Jin, Jiahui Pan*. Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition.  2023 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2023), 2023.12, Istanbul, Turkey. (CCF B, oral, acceptance rate: 19.5%)
+[1] Zongnan Chen, Jiarui Jin, Jiahui Pan*. Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition. 2023 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2023), 2023.12, Istanbul, Turkey. (CCF B, oral, acceptance rate: 19.5%)
 
 #### 专利
 
@@ -144,6 +144,6 @@ date: 2023-10-27 05:26:30
 <summary>软件著作权</summary>
 
 - 2021.09.09，“Cambia”基于循环生成对抗网络的服装图像风格迁移软件[简称：Cambia] V1.0
-- 2021.01.13，笔诗造化软件[简称：笔诗造化]V1.0
+- 2021.01.13，笔诗造化软件[简称：笔诗造化] V1.0
 
 </details>
