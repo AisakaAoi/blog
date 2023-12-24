@@ -1,10 +1,10 @@
 ---
-title: 前沿改进-CVPR 2023 | FreestyleNet：自由式布局到图像生成
+title: CVPR 2023 | FreestyleNet：自由式布局到图像生成
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
   - 💫前沿改进 Frontier Improvement
-abbrlink: fcc496a5
+abbrlink: 56fe5847
 date: 2023-05-31 04:21:47
 tags:
 ---

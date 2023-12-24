@@ -1,10 +1,10 @@
 ---
-title: 前沿改进-CVPR 2023 | NeRF-Supervised Deep Stereo：不需要任何ground-truth数据
+title: CVPR 2023 | NeRF-Supervised Deep Stereo：不需要任何ground-truth数据
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
   - 💫前沿改进 Frontier Improvement
-abbrlink: 9643da0c
+abbrlink: d83f8528
 date: 2023-05-29 02:39:43
 tags:
 ---
