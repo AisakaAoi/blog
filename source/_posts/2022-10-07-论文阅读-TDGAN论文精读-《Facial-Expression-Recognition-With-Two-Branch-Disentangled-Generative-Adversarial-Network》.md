@@ -5,8 +5,9 @@ title: >-
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️情绪识别 Emotion Recognition
+  - 💫研究领域 Research Area
+  - 🛰️计算机视觉 Computer Vision
+  - ☄️情绪识别 Emotion Recognition
 abbrlink: 14139c13
 date: 2022-10-07 22:12:37
 tags:

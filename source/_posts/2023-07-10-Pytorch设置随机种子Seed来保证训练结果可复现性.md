@@ -3,7 +3,7 @@ title: Pytorch设置随机种子Seed来保证训练结果可复现性
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫深度学习基本概念 Deep Learning Basic Concepts
+  - 💫_深度学习基本概念 Deep Learning Basic Concepts
 abbrlink: 552b9941
 date: 2023-07-10 03:43:39
 tags:

@@ -3,7 +3,7 @@ title: 深度学习-归一化层BN、LN、IN、GN、SN
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫深度学习基本概念 Deep Learning Basic Concepts
+  - 💫_深度学习基本概念 Deep Learning Basic Concepts
 abbrlink: 928002b2
 date: 2021-12-18 16:36:56
 tags:

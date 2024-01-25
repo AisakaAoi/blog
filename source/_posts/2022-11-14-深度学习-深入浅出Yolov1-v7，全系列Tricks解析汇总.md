@@ -1,10 +1,14 @@
 ---
 title: 深度学习-深入浅出Yolov1-v7，全系列Tricks解析汇总
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️目标检测 Object Detection
+  - - 🌙进阶学习
+    - ⭐人工智能 Artificial Intelligence
+    - 💫研究领域 Research Area
+    - 🛰️计算机视觉 Computer Vision
+    - ☄️目标检测 Object Detection
+  - - 🌙进阶学习
+    - ⭐人工智能 Artificial Intelligence
+    - 💫网络模型 Networks Model
 abbrlink: 39c38ef8
 date: 2022-11-14 16:31:46
 tags:
