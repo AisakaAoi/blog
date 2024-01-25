@@ -3,8 +3,9 @@ title: 人脸识别-CosFace 腾讯AI Lab提出新型损失函数LMCL：可显著
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️人脸识别 Face Recognition
+  - 💫研究领域 Research Area
+  - 🛰️计算机视觉 Computer Vision
+  - ☄️人脸识别 Face Recognition
 abbrlink: d854f1cb
 date: 2022-10-30 10:43:03
 tags:

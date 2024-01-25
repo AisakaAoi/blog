@@ -3,8 +3,9 @@ title: 人脸识别-DeepID1 DeepID2 DeepID2+ DeepID3
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️人脸识别 Face Recognition
+  - 💫研究领域 Research Area
+  - 🛰️计算机视觉 Computer Vision
+  - ☄️人脸识别 Face Recognition
 abbrlink: cea9d0ff
 date: 2022-10-14 02:36:10
 tags:

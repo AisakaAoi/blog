@@ -3,8 +3,9 @@ title: 论文阅读-情绪脑电EEG常用的特征-《A review of EEG features f
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫脑机接口 Brain-computer Interface
-  - 🛰️情绪识别 Emotion Recognition
+  - 💫研究领域 Research Area
+  - 🛰️脑机接口 Brain-computer Interface
+  - ☄️情绪识别 Emotion Recognition
 abbrlink: 67ad2fac
 date: 2022-11-01 16:14:09
 tags:

@@ -3,8 +3,9 @@ title: 人脸识别-FaceNet-Google的人脸识别
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️人脸识别 Face Recognition
+  - 💫研究领域 Research Area
+  - 🛰️计算机视觉 Computer Vision
+  - ☄️人脸识别 Face Recognition
 abbrlink: efc0281c
 date: 2022-10-17 06:43:23
 tags:

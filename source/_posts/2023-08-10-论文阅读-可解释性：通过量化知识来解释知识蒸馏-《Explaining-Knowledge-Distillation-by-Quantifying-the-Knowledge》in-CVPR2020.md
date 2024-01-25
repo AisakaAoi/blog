@@ -5,8 +5,9 @@ title: >-
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫网络模型 Networks Model
-  - 🛰️蒸馏学习 Knowledge Distillation
+  - 💫学习方法 Learning Methodology
+  - 🛰️迁移学习 Transfer Learning
+  - ☄️蒸馏学习 Knowledge Distillation
 abbrlink: c6bf908a
 date: 2023-08-10 06:03:15
 tags:

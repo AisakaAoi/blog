@@ -3,8 +3,9 @@ title: 人脸识别-人脸识别合集 | 1 DeepFace解析(Facebook CVPR2014)
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️人脸识别 Face Recognition
+  - 💫研究领域 Research Area
+  - 🛰️计算机视觉 Computer Vision
+  - ☄️人脸识别 Face Recognition
 abbrlink: cec2ee73
 date: 2023-06-08 07:13:47
 tags:

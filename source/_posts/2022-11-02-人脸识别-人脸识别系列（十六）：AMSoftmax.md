@@ -3,8 +3,9 @@ title: 人脸识别-人脸识别系列（十六）：AMSoftmax
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫计算机视觉 Computer Vision
-  - 🛰️人脸识别 Face Recognition
+  - 💫研究领域 Research Area
+  - 🛰️计算机视觉 Computer Vision
+  - ☄️人脸识别 Face Recognition
 abbrlink: 2f45f198
 date: 2022-11-02 06:41:49
 tags:
