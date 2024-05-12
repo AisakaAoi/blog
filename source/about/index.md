@@ -22,13 +22,15 @@ date: 2023-10-27 05:26:30
 
 #### 期刊论文
 
-[1] 陈宗楠, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023, 32(08): 126-132. DOI: 10.15888/j.cnki.csa.009195. (CCF T3)
+[3] 陈宗楠, 金家瑞, 潘家辉. 基于Swin Transformer的四维脑电情绪识别. 计算机技术与发展, 2023,33(12):178-184. https://doi.org/10.3969/j.issn.1673-629X.2023.12.025 (CCF T3)
 
-[2] 叶耀光, 陈宗楠, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络. 计算机技术与发展, 2022,32(11):64-71. DOI: 10.3969/j.issn.1673-629X.2022.11.010.(CCF T3, CCF计算机应用大会优秀论文奖)
+[2] 陈宗楠, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023,32(08):126-132. https://doi.org/10.15888/j.cnki.csa.009195 (CCF T3)
+
+[1] 叶耀光, 陈宗楠, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络. 计算机技术与发展, 2022,32(11):64-71. https://doi.org/10.3969/j.issn.1673-629X.2022.11.010 (CCF T3, CCF计算机应用大会优秀论文奖)
 
 #### 会议论文
 
-[1] Zongnan Chen, Jiarui Jin, Jiahui Pan*. Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition. 2023 IEEE International Conference on Bioinformatics and Biomedicine (IEEE BIBM 2023), 2023.12, Istanbul, Turkey. (CCF B, oral, acceptance rate: 19.5%)
+[1] Zongnan Chen, Jiarui Jin, Jiahui Pan*. Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition. 2023 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Istanbul, Turkiye, 2023, 1850-1855. https://doi.org/10.1109/BIBM58861.2023.10385526 (CCF B, oral)
 
 #### 专利
 
@@ -53,7 +55,7 @@ date: 2023-10-27 05:26:30
 <details>
 <summary>学生工作</summary>
 
-- 2022.09-至今，华南师范大学，软件学院，软件工程，研2201班，生活委员
+- 2022.09-2025.06，华南师范大学，软件学院，软件工程，研2201班，生活委员
 - 2022.09-2024.06，华南师范大学，软件学院，研究生学生会，宣传部工作人员 / 主席团成员
 - 2018.09-2022.06，华南师范大学，软件学院，软件工程，1802班，班长兼任团支书
 - 2018.09-2020.06，华南师范大学，勤工助学管理中心，宣传部，干事 / 副部长
@@ -133,6 +135,7 @@ date: 2023-10-27 05:26:30
 <details>
 <summary>科研结题</summary>
 
+- 2023.11，研究生科研项目结题《融合情感脑电和人脸微表情的意识障碍辅助诊断系统》
 - 2022.04，本科校级优秀毕业论文《基于深度学习的灰度图像彩色化方法研究》
 - 2021.06，省级大创课题结题《基于生成对抗网络的服装图像风格迁移》
 - 2021.06，校级团委课题结题《基于行为序列的在线学习持续参与度可视化分析》
