@@ -1,8 +1,8 @@
 ---
 title: 摄影新手入门：相机RAW是什么？RAW格式怎么打开？和JPEG有什么区别？
 categories:
-  - 🌙逢坂杂谈
-  - ⭐科技区
+  - 🌙逢坂杂谈与搬运
+  - ⭐摄影区
 abbrlink: b01827f
 date: 2023-04-08 03:15:18
 tags:

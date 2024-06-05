@@ -13,11 +13,6 @@ categories:
     - 💫研究领域 Research Area
     - 🛰️计算机视觉 Computer Vision
     - ☄️情绪识别 Emotion Recognition
-  - - 🌙进阶学习
-    - ⭐人工智能 Artificial Intelligence
-    - 💫研究领域 Research Area
-    - 🛰️计算机视觉 Computer Vision
-    - ☄️微表情 Micro Expression
 abbrlink: a4775ace
 date: 2022-11-25 21:01:13
 tags:

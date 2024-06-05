@@ -1,8 +1,8 @@
 ---
 title: 图像知识-关于JPEG、PNG、GIF、WEBP图片格式的理解与使用场景
 categories:
-  - 🌙逢坂杂谈
-  - ⭐科技区
+  - 🌙逢坂杂谈与搬运
+  - ⭐电脑区
 abbrlink: 5de3d65f
 date: 2023-06-20 05:15:13
 tags:
