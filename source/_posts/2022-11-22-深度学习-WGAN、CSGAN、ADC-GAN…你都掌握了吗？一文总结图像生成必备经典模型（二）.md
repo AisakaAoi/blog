@@ -5,13 +5,13 @@ categories:
     - ⭐人工智能 Artificial Intelligence
     - 💫研究领域 Research Area
     - 🛰️计算机视觉 Computer Vision
-    - ☄️图像生成 Image Generation
   - - 🌙进阶学习
     - ⭐人工智能 Artificial Intelligence
     - 💫网络模型 Networks Model
+tags:
+  - ☄️图像生成 Image Generation
 abbrlink: '20702606'
 date: 2022-11-22 21:00:24
-tags:
 ---
 
 ### 本期收录模型速览

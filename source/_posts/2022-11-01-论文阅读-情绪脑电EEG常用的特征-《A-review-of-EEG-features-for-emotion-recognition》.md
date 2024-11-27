@@ -5,10 +5,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️脑机接口 Brain-computer Interface
+tags:
   - ☄️情绪识别 Emotion Recognition
 abbrlink: 67ad2fac
 date: 2022-11-01 16:14:09
-tags:
 ---
 
 ### 摘要

@@ -5,13 +5,13 @@ categories:
     - ⭐人工智能 Artificial Intelligence
     - 💫研究领域 Research Area
     - 🛰️计算机视觉 Computer Vision
-    - ☄️目标检测 Object Detection
   - - 🌙进阶学习
     - ⭐人工智能 Artificial Intelligence
     - 💫网络模型 Networks Model
+tags:
+  - 🌠目标检测 Object Detection
 abbrlink: 39c38ef8
 date: 2022-11-14 16:31:46
-tags:
 ---
 
 【导读】目标检测Yolo算法是非常经典且应用广泛的算法，而在Yolo中，又分成了输入端、网络推理、输出层，每个部分都可以延伸出很多的优化方式，本文主要从Yolov1~v7各个版本的Tricks进行了讲解，希望对大家有帮助。

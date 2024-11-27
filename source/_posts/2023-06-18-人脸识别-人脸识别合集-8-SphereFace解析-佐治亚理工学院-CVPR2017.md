@@ -5,10 +5,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
+tags:
   - ☄️人脸识别 Face Recognition
 abbrlink: ee333774
 date: 2023-06-18 01:36:45
-tags:
 ---
 
 SphereFace（超球面）是佐治亚理工学院Weiyang Liu等在CVPR2017.04发表，提出了将Softmax loss从欧几里得距离转换到角度间隔，增加决策余量m，限制||W||=1和b=0，[SphereFace: Deep Hypersphere Embedding for Face Recognition](https://arxiv.org/abs/1704.08063)

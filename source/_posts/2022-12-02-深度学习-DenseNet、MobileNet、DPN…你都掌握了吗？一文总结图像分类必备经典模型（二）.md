@@ -5,13 +5,13 @@ categories:
     - ⭐人工智能 Artificial Intelligence
     - 💫研究领域 Research Area
     - 🛰️计算机视觉 Computer Vision
-    - ☄️图像分类 Image Classification
   - - 🌙进阶学习
     - ⭐人工智能 Artificial Intelligence
     - 💫网络模型 Networks Model
+tags:
+  - ☄️图像分类 Image Classification
 abbrlink: cf26f90d
 date: 2022-12-02 03:39:19
-tags:
 ---
 
 本文将分 3 期进行连载，共介绍 15 个在图像分类任务上曾取得 SOTA 的经典模型。
