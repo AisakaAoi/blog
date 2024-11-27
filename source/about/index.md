@@ -15,31 +15,41 @@ date: 2023-10-27 05:26:30
 
 #### 期刊论文
 
-[4] Jiarui Jin, Zongnan Chen, Honghua Cai, Jiahui Pan*. Affective EEG-based Person Identification with Continual Learning. IEEE Transactions on Instrumentation and Measurement, 2024, accepted. (SCI, JCR Q1, 中科院二区Top, IF: 5.6)
+[4] Jiarui Jin, Zongnan Chen, Honghua Cai, Jiahui Pan*. Affective EEG-based Person Identification with Continual Learning.  IEEE Transactions on Instrumentation and Measurement, 2024, 73: 1-16. DOI: 10.1109/TIM.2024.3406836 (SCI, JCR Q1, 中科院二区Top, IF: 5.6)
 
-[3] 陈宗楠, 金家瑞, 潘家辉*. 基于Swin Transformer的四维脑电情绪识别. 计算机技术与发展, 2023,33(12):178-184. https://doi.org/10.3969/j.issn.1673-629X.2023.12.025 (CCF T3)
+[3] 陈宗楠, 金家瑞, 潘家辉*. 基于Swin Transformer的四维脑电情绪识别. 计算机技术与发展, 2023,33(12):178-184. DOI: 10.3969/j.issn.1673-629X.2023.12.025 (CCF T3)
 
-[2] 陈宗楠, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023,32(08):126-132. https://doi.org/10.15888/j.cnki.csa.009195 (CCF T3)
+[2] 陈宗楠, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023,32(08):126-132. DOI: 10.15888/j.cnki.csa.009195 (CCF T3)
 
-[1] 叶耀光, 陈宗楠, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络. 计算机技术与发展, 2022,32(11):64-71. https://doi.org/10.3969/j.issn.1673-629X.2022.11.010 (CCF T3, CCF计算机应用大会优秀论文奖)
+[1] 叶耀光, 陈宗楠, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络. 计算机技术与发展, 2022,32(11):64-71. DOI: 10.3969/j.issn.1673-629X.2022.11.010 (CCF T3, CCF计算机应用大会优秀论文奖)
 
 #### 会议论文
 
-[1] Zongnan Chen, Jiarui Jin, Jiahui Pan*. Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition. 2023 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Istanbul, Turkiye, 2023, 1850-1855. https://doi.org/10.1109/BIBM58861.2023.10385526 (CCF B, oral)
+[1] Zongnan Chen, Jiarui Jin, Jiahui Pan*. Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition. 2023 IEEE International Conference on Bioinformatics and Biomedicine (BIBM), Istanbul, Turkiye, 2023, 1850-1855. DOI: 10.1109/BIBM58861.2023.10385526 (CCF B, oral)
 
-### 学生项目
+#### 学生项目
 
 [1] 2024年度“攀登计划”科技发明制作类立项（pdjh2024b123）. 融合人脸微表情和脑电信号的意识障碍辅助诊断系统. 第二负责人
 
-### 参与导师项目
+#### 参与导师项目
 
-[3] 广东省自然科学基金面上项目（2024A1515010524）. 融合脑电信号和人脸表情的多模态情感脑机接口及其在意识障碍评估的应用. 2024.01-2026.12. 参与者
+[6] 广东省自然科学基金面上项目（2024A1515010524）. 融合脑电信号和人脸表情的多模态情感脑机接口及其在意识障碍评估的应用. 2024.01-2026.12. 参与者
 
-[2] 广东省普通高校重点领域专项(生物医药与健康)（2023ZDZX2021）.  多模态情感脑机接口技术及其在意识障碍评估的临床应用. 2023.10-2026.09. 参与者
+[5] 国家重点研发计划-“战略性科技创新合作”重点专项（2023YFE0207800）. 中美脑机接口技术与产业标准化合作. 2024.01-2026.12. 参与者
 
-[1] 广东省普通高校特色创新项目（2022KTSCX035）. 面向意识障碍患者的多模态情感脑机接口关键技术研究及临床应用. 2022.07-2024.06. 参与者
+[4] 广东省基础与应用基础研究基金区域联合基金项目（2023A1515140100）. 基于睡眠脑电的慢性意识障碍智能监测与诊断技术. 2023.11-2026.10. 参与者
+
+[3] 广东省普通高校重点领域专项(生物医药与健康)（2023ZDZX2021）.  多模态情感脑机接口技术及其在意识障碍评估的临床应用. 2023.10-2026.09. 参与者
+
+[2] 广东省普通高校特色创新项目（2022KTSCX035）. 面向意识障碍患者的多模态情感脑机接口关键技术研究及临床应用. 2022.07-2024.06. 参与者
+
+[1] 科技创新2030-“脑科学与类脑研究”重点项目（2022ZD0208900）. 面向运动和意识障碍康复的双向-闭环脑机接口. 2022.01-2026.12. 参与者
 
 #### 专利
+
+[2] 一种基于脑电图和微表情的多模态情绪识别和意识检测方法. 初审
+
+[1] 一种基于时空注意力机制的多特征脑电情绪识别方法. 初审
 
 </font>
 

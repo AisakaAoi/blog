@@ -5,10 +5,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
+tags:
   - ☄️人脸识别 Face Recognition
 abbrlink: d854f1cb
 date: 2022-10-30 10:43:03
-tags:
 ---
 
 深度卷积神经网络 (CNN) 已经推动人脸识别实现了革命性的进展。人脸识别的核心任务包括人脸验证和人脸辨识。然而，在传统意义上的深度卷积神经网络的 softmax 代价函数的监督下，所学习的模型通常缺乏足够的判别性。为了解决这一问题，近期一系列损失函数被提出来，如 Center Loss、L-Softmax、A-Softmax。所有这些改进算法都基于一个核心思想： 增强类间差异并且减小类内差异。腾讯 AI Lab 的一篇 CVPR 2018 论文从一个新的角度研究了这个问题，并设计了一个新的损失函数，即增强边缘余弦损失函数 (LMCL)。更具体地说，通过对特征向量和权向量的 L2 归一化，把 softmax 损失函数转化为余弦损失函数，这样做消除了半径方向的变化，并在此基础上引入了一个余弦边缘值 m 来进一步最大化所学习的特征在角度空间的决策边界。因此，采用这种归一化和增强余弦决策边界的方法，能够更有效地起到最大化类间差异和最小化类内差异的作用。作者在最权威的人脸公开测试集上进行了实验评估，这些测试集包括 MegaFace Challenge、YouTube Faces (YTF) 和 Labeled Face in the Wild (LFW)，取得了极其优异的表现，表明了新方法的有效性。

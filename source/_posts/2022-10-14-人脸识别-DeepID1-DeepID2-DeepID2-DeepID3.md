@@ -5,10 +5,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
+tags:
   - ☄️人脸识别 Face Recognition
 abbrlink: cea9d0ff
 date: 2022-10-14 02:36:10
-tags:
 ---
 
 DeepID1: [Deep Learning Face Representation from Predicting 10,000 Classes(CVPR2014)](http://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Sun_Deep_Learning_Face_2014_CVPR_paper.pdf)

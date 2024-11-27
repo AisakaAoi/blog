@@ -5,10 +5,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
+tags:
   - ☄️人脸识别 Face Recognition
 abbrlink: cec2ee73
 date: 2023-06-08 07:13:47
-tags:
 ---
 
 DeepFace是Facebook CVPR2014年发表，主要用于人脸验证，是深度学习人脸识别的奠基之作，超过了非深度学习方法Tom-vs-Pete classifiers、high-dim LBP、TL Joint Bayesian等

@@ -7,10 +7,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
+tags:
   - ☄️情绪识别 Emotion Recognition
 abbrlink: 14139c13
 date: 2022-10-07 22:12:37
-tags:
 ---
 
 ### 原文

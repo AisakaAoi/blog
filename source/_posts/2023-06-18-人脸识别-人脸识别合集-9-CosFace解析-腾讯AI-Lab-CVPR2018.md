@@ -5,10 +5,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
+tags:
   - ☄️人脸识别 Face Recognition
 abbrlink: 8b9c602d
 date: 2023-06-18 02:29:44
-tags:
 ---
 
 CosFace是腾讯AI Lab的Hao Wang等在CVPR2018.01发表，在SphereFace基础上改进了对特征向量归一化和additive cosine margin。由此，通过归一化和余弦决策边界的最大化，可实现类间差异的最大化和类内差异的最小化。[CosFace: Large Margin Cosine Loss for Deep Face Recognition](https://arxiv.org/abs/1801.09414)

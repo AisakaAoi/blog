@@ -8,10 +8,10 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️脑机接口 Brain-computer Interface
+tags:
   - ☄️医学应用 Medical Applications
 abbrlink: bb9039ba
 date: 2020-05-26 00:46:49
-tags:
 ---
 
 {% asset_img 1.webp %}
