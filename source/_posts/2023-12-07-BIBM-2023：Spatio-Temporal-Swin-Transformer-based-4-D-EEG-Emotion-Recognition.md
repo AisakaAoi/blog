@@ -1,0 +1,44 @@
+---
+title: BIBM 2023：Spatio-Temporal Swin Transformer-based 4-D EEG Emotion Recognition
+password: 231207
+categories:
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些分享
+abbrlink: e1a4b8a1
+date: 2023-12-07 08:16:39
+tags:
+---
+
+{% asset_img 幻灯片1.webp %}
+
+<!--more-->
+
+{% asset_img 幻灯片2.webp %}
+
+{% asset_img 幻灯片3.webp %}
+
+{% asset_img 幻灯片4.webp %}
+
+{% asset_img 幻灯片5.webp %}
+
+{% asset_img 幻灯片6.webp %}
+
+{% asset_img 幻灯片7.webp %}
+
+{% asset_img 幻灯片8.webp %}
+
+{% asset_img 幻灯片9.webp %}
+
+{% asset_img 幻灯片10.webp %}
+
+{% asset_img 幻灯片11.webp %}
+
+{% asset_img 幻灯片12.webp %}
+
+{% asset_img 幻灯片13.webp %}
+
+{% asset_img 幻灯片14.webp %}
+
+{% asset_img 幻灯片15.webp %}
+
+{% asset_img 幻灯片16.webp %}

@@ -1,8 +1,8 @@
 ---
 title: JavaScript-异步编程：一次性搞懂Callback、Promise、async、await
 categories:
-  - 🌙基础学习
-  - ⭐JavaScript
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 8ad76204
 date: 2021-10-09 10:59:15
 tags:

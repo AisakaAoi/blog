@@ -1,9 +1,9 @@
 ---
-title: 学术人生-美国CS PhD Research Scientist找工作经验总结
+title: 美国CS PhD Research Scientist找工作经验总结
 categories:
   - 🌙逢坂杂谈与搬运
-  - ⭐学术区
-abbrlink: 58e1d68e
+  - ⭐学术人生
+abbrlink: 11e392e2
 date: 2023-03-09 02:55:05
 tags:
 ---

@@ -1,8 +1,8 @@
 ---
 title: Android-四大组件-Content Provider
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 6826dd2
 date: 2021-07-23 16:06:21
 tags:

@@ -1,8 +1,8 @@
 ---
 title: JavaScript-一些手写js函数
 categories:
-  - 🌙基础学习
-  - ⭐JavaScript
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 67f3b903
 date: 2021-03-23 05:07:56
 tags:

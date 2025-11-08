@@ -1,8 +1,8 @@
 ---
 title: Android-RecyclerView-正确获取item位置
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: '190959e8'
 date: 2021-09-13 16:05:32
 tags:

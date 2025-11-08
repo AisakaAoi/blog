@@ -1,8 +1,8 @@
 ---
 title: Android-LayoutInflater与inflate()
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: bc5422d5
 date: 2021-08-16 17:03:12
 tags:

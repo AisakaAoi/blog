@@ -1,8 +1,8 @@
 ---
 title: Android-RecyclerView-缓存复用与数据更新
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: f1832120
 date: 2021-08-19 16:01:02
 tags:
