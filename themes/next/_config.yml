@@ -178,9 +178,9 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub 👨‍💻: https://github.com/AisakaAoi || fab fa-github
-  GitHub 👩‍💻: https://github.com/AisakaManatsu || fab fa-github
-  E-Mail 🏫: mailto:chenzongnan@m.scnu.edu.cn || fa fa-envelope
+  GitHub 👩‍💻: https://github.com/Aisakaorz || fab fa-github
   E-Mail 📧: mailto:aisakaaoi@qq.com || fa fa-envelope
+  E-Mail 🏫: mailto:chenzongnan@m.scnu.edu.cn || fa fa-envelope
   Bilibili 📺: https://space.bilibili.com/91560309 || fab fa-bilibili
   Bilibili 🎮: https://space.bilibili.com/198562921 || fab fa-bilibili
   YouTube 📺: https://www.youtube.com/channel/UCALvyn5Cl76GCotO9pczvjg || fab fa-youtube

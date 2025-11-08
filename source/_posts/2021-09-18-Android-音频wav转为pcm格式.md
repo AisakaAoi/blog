@@ -1,8 +1,8 @@
 ---
 title: Android-音频wav转为pcm格式
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 7f2474a
 date: 2021-09-18 20:10:54
 tags:

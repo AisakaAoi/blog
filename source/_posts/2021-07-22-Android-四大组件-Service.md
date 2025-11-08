@@ -1,8 +1,8 @@
 ---
 title: Android-四大组件-Service
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 2421557f
 date: 2021-07-22 18:46:46
 tags:

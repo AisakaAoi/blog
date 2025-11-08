@@ -1,8 +1,8 @@
 ---
 title: Android-四大组件-Activity启动模式
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: ee465568
 date: 2021-07-20 17:21:15
 tags:

@@ -1,8 +1,8 @@
 ---
 title: Android-音视频-AAC编码
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 18fff05b
 date: 2021-10-21 15:58:44
 tags:

@@ -2,7 +2,7 @@
 title: 国产C刊：隐瞒ChatGPT使用情况，将退稿或撤稿处理；Nature：学术圈使用已不可避免，是时候明确使用规范了
 categories:
   - 🌙逢坂杂谈与搬运
-  - ⭐学术区
+  - ⭐学术人生
 abbrlink: 2a93c848
 date: 2023-02-13 04:59:53
 tags:

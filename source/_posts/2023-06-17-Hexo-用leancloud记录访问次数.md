@@ -1,8 +1,8 @@
 ---
 title: Hexo-用leancloud记录访问次数
 categories:
-  - 🌙基础学习
-  - ⭐Git&Hexo
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 52f4fc4f
 date: 2023-06-17 03:21:38
 tags:

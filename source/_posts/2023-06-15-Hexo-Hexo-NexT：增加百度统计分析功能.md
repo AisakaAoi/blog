@@ -1,9 +1,9 @@
 ---
-title: Hexo-Hexo+NexT：增加百度统计分析功能
+title: Hexo+NexT：增加百度统计分析功能
 categories:
-  - 🌙基础学习
-  - ⭐Git&Hexo
-abbrlink: 424ebcb2
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
+abbrlink: c80ee2bd
 date: 2023-06-15 17:15:54
 tags:
 ---

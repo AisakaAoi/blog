@@ -1,8 +1,8 @@
 ---
 title: Android-四大组件-Broadcast
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 8b83a4cc
 date: 2021-07-21 17:50:45
 tags:

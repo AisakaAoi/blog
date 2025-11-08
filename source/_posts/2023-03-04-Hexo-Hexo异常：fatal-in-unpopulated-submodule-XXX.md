@@ -1,9 +1,9 @@
 ---
-title: Hexo-Hexo异常：fatal：in unpopulated submodule 'XXX'
+title: Hexo-fatal：in unpopulated submodule 'XXX'
 categories:
-  - 🌙基础学习
-  - ⭐Git&Hexo
-abbrlink: '83764731'
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
+abbrlink: '58080252'
 date: 2023-03-04 04:19:41
 tags:
 ---
@@ -17,8 +17,6 @@ fatal: in unpopulated submodule 'themes/next'
 原因是这个文件夹来自的库是第三方库，通常这种情况就会出现报错
 
 解决办法：删除git下载别人的东西文件夹里的.git，手动进去把这个隐藏的文件夹删了。
-
-<!--more-->
 
 然后再删除一下缓存
 

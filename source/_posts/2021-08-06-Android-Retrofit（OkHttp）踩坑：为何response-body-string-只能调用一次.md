@@ -1,8 +1,8 @@
 ---
 title: Android-Retrofit（OkHttp）踩坑：为何response.body().string()只能调用一次
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 83555fbc
 date: 2021-08-06 19:24:57
 tags:

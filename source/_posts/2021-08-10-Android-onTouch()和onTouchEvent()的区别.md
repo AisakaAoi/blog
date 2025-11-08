@@ -1,8 +1,8 @@
 ---
 title: Android-onTouch()和onTouchEvent()的区别
 categories:
-  - 🌙基础学习
-  - ⭐Android
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
 abbrlink: 6f0911e6
 date: 2021-08-10 20:14:17
 tags:

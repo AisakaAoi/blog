@@ -1,9 +1,9 @@
 ---
-title: 深度学习-为什么神经网络可以学习几乎任何东西？Why Neural Networks can learn (almost) anything
+title: 为什么神经网络可以学习几乎任何东西？Why Neural Networks can learn (almost) anything
 categories:
   - 🌙逢坂杂谈与搬运
-  - ⭐视频区
-abbrlink: 6d61ac
+  - ⭐一些技术
+abbrlink: 5fe12e31
 date: 2023-04-03 20:45:16
 tags:
 ---

@@ -1,9 +1,9 @@
 ---
-title: 'Hexo-Hexo异常：fatal:in unpopulated submodule ''.deploy_git'' 怎么解决？'
+title: 'Hexo：fatal:in unpopulated submodule ''.deploy_git'' 怎么解决？'
 categories:
-  - 🌙基础学习
-  - ⭐Git&Hexo
-abbrlink: cff31d29
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些技术
+abbrlink: 9c811055
 date: 2023-03-05 04:09:07
 tags:
 ---
@@ -22,7 +22,5 @@ npm install hexo-deployer-git –save
 rm -rf .deploy_git
 hexo clean && hexo g && hexo d
 ```
-
-<!--more-->
 
 如果还不行，可能是不知道为什么命令行没删掉。那就手动把根目录下的 .deploy_git 目录删除即可，重新hexo g hexo d的时候重新生成。.deploy_git目录删除重新创建不影响原本的东西，反正sourse文件夹里面别动就行。
