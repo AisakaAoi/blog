@@ -1,7 +1,7 @@
 ---
 title: 'UCB CS61A: Computer Programs [Fall 2020] Homework 1 Hints'
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐UCB CS61A
 abbrlink: 41bf1370
 date: 2022-11-15 12:24:28

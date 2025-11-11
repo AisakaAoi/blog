@@ -8,8 +8,6 @@ categories:
   - - 🌙进阶学习
     - ⭐人工智能 Artificial Intelligence
     - 💫网络模型 Networks Model
-tags:
-  - ☄️图像分类 Image Classification
 abbrlink: cf26f90d
 date: 2022-12-02 03:39:19
 ---

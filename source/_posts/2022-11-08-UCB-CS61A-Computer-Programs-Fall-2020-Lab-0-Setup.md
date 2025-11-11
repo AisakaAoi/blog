@@ -1,7 +1,7 @@
 ---
 title: 'UCB CS61A: Computer Programs [Fall 2020] Lab 0 Setup'
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐UCB CS61A
 abbrlink: 87999f20
 date: 2022-11-08 03:33:30

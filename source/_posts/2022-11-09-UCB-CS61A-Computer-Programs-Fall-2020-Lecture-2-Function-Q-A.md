@@ -1,7 +1,7 @@
 ---
 title: 'UCB CS61A: Computer Programs [Fall 2020] Lecture 2 Function / Q&A'
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐UCB CS61A
 abbrlink: f4885a9e
 date: 2022-11-09 03:51:40

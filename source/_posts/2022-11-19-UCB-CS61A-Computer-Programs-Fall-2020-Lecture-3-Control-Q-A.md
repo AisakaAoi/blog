@@ -1,7 +1,7 @@
 ---
 title: 'UCB CS61A: Computer Programs [Fall 2020] Lecture 3 Control / Q&A'
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐UCB CS61A
 abbrlink: 596bd720
 date: 2022-11-19 06:47:47

@@ -1,10 +1,10 @@
 ---
-title: 新闻：脑机接口公司Neuralink开始人体试验招募，需要考虑的问题有哪些？
+title: 脑机接口公司Neuralink开始人体试验招募，需要考虑的问题有哪些？
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫新闻
-abbrlink: 8ab7f202
+abbrlink: d47991fb
 date: 2023-09-30 01:31:17
 tags:
 ---

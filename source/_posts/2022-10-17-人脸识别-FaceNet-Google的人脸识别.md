@@ -5,8 +5,6 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫研究领域 Research Area
   - 🛰️计算机视觉 Computer Vision
-tags:
-  - ☄️人脸识别 Face Recognition
 abbrlink: efc0281c
 date: 2022-10-17 06:43:23
 ---

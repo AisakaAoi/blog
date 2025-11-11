@@ -1,7 +1,7 @@
 ---
 title: 'UCB CS61A: Computer Programs [Fall 2020] Lecture 5 Environments'
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐UCB CS61A
 abbrlink: f8f3424b
 date: 2022-11-26 05:46:46

@@ -3,7 +3,7 @@ title: >-
   CS231n: Convolutional Neural Networks for Visual Recognition [2017] 课程作业
   Assignment 2
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐Stanford CS231n
 abbrlink: bd1eac68
 date: 2022-03-13 18:06:57

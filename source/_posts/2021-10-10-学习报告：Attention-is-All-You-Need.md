@@ -1,10 +1,10 @@
 ---
-title: 学习报告：Attention is All You Need
+title: Attention is All You Need
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫学习报告
-abbrlink: '52268884'
+abbrlink: e53e9289
 date: 2021-10-10 14:56:35
 tags:
 ---

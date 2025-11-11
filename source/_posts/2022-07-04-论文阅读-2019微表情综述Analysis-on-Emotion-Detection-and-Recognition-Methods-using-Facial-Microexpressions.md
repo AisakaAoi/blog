@@ -1,15 +1,11 @@
 ---
 title: >-
-  论文阅读-2019微表情综述Analysis on Emotion Detection and Recognition Methods using
-  Facial Microexpressions
+  2019年微表情综述《Analysis on Emotion Detection and Recognition Methods using Facial
+  Microexpressions》
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫研究领域 Research Area
-  - 🛰️计算机视觉 Computer Vision
-tags:
-  - ☄️情绪识别 Emotion Recognition
-abbrlink: da2179f4
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
+abbrlink: '13582714'
 date: 2022-07-04 14:50:40
 ---
 
