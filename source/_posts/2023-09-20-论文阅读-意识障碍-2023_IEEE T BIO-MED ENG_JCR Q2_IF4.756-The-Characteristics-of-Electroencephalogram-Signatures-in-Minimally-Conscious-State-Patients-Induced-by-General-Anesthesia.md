@@ -1,14 +1,11 @@
 ---
 title: >-
-  论文阅读-意识障碍-2023_IEEE T BIO-MED ENG_JCR Q2_IF4.756-The Characteristics of
-  Electroencephalogram Signatures in Minimally Conscious State Patients Induced
-  by General Anesthesia
+  意识障碍-2023_IEEE TBME-The Characteristics of Electroencephalogram Signatures in
+  Minimally Conscious State Patients Induced by General Anesthesia
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫研究领域 Research Area
-  - 🛰️脑机接口 Brain-computer Interface
-abbrlink: 62719f03
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
+abbrlink: c133aeb9
 date: 2023-09-20 01:48:53
 ---
 

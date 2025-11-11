@@ -1,13 +1,8 @@
 ---
 title: 深度学习-DenseNet、MobileNet、DPN…你都掌握了吗？一文总结图像分类必备经典模型（二）
 categories:
-  - - 🌙进阶学习
-    - ⭐人工智能 Artificial Intelligence
-    - 💫研究领域 Research Area
-    - 🛰️计算机视觉 Computer Vision
-  - - 🌙进阶学习
-    - ⭐人工智能 Artificial Intelligence
-    - 💫网络模型 Networks Model
+  - 🌙进阶学习
+  - ⭐人工智能 Artificial Intelligence
 abbrlink: cf26f90d
 date: 2022-12-02 03:39:19
 ---

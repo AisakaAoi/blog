@@ -1,17 +1,11 @@
 ---
 title: >-
-  论文阅读-将面部微表情与脑电图和生理信号结合起来进行情绪识别-《Using Facial Micro-Expressions in Combination
-  With EEG and Physiological Signals for Emotion Recognition》
+  将面部微表情与脑电图和生理信号结合起来进行情绪识别-《Using Facial Micro-Expressions in Combination With
+  EEG and Physiological Signals for Emotion Recognition》
 categories:
-  - - 🌙进阶学习
-    - ⭐人工智能 Artificial Intelligence
-    - 💫研究领域 Research Area
-    - 🛰️脑机接口 Brain-computer Interface
-  - - 🌙进阶学习
-    - ⭐人工智能 Artificial Intelligence
-    - 💫研究领域 Research Area
-    - 🛰️计算机视觉 Computer Vision
-abbrlink: a4775ace
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
+abbrlink: fed573eb
 date: 2022-11-25 21:01:13
 ---
 
@@ -231,7 +225,7 @@ date: 2022-11-25 21:01:13
 一些工作使用**手工特征**的策略，如：
 - 三正交平面的局部二进制模式（LBP-TOP）（Pfister等人，2011）
 - 定向梯度直方图（HOG）（Davison等人，2015）从帧中提取特征，以发现和识别情绪。
-- (Guermazi等人，2021）提出了一种基于LBP的微表情识别方法，以创建面部视频的低维高相关表示，并使用随机森林分类器对微表情进行分类。
+- （Guermazi等人，2021）提出了一种基于LBP的微表情识别方法，以创建面部视频的低维高相关表示，并使用随机森林分类器对微表情进行分类。
 
 **深度学习**提取深度特征：
 - 深度学习技术被用来提取深度特征，并利用面部微表情进行情绪分类（Van Quang等人，2019；Tran等人，2020）。

@@ -3,7 +3,6 @@ title: 深度学习-万字长文带你入门Transformer
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫网络模型 Networks Model
 abbrlink: a4951aec
 date: 2021-06-11 03:33:32
 tags:
