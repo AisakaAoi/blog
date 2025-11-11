@@ -1,13 +1,11 @@
 ---
 title: >-
-  论文阅读-2018年微表情识别综述《Micro-expression recognition: an updated review of current
+  2018年微表情识别综述《Micro-expression recognition: an updated review of current
   trends, challenges and solutions》
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫研究领域 Research Area
-  - 🛰️计算机视觉 Computer Vision
-abbrlink: 6054b823
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
+abbrlink: d965e878
 date: 2022-12-14 17:04:23
 ---
 

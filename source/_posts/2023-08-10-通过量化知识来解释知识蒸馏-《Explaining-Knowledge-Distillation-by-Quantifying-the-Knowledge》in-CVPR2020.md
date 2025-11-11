@@ -1,13 +1,11 @@
 ---
 title: >-
-  论文阅读-可解释性：通过量化知识来解释知识蒸馏-《Explaining Knowledge Distillation by Quantifying the
+  通过量化知识来解释知识蒸馏-《Explaining Knowledge Distillation by Quantifying the
   Knowledge》in CVPR2020
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫学习方法 Learning Methodology
-  - 🛰️迁移学习 Transfer Learning
-abbrlink: c6bf908a
+abbrlink: 789d71d5
 date: 2023-08-10 06:03:15
 ---
 

@@ -1,10 +1,9 @@
 ---
-title: 论文阅读-FCN论文逐段精读-《Fully Convolutional Networks for Semantic Segmentation》
+title: 深度学习-FCN论文逐段精读-《Fully Convolutional Networks for Semantic Segmentation》
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫网络模型 Networks Model
-abbrlink: f1f283d3
+abbrlink: 354b58b0
 date: 2022-07-14 03:47:34
 tags:
 ---

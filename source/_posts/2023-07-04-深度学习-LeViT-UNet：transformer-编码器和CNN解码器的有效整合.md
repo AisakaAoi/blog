@@ -1,10 +1,9 @@
 ---
-title: 深度学习-LeViT-UNet：transformer 编码器和CNN解码器的有效整合
+title: LeViT-UNet：Transformer编码器和CNN解码器的有效整合
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫网络模型 Networks Model
-abbrlink: db846f02
+abbrlink: 74c52285
 date: 2023-07-04 01:18:32
 tags:
 ---

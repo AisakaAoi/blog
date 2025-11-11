@@ -1,12 +1,11 @@
 ---
 title: >-
-  论文阅读-ViT论文逐段精读-《An Image is Worth 16x16 Words: Transformers for Image
+  深度学习ViT论文逐段精读-《An Image is Worth 16x16 Words: Transformers for Image
   Recognition at Scale》
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫网络模型 Networks Model
-abbrlink: b2650d22
+abbrlink: 91bcdcae
 date: 2022-01-29 17:28:10
 tags:
 ---

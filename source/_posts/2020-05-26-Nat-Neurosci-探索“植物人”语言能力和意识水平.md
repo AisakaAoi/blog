@@ -1,14 +1,11 @@
 ---
 title: >-
-  Nat Neurosci | 探索“植物人”语言能力和意识水平 | Assessing the depth of language processing
-  in patients with disorders of consciousness | Nature Neuroscience | 中科院1区 IF
-  28.771
+  Nature Neuroscience | 探索“植物人”语言能力和意识水平 | Assessing the depth of language
+  processing in patients with disorders of consciousness
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫研究领域 Research Area
-  - 🛰️脑机接口 Brain-computer Interface
-abbrlink: bb9039ba
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
+abbrlink: a5b3ddd1
 date: 2020-05-26 00:46:49
 ---
 

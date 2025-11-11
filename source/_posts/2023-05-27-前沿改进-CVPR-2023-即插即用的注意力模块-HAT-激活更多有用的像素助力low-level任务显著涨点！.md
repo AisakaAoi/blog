@@ -3,7 +3,6 @@ title: 'CVPR 2023 | 即插即用的注意力模块 HAT: 激活更多有用的像
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
-  - 💫前沿改进 Frontier Improvement
 abbrlink: fa774eaa
 date: 2023-05-27 07:27:57
 tags:

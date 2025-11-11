@@ -3,10 +3,8 @@ title: >-
   GMSS Graph-Based Multi-Task Self-Supervised Learning for EEG Emotion
   Recognition
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫研究领域 Research Area
-  - 🛰️脑机接口 Brain-computer Interface
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
 abbrlink: 30c3a1aa
 date: 2024-09-11 08:35:07
 ---
