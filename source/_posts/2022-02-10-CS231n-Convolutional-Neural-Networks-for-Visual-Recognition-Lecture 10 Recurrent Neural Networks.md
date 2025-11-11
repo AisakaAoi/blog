@@ -3,7 +3,7 @@ title: >-
   CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
   Lecture 10 Recurrent Neural Networks
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐Stanford CS231n
 abbrlink: 66c06994
 date: 2022-02-10 19:59:19

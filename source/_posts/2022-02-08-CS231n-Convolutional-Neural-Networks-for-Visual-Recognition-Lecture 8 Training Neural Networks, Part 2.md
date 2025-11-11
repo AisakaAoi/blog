@@ -3,7 +3,7 @@ title: >-
   CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
   Lecture 8 Training Neural Networks, Part 2
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐Stanford CS231n
 abbrlink: 6792f05d
 date: 2022-02-08 19:59:19

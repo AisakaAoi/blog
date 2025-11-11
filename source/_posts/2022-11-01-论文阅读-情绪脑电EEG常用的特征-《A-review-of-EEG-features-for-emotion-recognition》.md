@@ -1,13 +1,9 @@
 ---
-title: 论文阅读-情绪脑电EEG常用的特征-《A review of EEG features for emotion recognition》
+title: 情绪脑电EEG常用的特征-《A review of EEG features for emotion recognition》
 categories:
-  - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫研究领域 Research Area
-  - 🛰️脑机接口 Brain-computer Interface
-tags:
-  - ☄️情绪识别 Emotion Recognition
-abbrlink: 67ad2fac
+  - 🌙逢坂杂谈与搬运
+  - ⭐一些论文
+abbrlink: '95890277'
 date: 2022-11-01 16:14:09
 ---
 

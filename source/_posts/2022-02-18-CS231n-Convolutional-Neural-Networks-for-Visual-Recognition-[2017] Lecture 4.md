@@ -1,7 +1,7 @@
 ---
 title: 'CS231n: Convolutional Neural Networks for Visual Recognition [2017] Lecture 4'
 categories:
-  - 🌙学习资源
+  - 🌙上过网课
   - ⭐Stanford CS231n
 abbrlink: a76fe986
 date: 2022-02-18 18:06:57

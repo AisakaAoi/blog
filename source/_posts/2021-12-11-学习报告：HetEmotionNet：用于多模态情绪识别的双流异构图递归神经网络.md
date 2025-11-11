@@ -1,10 +1,10 @@
 ---
-title: 学习报告：HetEmotionNet：用于多模态情绪识别的双流异构图递归神经网络
+title: HetEmotionNet：用于多模态情绪识别的双流异构图递归神经网络
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫学习报告
-abbrlink: 88ae4ab1
+abbrlink: e70115e3
 date: 2021-12-11 17:45:53
 tags:
 ---

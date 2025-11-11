@@ -1,10 +1,10 @@
 ---
-title: 脑机接口与混合智能-新闻-Krishna V. Shenoy：脑机接口与意念手写｜2021腾讯科学WE大会视频回顾
+title: Krishna V. Shenoy：脑机接口与意念手写｜2021腾讯科学WE大会视频回顾
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫新闻
-abbrlink: e5610da1
+abbrlink: f23356ae
 date: 2021-11-19 13:04:23
 tags:
 ---

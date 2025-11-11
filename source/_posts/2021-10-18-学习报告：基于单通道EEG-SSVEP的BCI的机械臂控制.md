@@ -1,10 +1,10 @@
 ---
-title: 学习报告：基于单通道EEG-SSVEP的BCI的机械臂控制
+title: 基于单通道EEG-SSVEP的BCI的机械臂控制
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫学习报告
-abbrlink: 4f387357
+abbrlink: f4d3d8fc
 date: 2021-10-18 15:24:52
 tags:
 ---

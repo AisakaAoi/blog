@@ -8,8 +8,6 @@ categories:
   - - 🌙进阶学习
     - ⭐人工智能 Artificial Intelligence
     - 💫网络模型 Networks Model
-tags:
-  - 🌠目标检测 Object Detection
 abbrlink: 39c38ef8
 date: 2022-11-14 16:31:46
 ---

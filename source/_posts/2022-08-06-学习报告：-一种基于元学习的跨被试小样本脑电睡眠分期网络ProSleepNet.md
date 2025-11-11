@@ -1,10 +1,10 @@
 ---
-title: 学习报告：一种基于元学习的跨被试小样本脑电睡眠分期网络ProSleepNet
+title: 一种基于元学习的跨被试小样本脑电睡眠分期网络ProSleepNet
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫学习报告
-abbrlink: 6977cd02
+abbrlink: 9b4775d1
 date: 2022-08-06 03:58:03
 tags:
 ---

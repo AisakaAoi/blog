@@ -1,10 +1,10 @@
 ---
-title: 学习报告：BENDR-使用Transformer和对比自监督学习任务从大量脑电数据中学习
+title: BENDR-使用Transformer和对比自监督学习任务从大量脑电数据中学习
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫学习报告
-abbrlink: 47ebf97f
+abbrlink: b59d8b34
 date: 2022-04-05 22:06:16
 tags:
 ---

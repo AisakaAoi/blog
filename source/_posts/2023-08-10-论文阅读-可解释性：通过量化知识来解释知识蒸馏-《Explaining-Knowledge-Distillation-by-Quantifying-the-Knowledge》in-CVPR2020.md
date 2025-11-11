@@ -7,8 +7,6 @@ categories:
   - ⭐人工智能 Artificial Intelligence
   - 💫学习方法 Learning Methodology
   - 🛰️迁移学习 Transfer Learning
-tags:
-  - ☄️蒸馏学习 Knowledge Distillation
 abbrlink: c6bf908a
 date: 2023-08-10 06:03:15
 ---

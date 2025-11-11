@@ -1,10 +1,10 @@
 ---
-title: 脑机接口与混合智能-新闻-最新CNN反超Transfromer之作：ConvNeXt
+title: 最新CNN反超Transfromer之作：ConvNeXt
 categories:
   - 🌙进阶学习
   - ⭐脑机接口与混合智能研究团队（BCI团队）
   - 💫新闻
-abbrlink: 4004cc9d
+abbrlink: a4d89ff3
 date: 2022-01-28 14:12:10
 tags:
 ---
