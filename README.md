@@ -1,3 +1,0 @@
-# blog
-
-<https://aisakaaoi.top/>
