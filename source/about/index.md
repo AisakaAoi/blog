@@ -3,9 +3,26 @@ title: 防止阿尔兹海默症忘记自己是什么东西所以有此页面
 date: 2023-10-27 05:26:30
 ---
 
-<!-- <img alt="个人照片" src="/images/photo.webp" style="width:32%; border-radius:100%; overflow:hidden;">
+<div style="
+    width:32%;                      /* 原来照片占的宽度，保持不变 */
+    aspect-ratio:1/1;               /* 保证是正方形，圆形才正 */
+    border-radius:50%;
+    overflow:hidden;                /* 把超出的部分裁掉 */
+    margin:0 auto;                  /* 让 div 本身在父级里水平居中 */
+">
+  <img alt="个人照片" src="/images/photo2.webp" style="
+      width:100%;
+      height:100%;
+      object-fit:cover;             /* 先填满容器 */
+      transform:scale(1.3);         /* 中心放大 */
+      transform-origin:center;
+  ">
+</div>
 
-陈宗楠，在读硕士研究生 -->
+<br>
+
+<div align='center'>华南师范大学 人工智能学院</div>
+<div align='center'>在读博士研究生 陈宗楠</div>
 
 ***
 
@@ -81,7 +98,7 @@ date: 2023-10-27 05:26:30
 
 ### 其它经历
 
-- 2023.11，[在华师追梦的日子-南方日报](https://epaper.southcn.com/nfdaily/html/202311/05/content_10079865.html)，《华南师范大学90周年校庆》特刊
+- 2023.11，在华师追梦的日子-南方日报，《华南师范大学90周年校庆》特刊
 
 ***
 
