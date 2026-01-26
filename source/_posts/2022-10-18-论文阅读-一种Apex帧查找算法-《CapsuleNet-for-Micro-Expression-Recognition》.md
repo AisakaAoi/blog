@@ -1,8 +1,9 @@
 ---
 title: 一种Apex帧查找算法-《CapsuleNet for Micro Expression Recognition》
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些论文
+  - 🌙进阶学习
+  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - 💫学习报告
 abbrlink: 92536c52
 date: 2022-10-18 11:19:54
 ---

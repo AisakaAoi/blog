@@ -3,8 +3,9 @@ title: >-
   意识障碍-2023_IEEE TBME-The Characteristics of Electroencephalogram Signatures in
   Minimally Conscious State Patients Induced by General Anesthesia
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些论文
+  - 🌙进阶学习
+  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - 💫学习报告
 abbrlink: c133aeb9
 date: 2023-09-20 01:48:53
 ---

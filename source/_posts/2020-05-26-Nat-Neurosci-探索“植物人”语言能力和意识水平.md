@@ -3,8 +3,9 @@ title: >-
   Nature Neuroscience | 探索“植物人”语言能力和意识水平 | Assessing the depth of language
   processing in patients with disorders of consciousness
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些论文
+  - 🌙进阶学习
+  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - 💫学习报告
 abbrlink: a5b3ddd1
 date: 2020-05-26 00:46:49
 ---

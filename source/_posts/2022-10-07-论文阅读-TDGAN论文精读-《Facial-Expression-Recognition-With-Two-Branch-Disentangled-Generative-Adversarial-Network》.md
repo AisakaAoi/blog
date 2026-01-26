@@ -3,8 +3,9 @@ title: >-
   TDGAN论文精读-《Facial Expression Recognition With Two-Branch Disentangled
   Generative Adversarial Network》
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些论文
+  - 🌙进阶学习
+  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - 💫学习报告
 abbrlink: d035822
 date: 2022-10-07 22:12:37
 ---
