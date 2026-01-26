@@ -3,8 +3,9 @@ title: >-
   2019年微表情综述《Analysis on Emotion Detection and Recognition Methods using Facial
   Microexpressions》
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些论文
+  - 🌙进阶学习
+  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - 💫学习报告
 abbrlink: '13582714'
 date: 2022-07-04 14:50:40
 ---

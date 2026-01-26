@@ -3,8 +3,9 @@ title: >-
   将面部微表情与脑电图和生理信号结合起来进行情绪识别-《Using Facial Micro-Expressions in Combination With
   EEG and Physiological Signals for Emotion Recognition》
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些论文
+  - 🌙进阶学习
+  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - 💫学习报告
 abbrlink: fed573eb
 date: 2022-11-25 21:01:13
 ---
