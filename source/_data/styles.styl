@@ -5,8 +5,23 @@
   width: 1rem;
 }
 
-@media (orientation: portrait)
-  #live2d-widget
-  #live2d-canvas
-  .live2d-widget-container
-    display: none !important
+#live2d-widget {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: opacity 1s ease-in-out, 
+              visibility 1s ease-in-out, 
+              transform 1s ease-in-out;
+  pointer-events: auto;
+}
+
+@media (orientation: portrait) {
+  #live2d-widget,
+  #live2d-canvas,
+  .live2d-widget-container {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(100vw);
+  }
+}
