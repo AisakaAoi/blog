@@ -152,8 +152,8 @@ symbols_count_time:
   total_symbols: true          # 站点总字数统计
   total_time: true             # 站点总阅读时长
   exclude_codeblock: false     # 排除代码字数统计
-  awl: 2                   # 平均字长
-  wpm: 200                 # 每分钟阅读字数
+  awl: 2                       # 平均字长
+  wpm: 200                     # 每分钟阅读字数
 
 # RSS订阅
 feed:
