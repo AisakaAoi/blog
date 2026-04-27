@@ -2,7 +2,7 @@
 title: Yoshua Bengio：我的一生
 categories:
   - 🌙逢坂杂谈与搬运
-  - ⭐学术人生
+  - ⭐学术杂谈
 abbrlink: e66651ca
 date: 2023-03-06 07:04:06
 tags:
