@@ -34,7 +34,7 @@ date: 2023-10-27 05:26:30
 
 [5] **Zongnan Chen**, Yan Liang, Jingcong Li, Chenyu Bai, Qiuyou Xie, Jiahui Pan*. EEG- and Micro-Expression-Based Emotion Recognition and Consciousness Detection. IEEE Transactions on Affective Computing, 2026, early access. DOI: 10.1109/TAFFC.2025.3650482 (SCI, JCR Q1, 中科院一区Top, IF: 9.8) [[Link]](https://ieeexplore.ieee.org/document/11328769)
 
-[4] Jiarui Jin, **Zongnan Chen**, Honghua Cai, Jiahui Pan*. Affective EEG-based Person Identification with Continual Learning. IEEE Transactions on Instrumentation and Measurement, 2024, 73: 1-16. DOI: 10.1109/TIM.2024.3406836 (SCI, JCR Q1, 中科院二区Top, IF: 5.6) [[Link]](https://ieeexplore.ieee.org/document/10540616)
+[4] Jiarui Jin, **Zongnan Chen**, Honghua Cai, Jiahui Pan*. Affective EEG-based Person Identification with Continual Learning. IEEE Transactions on Instrumentation and Measurement, 2024, 73: 1-16. DOI: 10.1109/TIM.2024.3406836 (SCI, JCR Q1, 中科院二区, IF: 5.9) [[Link]](https://ieeexplore.ieee.org/document/10540616)
 
 [3] **陈宗楠**, 金家瑞, 潘家辉*. 基于Swin Transformer的四维脑电情绪识别. 计算机技术与发展, 2023, 33(12): 178-184. DOI: 10.3969/j.issn.1673-629X.2023.12.025 (CCF T3) [[Link]](https://d.wanfangdata.com.cn/periodical/wjfz202312025)
 

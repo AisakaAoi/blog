@@ -183,3 +183,16 @@ neat_js:
     - '*.min.js'     #js文件压缩排除列表
 
 
+# 安全设置
+encrypt:
+  # 启用插件
+  enable: true
+  # 自定义加密相关设置
+  abstract: "这里的内容加密了，需要密码哦。"
+  message: "请输入密码查看本文。"
+  # 错误消息设置
+  wrong_pass_message: "密码错误，请重试。"
+  wrong_hash_message: "内容认证失败，但仍可尝试查看。"
+  # 是否禁用日志记录
+  silent: false
+
