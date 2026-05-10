@@ -8,9 +8,12 @@
   <aside class="sidebar">
     <div class="sidebar-inner">
 
-      {%- set display_toc = page.toc.enable and display_toc %}
       {%- if display_toc %}
-        {%- set toc = toc(page.content, { class: "nav", list_number: page.toc.number, max_depth: page.toc.max_depth }) %}
+        {%- if page.encrypt %}
+          {%- set toc = toc(page.origin, { class: "nav", list_number: page.toc.number, max_depth: page.toc.max_depth }) %}
+        {%- else %}
+          {%- set toc = toc(page.content, { class: "nav", list_number: page.toc.number, max_depth: page.toc.max_depth }) %}
+        {%- endif %}
         {%- set display_toc = toc.length > 1 and display_toc %}
       {%- endif %}
 
@@ -26,7 +29,13 @@
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
         {%- if display_toc %}
-          <div class="post-toc motion-element">{{ toc }}</div>
+          {%- if page.encrypt %}
+            <div id="toc-div" style="display: none;">
+          {%- else %}
+            <div id="toc-div">
+          {%- endif %}
+            <div class="post-toc motion-element">{{ toc }}</div>
+          </div>
         {%- endif %}
       </div>
       <!--/noindex-->
