@@ -2,7 +2,7 @@
 
 /**
  * Hexo EPUB 轻小说单卷卡片标签
- * 用法：{% epub path="..." title="..." cover="..." volume="1" date="2014-01" %}
+ * 用法：{% epub_reader path="..." title="..." cover="..." volume="1" date="2014-01" %}
  */
 
 function parseArgs(args) {
@@ -18,7 +18,7 @@ function parseArgs(args) {
   return result;
 }
 
-hexo.extend.tag.register('epub', function(args) {
+hexo.extend.tag.register('epub_reader', function(args) {
   const p = parseArgs(args);
   const path = p.path || '';
   const title = p.title || '未命名';
@@ -27,7 +27,7 @@ hexo.extend.tag.register('epub', function(args) {
   const date = p.date || '';
 
   if (!path) {
-    return '<p style="color:#e74c3c;">[epub] 缺少 path 参数</p>';
+    return '<p style="color:#e74c3c;">[epub_reader] 缺少 path 参数</p>';
   }
 
   const norm = (src) => src ? src.replace(/\\/g, '/') : '';
@@ -54,7 +54,7 @@ hexo.extend.tag.register('epub', function(args) {
   const dateLine = date ? `<p class="epub-date">📅 ${date}</p>` : '';
 
   return `
-<div class="epub-card" data-epub-id="${id}" data-epub-path="${pathUrl}" data-epub-title="${title}">
+<div class="epub-card desktop-only" data-epub-id="${id}" data-epub-path="${pathUrl}" data-epub-title="${title}">
   <div class="epub-cover">
     ${badge}
     ${coverUrl ? `<img src="${coverUrl}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
@@ -64,9 +64,17 @@ hexo.extend.tag.register('epub', function(args) {
     <h4 class="epub-title">${title}</h4>
     ${dateLine}
     <div class="epub-actions">
-      <button class="epub-btn read" onclick="HexoEpub.open('${id}')">📖 阅读</button>
-      <a class="epub-btn download" href="${pathUrl}" download>⬇️ EPUB</a>
+      <button class="epub-btn read" onclick="HexoEpubReader.open('${id}')">📖 阅读</button>
+      <a class="epub-btn download" href="${pathUrl}" download>⬇️ 下载</a>
     </div>
+  </div>
+</div>
+<div class="epub-mobile mobile-only" style="display:none;">
+  <div class="epub-mobile-inner">
+    <h4 class="epub-mobile-title">${title}</h4>
+    ${date ? `<p class="epub-mobile-date">📅 ${date}</p>` : ''}
+    <p class="epub-mobile-hint">手机端暂不支持在线阅读，请下载后使用本地阅读器打开。</p>
+    <a class="epub-btn read" href="${pathUrl}" download>⬇️ 下载 EPUB</a>
   </div>
 </div>
   `.trim();
@@ -90,52 +98,114 @@ const css = `
 .epub-btn.read { background: #5B8FF9; color: #fff; }
 .epub-btn.download { background: var(--tag-background, #f0f0f0); color: var(--text-color, #555); }
 
+/* 阅读器 */
 #hexo-epub-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 99999; flex-direction: column; }
 #hexo-epub-modal.active { display: flex; }
-.hexo-epub-bar { height: 50px; background: #1a1a1a; color: #fff; display: flex; align-items: center; padding: 0 18px; gap: 10px; border-bottom: 1px solid #333; }
+.hexo-epub-bar { height: 50px; background: #1a1a1a; color: #fff; display: flex; align-items: center; padding: 0 18px; gap: 10px; border-bottom: 1px solid #333; flex-shrink: 0; }
 .hexo-epub-bar button { background: #333; color: #fff; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; }
 .hexo-epub-bar button:hover { background: #444; }
 .hexo-epub-bar .bar-title { margin-left: auto; font-size: .9em; opacity: .9; max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.hexo-epub-view { flex: 1; position: relative; background: #fff; }
+
+/* 主区域：阅读器 + 目录并排 */
+.hexo-epub-main { flex: 1; display: flex; overflow: hidden; position: relative; }
+
+/* 目录面板 */
+#hexo-epub-toc { 
+  width: 280px; min-width: 280px; 
+  background: #f5f5f5; border-right: 1px solid #ddd; 
+  display: none; flex-direction: column; 
+  overflow: hidden; 
+}
+#hexo-epub-toc.active { display: flex; }
+.hexo-epub-toc-header { 
+  padding: 14px 16px; 
+  background: #e8e8e8; 
+  border-bottom: 1px solid #ddd; 
+  font-weight: bold; color: #333; font-size: .95em; 
+}
+.hexo-epub-toc-list { 
+  flex: 1; overflow-y: auto; padding: 8px 0; 
+}
+.hexo-epub-toc-item { 
+  display: block; padding: 8px 18px; 
+  color: #333; text-decoration: none; font-size: .88em; 
+  border-bottom: 1px solid #eee; 
+  cursor: pointer; transition: background .15s; 
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+}
+.hexo-epub-toc-item:hover { background: #e0e0e0; }
+.hexo-epub-toc-item.active { background: #5B8FF9; color: #fff; }
+
+/* 阅读区 */
+.hexo-epub-view { flex: 1; position: relative; background: #fff; overflow: hidden; }
 #hexo-epub-stage { width: 100%; height: 100%; }
 .hexo-epub-loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; display: none; z-index: 10; text-align: center; }
 .hexo-epub-loading .err { color: #ff4757; font-size: .85em; margin-top: 6px; }
 .hexo-epub-fallback { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 10; display: none; }
 .hexo-epub-fallback p { margin: 0 0 12px; color: var(--text-color, #555); }
 .hexo-epub-fallback .epub-btn { display: inline-block; width: auto; padding: 10px 28px; font-size: .9em; }
-@media (max-width: 600px) { .epub-grid { grid-template-columns: 1fr; } .epub-cover { width: 90px; min-width: 90px; height: 135px; } }
+
+@media (max-width: 600px) { 
+  .epub-grid { grid-template-columns: 1fr; } 
+  .epub-cover { width: 90px; min-width: 90px; height: 135px; } 
+  #hexo-epub-toc { width: 220px; min-width: 220px; position: absolute; z-index: 20; height: 100%; box-shadow: 2px 0 8px rgba(0,0,0,0.15); }
+}
+.epub-mobile { display: none; }
+.epub-mobile-inner { padding: 14px; background: var(--content-bg-color, #fff); border-radius: 10px; border: 1px solid var(--border-color, #eee); margin: 1em 0; }
+.epub-mobile-title { margin: 0 0 8px; font-size: 1.05em; color: var(--text-color, #333); }
+.epub-mobile-date { margin: 0 0 12px; font-size: .85em; color: #999; }
+.epub-mobile-hint { margin: 0 0 12px; font-size: .85em; color: #666; }
+@media (max-width: 768px) {
+  .epub-card.desktop-only { display: none !important; }
+  .epub-mobile.mobile-only { display: block !important; }
+}
+@media (min-width: 769px) {
+  .epub-card.desktop-only { display: flex !important; }
+  .epub-mobile.mobile-only { display: none !important; }
+}
 </style>
 `;
 
 const html = `
 <div id="hexo-epub-modal">
   <div class="hexo-epub-bar">
-    <button onclick="HexoEpub.close()">✕</button>
-    <button onclick="HexoEpub.prev()">←</button>
-    <button onclick="HexoEpub.next()">→</button>
+    <button onclick="HexoEpubReader.close()">✕</button>
+    <button onclick="HexoEpubReader.prev()">←</button>
+    <button onclick="HexoEpubReader.next()">→</button>
+    <button onclick="HexoEpubReader.toggleToc()">☰ 目录</button>
     <span class="bar-title" id="hexo-epub-tit">Reader</span>
   </div>
-  <div class="hexo-epub-view">
-    <div class="hexo-epub-loading" id="hexo-epub-load">
-      正在加载书籍...
-      <div class="err" id="hexo-epub-err"></div>
+  <div class="hexo-epub-main">
+    <!-- 目录面板 -->
+    <div id="hexo-epub-toc">
+      <div class="hexo-epub-toc-header">章节目录</div>
+      <div class="hexo-epub-toc-list" id="hexo-epub-toc-list"></div>
     </div>
-    <div class="hexo-epub-fallback" id="hexo-epub-fallback">
-      <p style="color:#ff4757;font-size:1.1em;margin-bottom:8px">该文件不支持浏览器在线阅读</p>
-      <p style="font-size:.85em;color:#666;margin-bottom:20px">可能是文件格式特殊，请下载到本地使用阅读器打开</p>
-      <a class="epub-btn read" id="hexo-epub-fallback-link" href="#" download>⬇️ 下载 EPUB</a>
+    <!-- 阅读区 -->
+    <div class="hexo-epub-view">
+      <div class="hexo-epub-loading" id="hexo-epub-load">
+        正在加载书籍...
+        <div class="err" id="hexo-epub-err"></div>
+      </div>
+      <div class="hexo-epub-fallback" id="hexo-epub-fallback">
+        <p style="color:#ff4757;font-size:1.1em;margin-bottom:8px">该文件不支持浏览器在线阅读</p>
+        <p style="font-size:.85em;color:#666;margin-bottom:20px">可能是文件格式特殊，请下载到本地使用阅读器打开</p>
+        <a class="epub-btn read" id="hexo-epub-fallback-link" href="#" download>⬇️ 下载 EPUB</a>
+      </div>
+      <div id="hexo-epub-stage"></div>
     </div>
-    <div id="hexo-epub-stage"></div>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
 <script>
-window.HexoEpub = {
+window.HexoEpubReader = {
   r: null,
+  toc: [],
+
   open: async function(id) {
     const c = document.querySelector('[data-epub-id="' + id + '"]');
-    if (!c) { console.error('[HexoEpub] 找不到卡片:', id); return; }
+    if (!c) return;
     const path = c.dataset.epubPath;
     const title = c.dataset.epubTitle;
     const loadEl = document.getElementById('hexo-epub-load');
@@ -143,19 +213,21 @@ window.HexoEpub = {
     const fallback = document.getElementById('hexo-epub-fallback');
     const fallbackLink = document.getElementById('hexo-epub-fallback-link');
     const stage = document.getElementById('hexo-epub-stage');
+    const tocPanel = document.getElementById('hexo-epub-toc');
+    const tocList = document.getElementById('hexo-epub-toc-list');
 
     errEl.textContent = '';
     loadEl.style.display = 'block';
     fallback.style.display = 'none';
     stage.innerHTML = '';
+    tocPanel.classList.remove('active');
+    tocList.innerHTML = '';
+    this.toc = [];
+    this.currentTocIdx = 0;
     document.getElementById('hexo-epub-tit').textContent = title;
     document.getElementById('hexo-epub-modal').classList.add('active');
 
-    if (typeof JSZip === 'undefined') {
-      errEl.textContent = 'JSZip 库未加载';
-      return;
-    }
-    if (typeof ePub === 'undefined') {
+    if (typeof JSZip === 'undefined' || typeof ePub === 'undefined') {
       errEl.textContent = '阅读器库未加载';
       return;
     }
@@ -198,43 +270,91 @@ window.HexoEpub = {
         flow: 'paginated'
       });
 
+      // ==================== 目录生成 ====================
+      const self = this;
+      book.loaded.navigation.then(function(nav) {
+        self.toc = nav.toc || [];
+        console.log('[HexoEpubReader] 目录项数:', self.toc.length);
+        
+        tocList.innerHTML = '';
+        if (self.toc.length === 0) {
+          tocList.innerHTML = '<div style="padding:12px 18px;color:#999;font-size:.85em">暂无目录</div>';
+          return;
+        }
+
+        self.toc.forEach(function(item, idx) {
+          const a = document.createElement('a');
+          a.className = 'hexo-epub-toc-item';
+          a.textContent = item.label;
+          a.title = item.label;
+          a.dataset.href = item.href;
+          a.onclick = function(e) {
+            e.preventDefault();
+            self.currentTocIdx = idx;
+            rendition.display(item.href);
+            self.highlightToc(idx);
+            if (window.innerWidth <= 600) tocPanel.classList.remove('active');
+          };
+          tocList.appendChild(a);
+        });
+      }).catch(function(err) {
+        console.warn('[HexoEpubReader] 读取目录失败:', err);
+        tocList.innerHTML = '<div style="padding:12px 18px;color:#999;font-size:.85em">目录加载失败</div>';
+      });
+
+      // 监听当前位置变化，高亮对应目录
+      rendition.on('relocated', function(location) {
+        const currentHref = location.start.href;
+        if (!currentHref) return;
+
+        let foundIdx = -1;
+        for (let i = 0; i < self.toc.length; i++) {
+          const tocHref = self.toc[i].href;
+          if (!tocHref) continue;
+
+          // 去掉锚点，只比较文件路径
+          const tocBase = tocHref.split('#')[0];
+          const currBase = currentHref.split('#')[0];
+
+          if (currBase === tocBase || currBase.endsWith(tocBase) || tocBase.endsWith(currBase)) {
+            foundIdx = i;
+            break;
+          }
+        }
+
+        if (foundIdx >= 0 && foundIdx !== self.currentTocIdx) {
+          self.currentTocIdx = foundIdx;
+          self.highlightToc(foundIdx);
+        }
+      });
+      // ==================================================
+
       rendition.hooks.content.register(function(contents) {
         const doc = contents.document;
-
-        // ==================== 1. 彻底清理 res:// 字体错误 ====================
-        // 注入系统字体覆盖所有内嵌字体
         const fontStyle = doc.createElement('style');
         fontStyle.textContent = '* { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important; } @font-face { font-display: swap; src: local("Arial"); }';
         doc.head.insertBefore(fontStyle, doc.head.firstChild);
 
-        // 移除所有引用 res:// 的外部样式表
         doc.querySelectorAll('link[rel="stylesheet"]').forEach(function(link) {
-          if (link.href && link.href.includes('res://')) {
-            link.remove();
-          }
+          if (link.href && link.href.includes('res://')) link.remove();
         });
 
-        // 清理所有 style 标签内的 res:// 和 @font-face
         doc.querySelectorAll('style').forEach(function(style) {
           if (!style.textContent) return;
           let css = style.textContent;
           if (css.includes('res://') || css.includes('@font-face')) {
-            // 移除所有 @font-face 块
             css = css.replace(/@font-face\\s*\\{[^{}]*\\}/gi, '');
-            // 替换 res:// url
             css = css.replace(/url\\(['"]?res:\\/\\/[^'")]+['"]?\\)/gi, 'none');
             style.textContent = css;
           }
         });
 
-        // 清理行内 style 中的 res://
         doc.querySelectorAll('[style*="res://"]').forEach(function(el) {
           let s = el.getAttribute('style');
           s = s.replace(/url\\(['"]?res:\\/\\/[^'")]+['"]?\\)/gi, 'none');
           el.setAttribute('style', s);
         });
 
-        // ==================== 2. 修复图片为 Blob URL ====================
         const zip = book.archive && (book.archive.zip || book.archive);
         if (!zip || !zip.file) return;
 
@@ -268,14 +388,32 @@ window.HexoEpub = {
       fallback.style.display = 'block';
     }
   },
+
+  toggleToc: function() {
+    const panel = document.getElementById('hexo-epub-toc');
+    panel.classList.toggle('active');
+  },
+
+  highlightToc: function(idx) {
+    const items = document.querySelectorAll('.hexo-epub-toc-item');
+    items.forEach(function(el, i) {
+      el.classList.toggle('active', i === idx);
+    });
+  },
+
   close: function() {
     if (this.r) { try { this.r.destroy(); } catch(e) {} this.r = null; }
     document.getElementById('hexo-epub-modal').classList.remove('active');
+    document.getElementById('hexo-epub-toc').classList.remove('active');
     document.getElementById('hexo-epub-load').style.display = 'none';
     document.getElementById('hexo-epub-load').innerHTML = '正在加载书籍...<div class="err" id="hexo-epub-err"></div>';
     document.getElementById('hexo-epub-fallback').style.display = 'none';
     document.getElementById('hexo-epub-stage').innerHTML = '';
+    document.getElementById('hexo-epub-toc-list').innerHTML = '';
+    this.toc = [];
+    this.currentTocIdx = 0;
   },
+
   prev: function() { if (this.r && this.r.rendition) this.r.rendition.prev(); },
   next: function() { if (this.r && this.r.rendition) this.r.rendition.next(); }
 };
@@ -283,9 +421,9 @@ window.HexoEpub = {
 document.addEventListener('keydown', function(e) {
   const m = document.getElementById('hexo-epub-modal');
   if (!m.classList.contains('active')) return;
-  if (e.key === 'ArrowLeft') HexoEpub.prev();
-  if (e.key === 'ArrowRight') HexoEpub.next();
-  if (e.key === 'Escape') HexoEpub.close();
+  if (e.key === 'ArrowLeft') HexoEpubReader.prev();
+  if (e.key === 'ArrowRight') HexoEpubReader.next();
+  if (e.key === 'Escape') HexoEpubReader.close();
 });
 </script>
 `;
@@ -294,5 +432,5 @@ try {
   hexo.extend.injector.register('head_end', css, 'default');
   hexo.extend.injector.register('body_end', html, 'default');
 } catch (e) {
-  console.log('[hexo-epub-tag] 自动注入失败');
+  console.log('[hexo-epub-reader] 自动注入失败');
 }
