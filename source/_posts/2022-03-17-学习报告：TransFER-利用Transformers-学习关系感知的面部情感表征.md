@@ -2,7 +2,7 @@
 title: TransFER：利用Transformers 学习关系感知的面部情感表征
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 958d0ac
 date: 2022-03-17 18:32:48

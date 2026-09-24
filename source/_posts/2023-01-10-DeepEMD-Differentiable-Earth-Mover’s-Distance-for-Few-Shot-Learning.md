@@ -2,7 +2,7 @@
 title: 'DeepEMD: Differentiable Earth Mover’s Distance for Few-Shot Learning'
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 26e08aff
 date: 2023-01-10 09:22:40

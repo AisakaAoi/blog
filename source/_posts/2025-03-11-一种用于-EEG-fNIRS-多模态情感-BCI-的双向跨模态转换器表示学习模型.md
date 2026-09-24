@@ -2,7 +2,7 @@
 title: 一种用于 EEG-fNIRS 多模态情感 BCI 的双向跨模态转换器表示学习模型
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: f4132a83
 date: 2025-03-11 05:37:38

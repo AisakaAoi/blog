@@ -2,7 +2,7 @@
 title: Feature Pyramid Networks for Object Detection
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 6674f972
 date: 2022-12-16 20:41:39

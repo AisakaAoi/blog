@@ -4,7 +4,7 @@ title: >-
   Microexpressions》
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: '13582714'
 date: 2022-07-04 14:50:40

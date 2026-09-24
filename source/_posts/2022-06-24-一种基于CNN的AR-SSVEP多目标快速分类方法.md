@@ -2,7 +2,7 @@
 title: 一种基于CNN的AR-SSVEP多目标快速分类方法
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 33d8723a
 date: 2022-06-24 22:29:12

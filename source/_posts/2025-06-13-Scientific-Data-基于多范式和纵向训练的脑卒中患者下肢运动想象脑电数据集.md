@@ -2,7 +2,7 @@
 title: Scientific Data | 基于多范式和纵向训练的脑卒中患者下肢运动想象脑电数据集
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: a5e2e252
 date: 2025-06-13 05:15:25

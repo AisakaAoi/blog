@@ -2,7 +2,7 @@
 title: NeurIPS 2024 | EEGPT：通过预训练Transformer实现通用且可靠的脑电图信号表示
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: c3745d12
 date: 2024-11-27 06:04:52

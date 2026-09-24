@@ -2,7 +2,7 @@
 title: IEEE TAFFC | 自监督对比域泛化技术解码意识障碍患者的音乐神经活动
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: a0a8b306
 date: 2024-10-11 00:42:23

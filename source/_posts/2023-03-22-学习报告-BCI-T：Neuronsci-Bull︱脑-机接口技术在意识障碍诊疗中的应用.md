@@ -2,7 +2,7 @@
 title: BCI-T：Neuronsci Bull︱脑-机接口技术在意识障碍诊疗中的应用
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 72db34c9
 date: 2023-03-22 20:29:22

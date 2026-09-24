@@ -2,7 +2,7 @@
 title: AAAI 2024 | 用于联邦多标签分类的语言引导Transformer
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: aa9dc6f4
 date: 2025-09-25 08:35:55

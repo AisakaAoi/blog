@@ -2,7 +2,7 @@
 title: Nature Communications | DREAM 数据库—全球首个睡眠脑电与梦境报告的标准化开放数据库
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 1cf9dd0d
 date: 2026-02-01 05:22:38

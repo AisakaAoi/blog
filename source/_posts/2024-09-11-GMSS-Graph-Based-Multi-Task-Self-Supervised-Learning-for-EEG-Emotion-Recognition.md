@@ -4,7 +4,7 @@ title: >-
   Recognition
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 30c3a1aa
 date: 2024-09-11 08:35:07

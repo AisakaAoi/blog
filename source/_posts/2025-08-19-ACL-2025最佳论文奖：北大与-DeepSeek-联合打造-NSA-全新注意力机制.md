@@ -2,7 +2,7 @@
 title: ACL 2025最佳论文奖：北大与 DeepSeek 联合打造 NSA 全新注意力机制
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 38c82fcd
 date: 2025-08-19 07:30:53

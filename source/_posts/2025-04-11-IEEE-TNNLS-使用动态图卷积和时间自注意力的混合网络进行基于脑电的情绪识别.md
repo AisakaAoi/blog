@@ -2,7 +2,7 @@
 title: IEEE TNNLS | 使用动态图卷积和时间自注意力的混合网络进行基于脑电的情绪识别
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 4b8d6760
 date: 2025-04-11 03:27:55

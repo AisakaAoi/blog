@@ -2,7 +2,7 @@
 title: The Innovation Life | 生成式AI赋能脑机接口：前沿进展与未来展望
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: a4c6044b
 date: 2026-01-18 01:34:27

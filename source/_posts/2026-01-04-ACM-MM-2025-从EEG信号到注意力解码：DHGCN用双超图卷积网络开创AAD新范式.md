@@ -2,7 +2,7 @@
 title: ACM MM 2025 | 从EEG信号到注意力解码：DHGCN用双超图卷积网络开创AAD新范式
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 831c14e7
 date: 2026-01-04 07:08:07

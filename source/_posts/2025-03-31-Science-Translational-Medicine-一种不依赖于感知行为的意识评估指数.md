@@ -2,7 +2,7 @@
 title: Science Translational Medicine | 一种不依赖于感知行为的意识评估指数
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: ba003f20
 date: 2025-03-31 03:23:43

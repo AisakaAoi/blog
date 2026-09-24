@@ -4,7 +4,7 @@ title: >-
   trends, challenges and solutions》
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: d965e878
 date: 2022-12-14 17:04:23

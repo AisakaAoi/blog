@@ -2,7 +2,7 @@
 title: ICCV 2025 | FaceXFormer：一种用于面部分析的统一 Transformer 架构
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 9a32fd12
 date: 2026-01-30 02:53:07

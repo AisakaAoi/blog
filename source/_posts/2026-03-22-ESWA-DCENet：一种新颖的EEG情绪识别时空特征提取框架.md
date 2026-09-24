@@ -2,7 +2,7 @@
 title: ESWA | DCENet：一种新颖的EEG情绪识别时空特征提取框架
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: '90017258'
 date: 2026-03-22 07:02:53

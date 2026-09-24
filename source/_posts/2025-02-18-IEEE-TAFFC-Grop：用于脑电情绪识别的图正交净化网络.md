@@ -2,7 +2,7 @@
 title: IEEE TAFFC | Grop：用于脑电情绪识别的图正交净化网络
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 6153cdaa
 date: 2025-02-18 09:18:53

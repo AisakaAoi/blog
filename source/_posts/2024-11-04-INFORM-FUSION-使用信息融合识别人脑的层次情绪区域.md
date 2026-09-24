@@ -2,7 +2,7 @@
 title: INFORM FUSION | 使用信息融合识别人脑的层次情绪区域
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: e32de4c6
 date: 2024-11-04 04:58:30

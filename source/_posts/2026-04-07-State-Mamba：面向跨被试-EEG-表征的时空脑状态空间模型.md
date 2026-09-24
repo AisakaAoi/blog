@@ -2,7 +2,7 @@
 title: State Mamba：面向跨被试 EEG 表征的时空脑状态空间模型
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 106260cb
 date: 2026-04-07 01:22:41

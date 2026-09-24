@@ -2,7 +2,7 @@
 title: 'KDD 2024 | 大模型 Brant-X: A Unified Physiological Signal Alignment Framework'
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 610ed302
 date: 2024-12-06 06:33:06

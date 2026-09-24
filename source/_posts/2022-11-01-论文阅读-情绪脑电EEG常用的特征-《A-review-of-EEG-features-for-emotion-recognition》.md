@@ -2,7 +2,7 @@
 title: 情绪脑电EEG常用的特征-《A review of EEG features for emotion recognition》
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: '95890277'
 date: 2022-11-01 16:14:09

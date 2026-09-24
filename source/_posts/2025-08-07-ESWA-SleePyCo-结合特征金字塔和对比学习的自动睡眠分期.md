@@ -2,7 +2,7 @@
 title: 'ESWA | SleePyCo: 结合特征金字塔和对比学习的自动睡眠分期'
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 32226af2
 date: 2025-08-07 07:25:09

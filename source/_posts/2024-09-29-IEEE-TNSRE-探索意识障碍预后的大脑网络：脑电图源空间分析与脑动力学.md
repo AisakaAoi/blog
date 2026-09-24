@@ -2,7 +2,7 @@
 title: IEEE TNSRE | 探索意识障碍预后的大脑网络：脑电图源空间分析与脑动力学
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 904c3e92
 date: 2024-09-29 23:34:52

@@ -2,7 +2,7 @@
 title: 用于图像和视频识别的Transformer
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 62efb351
 date: 2022-07-30 04:23:22

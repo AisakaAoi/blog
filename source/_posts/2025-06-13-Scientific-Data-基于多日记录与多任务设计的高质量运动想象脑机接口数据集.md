@@ -2,7 +2,7 @@
 title: Scientific Data | 基于多日记录与多任务设计的高质量运动想象脑机接口数据集
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 8d7a93fb
 date: 2025-06-13 05:03:59

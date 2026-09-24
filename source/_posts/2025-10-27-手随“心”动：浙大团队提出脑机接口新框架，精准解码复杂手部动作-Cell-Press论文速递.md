@@ -2,7 +2,7 @@
 title: 手随“心”动：浙大团队提出脑机接口新框架，精准解码复杂手部动作 | Cell Press论文速递
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: da66eb17
 date: 2025-10-27 08:47:12

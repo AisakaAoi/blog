@@ -2,7 +2,7 @@
 title: 用于视频修复的时空联合Transformer网络
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 157f7e32
 date: 2021-03-21 10:27:02

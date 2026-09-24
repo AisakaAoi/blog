@@ -2,7 +2,7 @@
 title: 'ACL | Agent-Pro: 通过策略级反思与优化实现学习进化'
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 5867b524
 date: 2024-11-15 05:24:19

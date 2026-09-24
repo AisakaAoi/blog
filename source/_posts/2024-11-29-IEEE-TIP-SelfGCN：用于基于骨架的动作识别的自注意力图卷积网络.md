@@ -2,7 +2,7 @@
 title: IEEE TIP | SelfGCN：用于基于骨架的动作识别的自注意力图卷积网络
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 4fb3c72c
 date: 2024-11-29 06:25:58

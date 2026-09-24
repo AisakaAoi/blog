@@ -2,7 +2,7 @@
 title: IEEE TIFS | 用于多视角指静脉识别的基于注意力BLSTM的时空静脉Transformer
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 94aceb25
 date: 2025-04-30 04:06:42

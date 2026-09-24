@@ -2,7 +2,7 @@
 title: FGANet—混合EEG-fNIRS脑机接口的fNIRS引导注意网络
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: f16c3c53
 date: 2023-10-26 07:26:51

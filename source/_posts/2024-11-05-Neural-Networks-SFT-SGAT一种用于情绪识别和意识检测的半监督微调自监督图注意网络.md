@@ -2,7 +2,7 @@
 title: Neural Networks | SFT - SGAT一种用于情绪识别和意识检测的半监督微调自监督图注意网络
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: b1968da5
 date: 2024-11-05 05:10:31

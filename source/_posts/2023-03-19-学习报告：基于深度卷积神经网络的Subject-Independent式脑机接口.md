@@ -2,7 +2,7 @@
 title: 基于深度卷积神经网络的Subject-Independent式脑机接口
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: '85100e42'
 date: 2023-03-19 20:26:07

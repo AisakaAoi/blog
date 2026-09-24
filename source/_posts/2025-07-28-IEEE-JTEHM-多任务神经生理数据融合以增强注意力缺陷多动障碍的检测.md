@@ -2,7 +2,7 @@
 title: IEEE JTEHM | 多任务神经生理数据融合以增强注意力缺陷多动障碍的检测
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 6afbdec
 date: 2025-07-28 06:47:55

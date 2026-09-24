@@ -2,7 +2,7 @@
 title: IEEE JBHI | 基于具有通道选择与可解释性Transformer网络的SEEG情绪识别
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 6e9d1f0f
 date: 2025-10-16 08:46:44

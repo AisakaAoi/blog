@@ -2,7 +2,7 @@
 title: J NEURAL ENG | 一种基于EEG的新型意识障碍诊断框架
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 517f87d6
 date: 2024-09-24 23:27:06

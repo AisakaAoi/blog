@@ -2,7 +2,7 @@
 title: IEEE TNNLS | EmT：一种用于广义跨被试EEG情绪识别的新型Transformer模型
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: ddd74882
 date: 2026-01-06 02:58:03

@@ -2,7 +2,7 @@
 title: Information Fusion | HiCMAE：用于自监督视听情感识别的分层对比掩码自编码器
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: f6d60895
 date: 2024-09-29 00:31:48

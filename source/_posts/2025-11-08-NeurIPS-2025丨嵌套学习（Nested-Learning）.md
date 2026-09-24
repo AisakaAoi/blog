@@ -2,7 +2,7 @@
 title: NeurIPS 2025丨嵌套学习（Nested Learning）
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: c4d4abe
 date: 2025-11-08 06:25:20

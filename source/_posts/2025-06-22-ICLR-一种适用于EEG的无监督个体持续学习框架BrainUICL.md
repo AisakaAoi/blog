@@ -2,7 +2,7 @@
 title: ICLR | 一种适用于EEG的无监督个体持续学习框架BrainUICL
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 5056f439
 date: 2025-06-22 05:38:32

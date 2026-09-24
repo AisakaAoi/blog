@@ -2,7 +2,7 @@
 title: AEI | LResCapsule：基于轻量级残差卷积胶囊网络的情感识别研究
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 4bbe1890
 date: 2025-04-29 03:53:15

@@ -2,7 +2,7 @@
 title: Applied Soft Computing | 用于面部表情识别的具有自适应通道注意的渐进自蒸馏网络
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 9dadb30f
 date: 2024-12-18 06:40:10

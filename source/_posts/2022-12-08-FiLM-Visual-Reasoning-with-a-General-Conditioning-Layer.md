@@ -2,7 +2,7 @@
 title: 'FiLM: Visual Reasoning with a General Conditioning Layer'
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 46f326e6
 date: 2022-12-08 20:46:25

@@ -2,7 +2,7 @@
 title: Neuron | 2024意识专刊Thinking about consciousness
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 9663f223
 date: 2024-10-06 00:39:07

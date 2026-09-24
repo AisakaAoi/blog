@@ -2,7 +2,7 @@
 title: Psychological Science | 师生间脑同步的时间动态变化可预测学习成果
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 1f37ce42
 date: 2026-03-22 06:56:06

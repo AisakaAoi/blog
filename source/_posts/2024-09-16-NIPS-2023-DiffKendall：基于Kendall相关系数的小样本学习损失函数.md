@@ -2,7 +2,7 @@
 title: NIPS 2023 | DiffKendall：基于Kendall相关系数的小样本学习损失函数
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 319d7b27
 date: 2024-09-16 22:46:15

@@ -2,7 +2,7 @@
 title: IEEE TNNLS | EEGMatch：基于半监督脑电的跨被试情感识别的不完整标签学习
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: dc18036b
 date: 2025-07-26 06:22:05

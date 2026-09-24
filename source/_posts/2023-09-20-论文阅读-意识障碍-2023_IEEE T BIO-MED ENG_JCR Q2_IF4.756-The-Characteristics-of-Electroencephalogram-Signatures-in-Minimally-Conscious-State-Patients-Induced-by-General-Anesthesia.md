@@ -4,7 +4,7 @@ title: >-
   Minimally Conscious State Patients Induced by General Anesthesia
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: c133aeb9
 date: 2023-09-20 01:48:53

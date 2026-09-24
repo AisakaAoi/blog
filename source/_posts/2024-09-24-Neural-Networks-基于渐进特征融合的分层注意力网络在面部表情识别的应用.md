@@ -2,7 +2,7 @@
 title: Neural Networks | 基于渐进特征融合的分层注意力网络在面部表情识别的应用
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 182a020d
 date: 2024-09-24 22:57:33

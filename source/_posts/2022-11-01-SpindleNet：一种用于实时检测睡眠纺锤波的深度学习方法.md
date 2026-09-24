@@ -2,7 +2,7 @@
 title: SpindleNet：一种用于实时检测睡眠纺锤波的深度学习方法
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: c97be626
 date: 2022-11-01 04:25:30

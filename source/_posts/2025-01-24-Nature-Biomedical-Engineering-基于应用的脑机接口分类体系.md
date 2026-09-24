@@ -2,7 +2,7 @@
 title: Nature Biomedical Engineering | 基于应用的脑机接口分类体系
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 4c12cbb1
 date: 2025-01-24 09:13:51

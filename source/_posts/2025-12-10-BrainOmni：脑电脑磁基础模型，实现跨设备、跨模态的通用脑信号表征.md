@@ -2,7 +2,7 @@
 title: BrainOmni：脑电脑磁基础模型，实现跨设备、跨模态的通用脑信号表征
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: ebfcef04
 date: 2025-12-10 03:20:38

@@ -2,7 +2,7 @@
 title: Depression and Anxiety | 奖赏回路靶向经颅磁刺激（TMS）对抑郁症患者自杀意念的治疗效果：两项TMS方案的假刺激对照试验
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: becb3877
 date: 2025-06-22 05:49:31

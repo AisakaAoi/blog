@@ -2,7 +2,7 @@
 title: IEEE TNNLS | 用于不完整多视角聚类的增强稀疏表示法
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: '73384172'
 date: 2024-10-19 04:25:01

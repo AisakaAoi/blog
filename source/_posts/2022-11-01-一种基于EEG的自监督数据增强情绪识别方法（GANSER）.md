@@ -2,7 +2,7 @@
 title: 一种基于EEG的自监督数据增强情绪识别方法（GANSER）
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: c8d84c8c
 date: 2022-11-01 03:53:46

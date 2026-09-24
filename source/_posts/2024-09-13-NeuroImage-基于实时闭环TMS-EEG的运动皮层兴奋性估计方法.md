@@ -2,7 +2,7 @@
 title: NeuroImage | 基于实时闭环TMS-EEG的运动皮层兴奋性估计方法
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 284514f3
 date: 2024-09-13 22:30:58

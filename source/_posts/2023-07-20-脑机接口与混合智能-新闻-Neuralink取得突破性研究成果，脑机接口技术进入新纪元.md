@@ -2,7 +2,7 @@
 title: Neuralink取得突破性研究成果，脑机接口技术进入新纪元
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫新闻
 abbrlink: 1273651d
 date: 2023-07-20 23:22:49

@@ -2,7 +2,7 @@
 title: 脑机接口的“ImageNet 时刻”，构建“NeuroGPT”式的脑信号基础模型——从特征工程到通用表征学习
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 272271fa
 date: 2026-01-05 04:14:25

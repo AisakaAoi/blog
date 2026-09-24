@@ -2,7 +2,7 @@
 title: nature reviews neuroscience重磅综述：大规模人脑网络的结构-功能耦合
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: dbea2404
 date: 2024-11-10 04:29:22

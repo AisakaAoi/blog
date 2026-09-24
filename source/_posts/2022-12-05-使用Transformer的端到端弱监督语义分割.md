@@ -2,7 +2,7 @@
 title: 使用Transformer的端到端弱监督语义分割
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: 2e59fe20
 date: 2022-12-05 20:51:52

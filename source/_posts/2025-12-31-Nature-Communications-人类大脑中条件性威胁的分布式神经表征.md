@@ -2,7 +2,7 @@
 title: Nature Communications | 人类大脑中条件性威胁的分布式神经表征
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: b511cb06
 date: 2025-12-31 02:49:59

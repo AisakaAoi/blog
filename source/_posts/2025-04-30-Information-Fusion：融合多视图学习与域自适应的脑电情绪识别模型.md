@@ -2,7 +2,7 @@
 title: Information Fusion：融合多视图学习与域自适应的脑电情绪识别模型
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: febc8b08
 date: 2025-04-30 04:25:44

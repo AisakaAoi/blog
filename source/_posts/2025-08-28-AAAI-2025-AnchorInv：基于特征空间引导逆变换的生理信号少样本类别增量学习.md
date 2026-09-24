@@ -2,7 +2,7 @@
 title: AAAI 2025 | AnchorInv：基于特征空间引导逆变换的生理信号少样本类别增量学习
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: d3b8d633
 date: 2025-08-28 07:56:30

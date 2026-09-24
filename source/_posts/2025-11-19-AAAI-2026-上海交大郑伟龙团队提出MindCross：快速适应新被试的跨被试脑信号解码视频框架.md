@@ -2,7 +2,7 @@
 title: AAAI 2026 | 上海交大郑伟龙团队提出MindCross：快速适应新被试的跨被试脑信号解码视频框架
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: e15a525c
 date: 2025-11-19 11:37:21

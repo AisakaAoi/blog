@@ -2,7 +2,7 @@
 title: 上海交大吕宝粮、郑伟龙团队发表新成果SEED-SD：情绪脑电数据集SEED再添新成员
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫新闻
 abbrlink: e1ccee22
 date: 2025-06-03 01:56:05

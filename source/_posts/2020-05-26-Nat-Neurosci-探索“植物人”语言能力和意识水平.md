@@ -4,7 +4,7 @@ title: >-
   processing in patients with disorders of consciousness
 categories:
   - 🌙进阶学习
-  - ⭐脑机接口与混合智能研究团队（BCI团队）
+  - ⭐SCNU BCI团队
   - 💫学习报告
 abbrlink: a5b3ddd1
 date: 2020-05-26 00:46:49
