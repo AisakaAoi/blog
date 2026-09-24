@@ -3,6 +3,7 @@ title: VALSE Webinar 25-04期（总第375期）AI方向投稿Nature/Science系�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫其它讲座
 abbrlink: '96834198'
 date: 2025-02-26 23:26:55
 tags:

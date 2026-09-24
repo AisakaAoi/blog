@@ -3,6 +3,7 @@ title: CSIG云上微表情-第70期-微表情国际挑战赛 - MEGC@ACMMM25
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: 86bfe182
 date: 2025-10-29 06:54:29
 tags:

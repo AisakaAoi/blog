@@ -3,6 +3,7 @@ title: SFFAI 18 | 使用RNN-Transducer进行语音识别建模
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 4b221ed7
 date: 2019-01-20 23:37:34
 tags:

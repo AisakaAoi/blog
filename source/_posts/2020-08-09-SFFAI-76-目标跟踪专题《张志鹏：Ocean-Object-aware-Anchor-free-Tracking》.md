@@ -3,6 +3,7 @@ title: 'SFFAI 76 | 目标跟踪专题《张志鹏：Ocean: Object-aware Anchor-f
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 9de94b53
 date: 2020-08-09 05:21:57
 tags:

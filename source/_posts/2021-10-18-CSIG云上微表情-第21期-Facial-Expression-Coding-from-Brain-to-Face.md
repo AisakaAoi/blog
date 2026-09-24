@@ -3,6 +3,7 @@ title: 'CSIG云上微表情-第21期-Facial Expression Coding: from Brain to Fac
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: 27ad9912
 date: 2021-10-18 04:04:13
 tags:

@@ -3,6 +3,7 @@ title: CSIG云上微表情-第74期-LatentMag：通过潜在空间外插实现�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: 4bebe8c7
 date: 2026-02-28 05:13:21
 tags:

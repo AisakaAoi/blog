@@ -3,6 +3,7 @@ title: SFFAI 65 | 目标跟踪主题《许胤达：SiamFC++：视觉目标跟踪
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 22fca189
 date: 2020-05-24 05:02:09
 tags:

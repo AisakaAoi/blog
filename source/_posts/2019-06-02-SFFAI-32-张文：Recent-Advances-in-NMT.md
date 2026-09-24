@@ -3,6 +3,7 @@ title: SFFAI 32 | 张文：Recent Advances in NMT
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 5c04c85d
 date: 2019-06-02 07:11:23
 tags:

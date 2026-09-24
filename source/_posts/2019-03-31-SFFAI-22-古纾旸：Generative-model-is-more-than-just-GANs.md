@@ -3,6 +3,7 @@ title: SFFAI 22 | 古纾旸：Generative model is more than just GANs
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: d40e4474
 date: 2019-03-31 05:54:47
 tags:

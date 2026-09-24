@@ -3,6 +3,7 @@ title: SFFAI 72 | 行为理解专题《李永露：PaStaNet：Toward Human Activ
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: '93199855'
 date: 2020-07-12 05:15:16
 tags:

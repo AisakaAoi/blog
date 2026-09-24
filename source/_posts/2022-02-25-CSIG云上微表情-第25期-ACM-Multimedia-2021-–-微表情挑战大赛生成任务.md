@@ -3,6 +3,7 @@ title: CSIG云上微表情-第25期-ACM Multimedia 2021 – 微表情挑战大�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: cda3181d
 date: 2022-02-25 04:17:05
 tags:

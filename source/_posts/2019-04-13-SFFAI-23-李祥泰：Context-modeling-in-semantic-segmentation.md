@@ -3,6 +3,7 @@ title: SFFAI 23 | 李祥泰：Context modeling in semantic segmentation
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 580ef622
 date: 2019-04-13 05:31:29
 tags:

@@ -25,3 +25,63 @@
     transform: translateX(100vw);
   }
 }
+/* 分类折叠箭头 */
+.cat-toggle {
+  cursor: pointer;
+  user-select: none;
+  margin-right: 2px;
+  font-size: .9em;
+  opacity: .7;
+}
+.cat-toggle:hover {
+  opacity: 1;
+}
+
+/* 分类层级缩进：子级相对父级缩进，💫比⭐、⭐比🌙逐层内移 */
+.category-list .category-list-child {
+  padding-left: 1.4em;
+}
+
+/* 折叠箭头固定宽度，有/无子分类的条目文字严格对齐 */
+.cat-toggle {
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+  margin-right: 2px;
+  cursor: pointer;
+  user-select: none;
+  font-size: .9em;
+  opacity: .7;
+  vertical-align: baseline;
+}
+.cat-toggle:hover {
+  opacity: 1;
+}
+
+/* 折叠箭头置于条目右侧（覆盖此前的固定宽度方案，右侧不影响文字对齐） */
+.cat-toggle {
+  display: inline;
+  width: auto;
+  margin-left: 4px;
+  margin-right: 0;
+  cursor: pointer;
+  user-select: none;
+  font-size: .9em;
+  opacity: .7;
+  vertical-align: baseline;
+}
+.cat-toggle:hover {
+  opacity: 1;
+}
+
+/* 箭头左右间距对称（覆盖上一版） */
+.cat-toggle {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+/* 箭头左侧加宽，抵消右侧自带空格，两侧视觉间距一致 */
+.cat-toggle {
+  margin-left: 8px;
+  margin-right: 0;
+}

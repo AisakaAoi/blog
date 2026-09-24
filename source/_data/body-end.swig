@@ -140,3 +140,26 @@
   })();
 })();
 </script>
+<script>
+/* 分类侧边栏折叠：默认收起子级，点箭头展开 */
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.category-list li').forEach(function (li) {
+    var sub = li.querySelector(':scope > ul');
+    if (!sub) return;
+    sub.style.display = 'none';
+    var arrow = document.createElement('span');
+    arrow.textContent = '▸';
+    arrow.className = 'cat-toggle';
+    var a = li.querySelector(':scope > a');
+    if (!a) return;
+    a.parentNode.insertBefore(arrow, a.nextSibling);
+    arrow.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var open = sub.style.display !== 'none';
+      sub.style.display = open ? 'none' : 'block';
+      arrow.textContent = open ? '▸' : '▾';
+    });
+  });
+});
+</script>

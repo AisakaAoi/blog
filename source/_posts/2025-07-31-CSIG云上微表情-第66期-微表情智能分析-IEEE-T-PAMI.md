@@ -3,6 +3,7 @@ title: CSIG云上微表情-第66期-微表情智能分析@IEEE T-PAMI
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: 97983d58
 date: 2025-07-31 06:40:49
 tags:

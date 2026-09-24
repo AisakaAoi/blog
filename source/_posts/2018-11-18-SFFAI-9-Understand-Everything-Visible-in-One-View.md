@@ -3,6 +3,7 @@ title: SFFAI 9 | Understand Everything Visible in One View
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: ed5659a4
 date: 2018-11-18 21:55:28
 tags:

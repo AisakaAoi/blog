@@ -3,6 +3,7 @@ title: CSIG云上微表情-Translating computer vision and AI into real world ap
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: 7c0278e6
 date: 2024-12-02 06:07:36
 tags:

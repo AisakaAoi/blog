@@ -3,6 +3,7 @@ title: 'SFFAI 125 | 点云补全专题《张俊哲：ShapeInversion: 基于GAN�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: a65fdaab
 date: 2021-10-25 02:03:06
 tags:

@@ -3,6 +3,7 @@ title: CSIG云上微表情-第75期-迈向共情智能（Empathic AI）：AU驱�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: 5920fd59
 date: 2026-03-30 05:14:57
 tags:

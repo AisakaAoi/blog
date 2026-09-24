@@ -3,6 +3,7 @@ title: SFFAI 24 | 罗玲：From Word Representation to BERT
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 72d40aef
 date: 2019-04-14 00:15:57
 tags:

@@ -2,6 +2,7 @@
 title: Python-JC1001 Assessment 2
 categories:
   - 🌙大学课程
+  - ⭐Python
 abbrlink: 3e62d3a3
 date: 2022-12-13 00:56:42
 tags:

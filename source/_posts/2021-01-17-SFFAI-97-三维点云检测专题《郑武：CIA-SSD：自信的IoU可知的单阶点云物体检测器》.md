@@ -3,6 +3,7 @@ title: SFFAI 97 | 三维点云检测专题《郑武：CIA-SSD：自信的IoU可�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: b57c0a3c
 date: 2021-01-17 21:42:09
 tags:

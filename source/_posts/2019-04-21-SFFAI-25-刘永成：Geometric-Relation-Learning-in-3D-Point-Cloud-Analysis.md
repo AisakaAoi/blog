@@ -3,6 +3,7 @@ title: SFFAI 25 | 刘永成：Geometric Relation Learning in 3D Point Cloud Anal
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 89c95937
 date: 2019-04-21 02:57:40
 tags:

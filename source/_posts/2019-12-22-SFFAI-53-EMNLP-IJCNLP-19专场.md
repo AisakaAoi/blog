@@ -3,6 +3,7 @@ title: SFFAI 53 | EMNLP-IJCNLP'19专场
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 65d8e2e
 date: 2019-12-22 04:24:26
 tags:

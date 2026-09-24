@@ -3,6 +3,7 @@ title: CSIG云上微表情-第32期-SOTA微表情数据库：MMEW与4DME
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: ebe84963
 date: 2022-09-30 04:36:41
 tags:

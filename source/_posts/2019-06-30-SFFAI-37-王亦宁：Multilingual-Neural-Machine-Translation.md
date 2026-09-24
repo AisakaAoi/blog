@@ -3,6 +3,7 @@ title: SFFAI 37 | 王亦宁：Multilingual Neural Machine Translation
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: d9f55ff7
 date: 2019-06-30 07:20:43
 tags:

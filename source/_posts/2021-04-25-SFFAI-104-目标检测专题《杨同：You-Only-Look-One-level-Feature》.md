@@ -3,6 +3,7 @@ title: SFFAI 104 | 目标检测专题《杨同：You Only Look One-level Feature
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 665997fa
 date: 2021-04-25 22:18:23
 tags:

@@ -3,6 +3,7 @@ title: SFFAI 5 | Rotating is Believing
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: b7543c0b
 date: 2018-10-21 07:41:35
 tags:

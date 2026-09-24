@@ -3,6 +3,7 @@ title: SFFAI 120 | 文本理解专题《李家琦：Molweni：面向多人对话
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 7fafe431
 date: 2021-08-29 01:13:16
 tags:

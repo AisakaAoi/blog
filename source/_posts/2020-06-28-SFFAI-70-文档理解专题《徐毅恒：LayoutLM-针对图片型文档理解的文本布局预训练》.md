@@ -3,6 +3,7 @@ title: 'SFFAI 70 | 文档理解专题《徐毅恒：LayoutLM: 针对图片型文
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: cbf9b6c1
 date: 2020-06-28 05:12:16
 tags:

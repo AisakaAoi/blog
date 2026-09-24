@@ -3,6 +3,7 @@ title: SFFAI 38 | 张志鹏：SiamDW Real-Time Visual Tracking
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: b649d7f1
 date: 2019-07-07 07:26:05
 tags:

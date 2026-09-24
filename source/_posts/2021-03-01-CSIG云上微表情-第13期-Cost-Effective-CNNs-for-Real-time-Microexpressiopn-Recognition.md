@@ -3,6 +3,7 @@ title: CSIG云上微表情-第13期-Cost-Effective CNNs for Real-time Microexpre
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫CSIG云上微表情
 abbrlink: e4684538
 date: 2021-03-01 02:23:57
 tags:

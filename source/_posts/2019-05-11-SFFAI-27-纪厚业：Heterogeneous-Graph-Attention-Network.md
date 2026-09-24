@@ -3,6 +3,7 @@ title: SFFAI 27 | 纪厚业：Heterogeneous Graph Attention Network
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: '71814466'
 date: 2019-05-11 03:32:38
 tags:

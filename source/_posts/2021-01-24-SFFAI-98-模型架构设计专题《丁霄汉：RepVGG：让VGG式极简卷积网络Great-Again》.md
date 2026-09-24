@@ -3,6 +3,7 @@ title: SFFAI 98 | 模型架构设计专题《丁霄汉：RepVGG：让VGG式极�
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 8b04a71a
 date: 2021-01-24 21:49:17
 tags:

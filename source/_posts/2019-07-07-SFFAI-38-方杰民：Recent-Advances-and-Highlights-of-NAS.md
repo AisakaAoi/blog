@@ -3,6 +3,7 @@ title: SFFAI 38 | 方杰民：Recent Advances and Highlights of NAS
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
+  - 💫SFFAI
 abbrlink: 53fb70e5
 date: 2019-07-07 07:27:32
 tags:
