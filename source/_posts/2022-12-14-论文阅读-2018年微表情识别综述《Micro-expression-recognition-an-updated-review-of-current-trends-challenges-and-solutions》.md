@@ -12,7 +12,7 @@ date: 2022-12-14 17:04:23
 
 ### 原文
 
-{% pdf ./file/paper/2018-Micro-expression-recognition-an-updated-review-of-current-trends-challenges-and-solutions.pdf %}
+[2018-Micro-expression-recognition-an-updated-review-of-current-trends-challenges-and-solutions.pdf](https://doi.org/10.1007/s00371-018-1607-6)
 
 <!--more-->
 

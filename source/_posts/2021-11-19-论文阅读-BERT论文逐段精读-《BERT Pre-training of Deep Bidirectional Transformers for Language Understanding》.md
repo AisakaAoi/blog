@@ -13,7 +13,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2018-BERT-Pre-training-of-Deep-Bidirectional-Transformers-for-Language-Understanding.pdf %}
+[2018-BERT-Pre-training-of-Deep-Bidirectional-Transformers-for-Language-Understanding.pdf](https://arxiv.org/abs/1810.04805)
 
 **BERT** 论文链接：<https://aclanthology.org/N19-1423.pdf>
 

@@ -642,7 +642,7 @@ CAS-THU 数据库[76] 由中国科学院心理研究所与清华大学共同提�
 
 ### 原文
 
-{% pdf ./file/paper/2019-A-review-of-EEG-features-for-emotion-recognition.pdf %}
+[2019-A-review-of-EEG-features-for-emotion-recognition.pdf](https://doi.org/10.1360/N112018-00337)
 
 引用：张冠华, 余旻婧, 陈果, 等. 面向情绪识别的脑电特征研究综述. 中国科学: 信息科学, 2019, doi: 10.1360/N112018-00337 Zhang G H, Yu M J, Chen G, et al. A review of EEG features for emotion recognition (in Chinese). Sci Sin Inform, 2019, doi: 10.1360/N112018-00337
 Reference: Guanhua ZHANG, Minjing YU, Guo CHEN, Yiheng HAN, Dan ZHANG, Guozhen ZHAO, Yong-Jin LIU, A review of EEG features for emotion recognition, In Journal of SCIENTIA SINICA Informationis, Volume 49, Issue 9, 2019, Pages 1097-1118, ISSN 1674-7267, https://doi.org/10.1360/N112018-00337.

@@ -12,7 +12,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2020-AN-IMAGE-IS-WORTH-16X16-WORDS-TRANSFORMERS-FOR-IMAGE-RECOGNITION-AT-SCALE.pdf %}
+[2020-AN-IMAGE-IS-WORTH-16X16-WORDS-TRANSFORMERS-FOR-IMAGE-RECOGNITION-AT-SCALE.pdf](https://arxiv.org/abs/2010.11929)
 
 **ViT** 论文链接：<https://openreview.net/pdf?id=YicbFdNTTy>
 

@@ -39,6 +39,10 @@ $ npm install --save hexo-pdf
 ``` 
 {% pdf ./file/Deep_Residual_Learning_for_Image_Recognition.pdf %}
 ```
+或者
+```
+[Deep_Residual_Learning_for_Image_Recognition.pdf](/file/Deep_Residual_Learning_for_Image_Recognition.pdf)
+```
 
 {% asset_img 1.webp %}
 

@@ -10,7 +10,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2015-Fully-Convolutional-Networks-for-Semantic-Segmentation.pdf %}
+[2015-Fully-Convolutional-Networks-for-Semantic-Segmentation.pdf](https://arxiv.org/abs/1411.4038)
 
 **FCN** 论文链接：<https://arxiv.org/pdf/1411.4038.pdf>
 

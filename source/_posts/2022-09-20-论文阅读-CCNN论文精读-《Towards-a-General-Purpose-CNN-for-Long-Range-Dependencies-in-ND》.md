@@ -12,7 +12,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2022-Towards-a-General-Purpose-CNN-for-Long-Range-Dependencies-in-ND.pdf %}
+[2022-Towards-a-General-Purpose-CNN-for-Long-Range-Dependencies-in-ND.pdf](https://arxiv.org/abs/2206.03398)
 
 论文地址：<https://arxiv.org/pdf/2206.03398.pdf>
 代码地址：<https://github.com/david-knigge/ccnn>

@@ -12,7 +12,7 @@ date: 2023-09-20 01:48:53
 
 ### 原文
 
-{% pdf ./file/paper/2023-The_Characteristics_of_Electroencephalogram_Signatures_in_Minimally_Conscious_State_Patients_Induced_by_General_Anesthesia.pdf %}
+[2023-The_Characteristics_of_Electroencephalogram_Signatures_in_Minimally_Conscious_State_Patients_Induced_by_General_Anesthesia.pdf](https://ieeexplore.ieee.org/document/10155269/)
 
 JCR Q2，中科院2区，IF：4.6
 

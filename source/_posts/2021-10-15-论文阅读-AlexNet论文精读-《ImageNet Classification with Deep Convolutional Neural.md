@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2012-ImageNet-Classification-with-Deep-Convolutional.pdf %}
+[2012-ImageNet-Classification-with-Deep-Convolutional.pdf](https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
 
 ***
 

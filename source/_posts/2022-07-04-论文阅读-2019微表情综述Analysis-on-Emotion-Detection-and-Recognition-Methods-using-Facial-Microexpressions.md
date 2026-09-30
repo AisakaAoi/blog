@@ -12,7 +12,7 @@ date: 2022-07-04 14:50:40
 
 ### 原文
 
-{% pdf ./file/paper/2019_Analysis_on_Emotion_Detection_and_Recognition_Methods_using_Facial_Microexpressions._A_Review.pdf %}
+[2019_Analysis_on_Emotion_Detection_and_Recognition_Methods_using_Facial_Microexpressions._A_Review.pdf](https://ieeexplore.ieee.org/document/8969925)
 
 论文链接：<https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8969925>
 

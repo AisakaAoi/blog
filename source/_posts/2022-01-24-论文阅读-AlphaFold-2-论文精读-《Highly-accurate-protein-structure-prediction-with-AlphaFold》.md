@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2021-Highly-accurate-protein-structure-prediction-with-AlphaFold.pdf %}
+[2021-Highly-accurate-protein-structure-prediction-with-AlphaFold.pdf](https://www.nature.com/articles/s41586-021-03819-2)
 
 论文链接：<https://www.nature.com/articles/s41586-021-03819-2.pdf>
 

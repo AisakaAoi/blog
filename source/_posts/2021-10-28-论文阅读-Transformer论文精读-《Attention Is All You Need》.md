@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2017-Attention-Is-All-You-Need.pdf %}
+[2017-Attention-Is-All-You-Need.pdf](https://arxiv.org/abs/1706.03762)
 
 ***
 

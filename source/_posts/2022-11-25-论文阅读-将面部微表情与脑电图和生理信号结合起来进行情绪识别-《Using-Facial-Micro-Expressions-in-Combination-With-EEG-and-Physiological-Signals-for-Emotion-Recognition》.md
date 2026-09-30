@@ -527,6 +527,6 @@ DEAP数据集包含32名参与者的EEG数据、面部视频、GSR、血容量�
 
 ### 原文
 
-{% pdf ./file/paper/2022-Using-Facial-Micro-Expressions-in-Combination-With-EEG-and-Physiological-Signals-for-Emotion-Recognition.pdf %}
+[2022-Using-Facial-Micro-Expressions-in-Combination-With-EEG-and-Physiological-Signals-for-Emotion-Recognition.pdf](https://pmc.ncbi.nlm.nih.gov/articles/PMC9275379/)
 
 ***

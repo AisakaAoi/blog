@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2014-Generative-Adversarial-Nets.pdf %}
+[2014-Generative-Adversarial-Nets.pdf](https://arxiv.org/abs/1406.2661)
 
 这是李沐博士论文精读的第五篇论文，这次精读的论文是 **GAN**。目前谷歌学术显示其被引用数已经达到了37000+。**GAN** 应该是机器学习过去五年上头条次数最多的工作，例如抖音里面生成人物卡通头像，人脸互换以及自动驾驶中通过传感器采集的数据生成逼真的图像数据，用于仿真测试等。这里李沐博士讲解的论文是 **NeurIPS** 版，与 **arXiv** 版稍有不同。
 

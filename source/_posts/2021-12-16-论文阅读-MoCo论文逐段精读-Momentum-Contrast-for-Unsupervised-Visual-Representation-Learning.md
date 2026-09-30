@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2020-Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning.pdf %}
+[2020-Momentum-Contrast-for-Unsupervised-Visual-Representation-Learning.pdf](https://arxiv.org/abs/1911.05722)
 
 **MoCo** 论文链接：<https://arxiv.org/abs/1911.05722>
 

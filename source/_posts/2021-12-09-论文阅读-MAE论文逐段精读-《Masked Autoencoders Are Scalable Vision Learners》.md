@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2021-Masked-Autoencoders-Are-Scalable-Vision-Learners.pdf %}
+[2021-Masked-Autoencoders-Are-Scalable-Vision-Learners.pdf](https://arxiv.org/abs/2111.06377)
 
 **MAE** 论文链接：<https://arxiv.org/abs/2111.06377>
 **MAE** 代码链接：<https://github.com/facebookresearch/mae>

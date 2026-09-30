@@ -13,7 +13,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2021-Swin-Transformer-Hierarchical-Vision-Transformer-using-Shifted-Windows.pdf %}
+[2021-Swin-Transformer-Hierarchical-Vision-Transformer-using-Shifted-Windows.pdf](https://arxiv.org/abs/2103.14030)
 
 论文链接：<https://arxiv.org/pdf/2103.14030.pdf>
 

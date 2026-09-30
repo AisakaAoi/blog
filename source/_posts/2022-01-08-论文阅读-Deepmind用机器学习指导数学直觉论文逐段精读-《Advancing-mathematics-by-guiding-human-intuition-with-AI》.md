@@ -13,7 +13,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2021-Advancing-mathematics-by-guiding-human-intuition-with-AI.pdf %}
+[2021-Advancing-mathematics-by-guiding-human-intuition-with-AI.pdf](https://www.nature.com/articles/s41586-021-04086-x)
 
 论文链接：<https://www.nature.com/articles/s41586-021-04086-x.pdf>
 

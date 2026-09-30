@@ -11,7 +11,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2015-Deep-Residual-Learning-for-Image-Recognition.pdf %}
+[2015-Deep-Residual-Learning-for-Image-Recognition.pdf](https://arxiv.org/abs/1512.03385)
 
 ***
 

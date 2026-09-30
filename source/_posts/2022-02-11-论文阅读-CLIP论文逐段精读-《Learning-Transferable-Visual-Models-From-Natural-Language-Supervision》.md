@@ -13,7 +13,7 @@ tags:
 
 ### 原文
 
-{% pdf ./file/paper/2021-Learning-Transferable-Visual-Models-From-Natural-Language-Supervision.pdf %}
+[2021-Learning-Transferable-Visual-Models-From-Natural-Language-Supervision.pdf](https://arxiv.org/abs/2103.00020)
 
 今天介绍一篇OpenAI的神作CLIP，文章发表在ICML-2021，于2021年3月挂在arXiv上的。
 

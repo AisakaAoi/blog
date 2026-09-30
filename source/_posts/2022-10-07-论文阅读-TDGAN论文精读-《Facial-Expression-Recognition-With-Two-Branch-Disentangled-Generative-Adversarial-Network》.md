@@ -12,7 +12,7 @@ date: 2022-10-07 22:12:37
 
 ### 原文
 
-{% pdf ./file/paper/2021-Facial_Expression_Recognition_With_Two-Branch_Disentangled_Generative_Adversarial_Network.pdf %}
+[2021-Facial_Expression_Recognition_With_Two-Branch_Disentangled_Generative_Adversarial_Network.pdf](https://doi.org/10.1109/TCSVT.2020.3024201)
 
 论文：[Facial Expression Recognition with Two-branch Disentangled Generative Adversarial Network](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9197663)
 代码：[TDGAN](https://github.com/XsLangley/TDGAN)

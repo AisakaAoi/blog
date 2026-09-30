@@ -10,7 +10,7 @@ date: 2022-10-18 11:19:54
 
 ### 原文
 
-{% pdf ./file/paper/2019-CapsuleNet-for-Micro-Expression-Recognition.pdf %}
+[2019-CapsuleNet-for-Micro-Expression-Recognition.pdf](https://doi.org/10.1109/FG.2019.8756444)
 
 <!--more-->
 
