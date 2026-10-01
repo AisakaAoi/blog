@@ -32,13 +32,13 @@ date: 2023-10-27 05:26:30
 
 #### 期刊论文
 
-[5] **Zongnan Chen**, Yan Liang, Jingcong Li, Chenyu Bai, Qiuyou Xie, Jiahui Pan*. EEG- and Micro-Expression-Based Emotion Recognition and Consciousness Detection. IEEE Transactions on Affective Computing, 2026, 17(3): 3593-3609. DOI: 10.1109/TAFFC.2025.3650482 (SCI JCR Q1, CCF B, CAAI A, 中科院一区Top, IF: 11.3) [[Link]](https://ieeexplore.ieee.org/document/11328769)
+[5] **Zongnan Chen**, Yan Liang, Jingcong Li, Chenyu Bai, Qiuyou Xie, Jiahui Pan*. EEG- and Micro-Expression-Based Emotion Recognition and Consciousness Detection. IEEE Transactions on Affective Computing, 2026, 17(3): 3593-3609. DOI: 10.1109/TAFFC.2025.3650482 (SCI JCR Q1, 中科院一区Top, CCF B, CAAI A, IF: 11.3) [[Link]](https://ieeexplore.ieee.org/document/11328769)
 
 [4] Jiarui Jin, **Zongnan Chen**, Honghua Cai, Jiahui Pan*. Affective EEG-based Person Identification with Continual Learning. IEEE Transactions on Instrumentation and Measurement, 2024, 73: 1-16. DOI: 10.1109/TIM.2024.3406836 (SCI JCR Q1, 中科院二区, IF: 7.0) [[Link]](https://ieeexplore.ieee.org/document/10540616)
 
 [3] **陈宗楠**, 金家瑞, 潘家辉*. 基于Swin Transformer的四维脑电情绪识别. 计算机技术与发展, 2023, 33(12): 178-184. DOI: 10.3969/j.issn.1673-629X.2023.12.025 (CCF T3) [[Link]](https://d.wanfangdata.com.cn/periodical/wjfz202312025)
 
-[2] **陈宗楠**, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023, 32(08): 126-132. DOI: 10.15888/j.cnki.csa.009195. (CCF T2) [[Link]](https://c-s-a.org.cn/html/2023/8/9195.html)
+[2] **陈宗楠**, 叶耀光, 潘家辉*. 基于CycleGAN的灰度图像彩色化方法. 计算机系统应用, 2023, 32(08): 126-132. DOI: 10.15888/j.cnki.csa.009195. (CCF T3) [[Link]](http://www.c-s-a.org.cn/1003-3254/9195.html)
 
 [1] 叶耀光, **陈宗楠**, 陈丽群, 潘永琪, 潘家辉*. 基于通道注意的可变形金字塔表情识别网络. 计算机技术与发展, 2022,32(11):64-71. DOI: 10.3969/j.issn.1673-629X.2022.11.010. (CCF T3, CCF计算机应用大会优秀论文奖) [[Link]](https://d.wanfangdata.com.cn/periodical/wjfz202211010)
 
