@@ -5,7 +5,7 @@ title: >-
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
-  - 💫其它讲座
+  - 💫SFFAI
 abbrlink: c52c523a
 date: 2022-04-03 02:41:16
 tags:

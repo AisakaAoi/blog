@@ -1,8 +1,8 @@
 ---
 title: 为什么神经网络可以学习几乎任何东西？Why Neural Networks can learn (almost) anything
 categories:
-  - 🌙逢坂杂谈与搬运
-  - ⭐一些技术
+  - 🌙进阶学习
+  - ⭐人工智能 Artificial Intelligence
 abbrlink: 5fe12e31
 date: 2023-04-03 20:45:16
 tags:

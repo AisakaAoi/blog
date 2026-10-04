@@ -5,7 +5,7 @@ title: >-
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座
-  - 💫其它讲座
+  - 💫SFFAI
 abbrlink: 20bd4067
 date: 2021-12-30 02:16:29
 tags:
