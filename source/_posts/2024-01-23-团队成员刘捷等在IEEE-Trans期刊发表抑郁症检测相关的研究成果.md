@@ -9,7 +9,7 @@ date: 2024-01-23 21:42:56
 tags:
 ---
 
-近日，脑机团队成员刘捷等在潘家辉教授指导下，和广州医科大学附属脑科医院合作的研究成果“Depression Detection Using an Automatic Sleep Staging Method with an Interpretable Channel-Temporal Attention Mechanism”被SCI期刊IEEE Transactions on Cognitive and Developmental Systems（影响因子: 5.0, CAAI A类期刊）正式录用。
+近日，脑机团队成员刘捷等在潘家辉教授指导下，和广州医科大学附属脑科医院合作的研究成果“Depression Detection Using an Automatic Sleep Staging Method with an Interpretable Channel-Temporal Attention Mechanism”被SCI期刊IEEE Transactions on Cognitive and Developmental Systems（影响因子: 5.0, CAA A类期刊）正式录用。
 
 <!--more-->
 
