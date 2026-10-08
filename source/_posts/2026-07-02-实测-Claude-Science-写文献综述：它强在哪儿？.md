@@ -159,7 +159,7 @@ tags:
 
 ### 第十一步：它还修了 artifact 嵌入标记
 
-这次还有一个很实际的小问题。Claude Science 里的图表是 artifact，在它自己的环境里可以显示，但导出到普通 Markdown、Word 或 PDF 工作流时，可能会出现类似 {{artifact:...}} 这样的内部标记。它后来发现嵌入标记有问题，又重新生成文档，把图表标记修正。
+这次还有一个很实际的小问题。Claude Science 里的图表是 artifact，在它自己的环境里可以显示，但导出到普通 Markdown、Word 或 PDF 工作流时，可能会出现类似 {% raw %}{{artifact:...}}{% endraw %} 这样的内部标记。它后来发现嵌入标记有问题，又重新生成文档，把图表标记修正。
 
 {% asset_img 13.webp %}
 <div align='center'>它修正图表 artifact 的嵌入标记，并重新生成文档</div>
