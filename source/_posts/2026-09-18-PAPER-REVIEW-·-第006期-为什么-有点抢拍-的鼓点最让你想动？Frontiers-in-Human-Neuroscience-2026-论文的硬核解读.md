@@ -1,12 +1,12 @@
 ---
 title: >-
-  PAPER REVIEW · 第 006 期 为什么"有点抢拍"的鼓点最让你想动？Frontiers in Human Neuroscience 2026
+  PAPER REVIEW · 第006期 为什么"有点抢拍"的鼓点最让你想动？Frontiers in Human Neuroscience 2026
   论文的硬核解读
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队
   - 💫学习报告
-abbrlink: 8c13cd52
+abbrlink: 77fb4643
 date: 2026-09-18 12:00:00
 tags:
 ---
@@ -183,4 +183,4 @@ Ono, K. (2026). Groove strength is associated with cortical β suppression and t
 
 ### 原文链接
 
-> <https://mp.weixin.qq.com/s?__biz=MzA3ODA4OTMwMg==&mid=2257497466&idx=1&sn=22cf24516105bd933fe0ad9afd227f27>
+> https://mp.weixin.qq.com/s?__biz=MzA3ODA4OTMwMg==&mid=2257497466&idx=1&sn=22cf24516105bd933fe0ad9afd227f27
