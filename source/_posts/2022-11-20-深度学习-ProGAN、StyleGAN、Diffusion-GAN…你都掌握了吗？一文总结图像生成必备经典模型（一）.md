@@ -130,7 +130,7 @@ StyleGAN2是为了应对StyleGAN的问题而提出的：少量生成的图片有
 
 {% asset_img 12.webp %}
 
-其中，w和w’分别表征原始的和modulated的权重，s_i为对应第i个输入特征图的尺度，j和k分别表示生成输出特征图和卷积的空间分布图。接着对卷积层的权重进行demod：
+其中，w和w’分别表征原始的和modulated的权重，$s_i$为对应第i个输入特征图的尺度，j和k分别表示生成输出特征图和卷积的空间分布图。接着对卷积层的权重进行demod：
 
 {% asset_img 13.webp %}
 
@@ -168,7 +168,7 @@ StyleGAN2是为了应对StyleGAN的问题而提出的：少量生成的图片有
 
 对于StyleGAN系列来说，生成网络是整体训练的，深层网络特征的空间位置并不是由浅层网络特征很强的控制，而是还受到监督信息（如对抗损失、重构损失等）的决定性的影响，粗糙特征（GAN的浅层网络的输出特征）主要控制了精细特征（GAN的深层网络的输出特征）的存在与否，没有严格控制他们出现的精确位置。按照作者所说：“画面上的细节似乎被粘在了图像坐标上，而不是被描述的物体表面。”作者认为，其根本原因是信号处理导致了生成网络的aliasing。StyleGAN3主要是为了解决这一问题提出的，即实现高质量的 Equivariance（等变性）。所以，StyleGAN3的标题为 Alias-Free GAN。
 
-StyleGAN2生成器由两部分组成。首先，一个映射网络将初始的、正常分布的latent转换为 intermediate latent code w∼W。然后，一个synthesis网络G从学习的4×4×512常数Z0开始，应用N层处理—包括卷积、非线性、上采样和per-pixel噪声—以生成输出图像Z_N＝G(Z0；w)。intermediate latent code w控制G中卷积核的调制。各层遵循严格的2×上采样，在每个分辨率下执行两个层，每次上采样后特征图的数量减半。此外，StyleGAN2采用了skip connection、 mixing regularization和 path length regularization 。StyleGAN3目标是使G的每一层对连续信号都是Equivariance的，这样所有较细的细节就会与局部邻域的较粗的特征一起转化。如果这成功了，整个网络也会变得类似于Equivariance。换句话说，目标是使synthesis网络的连续操作g对应用于连续输入z0的变换t（平移和旋转）具有Equivariance：
+StyleGAN2生成器由两部分组成。首先，一个映射网络将初始的、正常分布的latent转换为 intermediate latent code w∼W。然后，一个synthesis网络G从学习的4×4×512常数Z0开始，应用N层处理—包括卷积、非线性、上采样和per-pixel噪声—以生成输出图像$Z_N$＝G(Z0；w)。intermediate latent code w控制G中卷积核的调制。各层遵循严格的2×上采样，在每个分辨率下执行两个层，每次上采样后特征图的数量减半。此外，StyleGAN2采用了skip connection、 mixing regularization和 path length regularization 。StyleGAN3目标是使G的每一层对连续信号都是Equivariance的，这样所有较细的细节就会与局部邻域的较粗的特征一起转化。如果这成功了，整个网络也会变得类似于Equivariance。换句话说，目标是使synthesis网络的连续操作g对应用于连续输入z0的变换t（平移和旋转）具有Equivariance：
 
 {% asset_img 18.webp %}
 
@@ -211,7 +211,7 @@ VDVAE是一个层次化的VAE，它能快速生成样本，并在所有自然图
 当然了，只是单纯的增加VAE的层数并不可行，作者对VAE进行了一些改进，包括减少 residual block 的维度，将残差乘以一个常数，去掉 weight normalization, 使用 nearest-neighbour upsampling, skip 较大的 gradient 等。如图12所示。它类似于ResNet VAE，但有bottleneck ResNet块。对于每个随机层，先验和后验是对角线高斯分布。作为权重归一化和依赖数据的初始化的替代方案，采用默认的PyTorch权重归一化。唯一的例外是对每个剩余bottleneck ResNet块中的最后一个卷积层，将其按1/sqrt(N)进行扩展，其中N是深度。此外，对 "unpool "层使用了最近邻的上采样，当与ResNet架构配对时，可以完全消除相关工作中出现的 "free bits "和KL "warming up "。当上采样通过转置卷积层进行时，网络可能会忽略低分辨率的层（例如，1x1或4x4层）。
 
 {% asset_img 22.webp %}
-图12. 自上而下的VAE架构的图示。残差块类似于bottleneck ResNet块。q_φ(.)和p_θ(.)是对角线高斯分布。使用平均池化和最近邻上采样来进行池化和非池化层的处理
+图12. 自上而下的VAE架构的图示。残差块类似于bottleneck ResNet块。$q_φ$(.)和$p_θ$(.)是对角线高斯分布。使用平均池化和最近邻上采样来进行池化和非池化层的处理
 
 当前 SOTA！平台收录 VDVAE 共1个模型实现资源。
 
@@ -265,7 +265,7 @@ VAE是强大的基于似然的生成模型之一，在许多领域的应用都�
 
 #### StyleGAN-xl
 
-StyleGAN-XL 是第一个在 ImageNet-scale 上演示 1024^2 分辨率图像合成的模型。实验表明，即使是最新的 StyleGAN3 也不能很好地扩展到 ImageNet 上，特别是在高分辨率时，训练会变得不稳定。StyleGAN为关于图像质量和可控性的生成建模设定了一种标杆方法。但StyleGAN在 ImageNet 等大型非结构化数据集上表现不好，它更适合人脸数据方面的生成。
+StyleGAN-XL 是第一个在 ImageNet-scale 上演示 $1024^2$ 分辨率图像合成的模型。实验表明，即使是最新的 StyleGAN3 也不能很好地扩展到 ImageNet 上，特别是在高分辨率时，训练会变得不稳定。StyleGAN为关于图像质量和可控性的生成建模设定了一种标杆方法。但StyleGAN在 ImageNet 等大型非结构化数据集上表现不好，它更适合人脸数据方面的生成。
 
 研究者首先修改了StyleGAN的生成器及其正则化损失，调整了潜在空间以适应 Projected GAN (Config-B) 和类条件设置 (Config-C)；然后重新讨论了渐进式增长，以提高训练速度和性能 (Config-D)；接下来研究了用于 Projected GAN 训练的特征网络，以找到一个非常适合的配置 (Config-E)；最后，提出了分类器引导，以便 GAN 通过一个预训练的分类器 (Config-F) 提供类别信息。这样一来，就能够训练一个比以前大得多的模型，同时需要比现有技术更少的计算量。StyleGAN-XL 在深度和参数计数方面比标准的 StyleGAN3 大三倍。
 
@@ -295,11 +295,11 @@ Diffusion-GAN的对应目标是vanilla GAN的最小-最大目标，定义为
 
 {% asset_img 35.webp %}
 
-鉴别器D学习区分扩散的生成样本y_g和扩散的真实观测值y，时间为∀t∈{1, . . . , T}，具体的优先级由π_t的值决定。生成器G学习将潜在变量z映射到它的输出x_g=G_θ(z)，它可以在扩散链的任何一步骗过鉴别器。y_g∼q(y | G_θ(z), t)可以被重新参数化为
+鉴别器D学习区分扩散的生成样本$y_g$和扩散的真实观测值y，时间为∀t∈{1, . . . , T}，具体的优先级由$π_t$的值决定。生成器G学习将潜在变量z映射到它的输出x_g=$G_θ(z)$，它可以在扩散链的任何一步骗过鉴别器。$y_g$∼q(y | $G_θ(z)$, t)可以被重新参数化为
 
 {% asset_img 36.webp %}
 
-梯度可以直接反向传播到生成器。随着t的增加，y和y_g中的噪声与数据之比也在增加，从而使鉴别器D的任务越来越难。作者设计了一个扩散强度的自适应控制，以便更好地训练鉴别器。作者通过适应性地修改T来实现这一目标。我们为T设计了一个基于度量r_d的 self-paced schedule，这个schedule评估了鉴别器的过拟合度
+梯度可以直接反向传播到生成器。随着t的增加，y和$y_g$中的噪声与数据之比也在增加，从而使鉴别器D的任务越来越难。作者设计了一个扩散强度的自适应控制，以便更好地训练鉴别器。作者通过适应性地修改T来实现这一目标。我们为T设计了一个基于度量$r_d$的 self-paced schedule，这个schedule评估了鉴别器的过拟合度
 
 {% asset_img 37.webp %}
 

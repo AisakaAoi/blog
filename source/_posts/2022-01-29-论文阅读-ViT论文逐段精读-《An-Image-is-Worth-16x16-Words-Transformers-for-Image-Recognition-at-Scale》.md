@@ -24,7 +24,7 @@ tags:
 
 #### 思想
 
-其实核心问题就是考虑如何把图像数据 H * W * C,序列化成一个一个词那种结构，自然就想到将图片crop成一个一个patch，假设有N个patch,维度为 p * p * C,reshape加concate一下就变成个N * p^2C,也就类似词向量。
+其实核心问题就是考虑如何把图像数据 H * W * C,序列化成一个一个词那种结构，自然就想到将图片crop成一个一个patch，假设有N个patch,维度为 p * p * C,reshape加concate一下就变成个N * $p^2C$,也就类似词向量。
 
 ***
 
@@ -36,7 +36,7 @@ tags:
 
 ##### 图像转序列
 
-将图片 H * W * C,crop成Ｎ个patch,然后在转换成N * (p^2C),同时为了避免模型结构受到patch size的影响，采用Linear project将不同flatten patchs转换成D维向量。这样的话输入图片数据就成了N*D二维矩阵就和词向量矩阵对应上了。
+将图片 H * W * C,crop成Ｎ个patch,然后在转换成N * ($p^2C$),同时为了避免模型结构受到patch size的影响，采用Linear project将不同flatten patchs转换成D维向量。这样的话输入图片数据就成了N*D二维矩阵就和词向量矩阵对应上了。
 
 {% asset_img 2.webp %}
 
@@ -126,7 +126,7 @@ i.e., MT-N;P 5300亿参数，SOTA，也没有性能饱和的现象。
 
 Transformer 应用在 CV 有**难点**吗？
 计算像素的 self-attention，序列长，维度爆炸
-Trnasformer 的计算复杂度是 序列长度 n 的 平方 O（n^2）
+Trnasformer 的计算复杂度是 序列长度 n 的 平方 O（$n^2$）
 224 分辨率的图片，有 50176 个像素点，（2d 图片 flatten）序列长度是 BERT 的近 100 倍。
 
 {% asset_img 8.webp %}
@@ -267,7 +267,7 @@ GPT: language modelling, 预测下一个词 next word prediction
 self-attention 在视觉领域的应用
 
 self-attention to each pixel：❌
-224 * 224 image: O(n^2 = 50176)
+224 * 224 image: O($n^2$ = 50176)
 1k, 4k image: 维度爆炸
 
 self-attention to each image with approximations： 
@@ -345,7 +345,7 @@ tokens 传入 Transformer encoder，得到很多输出。
 借鉴 BERT， extra learnable {class} embedding -->, a special classification token, * in figure 1.
 也有 position embedding, 0(永远是0)
 
-**Q: Why works？self-attention O(n^2)**
+**Q: Why works？self-attention O($n^2$)**
 self-attention in transformer encoder，所有的 tokens 在做两两的交互信息。因此，也会和所有的 图片 patches 的 token 交互，从而从图片 patches + position 的 embedding 学到有用信息，最后用做分类判断。
 
 **Q: 从怎么得到最后的分类？ 通用MLP Head**

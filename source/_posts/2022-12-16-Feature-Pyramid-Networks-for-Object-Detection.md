@@ -38,7 +38,7 @@ FPN算法的大致结构如下图所示，一个「自底向上」的路线，�
 
 {% asset_img 3.webp %}
 
-我们用ResNet举一个例子来说明什么是stage，下图是ResNet的网络结构组成示意图，可以看到第二列output size共变化了5次（FC层不算），其实就分别对应着5个stage，比如conv2_x这一层的输出就是P2，P是指Pyramid，特征金字塔自底向上的第2层。
+我们用ResNet举一个例子来说明什么是stage，下图是ResNet的网络结构组成示意图，可以看到第二列output size共变化了5次（FC层不算），其实就分别对应着5个stage，比如$conv2_x$这一层的输出就是P2，P是指Pyramid，特征金字塔自底向上的第2层。
 
 {% asset_img 4.webp %}
 

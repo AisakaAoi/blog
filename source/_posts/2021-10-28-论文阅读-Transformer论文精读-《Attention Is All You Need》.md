@@ -651,9 +651,9 @@ positional encodding 是 cos 和 sin 的一个函数，在 [-1, +1] 之间抖动
 Complexity per Layer 越少越好
 n 序列长度，d 向量长度； 
 
-self-attention: O(n^2 * d) 主要是矩阵乘法，并行度高
+self-attention: O($n^2$ * d) 主要是矩阵乘法，并行度高
 Q（n * d） K（m * d）--> Q * KT (n * m)
-self-attention 自注意力，query、key 相同 --> m = n, 复杂度为O(n^2 * d)  【其它的矩阵运算复杂度是一样的 O()省略了常数项 k 】
+self-attention 自注意力，query、key 相同 --> m = n, 复杂度为O($n^2$ * d)  【其它的矩阵运算复杂度是一样的 O()省略了常数项 k 】
 
 recurrent: 序列长度为 n ，一个 dense layer * 一个长为 d 的输入
 

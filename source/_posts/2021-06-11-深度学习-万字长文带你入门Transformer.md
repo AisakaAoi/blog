@@ -50,7 +50,7 @@ Transformer并没有简单地应用单个注意力函数，而是使用了多头
 
 在Transformer中，主要涉及到三种不同的注意力类型：
 - **Self-attention**. 在Transformer的编码器中，我们设置Q=K=V=X，这里X为上一层的输出。
-- **Masked Self-attention**. 在Transformer的解码器中，自注意力受到限制，使得每个位置的查询只能关注到包括该位置及之前位置的所有键值对。常规做法是将掩码矩阵(mask matrix)添加到注意力分数上，其中非法位置采用 A_ij = -∞ if i < j^2 进行遮挡。这一类注意力方法也经常被称为自回归(autogressive)或者因果(causal)注意力。
+- **Masked Self-attention**. 在Transformer的解码器中，自注意力受到限制，使得每个位置的查询只能关注到包括该位置及之前位置的所有键值对。常规做法是将掩码矩阵(mask matrix)添加到注意力分数上，其中非法位置采用 A_ij = -∞ if i < $j^2$ 进行遮挡。这一类注意力方法也经常被称为自回归(autogressive)或者因果(causal)注意力。
 - **Cross-attetnion**. 查询是从前一个（解码器）层的输出投影所获得的，而键和值是使用编码器的输出投影得到的。
 
 ##### 前向传播网络
@@ -91,7 +91,7 @@ Transformer并没有简单地应用单个注意力函数，而是使用了多头
 
 #### 模型分析
 
-影响Transformer模型复杂度的两个主要因素为隐藏层D的维度D_m为以及输入序列长度为T。假设FFN模块的中间维度设置为4D，keys和values的维度设置为D/H。为了更好的比较Transformer的参数里和计算量，需要分析Transformer的两个核心组件，即MSA和FFN模块，结果如下表所示：
+影响Transformer模型复杂度的两个主要因素为隐藏层D的维度$D_m$为以及输入序列长度为T。假设FFN模块的中间维度设置为4D，keys和values的维度设置为D/H。为了更好的比较Transformer的参数里和计算量，需要分析Transformer的两个核心组件，即MSA和FFN模块，结果如下表所示：
 
 {% asset_img 6.webp %}
 
@@ -179,7 +179,7 @@ Transformer并没有简单地应用单个注意力函数，而是使用了多头
 
 ##### Low-rank Parameterization
 
-注意力矩阵的秩小于序列长度意味着，对于输入序列较短的情况，设置 D_k > T 将不仅仅是过参数化并容易导致过拟合。因此，限制 D_k 的维度以将低秩属性显式建模为归纳偏置是合理的。《Low-Rank and Locality Constrained Self-Attention for Sequence Modeling》这篇论文尝试将子注意力矩阵分解为一个低阶注意力模块，其中包含捕获远距离非局部交互的 D_k（维度较小），以及一个一个捕获局部依赖关系的带注意模块的band attention模块。
+注意力矩阵的秩小于序列长度意味着，对于输入序列较短的情况，设置 $D_k$ > T 将不仅仅是过参数化并容易导致过拟合。因此，限制 $D_k$ 的维度以将低秩属性显式建模为归纳偏置是合理的。《Low-Rank and Locality Constrained Self-Attention for Sequence Modeling》这篇论文尝试将子注意力矩阵分解为一个低阶注意力模块，其中包含捕获远距离非局部交互的 $D_k$（维度较小），以及一个一个捕获局部依赖关系的带注意模块的band attention模块。
 
 ##### Low-rank Approximation
 

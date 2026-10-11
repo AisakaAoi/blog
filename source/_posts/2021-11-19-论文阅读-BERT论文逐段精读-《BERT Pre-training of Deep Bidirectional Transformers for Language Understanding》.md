@@ -220,14 +220,14 @@ BERT_base 的参数选取 和 GPT 差不多，比较模型；BERT_large 刷榜�
 
 **超参数换算成可学习参数的大小，transformer架构的回顾**
 
-可学习参数的来源：嵌入层 30k * H、transformer块 L * H^2 * 12
+可学习参数的来源：嵌入层 30k * H、transformer块 L * $H^2$ * 12
 
 嵌入层： 输入是词的字典大小 30k，输出是 H
 参数：30k （字典大小） * H （hidden size）
 
 嵌入层的输出会进入 transformer 块。
 
-transformer blocks（H^2 * 12）: self-attention mechanism （H^2 * 4）+ MLP（H^2 * 8）
+transformer blocks（$H^2$ * 12）: self-attention mechanism （$H^2$ * 4）+ MLP（$H^2$ * 8）
 
 self-attention mechanism 本身无可学习参数; multi-head self-attention mechanism 要对 q, k, v 做投影，每一次投影维度=64 --> A * 64 = H。
 每一个 q, k, v 都有自己的投影矩阵，合并每个 head 的投影矩阵 --> q, k, v 分别的 H * H 矩阵。
@@ -240,9 +240,9 @@ MLP 的 2个全连接层：
 第一个全连接层输入是 H，输出是 4 * H；
 第二个全连接层输入是 4 * H，输出是 H。
 
-每一个参数矩阵大小 H * 4H，MLP 中的可学习参数 H^2 * 8
+每一个参数矩阵大小 H * 4H，MLP 中的可学习参数 $H^2$ * 8
 
-一个 transformer block 的参数量 H^2 * 12，L 个 blocks，L * H^2 * 12
+一个 transformer block 的参数量 $H^2$ * 12，L 个 blocks，L * $H^2$ * 12
 
 **Input/Output Representations**
 
@@ -310,7 +310,7 @@ BERT 关于 pre-train 和 fine-tune 同样的部分 == end
 
 MLM 带来的问题：**预训练和微调看到的数据不一样**。预训练的输入序列有 15% [MASK]，微调时的数据没有 [MASK].
 
-15% 计划被 masked 的词: 80% 的概率被替换为 [MASK], 10% 换成 random token,10% 不改变原 token。但 T_i 还是被用来做预测。
+15% 计划被 masked 的词: 80% 的概率被替换为 [MASK], 10% 换成 random token,10% 不改变原 token。但 $T_i$ 还是被用来做预测。
 
 80%, 10%, 10% 的选择，有 ablation study in appendix
 
@@ -381,7 +381,7 @@ QA 问答：给一段文字，问一个问题，摘录答案。--> 判断答案�
 
 具体计算 每个 token 是答案开始的概率，结尾词类似 E。
 S 和 第二句话的每个词源 token 相乘 + softmax，得到归一化的概率。
-P_i = e ^ ( S * T_i ) / \sigma_j ( e ^ ( S * T_j ) )
+$P_i$ = e ^ ( S * $T_i$ ) / \sigma_j ( e ^ ( S * $T_j$ ) )
 
 本文微调时，数据扫三遍，epochs = 3, lr = 5e-5, batch_size = 32
 

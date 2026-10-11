@@ -73,7 +73,7 @@ Tokens-to-Token(T2T)模块旨在克服ViT中简单Token化机制的局限性，�
 
 {% asset_img 7.png %}
 
-对于输入图像I_o，我们采用SoftSplit操作将其拆分为Token：T_1 = SS(I_o)。在完成最后的迭代后，输出Token T_f具有固定IG长度，因此T2T-ViT可以在T_f上建模全局相关性。
+对于输入图像$I_o$，我们采用SoftSplit操作将其拆分为Token：$T_1$ = SS($I_o$)。在完成最后的迭代后，输出Token $T_f$具有固定IG长度，因此T2T-ViT可以在$T_f$上建模全局相关性。
 
 另外，由于T2T模块中的Token长度要比常规形式的更大，故而MAC与内存占用会非常大。为克服该局限性，在T2T模块中，我们设置通道维度为32(或者64)以降低MACs。
 
@@ -88,7 +88,7 @@ Tokens-to-Token(T2T)模块旨在克服ViT中简单Token化机制的局限性，�
 
 结合上述五种结构设计，我们通过实验发现：(1) Deep-Narrow结构可以在通道层面通过减少通道维度减少冗余，可以通过提升深度提升特征丰富性，可以减少模型大小与MACs并提升性能；(2) 通道注意力可以提升ViT的性能，但不如Deep-Narrow结构高效。
 
-基于上述结构上的探索与发现，我们为T2T-ViT设计了Deep-Narrow形式的骨干结构，也就是说：更少的通道数、更深的层数。对于定长Token T_f，我们将类Token预期Concat融合并添加正弦位置嵌入(Sinusoidal Position Embedding, SPE)，类似于ViT进行最后的分类：
+基于上述结构上的探索与发现，我们为T2T-ViT设计了Deep-Narrow形式的骨干结构，也就是说：更少的通道数、更深的层数。对于定长Token $T_f$，我们将类Token预期Concat融合并添加正弦位置嵌入(Sinusoidal Position Embedding, SPE)，类似于ViT进行最后的分类：
 
 {% asset_img 8.png %}
 

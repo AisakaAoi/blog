@@ -142,10 +142,10 @@ tags:
 
 {% asset_img 8.webp %}
 
-- pixel accuracy 指的是像素准确性，n_ij 表示原本属于类别 i 的像素被分类到类别 j 中的像素个数，t_i = ∑_j n_ij 表示类别 i 中所有的像素个数。pixel accuracy 是把所有正确预测类别的像素数量求和再除以所有的像素数量。
+- pixel accuracy 指的是像素准确性，n_ij 表示原本属于类别 i 的像素被分类到类别 j 中的像素个数，$t_i$ = ∑_j n_ij 表示类别 i 中所有的像素个数。pixel accuracy 是把所有正确预测类别的像素数量求和再除以所有的像素数量。
 - mean accuracy 是指平均准确率，对每个类别的 accuracy 取平均。
-- mean IU 平均交并比，将每个类别的正确预测像素数量 n_ii 除以本类别像素数量 t_i 除以本类别像素数量 i
-的像素的并集 (t_i + ∑_j n_ij - n_ii)，再除以类别 n_cl。
+- mean IU 平均交并比，将每个类别的正确预测像素数量 n_ii 除以本类别像素数量 $t_i$ 除以本类别像素数量 i
+的像素的并集 ($t_i$ + ∑_j n_ij - n_ii)，再除以类别 n_cl。
 - 按类别频率加权的IU
 
 下面的表 3 显示了 FCN-8s 模型与之前的 SOTA 模型 SDS 以及 R-CNN 在 PASCAL VOC 2011、2012 数据集上的性能比较：

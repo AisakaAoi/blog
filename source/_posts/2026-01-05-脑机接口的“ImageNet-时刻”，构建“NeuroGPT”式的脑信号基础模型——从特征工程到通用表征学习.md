@@ -29,7 +29,7 @@ Transformer 本质上是处理序列（Sequence）的模型。要让它处理连
 
 #### 切片策略（Patching Strategy）
 
-设一段 EEG 信号为 X ∈ R^{C×T}（C 为通道数，T 为时间点）。既不能把每个采样点当作 token（计算量爆炸），也不能把整行当作 token（丢失局部性）。较合理的做法是切块（patching）：将信号切分为一系列不重叠（或微重叠）的时空小块 x_p ∈ R^{C′×T′}。
+设一段 EEG 信号为 X ∈ R^{C×T}（C 为通道数，T 为时间点）。既不能把每个采样点当作 token（计算量爆炸），也不能把整行当作 token（丢失局部性）。较合理的做法是切块（patching）：将信号切分为一系列不重叠（或微重叠）的时空小块 $x_p$ ∈ R^{C′×T′}。
 
 - 时间切片：例如每 200 ms 切一段，以保留事件相关的局部动力学。
 - 空间切片：可以是单通道，也可以是相邻的一组通道，视电极布局与任务而定。
@@ -38,7 +38,7 @@ Transformer 本质上是处理序列（Sequence）的模型。要让它处理连
 
 切好的 patch 仍是电压值矩阵。我们用线性投影将其映射为高维向量（embedding）。更关键的是：Transformer 对 token 的排列天然不敏感（Permutation Invariant），但对大脑而言，“额叶 vs 枕叶”和“第 1 秒 vs 第 5 秒”的差异至关重要。因此必须加入可学习的时空位置编码（Spatio-Temporal Positional Embedding）。
 
-Z₀ = [xₚ¹E; xₚ²E; …; xₚᴺE] + E_pos
+$Z_{0}$ = [xₚ¹E; xₚ²E; …; xₚᴺE] + E_pos
 
 这一步的目的，是让模型知道每个 token 来自大脑的哪个部位、处在时间流的哪个位置。
 

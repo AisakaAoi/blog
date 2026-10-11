@@ -52,7 +52,7 @@ tags:
 **拓展流语义**
 
 {% asset_img 3.webp %}
-<p style="text-align:center">基于边的拓展流可以看作是在每个状态转换步骤中引入一个流向伪终止状态的额外的流r(s_t→s_t+1)</p>
+<p style="text-align:center">基于边的拓展流可以看作是在每个状态转换步骤中引入一个流向伪终止状态的额外的流r($s_t$→$s_t$+1)</p>
 
 {% asset_img 4.webp %}
 

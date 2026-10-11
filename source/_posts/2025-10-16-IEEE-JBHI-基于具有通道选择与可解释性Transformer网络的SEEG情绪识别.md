@@ -89,7 +89,7 @@ Transformer编码器由两个模块组成：多头自注意力机制（MSA）和
 
 {% asset_img 8.webp %}
 
-其中映射矩阵WO∈R^(h × d_model × d_v)，h表示MSA的头数。空间Transformer的完整计算过程如下：
+其中映射矩阵WO∈R^(h × d_model × $d_v$)，h表示MSA的头数。空间Transformer的完整计算过程如下：
 
 {% asset_img 9.webp %}
 
@@ -101,7 +101,7 @@ Transformer编码器由两个模块组成：多头自注意力机制（MSA）和
 
 {% asset_img 10.webp %}
 
-其中X_weight ∈ R^C，C表示输入信号的通道数，通过选取自注意力矩阵第一行中，从第一列到第C+1列数据得到通道注意力权重得到。最后将空间 Transformer 中学到的可学习向量xl重新提取出来，与Xss拼接。随后，三类情绪的概率输出通过一个 MLP 实现。整个分类过程如下所示：
+其中X_weight ∈ $R^C$，C表示输入信号的通道数，通过选取自注意力矩阵第一行中，从第一列到第C+1列数据得到通道注意力权重得到。最后将空间 Transformer 中学到的可学习向量xl重新提取出来，与Xss拼接。随后，三类情绪的概率输出通过一个 MLP 实现。整个分类过程如下所示：
 
 {% asset_img 11.webp %}
 

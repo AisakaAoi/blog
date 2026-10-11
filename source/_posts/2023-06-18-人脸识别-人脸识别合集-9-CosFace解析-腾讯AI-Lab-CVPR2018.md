@@ -64,7 +64,7 @@ CosFace是腾讯AI Lab的Hao Wang等在CVPR2018.01发表，在SphereFace基础�
 
 #### A-Softmax Loss
 
-- A-Softmax Loss：θ乘以决策余量m，进行权重归一化并将偏置项归零（||W_i||=1，b_i=0）
+- A-Softmax Loss：θ乘以决策余量m，进行权重归一化并将偏置项归零（||$W_i$||=1，b_i=0）
 
 {% asset_img 6.webp %}
 
