@@ -94,7 +94,9 @@ https://www.aliyundrive.com/s/NDegBkpkpcp
 - 可靠地存储比特信息需要谱半径 < 1
 - 谱半径 < 1的 T 个矩阵的乘积是一个矩阵，其谱半径在 T 上以指数速度收敛于 0。
 
-{% asset_img 6.webp %}
+$$L = L(s_T(s_{T-1}(\ldots s_{t+1}(s_t, \ldots))))$$
+
+$$\frac{\partial L}{\partial s_t} = \frac{\partial L}{\partial s_T} \frac{\partial s_T}{\partial s_{T-1}} \ldots \frac{\partial s_{t+1}}{\partial s_t}$$
 
 - 如果 Jacobian 矩阵的谱半径 < 1 →传播梯度消失
 
@@ -126,7 +128,7 @@ https://www.aliyundrive.com/s/NDegBkpkpcp
 - 泛化到语义上与训练序列相似的单词序列
 
 {% asset_img 9.webp %}
-{% asset_img 10.webp %}
+$$P(w_1, w_2, w_3, \ldots, w_T) = \prod_t P(w_t | w_{t-1}, w_{t-2}, \ldots, w_1)$$
 
 为什么要设置多层（multiple layer）？——世界是可构成的
 

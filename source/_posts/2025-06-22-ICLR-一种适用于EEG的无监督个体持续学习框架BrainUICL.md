@@ -66,7 +66,7 @@ BrainUICL框架主要由以下几个关键模块组成：
 
 模型的总损失函数由两部分组成：一部分是针对当前增量个体和动态置信缓冲模块中的缓冲样本的交叉熵损失，公式如下：
 
-{% asset_img 4.webp %}
+$$\mathcal{L}_C(\mathcal{M}_{i-1}, \theta; \mathcal{X}_\mathcal{B}, \mathcal{X}_\mathcal{T}^i, y_\mathcal{B}) = \mathcal{L}_{C_\mathcal{B}} + \alpha \mathcal{L}_{C_\mathcal{T}}$$
 
 其中：
 在动态置信缓冲（DCB）中的样本上计算的损失；
@@ -77,7 +77,7 @@ BrainUICL框架主要由以下几个关键模块组成：
 
 另一部分是跨周期对齐CEA模块计算的KL散度损失。因此模型的总损失函数公式如下：
 
-{% asset_img 5.webp %}
+$$\mathcal{L}_{overall} = \begin{cases} \mathcal{L}_C, & e \mid 2 \neq 0 \\ \mathcal{L}_C + \mathcal{L}_{KL}, & e \mid 2 = 0 \end{cases}$$
 
 ***
 

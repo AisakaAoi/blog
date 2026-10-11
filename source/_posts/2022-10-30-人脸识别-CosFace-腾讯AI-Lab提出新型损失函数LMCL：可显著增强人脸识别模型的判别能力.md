@@ -42,11 +42,15 @@ date: 2022-10-30 10:43:03
 
 形式上，LMCL 的定义为：
 
-{% asset_img 2.webp %}
+$$L_{lmc} = \frac{1}{N} \sum_i -\log \frac{e^{s(\cos(\theta_{y_i,i}) - m)}}{e^{s(\cos(\theta_{y_i,i}) - m)} + \sum_{j \neq y_i} e^{s \cos(\theta_{j,i})}}$$
 
 使其满足：
 
-{% asset_img 3.webp %}
+$$W = \frac{W^*}{\|W^*\|}$$
+
+$$x = \frac{x^*}{\|x^*\|}$$
+
+$$\cos(\theta_{j,i}) = W_j^T x_i$$
 
 ***
 

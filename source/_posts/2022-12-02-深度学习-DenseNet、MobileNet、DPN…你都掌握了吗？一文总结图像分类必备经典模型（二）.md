@@ -47,7 +47,7 @@ DenseNet 是 CVPR 2017 年的 Best Paper。DenseNet 脱离了加深网络层数 
 
 考虑一个通过卷积网络的单一图像 x_0。该网络由 L 层组成，每个层都实现了非线性变换 H_(·)，其中 l 指代该层。H_(·) 可以是一个操作的复合函数，如批量归一化(BN)、整顿线性单元(ReLU)、池化或卷积(Conv)。为了进一步改善各层之间的信息流，作者提出了一种不同的连接模式：作者引入了从任何一层到所有后续层的直接连接。图 11 示意性地说明了 DenseNet 的结构：第 l 层接收前面所有层的特征图作为输入。
 
-{% asset_img 2.webp %}
+$$\boldsymbol{x}_\ell = H_\ell([\boldsymbol{x}_0, \boldsymbol{x}_1, \ldots, \boldsymbol{x}_{\ell-1}]),$$
 
 [x_0,...X_(l-1)] 是指在第 0、...、l-1 层产生的特征图的串联。由于其密集的连接性，将这种网络结构称为密集卷积网络（DenseNet）。将 H_(·) 定义为三个连续操作的复合函数：批量归一化（BN），然后是 ReLU 和 3×3 卷积（Conv）。当特征图的大小发生变化时，连接操作是不可行的。然而，卷积网络的一个重要部分是改变特征图大小的下采样层。为了便于在架构中进行下采样，将网络分为多个密集连接的密集块。我们把块间的层称为过渡层，过渡层执行卷积和池化操作。实验中使用的过渡层包括一个批处理归一化层和一个 1×1 卷积层，然后是一个 2×2 平均池化层。
 
@@ -81,25 +81,25 @@ MobileNet V1 是由 Google 在 2016 年提出，CVPR 2017 发表的文章。深�
 
 标准卷积层将 DF×DF×M 的特征图 F 作为输入，产生 DF×DF×N 的特征图 G，其中DF 是正方形输入特征图的空间宽度和高度，M 是输入通道的数量（输入深度），DG 是正方形输出特征图的空间宽度和高度，N 是输出通道的数量（输出深度）。标准卷积层的参数是大小为 DK×DK×M×N 的卷积核 K，其中 DK 是假定为方形的核的空间维度，M 是输入通道数，N 是前面定义的输出通道数。假设跨度为 1，标准卷积的输出特征图计算为：
 
-{% asset_img 6.webp %}
+$$\boldsymbol{G}_{k,l,n} = \sum_{i,j,m} \boldsymbol{K}_{i,j,m,n} \cdot \boldsymbol{F}_{k+i-1, l+j-1, m}$$
 
 标准卷积的计算成本为：
 
-{% asset_img 7.webp %}
+$$D_K \cdot D_K \cdot M \cdot N \cdot D_F \cdot D_F$$
 
 其中，计算成本为输入通道数 M、输出通道数 N、内核大小 Dk × Dk 和特征图大小 DF × DF 的倍数。MobileNet 模型解决了这些条款中的每一项及其相互作用。首先，它使用深度可分离卷积来打破输出通道的数量和内核的大小之间的相互作用。
 
 深度可分离卷积是由两层组成的：逐深度卷积和逐点卷积。我们使用逐深度卷积来为每个输入通道（输入深度）应用一个过滤器。顺时针卷积，一个简单的 1×1 卷积，被用来创建深度层输出的线性组合。每个输入通道有一个滤波器的纵深卷积 (输入深度)可以写作：
 
-{% asset_img 8.webp %}
+$$\hat{\boldsymbol{G}}_{k,l,m} = \sum_{i,j} \hat{\boldsymbol{K}}_{i,j,m} \cdot \boldsymbol{F}_{k+i-1, l+j-1, m}$$
 
 K^为大小为 DK × DK × M 的深度卷积核。逐深度卷积的计算成本为：
 
-{% asset_img 9.webp %}
+$$D_K \cdot D_K \cdot M \cdot D_F \cdot D_F$$
 
 逐深度卷积相对于标准卷积来说是非常有效的。然而，它只是对输入通道进行过滤，并没有将它们结合起来以构建新的特征。因此，需要一个额外的层，通过 1×1 卷积计算深度卷积输出的线性组合，以产生这些新的特征。深度可分离卷积成本为：
 
-{% asset_img 10.webp %}
+$$D_K \cdot D_K \cdot M \cdot D_F \cdot D_F + M \cdot N \cdot D_F \cdot D_F$$
 
 通过将卷积表达为过滤和组合的两步过程，减少了计算量：
 
@@ -198,7 +198,13 @@ Dual Path Networks（DPN）**通过High Order RNN（HORNN）将ResNet和DenseNet
 
 DPN 以 ResNet 为主要框架，保证了特征的低冗余度，并在其基础上添加了一个非常小的 DenseNet 分支，用于生成新的特征。DPN 的结构可以使用下面的公式来表示：
 
-{% asset_img 22.webp %}
+$$x^k \triangleq \sum_{t=1}^{k-1} f_t^k(h^t)$$
+
+$$y^k \triangleq \sum_{t=1}^{k-1} v_t(h^t) = y^{k-1} + \phi^{k-1}(y^{k-1})$$
+
+$$r^k \triangleq x^k + y^k$$
+
+$$h^k = g^k(r^k)$$
 
 其中 $x^k$ 和 $y^k$ 表示在第 k 步从单个路径中提取的信息，$v_t$() 是一个特征学习函数。第一个式子表征 densely connected 的路径，能够探索新的特征。第二个式子表征残差路径，使共同的特征得以重新使用。第三个式子表征 dual path，用于聚合第四个式子的变换函数。最后的转换函数 $g^k$() 生成当前状态，用于生成下一个映射或预测。
 
@@ -234,23 +240,23 @@ IGC 的构建模块基于分组卷积，这是一种将输入通道划分为若�
 
 **secondary组卷积。**将 primary 组卷积输出的通道{y1, y2, .... , yL}，分成 M 个 secondary 分区，每个分区由 L 个通道组成，这样，同一 secondary 分区的通道来自不同的 primary 分区。作者采用一个简单的方案来形成 secondary 分区：第 m 个 secondary 分区是由每个 primary 分区的第 m 个输出通道组成。
 
-{% asset_img 27.webp %}
+$$\bar{\boldsymbol{y}}_m = [y_{1m} \; y_{2m} \; \ldots \; y_{Lm}]^\top = \boldsymbol{P}_m^\top \boldsymbol{y}, \; \bar{\boldsymbol{y}} = \boldsymbol{P}^\top \boldsymbol{y}.$$
 
 -y_m 表征第 m 个 secondary 分区，P 为扰动矩阵。secondary 组卷积是在 M 个 secondary 分区上进行的：
 
-{% asset_img 28.webp %}
+$$\bar{\boldsymbol{z}}_m = \boldsymbol{W}^d_{mm} \bar{\boldsymbol{y}}_m,$$
 
 其中，(W_mm)^d 对应第 m 个 secondary 分区的 1x1 卷积核，为 LxL 大小的矩阵。secondary 组卷积输出的通道通过扰动后退回 primary 形式，作为下一个交错组卷积块的输入。L 扰动回退操作为：
 
-{% asset_img 29.webp %}
+$$\boldsymbol{x}'_l = [\bar{z}_{1l} \; \bar{z}_{2l} \; \ldots \; \bar{z}_{Ml}]^\top, \; \boldsymbol{x}' = \boldsymbol{P} \bar{\boldsymbol{z}},$$
 
 综上所述，交错组卷积块被表述为
 
-{% asset_img 30.webp %}
+$$\boldsymbol{x}' = \boldsymbol{P} \boldsymbol{W}^d \boldsymbol{P}^\top \boldsymbol{W}^p \boldsymbol{x},$$
 
 令  W=$PW^dP^TW^p$ 为 复合卷积核，则可得到：
 
-{% asset_img 31.webp %}
+$$\boldsymbol{x}' = \boldsymbol{W} \boldsymbol{x},$$
 
 这意味着 IGC 块等同于一个常规卷积，卷积核是两个稀疏核的乘积。参数量固定意味着主分组卷积和次卷积的有效参数固定，当输入的特征维度更多时，卷积核也越大，卷积矩阵将变得更加稀疏，这可能导致性能的下降。
 

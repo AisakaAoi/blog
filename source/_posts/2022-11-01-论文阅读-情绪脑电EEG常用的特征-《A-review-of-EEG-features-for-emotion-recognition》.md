@@ -71,19 +71,19 @@ ERP 的瞬时分辨率强, 常用于由离散的视、听和触觉刺激诱发�
 
 电信号通用的时域统计特征也可应用于 EEG 信号, 它们简单易计算, 且可以得到较好的识别效果 [23∼25]。 例如, 平均值 $μ_s$, 标准差 $σ_s$, 一阶差分绝对值的平均值:
 
-{% asset_img 3.webp %}
+$$\delta_s = \frac{1}{N-1} \sum_{n=1}^{N-1} |s(n+1) - s(n)|,$$
 
 二阶差分绝对值的平均值:
 
-{% asset_img 4.webp %}
+$$\gamma_s = \frac{1}{N-2} \sum_{n=1}^{N-2} |s(n+2) - s(n)|,$$
 
 归一化的一阶差分 (也称为归一化长度密度, 可衡量脑电信号的自相似性 [26]):
 
-{% asset_img 5.webp %}
+$$\bar{\delta}_s = \frac{\delta_s}{\sigma_s},$$
 
 和归一化的二阶差分:
 
-{% asset_img 6.webp %}
+$$\bar{\gamma}_s = \frac{\gamma_s}{\sigma_s}.$$
 
 ***
 
@@ -91,7 +91,7 @@ ERP 的瞬时分辨率强, 常用于由离散的视、听和触觉刺激诱发�
 
 大脑皮层的活跃程度影响 EEG 的振幅, 进而反映为能量的波动。信号的能量在时域上表示为幅度的平方, 即
 
-{% asset_img 7.webp %}
+$$E_s = \sum_{n=1}^{N} |s(n)|^2.$$
 
 ***
 
@@ -99,7 +99,7 @@ ERP 的瞬时分辨率强, 常用于由离散的视、听和触觉刺激诱发�
 
 平均功率可用能量除以采样数得到 [27], 在频域上也有能量和功率的计算方法, 将在 2.2 小节进行说明。
 
-{% asset_img 8.webp %}
+$$P_s = \frac{1}{N} \sum_{n=1}^{N} |s(n)|^2. \tag{6}$$
 
 ***
 
@@ -107,15 +107,15 @@ ERP 的瞬时分辨率强, 常用于由离散的视、听和触觉刺激诱发�
 
 Hjorth 定义了信号在时域上的 Hjorth 参数特征 [28], Activity 衡量信号波幅的偏离程度:
 
-{% asset_img 9.webp %}
+$$\text{Activity} = \frac{1}{N} \sum_{n=1}^{N} (s(n) - \mu_s)^2,$$
 
 Mobility 衡量坡度的变化:
 
-{% asset_img 10.webp %}
+$$\text{Mobility} = \sqrt{\frac{\text{var}(s'(n))}{\text{var}(s(n))}},$$
 
 Complexity 衡量一个振幅上有多少个标准的坡 (slope):
 
-{% asset_img 11.webp %}
+$$\text{Complexity} = \frac{\text{Mobility}(s'(n))}{\text{Mobility}(s(n))},$$
 
 其中, $μ_s$ 表示信号平均值, s′(n) 表示一阶导数, var 表示方差。
 
@@ -125,15 +125,15 @@ Complexity 衡量一个振幅上有多少个标准的坡 (slope):
 
 Petrantonakis 等 [29] 提出高阶过零分析 (higher order crossings, HOC) 的方法, 用信号通过零点的次数来反映信号的振荡程度。将 EEG 序列 s(n) 转换为均值为 0 的序列 Z(n), n = 1, 2, . . . , N , 将该序列通过 M 个高通滤波器, k 表示滤波器的顺序, k = 1, 2, . . . , M :
 
-{% asset_img 12.webp %}
+$$L_k\{Z(n)\} = \sum_{j=1}^{k} \frac{(k-1)!}{(j-1)!(k-j)!} (-1)^{j-1} Z(n-j+1),$$
 
 再根据 $L_k${Z(n)} 构建二值序列
 
-{% asset_img 13.webp %}
+$$X_n(k) = \begin{cases} 1, & L_k\{Z(n)\} \geq 0, \\ 0, & L_k\{Z(n)\} < 0, \end{cases} \quad k = 1, 2, ..., M, \;\; n = 1, 2, ..., N,$$
 
 $X_n(k)$ 中符号的变化次数即为 HOC 值:
 
-{% asset_img 14.webp %}
+$$\text{HOC}_k = \sum_{n=2}^{N} (X_n(k) - X_{n-1}(k))^2.$$
 
 由于 EEG 在不同情绪下的振荡模式和特性不同, 与谱功率相比, HOC 可以更鲁棒地表征信号的振荡特点 [18]; 与统计特征或基于小波变换的特征相比, 使用 HOC 可以更好地区分第 1 节所述的 6 种基本情绪 [29]。
 
@@ -149,11 +149,11 @@ $X_n(k)$ 中符号的变化次数即为 HOC 值:
 
 分形维数 (fractal dimension, FD) 可用来表示时域信号的复杂程度。Sevcik 方法 [31]、分形布朗运动 (fractal Brownian motion) [32]、计盒法 (box-counting) [33]、Higuchi 算法 [34] 都可用来计算 FD, 而 Higuchi 算法的效果更好 [22], 使用该算法计算 EEG 的分形维数特征 FDs 的过程如下: 首先将时域信号序列 s(n), n = 1, 2, ... , N 重写为 {s(m), s(m + k), ... , s(m + ⌊ (N−m)/k ⌋ · k)}, 其中, m = 1, ... , k 是起始时间, k 是时间间隔。在每个 m 的取值上, 令
 
-{% asset_img 15.webp %}
+$$H_m(k) = \frac{N-1}{\left[\frac{N-m}{k}\right] k^2} \sum_{i=1}^{\left[\frac{N-m}{k}\right]} |s(m + ik) - s(m + (i-1)k)|.$$
 
 用 H(k) 表示 $H_m(k)$ 的平均值, 取 $FD_s$ 为
 
-{% asset_img 16.webp %}
+$$\text{FD}_s = -\frac{\log \bar{H}(k)}{\log k}.$$
 
 ***
 
@@ -165,13 +165,13 @@ $X_n(k)$ 中符号的变化次数即为 HOC 值:
 
 由于采集到的 EEG 信号为离散序列 s(n), 实际操作中多使用离散傅里叶变换法 (discrete Fourier transfer, DFT), 用求和代替积分运算, 使计算机能够处理傅里叶变换 [5]。应用于 EEG 信号可得频谱
 
-{% asset_img 17.webp %}
+$$S(k) = \mathrm{DFT}[s(n)] = \sum_{n=0}^{N-1} s(n) W_N^{nk} = \sum_{n=0}^{N-1} s(n) \mathrm{e}^{-\mathrm{j}(\frac{2\pi}{N}) nk},$$
 
 其中 k 表示样本点序号, k = 0, 1, ... , N − 1。记 WN = e^[−j( 2π/N )] 为变换矩阵。从式中可看出, 每个 S(k) 需要 N − 1 次复数加法和 N 次乘法运算, 整个序列的 DFT 运算需要 N (N − 1) 次复数加法和 $N^2$ 次复数乘法, 运算复杂度高。
 
 快速傅里叶变换 (fast Fourier transfer, FFT) 也称库利 – 图基 (Cooley-Tukey) 算法, 利用 WN 的周期性 W^nk_N = W^[(nk) mod N]_N 和对称性 W^[nk + (N/2)]_N = −W^nk_N , 将 DFT 运算按照奇偶性逐级分解, 第 1 级将 N 个点分为各 N/2 个采样点的两组, 第 2 级再细分为各 N/4 个采样点的四组, 以此类推, 运算流程如图 3 所示, 自图的左端向右运算, 两条线的汇合点表示数值相加, 线旁标注的 $W^k$ 表示与相应的数值相乘。例如
 
-{% asset_img 18.webp %}
+$$s_1(0) = s(0) + W^0 s(4), \quad s_1(1) = s(0) - W^0 s(4).$$
 
 从上式可看出, 单元包含一个复数乘和两个复数加操作。对于 N 个采样点, 共 log N 层, 每层 N/2 个单元, 因而整个 FFT 算法只需要 N/2 * log N 次乘和 N * log N 次加法, 且 N 越大, FFT 的优越性越显著 [37]。
 
@@ -207,7 +207,7 @@ $X_n(k)$ 中符号的变化次数即为 HOC 值:
 
 在一个刺激事件之后的若干毫秒内, EEG 信号在某一频段上功率的快速升高称为事件相关同步化 (event related synchronization, ERS); 相反, 功率降低称为事件相关去同步化 (event related desynchronization, ERD) [47]。它们在时域中不明显, 需要在频域上经过带通滤波和平滑后才能观察到。一般认为 ERS 和 ERD 与大脑神经元放电的同步性有关, 当同步性增加时能量叠加变高, 产生 ERS, 同步性下降时能量降低, 产生 ERD。第 n 个采样点上得到的特征 $ERDS_n$ 为
 
-{% asset_img 20.webp %}
+$$\mathrm{ERDS}_n = \frac{A_n - R_n}{R_n} \times 100,$$
 
 其中, $A_n$ 表示在第 n 个采样点上的功率, R 表示在该采样点前后一段区间上的平均功率 [48]。
 
@@ -219,11 +219,11 @@ $X_n(k)$ 中符号的变化次数即为 HOC 值:
 
 高阶谱 (higher order spectrum, HOS) 特征通常需要计算双谱 (bispectrum) 和双相干谱 (bicoherence)。双谱是信号三阶矩的傅里叶变换, 可用来量化信号分量之间的二次相位耦合, 即原信号与谐波发生耦合作用, 产生的新频率成分的和频与差频。与功率谱密度相比, 双谱特征涵盖相位信息, 其计算方法为
 
-{% asset_img 21.webp %}
+$$\mathrm{Bis}(f_1, f_2) = \mathrm{E}[F(f_1) \cdot F(f_2) \cdot F^*(f_1 + f_2)],$$
 
 其中, $f_1$, $f_2$ 指两个信号各自的频率, F(f) 指傅里叶变换, E[x] 为期望, ∗ 表示共轭复数。双相干谱是双谱的归一化形式
 
-{% asset_img 22.webp %}
+$$\mathrm{Bic}(f_1, f_2) = \frac{\mathrm{Bis}(f_1, f_2)}{\sqrt{P(f_1) \cdot P(f_2) \cdot P(f_1 + f_2)}},$$
 
 其中, P(f) = E[F(f) F∗(f)] 是功率谱。Bis 与 Bic 各自的模或模的平方都可以作为高阶谱特征 [22]。
 
@@ -233,11 +233,11 @@ $X_n(k)$ 中符号的变化次数即为 HOC 值:
 
 微分熵 (differential entropy, DE) 是香农 (Shannon) 信息熵 − ∑_x p(x) log(p(x)) 在连续变量上的推广形式
 
-{% asset_img 23.webp %}
+$$\mathrm{DE} = -\int_a^b p(x) \log(p(x)) \mathrm{d}x,$$
 
 其中, p(x) 表示连续信息的概率密度函数, [a, b] 表示信息取值的区间。对于一段特定长度的近似服从 Gauss 分布 N (μ, $σ^2_i$ ) 的 EEG, 其微分熵为 [46, 50]:
 
-{% asset_img 24.webp %}
+$$\mathrm{DE} = -\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi\sigma_i^2}} \mathrm{e}^{-\frac{(x-\mu_i)^2}{2\sigma_i^2}} \log\left( \frac{1}{\sqrt{2\pi\sigma_i^2}} \mathrm{e}^{-\frac{(x-\mu_i)^2}{2\sigma_i^2}} \right) \mathrm{d}x = \frac{1}{2} \log(2\pi\mathrm{e}\sigma_i^2),$$
 
 等于其在特定频段上的能量谱的对数 [51]。
 
@@ -255,7 +255,7 @@ Zheng 等 [46] 在识别正性、中性和负性 3 种情绪的实验中, 使用
 
 STFT 可提高对噪声干扰的鲁棒性 [53]。使用等长的窗函数 w(n − t) 计算窗内信号的傅里叶变换:
 
-{% asset_img 25.webp %}
+$$X(n, \omega) = \int_{-\infty}^{\infty} w(n-t) f(t) \mathrm{e}^{-\mathrm{j}\omega t} \mathrm{d}t,$$
 
 再求出各窗函数的时间点及频率成分。常见的窗函数有三角波、方波和 Gauss 函数等, 通常默认使用 Gauss 函数, 此时 STFT 也称 Gabor 转换。
 
@@ -269,7 +269,7 @@ STFT 可提高对噪声干扰的鲁棒性 [53]。使用等长的窗函数 w(n �
 
 基本小波, 或称小波母函数 φ(t) 应平方可积, 且其傅里叶变换满足 ( |φ(ω)|2 / |ω| ) dω < ∞。平移 τ 可使小波函数在时间轴上移动; α 变大或变小会使其变窄或变宽 [57], 其中, α, τ ∈ R, α > 0。由此得到变换后的函数
 
-{% asset_img 26.webp %}
+$$\phi_{\alpha,\tau}(t) = \frac{1}{\sqrt{\alpha}} \phi\left( \frac{t-\tau}{\alpha} \right),$$
 
 称为参数为 α 和 τ 的小波基函数。1/√α 将能量归一化。当参数可连续取值时, 称为连续小波变换; 当参数只能取离散值时, 称为离散小波变换。
 
@@ -285,19 +285,19 @@ STFT 可提高对噪声干扰的鲁棒性 [53]。使用等长的窗函数 w(n �
 
 Hilbert-Huang 是一种非线性的时频域特征提取方法, 与 STFT 相比, 抵抗噪声干扰的能力更强 [22, 59]。首先用经验模式分解 (empirical mode decomposition, EMD) 得到固有模态函数 (intrinsic mode functions, IMFs) 来表征原 EEG 信号 X(t), 假设共分解出 k 个固有模态函数:
 
-{% asset_img 27.webp %}
+$$X(t) = \sum_{i=1}^{k} \mathrm{IMF}_i(t) + r(t),$$
 
 其中, r(t) 表示剩余的单调或常数的部分。再对每个 $IMF_i(t)$ 计算 Hilbert 变换, 解析信号可用振幅 $A_i(t)$ 和瞬时相位 $θ_i(t)$ 来表征, 瞬时频率 $f_i(t)$ = (1/2π) (dθ_i/dt) , 则原信号可表示为
 
-{% asset_img 28.webp %}
+$$X(t) = \sum_{i=1}^{k} A_i(t) \mathrm{e}^{\mathrm{j} 2\pi \int f_i(t) \mathrm{d}t}.$$
 
 通过上述方法将 EEG 按时间段变换至频域后, 再提取如前所述的频域特征, 例如功率、功率谱密度的均值、最值等。除此之外, 也可根据时间窗提取时频域上的相对能量
 
-{% asset_img 29.webp %}
+$$\mathrm{RE}_{band} = \frac{\mathrm{Energy}_{band}}{\mathrm{Energy}_{total}}$$
 
 和每个时间窗上的熵
 
-{% asset_img 30.webp %}
+$$\mathrm{Entropy} = -\sum_{band} \mathrm{RE}_{band} \log \mathrm{RE}_{band},$$
 
 其中, Energy_band 表示某个时间窗内信号在某个频段上的能量, Energy_total 为该时间窗内所有频段能量之和 [40]。
 
@@ -317,11 +317,11 @@ Hilbert-Huang 是一种非线性的时频域特征提取方法, 与 STFT 相比,
 
 假设 n 段 EEG 信号分为正性和负性效价两类, 每段信号都表示为通道数 × 采样点个数的矩阵形式, 将两种分类下信号的协方差矩阵分别取平均得到 Σ+ 和 Σ−, 并进行特征值分解 Σ+ + Σ− = U (DU)T, U 是特征向量矩阵, D 是特征值构成的对角矩阵, 则白化值矩阵为 P = √D^−1 U T, 白化后的信号的协方差矩阵为
 
-{% asset_img 31.webp %}
+$$\begin{aligned} S^+ &= P\Sigma^+ P^{\mathrm{T}} = B\Lambda B^{\mathrm{T}}, \\ S^- &= P\Sigma^- P^{\mathrm{T}} = I - S^+ = B(I-\Lambda)B^{\mathrm{T}}. \end{aligned}$$
 
 二者特征向量相同, 且特征值加和为 1。I 表示单位矩阵, B 表示特征向量矩阵, Λ 表示特征值构成的对角矩阵, 那么
 
-{% asset_img 32.webp %}
+$$\begin{aligned} B^{\mathrm{T}} P\Sigma^+ P^{\mathrm{T}} B &= B^{\mathrm{T}} S^+ B = \Lambda, \\ B^{\mathrm{T}} P\Sigma^- P^{\mathrm{T}} B &= B^{\mathrm{T}} S^- B = I - \Lambda. \end{aligned}$$
 
 因此, 称投影矩阵 W = BTP 中的每个行向量 wj 就是一个空间滤波器, 越大的特征值表示 wj 在两类上可以得到差距越大的方差。而 W^(−1) 的每一列称为共同空间模式 [66]。
 
@@ -343,21 +343,21 @@ Ang 等 [68] 进一步改进了 SBCSP 算法, 提出了滤波器组共同空间�
 
 1. 不对称差/不对称商。
     不对称差 (differential asymmetry, DASM) 和不对称商 (rational asymmetry, RASM) 分别指左右对称电极上特征的差分和比值 [69]
-    {% asset_img 34.webp %}
+    $$\begin{aligned} \mathrm{DASM} &= \mathrm{Feature}(X_L) - \mathrm{Feature}(X_R), \\ \mathrm{RASM} &= \mathrm{Feature}(X_L) / \mathrm{Feature}(X_R), \end{aligned}$$
     或者更复杂的计算方法, 用左右特征的差除以和, 此处称为不对称系数 [18]:
-    {% asset_img 35.webp %}
+    $$\mathrm{Index} = \frac{\mathrm{Feature}(X_L) - \mathrm{Feature}(X_R)}{\mathrm{Feature}(X_L) + \mathrm{Feature}(X_R)},$$
     其中, $X_L$ 和 $X_R$ 分别表示左侧和右侧电极采集到的 EEG 信号, Feature(X) 表示在信号 X 上提取的初步特征值。
 2. 多维度有向信息。
     Sakata 等 [70] 提出了多维度有向信息 (multidimensional directed information, MDI), 反映从某个电极流向其他电极的信息量, 通常测量左右电极对之间流动的信息量。MDI 的优势在于可以表示各电极之间信号量的绝对量而非相对量 [71]。首先将两个电极上长度为 N 的 EEG 信号平均划分为 n 段, 每段以 xk 和 yk 界定
-    {% asset_img 36.webp %}
+    $$\begin{aligned} X &= x_{k-p} \cdots x_{k-1} x_k x_{k+1} \cdots x_{k+M} = X^P x_k X^M, \\ Y &= y_{k-p} \cdots y_{k-1} y_k y_{k+1} \cdots y_{k+M} = Y^P y_k Y^M, \end{aligned}$$
     那么两序列的互信息为
-    {% asset_img 37.webp %}
+    $$I(X; Y) = \sum_k I\left(x_k; Y^M | X^P Y^P y_k\right) + I\left(y_k; X^M | X^P Y^P x_k\right) + I\left(x_k; y_k | X^P Y^P\right).$$
 
 **前后位置对称**。以图 4 中间横向的灰色横线为对称轴, 并舍弃 OZ 电极, 剩余 24 个电极前后对称, 可得到 12 对电极, 紫色线标识的两行电极互为电极对, 红色线、橙色线同理。用 F 列举出所有电极对中的前部电极, P 为相应的后部电极: F = {FP1, FP2, F7, F3, FZ, F4, F8, FT7, FC3, FCZ, FC4, FT8}, P = {O1, O2, P7, P3, PZ, P4, P8, TP7, CP3, CPZ, CP4, TP8}。
 
 DCAU (differential caudality) 可以用来描述前后电极上的不对称性 [46]
 
-{% asset_img 38.webp %}
+$$\mathrm{DCAU} = \frac{\mathrm{Feature}(X_{frontal})}{\mathrm{Feature}(X_{posterior})}.$$
 
 ***
 ***
@@ -411,13 +411,15 @@ CAS-THU 数据库[76] 由中国科学院心理研究所与清华大学共同提�
 
 但是, 当所选特征的数量大于观测数量时, 特征的类内协方差矩阵会变得单一。可应用稀疏的 LDA (sparse LDA, SLDA) [72], 添加 l1 罚项对判别向量施加稀疏约束, 以解决这个问题。
 
-{% asset_img 40.webp %}
+$$\max_{w_l} \{ w_l^{\mathrm{T}} \Sigma_b w_l - \lambda \|w_l\|_1 \},$$
+
+其中， $w_l^{\mathrm{T}}(\Sigma_w + \Omega)w_l = 1$, $\Omega$ 是一个正定矩阵. 该问题至多有 $k-1$ 个非平凡解， 故至多有 $k-1$ 个判别向量 [72], 其正交方向最优地划分了 $k$ 类样本. 由此， 原有的 $p$ 维特征下降至 $k-1$ 维， 每个判别向量 $w_i$ 都反映对应特征对分类的影响. 令 $W = \sum_{i=1}^{k-1} |w_i|$, 则 $W$ 为特征的权重.
 
 在本实验中, 用 MATLAB 上的 SpaSM 工具包 [78] 实现 SLDA 算法, 使用默认参数以保证算法在不同数据库上的统一性。采用准确率较高的被试留一法划分数据, 即, 若数据集中包括 s 名被试, 将其划分为 s 个子集, 各子集包含一个被试的全部样本 [79]。每次取其中的 s − 1 个子集的数据送入SLDA 算法, 计算权重 Wi; 在 s 次上取权重均值并排序, 再计算每一类特征的 “重要程度”, “重要程度” 定义如下：
 
 **定义1** (重要程度) 若某特征共有 $p_i$ 维, 其中有 $m_i$ 维排在所有维度的前 x%, 则该特征的重要程度值为
 
-{% asset_img 42.webp %}
+$$d_x = \frac{m_i}{p_i}$$
 
 例如, 由表 1 可知, pSEED = 2423, 其中 310 列是功率谱密度 (PSD), 令 x = 10, 则关注权重排在前 2423 × 10% ≈ 242 位的特征, 若 242 列中有 100 列来自 PSD, 则 PSD 特征的重要程度值 $d_10$ = 100/310 ≈ 0.32。x 值越小, 越可以反映特征的重要程度。
 

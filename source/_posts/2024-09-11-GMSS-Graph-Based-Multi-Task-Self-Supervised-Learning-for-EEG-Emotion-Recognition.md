@@ -62,12 +62,14 @@ date: 2024-09-11 08:35:07
 
 监督模式采用了一种联合训练策略
 
-{% asset_img 5.webp %}
+$$\mathcal{L} = \frac{1}{\sigma_{\mathcal{L}_s}^2} \mathcal{L}_s + \frac{1}{\sigma_{\mathcal{L}_f}^2} \mathcal{L}_f + \frac{1}{2\sigma_{\mathcal{L}_p}^2} \mathcal{L}_p + \log(\sigma_{\mathcal{L}_s} \sigma_{\mathcal{L}_f} \sigma_{\mathcal{L}_p}) \\ + \ \psi \cdot \left(\frac{1}{\sigma_{\mathcal{L}_c}^2} \mathcal{L}_c + \log(\sigma_{\mathcal{L}_c})\right),$$
+
+$$\psi = \begin{cases} 0, & unsupervised \quad mode, \\ 1, & supervised \quad mode \end{cases}$$
 
 #### 特征提取器
 
 {% asset_img 6.webp %}
-{% asset_img 7.webp %}
+$$\mathcal{F}(X) = \sigma\left(\sum_{k=0}^{K-1} \beta_k T_k(\widetilde{L}) X\right)$$
 
 ***
 

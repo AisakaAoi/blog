@@ -60,7 +60,7 @@ SphereFace（超球面）是佐治亚理工学院Weiyang Liu等在CVPR2017.04发
 
 - 度量学习（metric learning）：旨在学习一个相似的（距离）函数。传统的度量学习常常会学习一个距离度量矩阵A ，在给定的特征x1,x2上距离度量为：
 
-{% asset_img 4.webp %}
+$$\|x_1 - x_2\|_A = \sqrt{(x_1 - x_2)^T A (x_1 - x_2)}$$
 
 - 最近流行的深度度量学习通常使用神经网络自动学习具有可区分性的特征x1,x2，然后是简单的进行距离度量，如欧几里得距离。用于深度度量学习的最广泛的损失函数是对比损失和三元组损失，两者都对特征施加了欧几里得距离。
 
@@ -98,17 +98,19 @@ SphereFace（超球面）是佐治亚理工学院Weiyang Liu等在CVPR2017.04发
 - Softmax计算两个类的概率为：
     - x为学习到的特征向量，Wi和bi是最后一个全连接层对应类i的权值和偏置。
 
-{% asset_img 6.webp %}
+$$p_1 = \frac{\exp(W_1^T x + b_1)}{\exp(W_1^T x + b_1) + \exp(W_2^T x + b_2)}$$
+
+$$p_2 = \frac{\exp(W_2^T x + b_2)}{\exp(W_1^T x + b_1) + \exp(W_2^T x + b_2)}$$
 
 - Softmax损失的决策边界(decision boundary)是（就是刚让两类分开的边界，如p1=p2）：
     - 需要p1>p2来正确分类x
 
-{% asset_img 7.webp %}
+$$(W_1 - W_2) x + b_1 - b_2 = 0$$
 
 - Softmax loss，重写成w和x的内积形式，就有了cos夹角：
     - θji是向量Wj和xi之间的夹角
 
-{% asset_img 8.webp %}
+$$L_i = -\log\left(\frac{e^{W_{y_i}^T x_i + b_{y_i}}}{\sum_j e^{W_j^T x_i + b_j}}\right) = -\log\left(\frac{e^{\|W_{y_i}\| \|x_i\| \cos(\theta_{y_i,i}) + b_{y_i}}}{\sum_j e^{\|W_j\| \|x_i\| \cos(\theta_{j,i}) + b_j}}\right)$$
 
 - 学习到的特征分布投射到一个球体上，就可以看到两类别间不能简单地通过角度分类。两类别是可以分离开的，但还是有一些误差，Softmax只学习到了可分离的特征，但内聚性不好，判别性不够。如a b
 
@@ -122,11 +124,13 @@ SphereFace（超球面）是佐治亚理工学院Weiyang Liu等在CVPR2017.04发
 - 为了实现角度决策边界，最终FC层的权重实际上是无用的。因此，首先对权重进行归一化并将偏置项归零（||$W_i$||=1，b_i=0），后验概率为p_1=||x||cos($θ_1$)，p_2=||x||cos($θ_2$)，则决策边界变为：
     - 结果仅取决于$θ_1$和 $θ_2$，需要cos($θ_1$)>cos($θ_2$)来正确分类x
 
-{% asset_img 10.webp %}
+$$\|x\|(\cos\theta_1 - \cos\theta_2) = 0$$
 
 - 虽然我们可以用这个改进的softmax loss来学习带有角边界的特征，加强了角度可分性，但是这些特征还是没有判别性（discriminative）。如图c d
 
-{% asset_img 11.webp %}
+$$\|W_1\| = \|W_2\| = 1, \quad b_1 = b_2 = 0$$
+
+$$L_{modified} = \frac{1}{N} \sum_i -\log\left(\frac{e^{\|x_i\| \cos(\theta_{y_i,i})}}{\sum_j e^{\|x_i\| \cos(\theta_{j,i})}}\right)$$
 
 ***
 
@@ -138,15 +142,19 @@ SphereFace（超球面）是佐治亚理工学院Weiyang Liu等在CVPR2017.04发
     - 从类别1正确分类，需要cos(m*$θ_1$)>cos($θ_2$)，决策边界就是cos(m*$θ_1$)=cos($θ_2$)。从类别2的则相反。从角度的观点来考虑，从标识1正确分类x需要m*$θ_1$<$θ_2$，而从标识2正确分类x需要m*$θ_2$<$θ_1$。
     - 因为m是正整数，cos函数在0到π范围又是单调递减的，所以$mθ_1$要小于$θ_2$，m值越大，$θ_1$应越聚合，则学习的难度也越大，因此通过这种方式定义损失会逼得模型学到类间距离更大的，类内距离更小的特征。
 
-{% asset_img 12.webp %}
+$$\|x\|(\cos m\theta_1 - \cos\theta_2) = 0 \quad for \ class \ 1$$
+
+$$\|x\|(\cos\theta_1 - \cos m\theta_2) = 0 \quad for \ class \ 2$$
 
 - A-Softmax loss公式是将改进的Softmax Loss中θ乘以系数m整数间隔值。即以乘法的方式惩罚深度特征与其相应权重之间的角度。
 
-{% asset_img 13.webp %}
+$$L_{ang} = \frac{1}{N} \sum_i -\log\left(\frac{e^{\|x_i\| \cos(m\theta_{y_i,i})}}{e^{\|x_i\| \cos(m\theta_{y_i,i})} + \sum_{j \neq y_i} e^{\|x_i\| \cos(\theta_{j,i})}}\right)$$
 
 - A-Softmax Loss最终公式：上式中θ的范围是[0, π/m]，为了摆脱这一限制，我们将cos(mθ, i)推广到一个单调递减的角函数ψ(θ,i)。m≥1是控制角度间隔大小的整数，当m=1时它就是Modified Softmax Loss。请注意，在每次迭代中权重归一化为1。
 
-{% asset_img 14.webp %}
+$$L_{ang} = \frac{1}{N} \sum_i -\log\left(\frac{e^{\|x_i\| \psi(\theta_{y_i,i})}}{e^{\|x_i\| \psi(\theta_{y_i,i})} + \sum_{j \neq y_i} e^{\|x_i\| \cos(\theta_{j,i})}}\right)$$
+
+$$\psi(\theta_{y_i,i}) = (-1)^k \cos(m\theta_{y_i,i}) - 2k, \quad \theta_{y_i,i} \in \left[\frac{k\pi}{m}, \frac{(k+1)\pi}{m}\right], \ k \in [0, m-1]$$
 
 - 它们的决策边界：
 
@@ -180,7 +188,9 @@ SphereFace（超球面）是佐治亚理工学院Weiyang Liu等在CVPR2017.04发
 
 2）再根据最大类内特征角度距离小于最小类间特征角度距离，以上的分析可以总结为公式(8)(9)，解两不等式可以得到m_min≥2+√3。
 
-{% asset_img 18.webp %}
+$$\underbrace{\frac{\theta_{12}}{m-1} + \frac{\theta_{12}}{m+1}}_{\text{max intra-class angle}} \leq \underbrace{\frac{(m-1)\theta_{12}}{m+1}}_{\text{min inter-class angle}}, \quad \theta_{12} \leq \frac{m-1}{m}\pi \tag{8}$$
+
+$$\underbrace{\frac{2\pi - \theta_{12}}{m+1} + \frac{\theta_{12}}{m+1}}_{\text{max intra-class angle}} \leq \underbrace{\frac{(m-1)\theta_{12}}{m+1}}_{\text{min inter-class angle}}, \quad \theta_{12} > \frac{m-1}{m}\pi \tag{9}$$
 
 属性3：多元分类情况下，假设在欧几里德空间中均匀分布，m_min的下界是 m_min>=3。推导公式如下：
 

@@ -41,11 +41,11 @@ CosFace是腾讯AI Lab的Hao Wang等在CVPR2018.01发表，在SphereFace基础�
 
 - Softmax loss：权重的模和角度对后验概率都有影响
 
-{% asset_img 2.webp %}
+$$\begin{aligned} L_s &= \frac{1}{N} \sum_{i=1}^{N} -\log p_i = \frac{1}{N} \sum_{i=1}^{N} -\log \frac{e^{f_{y_i}}}{\sum_{j=1}^{C} e^{f_j}} \\ f_j &= W_j^T x = \|W_j\| \|x\| \cos\theta_j \end{aligned}$$
 
 - 决策边界：它的边界既依赖于权重向量的大小，又依赖于角度的余弦值，从而导致余弦空间中的决策区域重叠(重叠就是margin < 0)。
 
-{% asset_img 3.webp %}
+$$\|W_1\| \cos(\theta_1) = \|W_2\| \cos(\theta_2)$$
 
 ***
 
@@ -53,12 +53,14 @@ CosFace是腾讯AI Lab的Hao Wang等在CVPR2018.01发表，在SphereFace基础�
 
 - NSL：权重归一化，同时对输入向量归一化到一个固定值s
 
-{% asset_img 4.webp %}
+$$\|W_j\| = 1 \qquad \|x\| = s$$
+
+$$L_{ns} = \frac{1}{N} \sum_i -\log \frac{e^{s \cos(\theta_{y_i, i})}}{\sum_j e^{s \cos(\theta_{j, i})}}$$
 
 - 决策边界：能在余弦空间中对测试样本进行完美分类。但是，margin为0，由于没有决策间隔，对噪声不太鲁棒。
     - NSL学到的特征没有充分的判别性（discriminative ），因为NSL只强调正确的分类。
 
-{% asset_img 5.webp %}
+$$\cos(\theta_1) = \cos(\theta_2)$$
 
 ***
 
@@ -66,11 +68,11 @@ CosFace是腾讯AI Lab的Hao Wang等在CVPR2018.01发表，在SphereFace基础�
 
 - A-Softmax Loss：θ乘以决策余量m，进行权重归一化并将偏置项归零（||$W_i$||=1，b_i=0）
 
-{% asset_img 6.webp %}
+$$L_{\text{ang}} = \frac{1}{N} \sum_i -\log \left( \frac{e^{\Vert x_i \Vert \cos(m \theta_{y_i, i})}}{e^{\Vert x_i \Vert \cos(m \theta_{y_i, i})} + \sum_{j \neq y_i} e^{\Vert x_i \Vert \cos(\theta_{j, i})}} \right)$$
 
 - 决策边界：
 
-{% asset_img 7.webp %}
+$$\begin{aligned} C_1 &: \cos(m\theta_1) \geq \cos(\theta_2), \\ C_2 &: \cos(m\theta_2) \geq \cos(\theta_1). \end{aligned}$$
 
 - A-Softmax的margin在所有θ值上都不一致：当θ减小时， margin变小，当θ= 0时，margin完全消失。这导致两个潜在的问题：
     - 首先，对于视觉上相似因此在W1和W2之间具有较小角度的困难类别C1和C2，margin很小。
@@ -87,11 +89,15 @@ CosFace是腾讯AI Lab的Hao Wang等在CVPR2018.01发表，在SphereFace基础�
 - LMCL（大间隔余弦损失函数）：权重L2归一化，输入向量归一化到一个固定值s，让cos(θ)加上m。对LMCL来说，s需要足够大。
     - θj是Wj和xi之间的角度，有决策间隔margin>0
 
-{% asset_img 9.webp %}
+$$L_{lmc} = \frac{1}{N} \sum_i -\log \frac{e^{s(\cos(\theta_{y_i,i}) - m)}}{e^{s(\cos(\theta_{y_i,i}) - m)} + \sum_{j \neq y_i} e^{s\cos(\theta_{j,i})}}$$
+
+$$subject \ to$$
+
+$$W = \frac{W^*}{\|W^*\|}, \quad x = \frac{x^*}{\|x^*\|}, \quad \cos(\theta_j, i) = W_j^T x_i$$
 
 - 决策边界(decision boundary)：虚线表示决策边界(decision boundary)，灰色区域是决策间隔(decision margins)
 
-{% asset_img 10.webp %}
+$$\begin{aligned} C_1 &: \cos(\theta_1) \geq \cos(\theta_2) + m, \\ C_2 &: \cos(\theta_2) \geq \cos(\theta_1) + m. \end{aligned}$$
 
 - 几何上的LMCL特征：与NSL相比，LMCL具有更紧凑的特征区域
 

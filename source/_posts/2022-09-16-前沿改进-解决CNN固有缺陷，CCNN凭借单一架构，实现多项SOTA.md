@@ -50,39 +50,39 @@ tags:
 
 连续核卷积将小型神经网络
 
-{% asset_img 3.webp %}
+$$\text{G}_{\text{Kernel}}: \mathbb{R}^D \rightarrow \mathbb{R}^{N_{out} \times N_{in}}$$
 
 作为核生成器网络，同时将卷积核参数化为连续函数。该网络将坐标
 
-{% asset_img 4.webp %}
+$$\mathbf{c}_i \in \mathbb{R}^D$$
 
 映射到该位置的卷积核值：
 
-{% asset_img 5.webp %}
+$$\text{G}_{\text{Kernel}}(\mathbf{c}_i) \in \mathbb{R}^{N_{out} \times N_{in}}$$
 
 （图 1a）。通过将 K 个坐标
 
-{% asset_img 6.webp %}
+$$[\mathbf{c}_i]_{i \in [1, ..., K]}$$
 
 的向量通过 G_Kernel，可以构造一个大小相等的卷积核 K，即
 
-{% asset_img 7.webp %}
+$$\mathbf{K} = \left[\text{G}_{\text{Kernel}}(\mathbf{c}_i)\right]_{i \in [1, ..., K]}$$
 
 随后，在输入信号
 
-{% asset_img 8.webp %}
+$$\mathbf{x}: \mathbb{R}^D \rightarrow \mathbb{R}^{N_{in}}$$
 
 和生成的卷积核
 
-{% asset_img 9.webp %}
+$$\mathbf{K}: \mathbb{R}^D \rightarrow \mathbb{R}^{N_{out} \times N_{in}}$$
 
 之间进行卷积运算，以构造输出特征表示
 
-{% asset_img 10.webp %}
+$$\mathbf{y}: \mathbb{R}^D \rightarrow \mathbb{R}^{N_{out}}$$
 
 即
 
-{% asset_img 11.webp %}
+$$\mathbf{y} = \text{ConvNd}(\mathbf{K}, \mathbf{x})$$
 
 {% asset_img 12.webp %}
 
@@ -92,7 +92,7 @@ tags:
 
 当以不同的分辨率（例如更高的分辨率）呈现输入时，通过核生成器网络传递更精细的坐标网格就足够了，以便以相应的分辨率构造相同的核。对于以分辨率 r (1) 和 r (2) 采样的信号 x 和连续卷积核 K，两种分辨率下的卷积大约等于与分辨率变化成比例的因子：
 
-{% asset_img 13.webp %}
+$$\text{ConvNd}\left(\mathbf{K}_{r(2)}, \mathbf{x}_{r(2)}\right) \approx \left(r^{(1)}/r^{(2)}\right)^D \text{ConvNd}\left(\mathbf{K}_{r(1)}, \mathbf{x}_{r(1)}\right).$$
 
 ***
 
@@ -104,7 +104,7 @@ tags:
 
 基于这些观察，该研究构建了 FlexConv 的深度（depth-wise）可分离版本，其中通道（channel-wise）卷积是使用核生成器网络
 
-{% asset_img 15.webp %}
+$$G_{Kernel}: \mathbb{R}^D \to \mathbb{R}^{N_{in}}$$
 
 生成的核计算的，之后是从 N_in 到 N_out 进行逐点卷积。这种变化允许构建更广泛的 CCNN—— 从 30 到 110 个隐藏通道，而不会增加网络参数或计算复杂度。
 

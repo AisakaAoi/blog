@@ -61,13 +61,13 @@ tags:
 
 在大脑图的基础上，论文中提出了一种新的方法来强调相邻节点之间的关系，称为自注意力机制。该机制为图中的所有边分配权重，使得模型能够有效地处理来自不同表示子空间的信息，并以端到端的方式进行学习。该公式可表示为如下形式：
 
-{% asset_img 4.webp %}
+$$\tilde{\mathbf{A}} = \text{softmax}\left(\frac{\mathbf{X}_f \mathbf{W}^Q \times (\mathbf{X}_f \mathbf{W}^K)^T}{\sqrt{d}}\right)$$
 
 式中：WQ和WK为线性投影参数，将输入Xf投影到d维的输出，√d为缩放因子。A′中的每一个aij表示从通道i到通道j的归一化权重。由此，我们得到与不同脑电电极采集到的特征相关的注意力矩阵。
 
 由于式中的A′涉及自注意力获取的节点权重关系，为了进一步提高EEG信号的表征能力，将A′应用于Laplacian矩阵L。其过程可以表示为
 
-{% asset_img 5.webp %}
+$$\hat{\mathbf{L}} = \mathcal{M}(\mathbf{L}, \tilde{\mathbf{A}}) = (1 - \lambda)\mathbf{L} + \lambda \tilde{\mathbf{A}}$$
 
 ***
 
@@ -75,7 +75,7 @@ tags:
 
 给定一个拉普拉斯矩阵L (和特征矩阵Xf)，在DGC模块中，DGC作用于每个脑图的节点以捕获空间特征，然后通过堆栈构建多个卷积层。在M层DGC中，第m层的图卷积操作可以定义为
 
-{% asset_img 6.webp %}
+$$\mathbf{X}_s^{(m)} = \sigma\left(\hat{\mathbf{L}}\hat{\mathbf{X}}_f^{(m)}\mathbf{W}^{(m)}\right), \quad \text{for } m = 1, 2, \ldots, M$$
 
 ***
 
@@ -87,11 +87,11 @@ EEG信号的不同时间段相互关联，每个时间段对情绪识别任务�
 
 具体来说，EEG信号表示为X f∈RN × C × D。为了捕获时间依赖关系，应用变换操作来获得潜在的时间特征，从而得到X’f∈RN × D × C。随后，这些特征X’f经过线性变换后被用作查询( qt )、密钥( kt )和值( vt )。然后通过带键的点积处理查询，接着通过softmax层生成每个值的代表性得分。全通道典型得分矩阵的计算过程描述如下：
 
-{% asset_img 8.webp %}
+$$\begin{aligned} q_t, k_t, v_t &= \left((\mathcal{T}(\mathbf{X}_f') \mathbf{W}_t^Q), (\mathcal{T}(\mathbf{X}_f') \mathbf{W}_t^K), (\mathcal{T}(\mathbf{X}_f') \mathbf{W}_t^V)\right) \\ Att(q_t, k_t) &= \text{softmax}(q_t, k_t^T) \end{aligned}$$
 
 给定所有通道的典型得分矩阵Att，将每个值与可用信息进行聚合以更新自身。为了解决梯度消失问题，加入了残差连接。此外，将自注意力与包含两个全连接层和ReLU激活函数层的前馈网络( FFN )相结合。这种结合允许进一步提取时序特征，增强了模型的非线性学习能力。最终得到的时序特征Xt，其大小与输入相同，形状为[N,D,C]。过程定义如下：
 
-{% asset_img 9.webp %}
+$$\begin{aligned} v^* &= Att(q_t, k_t) v_t \\ \mathbf{X}_{res} &= \text{LN}(v^* + \mathcal{T}(\mathbf{X}_f')) \\ \mathbf{X}_t &= \text{LN}(\mathbf{X}_{res} + \text{FFN}(\mathbf{X}_{res})) \end{aligned}$$
 
 ***
 
@@ -101,13 +101,13 @@ EEG信号的不同时间段相互关联，每个时间段对情绪识别任务�
 
 通过上述步骤，我们得到了空间特征Xs和时间特征Xt。H - CAF旨在利用不同模态特征之间的互补信息，使我们能够提取更具代表性的特征，并将其跨层充分融合，以增强预测能力。通过该模块的学习权重，每个模态的注意力权重由另一个模态引导，有效地利用了时空特征的互补性。如图中红色虚线框所示，两个CAF形成了一层H - CAF。CAFs采用全交叉注意力结构代替自注意力层，具体可定义如下：
 
-{% asset_img 11.webp %}
+$$\begin{aligned} \text{CAF}(\boldsymbol{q}, \boldsymbol{k}, \boldsymbol{v}) &= \tilde{\mathbf{X}}_c + \text{FFN}(\tilde{\mathbf{X}}_c) \\ \tilde{\mathbf{X}}_c &= \mathbf{Q} + \text{softmax}\left(\frac{\mathbf{Q}\mathbf{K}^T}{\sqrt{d}}\right)\mathbf{V} \end{aligned}$$
 
 其中Q是CAF的q输入，K和V分别是CAF的k和v输入，其中K和V相同。
 
 在H - CAF模块中，其中一个CAF接收来自一个分支的特征作为输入，并使用来自另一个分支的特征作为键和值。相反，另一个CAF将上一个CAF收到的输入作为key和value，而将上一个CAF的key和value作为当前的输入。两个CAFs构成一层H - CAF，其具体形式如下：
 
-{% asset_img 12.webp %}
+$$\begin{aligned} \mathbf{X}_{res}^{(l)} &= \text{CAF}(\mathbf{X}_{res}^{(l-1)}, \mathbf{X}_s^{(l-1)}, \mathbf{X}_s^{(l-1)}) \\ \mathbf{X}_s^{(l)} &= \text{CAF}(\mathbf{X}_s^{(l)}, \mathbf{X}_{res}^{(l)}, \mathbf{X}_{res}^{(l)}) \end{aligned}$$
 
 其中l = ( 1 , 2 , ... , L)表示H - CAF模块的层数，l - 1表示前一层，l表示当前层。这种层次化的方法使得H - CAF能够充分利用每一层不同分支的互补信息来构建情感相关的时空特征Xst∈RN × C × D。
 
@@ -117,13 +117,13 @@ EEG信号的不同时间段相互关联，每个时间段对情绪识别任务�
 
 在提出的模型中，使用交叉熵损失函数来衡量真实标签Yi和预测标签Yi之间的差异，并通过后向传播来更新邻接矩阵。更新过程可以描述如下：
 
-{% asset_img 13.webp %}
+$$\frac{\partial \text{Loss}}{\partial \mathbf{A}} = \frac{\partial \text{cross_entropy}(\mathbf{Y}, \hat{\mathbf{Y}})}{\partial \hat{\mathbf{L}}} \cdot \frac{\partial \hat{\mathbf{L}}}{\partial \mathbf{A}} + \mu \frac{\partial \Vert \theta \Vert}{\partial \mathbf{A}}$$
 
 其中θ为训练过程中模型中的所有参数，∥·∥表示防止过拟合的正则化项，μ为常数。
 
 然后，该模型可以更新邻接矩阵A如下：
 
-{% asset_img 14.webp %}
+$$\mathbf{A} = (1 - \rho)\mathbf{A} + \rho \frac{\partial \text{Loss}}{\partial \mathbf{A}}$$
 
 ***
 

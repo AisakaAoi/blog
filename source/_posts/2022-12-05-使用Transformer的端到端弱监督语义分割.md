@@ -48,11 +48,11 @@ tags:
 
 如图1所示，作者使用Transformer作为backbone。首先将输入图像分割成h * w个patch，并且经过线性层后得到相同数量的patch token。在每个Transformer block当中都是用多头注意力机制（multi-head self-attention MHSA）来捕捉全局特征感知，也就是得到token之间的关系。其中，用Qi，Ki，Vi来表示注意力中的query，key和value，其中i表示第I个头（head）。对应的注意力矩阵和输出公式分别计算为：
 
-{% asset_img 2.webp %}
+$$S_i = \frac{Q_i K_i^\top}{\sqrt{d_k}}, \quad X_i = \mathtt{softmax}(S_i) V_i.$$
 
 多头注意力的结果（X1~Xn）会进行拼接，然后作为输入进入FFN层作为Transformer block的输出X0，即
 
-{% asset_img 3.webp %}
+$$X_o = \mathtt{FFN}(X_1 \| X_2 \| ... \| X_n)$$
 
 最后通过堆叠多个block，主干backbone会为后续模块生成feature maps
 
@@ -62,7 +62,7 @@ tags:
 
 考虑到生成伪标签的简洁性和效率，作者使用类激活映射（class activation maps CAM）来生成初始的伪标签。对于提取的特征映射F和给定的类c，通过将F中的特征映射及其对类c的影响进行加权，即分类层中的权重矩阵W，生成激活映射M。计算公式如下：
 
-{% asset_img 4.webp %}
+$$M^c = \mathtt{ReLu}\left( \sum_{i=1}^{d} W^{i,c} F^i \right),$$
 
 使用ReLu函数消除负激活值后进行归一化，在选取合适的背景阈值得到初始的伪标签。
 
@@ -79,7 +79,7 @@ tags:
 
 所以，为了实现MHSA到语义Affinity的转换，作者直接将S和它的转置进行相加：
 
-{% asset_img 6.webp %}
+$$A = \mathtt{MLP}(S + S^\top).$$
 
 ***
 
@@ -87,7 +87,7 @@ tags:
 
 为了学习有用的语义Affinity A，最重要的一步是得到一个可靠的伪Affinity标签Yaff并对其进行监督。为了得到可靠的伪标签，作者选取两个背景阈值将初始伪标签分为可靠的前景、背景和不确定区域。根据给定的CAM M ∈ Rh×w×C，构建伪标签Yp的公式如下：
 
-{% asset_img 7.webp %}
+$$Y_p^{i,j} = \begin{cases} \mathtt{argmax}(M^{i,j,:}), & \text{if } \max(M^{i,j,:}) \geq \beta_h, \\ 0, & \text{if } \max(M^{i,j,:}) \leq \beta_l, \\ 255, & \text{otherwise}, \end{cases}$$
 
 然后从Yp中推导出伪affinity标签Yaff。对于Yp，如果（i，j）和（k，l）共享同一个语义信息，那么将它们的Affinity值设为正，其他情况则为负。如果像素对在被忽略的区域内被采样，则它们的Affinity也会被忽略。此外，这里只考虑像素对在同一个局部窗口的情况，而不考虑远处像素对的Affinity。
 
@@ -97,7 +97,7 @@ tags:
 
 利用生成的伪Affinity标签Yaff来监督预测的affinity A。Affinity 损失公式如下：
 
-{% asset_img 8.webp %}
+$$\begin{aligned} \mathcal{L}_{aff} = &\frac{1}{N^+} \sum_{(ij,kl) \in \mathcal{R}^+} (1 - \mathtt{sigmoid}(A^{ij,kl})) \\ &+ \frac{1}{N^-} \sum_{(ij,kl) \in \mathcal{R}^-} \mathtt{sigmoid}(A^{ij,kl}), \end{aligned}$$
 
 其中，R+和R-表示Yaff样本正负集合，N+和N-表示R+和R-的数量。根据上式，一方面网络能从MHSA中学习到可靠的Affinity关系；另一方面，由于Affinity是MHSA的线性组合，上式又能保证注意力矩阵中更好的特征交互。
 
@@ -107,7 +107,7 @@ tags:
 
 在得到可靠的Affinity矩阵之后，我们通过随机游走算法对初始伪标签进行修正：
 
-{% asset_img 9.webp %}
+$$\begin{aligned} T &= D^{-1} A^\alpha, \quad \text{with } D^{ii} = \sum_k A^{ik} \\ &M_{aff} = T * \mathrm{vec}(M) \end{aligned}$$
 
 通过随机游走算法，可以对初始为标签中的高Affinity区域进行激活，并抑制低Affinity的错误激活区域，从而使得伪标签更好地贴合图像的语义信息。
 
@@ -119,15 +119,15 @@ tags:
 
 首先给定的输入图像 I，对于给定位置的像素对，定义两个像素的RGB信息和位置信息的kernel：
 
-{% asset_img 10.webp %}
+$$\kappa_{rgb}^{ij,kl} = -\left( \frac{|I_{ij} - I_{kl}|}{w_1 \sigma_{rgb}^{ij}} \right)^2, \quad \kappa_{pos}^{ij,kl} = -\left( \frac{|P_{ij} - P_{kl}|}{w_2 \sigma_{pos}^{ij}} \right)^2,$$
 
 根据定义的位置和RGB信息kernel函数计算像素之间的low-level affinity值为：
 
-{% asset_img 11.webp %}
+$$\kappa^{ij,kl} = \frac{\exp(\kappa_{rgb}^{ij,kl})}{\sum_{(x,y)} \exp(\kappa_{rgb}^{ij,xy})} + w_3 \frac{\exp(\kappa_{pos}^{ij,kl})}{\sum_{(x,y)} \exp(\kappa_{pos}^{ij,xy})},$$
 
 与CRF中计算全局像素的low-level affinity不同，我们根据像素的8个邻居像素进行计算，该过程可以使用3x3的像素自适应卷积实现，从而能够高效的插入到端到端的训练框架中。同时为了扩大感受野，使用多个空洞卷积进行多个邻居像素信息的提取。得到像素之间的low-level affinity之后，通过多次迭代进行伪标签的修正：
 
-{% asset_img 12.webp %}
+$$M_t^{i,j,c} = \sum_{(k,l) \in \mathcal{N}(i,j)} \kappa^{ij,kl} M_{t-1}^{k,l,c}.$$
 
 ***
 
@@ -135,7 +135,7 @@ tags:
 
 据图1所示，训练损失函数包括分类损失，分割损失和affinity损失。其中分类损失采用常见的多分类软间隔损失，分割损失则采用交叉熵损失。总损失计算公式如下：
 
-{% asset_img 13.webp %}
+$$\mathcal{L} = \mathcal{L}_{cls} + \lambda_1 \mathcal{L}_{seg} + \lambda_2 \mathcal{L}_{aff} + \lambda_3 \mathcal{L}_{reg},$$
 
 ***
 

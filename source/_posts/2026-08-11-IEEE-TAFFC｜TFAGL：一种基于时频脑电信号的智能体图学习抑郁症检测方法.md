@@ -50,13 +50,13 @@ TFAGL主要由特征提取模块、智能体图学习（Agent Graph Learning, AG
 
 在时间维度，针对原始EEG时间序列，作者采用了一种改进的因果卷积层。这种卷积操作能够捕捉脑电信号随时间变化的潜在趋势。通过n层卷积和下采样，提取出不同时间尺度的特征并将其拼接，从而保留丰富的时间动态信息，如公式（1）所示。
 
-{% asset_img 3.webp %}
+$$x_l = CausalConv(x_{l-1}), l = 1, 2, ..., n,$$
 
 其中为原始信号。这些特征最终被拼接起来，以保留全面的时间动态信息。
 
 在频率维度，作者利用快速傅里叶变换（FFT）将信号转换到频率域。为了分析脑电波的复杂性，模型将频段划分为五个常见的波段（如δ、θ、α、β、γ波），并计算每个波段的微分熵（Differential Entropy）,公式如（2）所示。这是一种描述连续随机变量复杂度的非线性特征，能有效反映大脑的状态。最后，将五个波段的特征进行拼接，生成综合的频域特征。
 
-{% asset_img 4.webp %}
+$$DE(X) = \int_{-\infty}^{\infty} \frac{-1}{\sqrt{2\pi\sigma^2}} e^{\frac{(x-\mu)^2}{2\sigma^2}} \ln \frac{1}{\sqrt{2\pi\sigma^2}} e^{\frac{(x-\mu)^2}{2\sigma^2}} dx = \frac{1}{2} \ln 2\pi e \sigma^2,$$
 
 #### （二） 智能体图学习（AGL）模块
 
@@ -67,11 +67,11 @@ TFAGL主要由特征提取模块、智能体图学习（Agent Graph Learning, AG
 
 AGL模块通过引入智能体节点，构建了一个能够模拟局部与全局协作的脑网络。AGL将大脑划分为多个功能区（如额叶、颞叶等）。针对每个脑区，模型通过自注意力机制自适应地生成一个“智能体节点”。其特征生成公式如下：
 
-{% asset_img 6.webp %}
+$$\begin{aligned} \tilde{x}_{\text{agent}}^{(i)} &= \boldsymbol{\alpha}_r x_r^{(i)} W_v \\ &= \text{softmax}\left(\frac{x_r^{(i)} W_q \left(x_r^{(i)} W_k\right)^T}{\sqrt{d_k}}\right) x_r^{(i)} W_v, \end{aligned}$$
 
 这个节点可以看作是该脑区的“主神经元”，它通过注意力权重汇集了区域内原始电极的信息，并据此确定自己在空间中的位置属性：
 
-{% asset_img 7.webp %}
+$$\tilde{\mathbf{p}}_{agent}^{(i)} = \boldsymbol{\alpha}_r \mathbf{p}_r^{(i)},$$
 
 得到智能体节点之后，AGL构建双图结构：动态潜在连接图和位置空间连接图。动态潜在连接图是基于电极与智能体节点之间的关系构建的，其连接的权重是可学习的，可以根据数据自适应地发现哪些连接对于抑郁症检测最重要，从而模拟大脑内在的功能连接。而位置空间连接图则是基于电极和智能体节点在物理空间中的距离构建，保留了大脑的解剖结构信息，确保模型不忽视空间邻近性。
 
@@ -88,11 +88,11 @@ AGL在这两个图上应用了基于切比雪夫多项式的多尺度图卷积�
 
 为了避免这两种连接模式提供重复信息，模型引入了正交约束机制。通过最小化域内特征的协方差矩阵，强制空间特征和潜在特征彼此独立。其损失函数公式如下：
 
-{% asset_img 9.webp %}
+$$\mathcal{L}_{\text{intra}} = \left\Vert \boldsymbol{H}_{\text{spa}}^{\text{S} \top} \boldsymbol{H}_{\text{lat}}^{\text{S}} \right\Vert_F^2 + \left\Vert \boldsymbol{H}_{\text{spa}}^{\text{T} \top} \boldsymbol{H}_{\text{lat}}^{\text{T}} \right\Vert_F^2,$$
 
 完成域内的特征精炼后，模块进一步将处理后的时域特征和频域特征进行跨域融合。为了确保时域和频域的信息能够相互补充而非重叠，模型同样施加了域间正交约束，其损失函数如下：
 
-{% asset_img 10.webp %}
+$$\mathcal{L}_{\text{inter}} = \left\Vert \boldsymbol{H}^{\text{S} \top} \boldsymbol{H}^{\text{T}} \right\Vert_F^2.$$
 
 最后，融合后的特征经过多层残差学习块进行高层抽象提取，最终生成一个既包含全脑时空协作模式、又剔除了冗余噪声的高质量特征表示，为最终的抑郁症分类提供强有力的判别依据。
 

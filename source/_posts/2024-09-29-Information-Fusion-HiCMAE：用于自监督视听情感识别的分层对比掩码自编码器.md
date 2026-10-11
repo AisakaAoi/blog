@@ -9,6 +9,8 @@ date: 2024-09-29 00:31:48
 tags:
 ---
 
+{% asset_img 1.webp %}
+
 该论文发表于Information Fusion（中科院1区，IF=14.7）,题目为《HiCMAE: Hierarchical Contrastive Masked Autoencoder for self-supervised Audio-Visual Emotion Recognition》。
 
 中科院的孙立才博士为此文第一作者，中科院的刘斌副研究员及清华大学的陶建华教授为此文共同通讯作者。

@@ -40,13 +40,15 @@ Transformer[3]最早提出是被作为一种序列到序列(sequence-to-sequence
 
 Transformer采用了带有**Query-Key-Value**(QKV)的自注意力模块。其中，Q指的是查询向量，K指的是关键字向量，而V指的是内容向量。以图像为例，通过计算Q和K的点积进行关联，可以获取到图像中各像素点之间的关联矩阵；然后，通过Softmax激活函数输出每个位置对应的权重图；最后，再将该权重图叠加到V，便可以实现对不同区域加权的目的。公式如下所示：
 
-{% asset_img 2.webp %}
+$$Attention(Q,K,V) = softmax(\frac{QK^\top}{\sqrt{D_k}})V = AV$$
 
 > 由于Q与K点乘结果过大，使得经过softmax之后的梯度变得很小，不利于反向传播，因此需要对结果进行缩放。
 
 Transformer并没有简单地应用单个注意力函数，而是使用了多头注意力。通过单独计算每一个注意力头，最终再将多个注意力头的结果拼接起来作为MSA模块最终的输出，具体公式如下所示：
 
-{% asset_img 3.webp %}
+$$MultiHeadAttn(Q,K,V) = Concat(head_1, \cdots, head_H)\mathbf{W}^O$$
+
+$$head_i = Attention(Q\mathbf{W}_i^Q, K\mathbf{W}_i^K, V\mathbf{W}_i^V)$$
 
 在Transformer中，主要涉及到三种不同的注意力类型：
 - **Self-attention**. 在Transformer的编码器中，我们设置Q=K=V=X，这里X为上一层的输出。
@@ -57,7 +59,9 @@ Transformer并没有简单地应用单个注意力函数，而是使用了多头
 
 前向传播网络实际上就是一个两层的多层感知机(Multi-Layer Perceptron, MLP)，也就是由全连接层加非线性激活函数所组成的，可以分别作用到每一个位置，具体公式如下所示：
 
-{% asset_img 4.webp %}
+$$FFN(\mathbf{H}') = ReLU(\mathbf{H}'\mathbf{W}^1 + \mathbf{b}^1)\mathbf{W}^2 + \mathbf{b}^2$$
+
+$$\mathbf{W}^1 \in \mathbb{R}^{D_m \times D_f},\ \mathbf{W}^2 \in \mathbb{R}^{D_f \times D_m},\ \mathbf{b}^1 \in \mathbb{R}^{D_f},\ \mathbf{b}^2 \in \mathbb{R}^{D_m}$$
 
 ##### 残差连接和归一化
 

@@ -47,14 +47,30 @@ tags:
 
 #### 基于边的拓展流
 
-{% asset_img 2.webp %}
+我们从流匹配一致性的约束开始推导。通过在流守恒原则中考虑从状态$s_t$转移到下一状态$s_{t+1}$的中间奖励信号$r(s_t \to s_{t+1})$，我们得到以下公式，在状态转移$s_t \to s_{t+1}$中考虑了一个额外的出流$r(s_t \to s_{t+1})$
+
+$$\sum_{\mathbf{s}_{t-1}} F(\mathbf{s}_{t-1} \to \mathbf{s}_t) = F(\mathbf{s}_t) = \sum_{\mathbf{s}_{t+1}} \left[ F(\mathbf{s}_t \to \mathbf{s}_{t+1}) + r(\mathbf{s}_t \to \mathbf{s}_{t+1}) \right]$$
+
+基于上述公式，我们可以定义相对应的前向和后向转移策略
+
+$$P_F(\mathbf{s}_t|\mathbf{s}_{t-1}) = \frac{F(\mathbf{s}_{t-1} \to \mathbf{s}_t) + r(\mathbf{s}_{t-1} \to \mathbf{s}_t)}{F(\mathbf{s}_{t-1})}, \quad P_B(\mathbf{s}_{t-1}|\mathbf{s}_t) = \frac{F(\mathbf{s}_{t-1} \to \mathbf{s}_t)}{F(\mathbf{s}_t)}$$
+
+结合上述两个公式，我们可以得到考虑了中间奖励信号的detailed balance的流守恒基准
+
+$$F(\mathbf{s}_{t-1}) P_F(\mathbf{s}_t|\mathbf{s}_{t-1}) = P_B(\mathbf{s}_{t-1}|\mathbf{s}_t) F(\mathbf{s}_t) + r(\mathbf{s}_{t-1} \to \mathbf{s}_t)$$
+
+在上述公式的基础上基于连乘，我们可以得到对应的trajectory balance的流守恒原则
+
+$$Z \prod_{t=0}^{n-1} P_F(\mathbf{s}_{t+1}|\mathbf{s}_t) = R(\mathbf{x}) \prod_{t=0}^{n-1} \left[ P_B(\mathbf{s}_t|\mathbf{s}_{t+1}) + \frac{r(\mathbf{s}_t \to \mathbf{s}_{t+1})}{F(\mathbf{s}_{t+1})} \right]$$
 
 **拓展流语义**
 
 {% asset_img 3.webp %}
 <p style="text-align:center">基于边的拓展流可以看作是在每个状态转换步骤中引入一个流向伪终止状态的额外的流r($s_t$→$s_t$+1)</p>
 
-{% asset_img 4.webp %}
+在上图中，对于从当前内部状态（黄色圆圈）$\mathbf{s}_t$到第$i$个下一状态$\mathbf{s}_{t+1}^i$的状态转换，我们引入一个特殊的具有伪结束效应的关联的特殊状态$\hat{s}_{t+1}^i$（红色圆圈）。具体而言，根据拓展流的的前向策略，我们在状态$\mathbf{s}_t$以概率$(F(s_t \to s_{t+1}) + r(s_t \to s_{t+1}))/F(s_t)$选择关联下一状态$\hat{s}_{t+1}$。在关联的下一状态$\hat{s}_{t+1}$，我们虚拟的以概率$r(s_t \to s_{t+1})/F(s_t)$选择汇点，而以概率选择实际的下一状态$\mathbf{s}_{t+1}$。因此，考虑到所有可能的下一个状态，我们即得到拓展流的一致性方程。中间奖励信号$r(s_t \to s_{t+1})$类似于过渡到一个从未被采用但仍然吸引更大进入概率的伪出口。
+
+在实际任务中，我们发现基于边的拓展流网络与GFlowNet相比，能够提升多样性并且能更少的生成分布的L1误差。然而，它仍旧无法发现所有mode。
 
 ***
 
@@ -62,13 +78,13 @@ tags:
 
 与基于边的拓展流不同，Yoshua Bengio 教授等人在 2021 年提出可以将轨迹回报定义为基于状态的中间奖励之和，如下公式所示
 
-{% asset_img 5.webp %}
+$$Z \prod_{t=0}^{n-1} P_F(\mathbf{s}_{t+1}|\mathbf{s}_t) = \left[ R(\mathbf{x}) + \sum_{t=0}^{n-1} r(\mathbf{s}_t \to \mathbf{s}_{t+1}) \right] \prod_{t=0}^{n-1} P_B(\mathbf{s}_t|\mathbf{s}_{t+1})$$
 
 然而，它明确地改变了潜在的目标概率分布，并且会被轨迹长度影响。因此，这会导致收敛速度变慢。
 
 如上所述，基于节点的拓展流在提高多样性方面是非常有效的，但不能有效地适应目标分布。另一方面，基于边的拓展流方式的收敛性更好，但缺乏充分的探索能力，无法挖掘所有可能的 modes。因此，我们在本文中提出了一种联合方法，将基于节点和基于边的拓展流考虑在内，以实现最佳平衡及效果，如下公式所示
 
-{% asset_img 6.webp %}
+$$Z \prod_{t=0}^{n-1} P_F(\mathbf{s}_{t+1}|\mathbf{s}_t) = \left[ R(\mathbf{x}) + r(\mathbf{s}_n) \right] \prod_{t=0}^{n-1} \left[ P_B(\mathbf{s}_t|\mathbf{s}_{t+1}) + \frac{r(\mathbf{s}_t \to \mathbf{s}_{t+1})}{F(\mathbf{s}_{t+1})} \right]$$
 
 具体来说，我们将轨迹回报重新定义为最终奖励和最终状态的内在奖励之和。另一方面，我们根据基于边的拓展流考虑内部状态的内在奖励。这种联合的方式继承了基于节点和基于边的拓展流的优点，使其在更有效地学习的同时以更全局的方式改进探索。
 
@@ -76,7 +92,7 @@ tags:
 
 在定理 1 中，我们理论证明我们提出的方式能够渐近地保证解是无偏的。
 
-{% asset_img 7.webp %}
+**Theorem 1.** Suppose that $\forall \tau$, $\mathcal{L}_{GAFlowNet}(\tau) = 0$, and $\forall \mathbf{x}$, $R(\mathbf{x}) + r(\mathbf{x}) > 0$. When edge-based intrinsic rewards converge to 0, then (1) $P(\mathbf{x}) = \frac{R(\mathbf{x}) + r(\mathbf{x})}{\sum_{\mathbf{x}} [R(\mathbf{x}) + r(\mathbf{x})]}$; (2) If state-based intrinsic rewards converge to 0, then $P(\mathbf{x})$ is an unbiased sample distribution.
 
 ***
 

@@ -50,7 +50,7 @@ tags:
 
 定义1（节点影响）：在随机游走的k步之后，节点v对节点u的节点影响I（u，v）被定义为雅可比矩阵∂h（k）u/∂h（0）v的范数：
 
-{% asset_img 3.webp %}
+$$I(u, v) = \left\Vert \frac{\partial h_u^{(k)}}{\partial h_v^{(0)}} \right\Vert$$
 
 其中范数‖⋅‖是任意诱导范数。
 
@@ -60,27 +60,27 @@ tags:
 
 定理1：给定一棵树T，在随机游走的k=dist(u，v)步之后，节点影响节点v的IT(u，v)对节点u的影响为：
 
-{% asset_img 4.webp %}
+$$I_T(u, v) = \frac{a_{uv_1} \cdot a_{v_1v_2} \cdots a_{v_{k-1}v}}{\sum_{i\in\mathcal{N}(u)} a_{ui} \cdot \sum_{j\in\mathcal{N}(v_1)} a_{v_1j} \cdots \sum_{l\in\mathcal{N}(v_{k-1})} a_{v_{k-1}l}}$$
 
 其中节点u和v之间的唯一路径表示为（u，v1，v2，…，vk-1，v）；avivj是节点vi和vj之间的边权重，N（u）是u的1跳邻居的集合。由于脑树中所有边的权重均为1，上述公式可进一步简化为：
 
-{% asset_img 5.webp %}
+$$I_T(u, v) = \frac{1}{d_u d_{v_1} \cdots d_{v_{k-1}}}$$
 
 式中，du为节点u的度数。上式表明节点影响随着节点之间的距离k和节点度数的增加而减小，这一点符合直觉。更准确地说，节点影响IT（u，v）随着节点u和v之间距离的增加呈指数下降，随着连接u和v的路径上节点度数的增加呈多项式下降。作者的目标是最大化大脑树中的节点影响IT（u，v），这一点可以通过解决以下优化问题来实现：
 
-{% asset_img 6.webp %}
+$$\begin{aligned} \max_{d_u, d_{v_i}} &\quad I_T(u, v) = \frac{1}{d_u d_{v_1} \cdots d_{v_{k-1}}} \\ \text{s.t.} &\quad d_u \geq 1 \\ &\quad d_{v_i} \geq 2, \ \forall i = 1, 2, \ldots, k-1 \end{aligned}$$
 
 显而易见，最优解是^du=1，^dvi=2，其对应于节点u和v之间的路径。由于树中任何一对节点之间都一定存在至少一条路径，此时u和v之间的路径即是最短路径。上述分析表明，信息应该沿着最短路径传播。该如何量化路径携带的信息总量呢？如下定义路径信息。
 
 定义2（路径信息）：设P表示长度为m的路径，其顶点序列为（v0，v1，...，vm）。路径P的路径信息I(P)定义为路径上每对节点之间的节点影响的总和：
 
-{% asset_img 7.webp %}
+$$I(P) = \sum_{\substack{i,j=0 \\ i \neq j}}^{m} I_P(v_i, v_j)$$
 
 路径信息量化了路径P上节点之间的信息融合程度。作者的目标是最大化路径信息，从而尽可能增强大脑区域之间的信息融合。下面的定理给出了具有最大路径信息的路径。
 
 定义2：给定树T，最长最短路径（the longest shortest path）^P 具有最大路径信息：
 
-{% asset_img 8.webp %}
+$$I(\hat{P}) = \sum_{k=1}^{\mathfrak{d}} (\mathfrak{d} - k + 1) \cdot \frac{2}{2^{k-1}}$$
 
 其中δ为树T的直径。
 
@@ -105,8 +105,8 @@ tags:
 
 基于上述分析，作者提出了分层情绪网络（Hierarchical Emotion Network，HEmoN），由于最长最短路径（即主干）上的节点形成一个长序列，作者使用长短期记忆（LSTM）来有效地捕捉长期依赖性并识别复杂模式，从而促进情绪解码的表征学习过程。在（3）中获得每个级别的中继之后，通过LSTM来学习沿着其相应中继路径的每个中继的表示，最后组合所有的主干表示来创建脑树的表示，公式为
 
-{% asset_img 11.webp %}
-{% asset_img 12.webp %}
+$$h_T^{(\ell)} = \sum_{t_\ell \in \mathcal{T}_\ell} \text{LSTM}\left(x_{v_0}^{(t_\ell)}, x_{v_1}^{(t_\ell)}, \ldots, x_{v_{k_{t_\ell}}}^{(t_\ell)}\right)$$
+$$h_T = \sum_{\ell=1}^{L} w^{(\ell)} h_T^{(\ell)}$$
 
 其中Tl是第l级的主干集，tl是Tl中的单个主干，x（tl）vi表示主干tl上节点vi的特征向量，W(l)表示第l级的可学习加权矩阵，h（l）T表示第l级的主干表示。由于Tl中所有主干上的节点构成第l级情绪区域，h（l）T也作为第l级情绪区域的表示。
 
@@ -127,7 +127,7 @@ tags:
 
 通过在数据集1上建立的HemoN，作者在数据集2上进行性能测试和评价，以回归任务中广泛使用的平均绝对误差（MAE）作为评估度量，MAE值越低表示误差越小。MAE值α计算如下：
 
-{% asset_img 16.webp %}
+$$\alpha = \frac{1}{N_s} \sum_{i=1}^{N_s} \sum_{j=1}^{C} |y_{ij} - \hat{y}_{ij}|$$
 
 其中yi和^yi分别表示第i个刺激的真实和预测情绪评级向量，Ns表示刺激的数量。
 

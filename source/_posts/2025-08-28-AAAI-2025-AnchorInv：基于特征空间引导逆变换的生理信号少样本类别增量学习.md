@@ -48,11 +48,13 @@ tags:
 
 模型推理过程的目的是定义模型对输入样本的处理流程，其分为特征提取和分类两个阶段。特征提取阶段通过骨干网络将维度为H×W（H为通道数，W为时间步）的输入样本映射到特征空间，得到维度为D的嵌入向量，即
 
-{% asset_img 3.webp %}
+$$\mathbf{h}_i^{(t)} = f_{\boldsymbol{\theta}^{(t)}}\left(\mathbf{x}_i^{(t)}\right)$$
 
 分类阶段采用基于度量的分类器，通过计算嵌入向量与类别原型的相似度进行预测，其中，相似度函数s基于负余弦距离（归一化后）和温度参数T计算：
 
-{% asset_img 4.webp %}
+$$s\left(\mathbf{h}_i^{(t)}, \phi_k^{(t)}\right) = \frac{\exp\left(-d(\mathbf{h}_i^{(t)}, \phi_k^{(t)})/T\right)}{\sum_{k^{\prime}=1}^{\cup_{c=0}^{t} \mathcal{C}^{(c)}} \exp\left(-d(\mathbf{h}_i^{(t)}, \phi_{k^{\prime}}^{(t)})/T\right)}$$
+
+$$d(\mathbf{h}_i^{(t)}, \phi_k^{(t)}) = -\frac{\mathbf{h}_i^{(t)} \cdot \phi_k^{(t)}}{\|\mathbf{h}_i^{(t)}\| \|\phi_k^{(t)}\|}$$
 
 其中，分类器参数ϕ k(t )由每个类别的平均嵌入（即原型）替代。
 
@@ -64,15 +66,15 @@ tags:
 
 首先进行锚点选择，对于每个会话t的训练数据，通过特征提取器得到特征集，再从特征集中随机采样或者通过聚类确定聚类中心选取锚点集：
 
-{% asset_img 5.webp %}
+$$\mathcal{A}^{(t)} = \left\{\left(\mathbf{a}_j^{(t)}, y_j^t\right)\right\}_{j=1}^{J}$$
 
 然后是反转阶段，从会话t的选定锚点集中推导出一个重放集：
 
-{% asset_img 6.webp %}
+$$\mathcal{D}_{\text{inv}}^{(t)} = \{(\hat{\mathbf{x}}_j^{(t)}, y_j^{(t)})\}$$
 
 其用于正则化特征提取器对会话t+1的适应。这一推导过程的自然形式化定义使潜在重放样本的嵌入与锚点对齐，具体通过最小化算子实现：
 
-{% asset_img 7.webp %}
+$$\hat{\mathbf{x}}_j^{(t)} = \underset{\hat{\mathbf{x}}_j}{\arg\min}\, \mathcal{L}\left(f_{\boldsymbol{\theta}^{(t)}}\left(\hat{\mathbf{x}}_j^{(t)}\right), \mathbf{a}_j^{(t)}\right)$$
 
 其中，L代表平均绝对误差（MAE）。该优化可以通过对随机初始化的重放样本进行梯度下降来实现。
 

@@ -52,11 +52,11 @@ State Mamba 的整体架构由三大核心模块构成，各模块深度协同�
 
 模型将每个 EEG 通道的脑活动建模为一个动态系统，其状态转移的核心方程为：
 
-{% asset_img 2.webp %}
+$$h_i(t + \Delta) \overset{simplify}{=} \underbrace{(\Delta A + I)h_i(t) + \Delta B x_i(t)}_{\text{Current channel state transfer}} + \underbrace{\Delta \sum_{j=1, j \neq i}^{j=c} A_j^c h_j(t)}_{\text{Spatial influence from other channels}}.$$
 
 其中，hi(t)为第 i 个 EEG 通道在 t 时刻的脑状态，A 为时间状态转移矩阵，Ajc为通道间的空间转移矩阵，xi(t)为输入的 EEG 信号。该方程同时刻画了单通道的时序状态演化，与其他通道的空间交互影响，实现了时空维度的联合建模。为了降低计算复杂度，模型进一步采用共享空间转移映射策略，用统一的空间转移矩阵Ac替代通道特异性矩阵，得到最终的简化状态更新方程：
 
-{% asset_img 3.webp %}
+$$h_i(t + \Delta) \overset{simplify}{=} \underbrace{(\Delta A + I)h_i(t) + \Delta B x_i(t)}_{\text{Current channel state transfer}} + \underbrace{\Delta A^c \sum_{j=1, j \neq i}^{j=c_n} h_j(t)}_{\text{Spatial influence from other channels}}.$$
 
 基于这一方程构建的 State Mamba 块，通过残差连接与 RMSNorm 支持深度堆叠，实现对复杂脑活动的层级化时空建模。
 
@@ -66,7 +66,7 @@ State Mamba 的整体架构由三大核心模块构成，各模块深度协同�
 
 为了实现高维 EEG 特征的紧凑表征，模型设计了 LGANN（Local and Global Attention Neural Network）模块，通过双路径注意力机制，同时建模脑活动的长程全局依赖与短程局部时序特征，核心计算公式为：
 
-{% asset_img 4.webp %}
+$$\mathbf{a}^{(b)} = \underbrace{\sigma(\mathbf{W}_2^{(g)} \cdot \text{ReLU}(\mathbf{W}_1^{(g)}) \cdot (\frac{1}{pl} \sum_{i=1}^{p} \sum_{j=1}^{l} \mathbf{X}_{b,c,i,j}))}_{\text{Global attention path}} + \underbrace{\sigma(\mathbf{W}_2^{(l)} \cdot \text{ReLU}(\mathbf{W}_1^{(l)}) \cdot (\frac{1}{l} \sum_{j=1}^{l} \mathbf{X}_{b,c,i,j})_{i=1}^{p})}_{\text{Local attention path}},$$
 
 其中，全局注意力路径聚合所有时间步与片段的信息，生成全脑活动的整体描述；局部注意力路径保留片段级的时序粒度，建模短时间窗口内的精细神经动态。二者融合生成的注意力权重，对特征进行重校准后，经 1D-CNN 降维得到紧凑的 EEG 表征，在降低维度的同时，完整保留了与任务相关的脑活动模式。
 

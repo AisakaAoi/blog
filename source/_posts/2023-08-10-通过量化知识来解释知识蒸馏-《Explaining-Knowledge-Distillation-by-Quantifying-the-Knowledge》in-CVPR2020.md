@@ -36,7 +36,7 @@ date: 2023-08-10 06:03:15
 
 考虑到不同像素上的熵是不一样的，一个图片上的“知识点”被定义为那些信息熵比较小的像素，即其信息损失比“平均背景信息熵”明显小很多的像素点。进一步，这些信息损失比较小的像素点的个数被认为是这个图片上的“知识量”。这里“平均背景信息熵”是一个参考值，用来大致衡量神经网络在与分类无关的图像区域的信息损失程度。
 
-{% asset_img 3.webp %}
+$$\begin{aligned} N_{\text{concept}}^{\text{bg}}(x) &= \sum_{i \in \Lambda_{\text{bg}}\ w.r.t.\ x} \mathbb{1}(\overline{H} - H_i > b), \\ N_{\text{concept}}^{\text{fg}}(x) &= \sum_{i \in \Lambda_{\text{fg}}\ w.r.t.\ x} \mathbb{1}(\overline{H} - H_i > b) \end{aligned}$$
 
 Hypothesis 1旨在证明相比仅从数据集训练而得的DNN（baseline network），知识蒸馏使得DNN学到更多的“知识点”，即更多的前景“知识量”和更少的背景“知识量”。分类任务中，相较于背景，前景信息与任务更为相关。从而，一个性能优越的教师网络会建模更多的前景“知识点”和更少的背景“知识点”，使得学生网络会学到更可靠的“知识点”，如图3所示，验证了Hypothesis 1的正确性。
 

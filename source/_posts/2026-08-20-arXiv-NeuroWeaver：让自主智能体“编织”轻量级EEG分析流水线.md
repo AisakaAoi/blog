@@ -52,7 +52,7 @@ NeuroWeaver主要由程序空间建模、领域信息子空间初始化（DISI�
 
 与仅搜索网络结构的传统方法不同，NeuroWeaver将一条完整、可执行的EEG分析程序作为候选方案。每条流水线需要依次完成数据加载、信号预处理、模型训练和结果评价：
 
-{% asset_img 3.webp %}
+$$\hat{y} = (f_{model} \circ f_{pre} \circ f_{load})(x), \qquad m_s = f_{eval}(\hat{y}, y)$$
 
 其中，f_load、f_pre、f_model和f_eval分别表示数据加载、信号预处理、模型训练和结果评价模块。
 
@@ -62,13 +62,13 @@ NeuroWeaver主要由程序空间建模、领域信息子空间初始化（DISI�
 
 通用大语言模型可能生成不符合EEG数据特点的代码。为缩小搜索范围，DISI首先分析本地数据，并构建数据约束描述符：
 
-{% asset_img 4.webp %}
+$$\phi_{data} = \langle \mathbf{i}_{EEG}, \mathbf{q}_{artifact} \rangle$$
 
 其中，$i_EEG$表示采样率、导联和文件格式等采集信息，qartifact表示工频、眼电、肌电和异常导联等伪迹信息。
 
 系统还会从Braindecode中检索卷积网络、循环网络、Transformer和基础模型等EEG架构知识，并将其总结为领域先验。初始候选流水线的生成过程如下：
 
-{% asset_img 5.webp %}
+$$s_0 = \pi_\theta\left(s \mid T_{goal}, \phi_{data}, \mathcal{T}_{prior}\right)$$
 
 其中，T_goal、$φ_data$和T_prior分别表示任务目标、数据约束和检索得到的EEG架构先验。
 
@@ -82,7 +82,7 @@ MOEO将候选流水线组织为搜索树，并采用UCT策略平衡探索与利�
 
 每条候选流水线通过多目标奖励函数进行评价：
 
-{% asset_img 6.webp %}
+$$R(s) = w_m \mathcal{M}(s|\mathcal{D}) + w_i \Delta(s, s_{parent}) + w_n \Omega(s) + w_e \Gamma(\tau_s) + w_{fix} \Phi(s)$$
 
 其中，M、Δ、Ω、Γ和Φ分别表示任务性能、相对改进、新颖性、运行效率和错误修复奖励；无法执行的候选程序获得固定惩罚−1。
 

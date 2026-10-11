@@ -67,31 +67,37 @@ tags:
 
 1. **局部时间特征提取器**：局部时间特征提取器的功能是从每个 SEEG 通道中提取情绪相关的时间信息。该提取器由两个卷积模块组成，每个模块包含一个卷积层、一个批归一化（BN）层、一个 ReLU 激活函数层以及一个平均池化层。如果以 Conv(:) 表示卷积层，以 σ(:) 表示批归一化层、ReLU 激活函数层和平均池化层的计算过程，则该特征提取器可表示为：
 
-{% asset_img 4.webp %}
+$$X_t = \sigma\left(Conv_2\left(\sigma\left(Conv_1(X)\right)\right)\right)$$
 
 X为原始SEEG信号，Xt为经过特征提取器后得到的特征图。
 
 2. **全局空间特征提取器**：在输入空间Transformer之前，Xt首先经过一个卷积模块。该模块旨在提取全局时间特征，同时保留通道之间的依赖关系。其结构包括一个卷积层、一个BN层、一个ReLU激活函数层以及在时间维度上的全局平均池化层。该模块的卷积层计算过程记为Conv3(:)，其余操作记为γ(:)。此外，还在特征图中加入一个可学习向量xl，用于与每个通道向量计算相关性。同时，添加一个可学习的位置向量Xpos到特征图中，以保留各通道的相对位置信息。上述过程可表示为：
 
-{% asset_img 5.webp %}
+$$X_s = \gamma\left(Conv_3(X_t)\right)$$
+
+$$S = [x_l, X_s] + X_{pos}$$
 
 其中，S作为Transformer编码器的输入。
 
 Transformer编码器由两个模块组成：多头自注意力机制（MSA）和前馈神经网络。每个模块都应用了层归一化（LN）和残差连接自注意力（SA）使模型在处理多通道数据时，能够关注不同通道位置上的重要信息。SA可以描述为在查询向量Q、键向量K和值向量V之间计算缩放点积注意力，其公式如下：
 
-{% asset_img 6.webp %}
+$$[Q, K, V] = S\left[W_Q, W_k, W_v\right]$$
+
+$$SA(S) = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
 
 其中，Q和K的维度设为dk，而V的维度设为dv。它们对应的映射矩阵分别为
 
-{% asset_img 7.webp %}
+$$W_Q \in \mathbb{R}^{d_{model} \times d_k}, W_K \in \mathbb{R}^{d_{model} \times d_k}, W_V \in \mathbb{R}^{d_{model} \times d_v}$$
 
 与SA 相比，MSA（多头注意力）提供了并行计算的优势，并且在捕获全局和局部特征差异方面具有更强的能力。MSA的计算过程如下所示：
 
-{% asset_img 8.webp %}
+$$MSA(S) = Concat(SA_1(S_1), \ldots, SA_h(S_h))W^O$$
 
 其中映射矩阵WO∈R^(h × d_model × $d_v$)，h表示MSA的头数。空间Transformer的完整计算过程如下：
 
-{% asset_img 9.webp %}
+$$S_1 = LN(MSA(S) + S)$$
+
+$$S_2 = LN(MLP(S_1) + S_1)$$
 
 其中S2表示信号通过空间Transformer后得到的特征图。
 
@@ -99,11 +105,15 @@ Transformer编码器由两个模块组成：多头自注意力机制（MSA）和
 
 3. 高层特征提取器：该特征提取器由一个深度卷积层（depth convolution layer）、一个 BN 层、一个 ReLU 激活函数层以及一个全局平均池化（GAP）层组成。输入该模块的特征首先会与空间Transformer中学到的通道注意力权重相乘。这种乘法操作使得模型能够更加关注具有较高权重的通道。随后，该模块利用全局空间卷积提取关键的空间高层信息。该模块的计算过程如下：
 
-{% asset_img 10.webp %}
+$$X_{weight} = softmax\left(\frac{QK^T}{\sqrt{d_k}}\right)[1][2:C+1]$$
+
+$$X_{ss} = \gamma(DConv3(X_t * x_w))$$
 
 其中X_weight ∈ $R^C$，C表示输入信号的通道数，通过选取自注意力矩阵第一行中，从第一列到第C+1列数据得到通道注意力权重得到。最后将空间 Transformer 中学到的可学习向量xl重新提取出来，与Xss拼接。随后，三类情绪的概率输出通过一个 MLP 实现。整个分类过程如下所示：
 
-{% asset_img 11.webp %}
+$$x_l = S_2[1]$$
+
+$$\text{Probability} = MLP(Concat(x_l, X_{ss}))$$
 
 ***
 

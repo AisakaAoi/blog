@@ -50,19 +50,19 @@ tags:
 
 **图卷积模块**：SelfGCN采用类似于CTR-GCN的方法，同时学习共享拓扑和通道特定的相关性。通过相关性建模函数M(⋅)来模拟两个顶点之间的拓扑关系，可以表示为：
 
-{% asset_img 3.webp %}
+$$\mathcal{M}(\psi(x_i), \omega(x_j)) = \sigma(\mathcal{P}(\psi(x_i)) - \mathcal{P}(\omega(x_j)))$$
 
 其中 σ(⋅) 表示激活函数，P(⋅) 是平均池化操作，P(ψ(xi)) 和 P(ω(xj)) 分别表示经过线性变换和池化操作后的两个节点的特征。之后再使用线性变化 ɛ(⋅) 增加通道维度，获取通道特定的相关性 CA ：
 
-{% asset_img 4.webp %}
+$$CA_{ij} = \varepsilon\left(\mathcal{M}\left(\psi(x_i), \omega(x_j)\right)\right)$$
 
 CAij 反映了顶点 vi 和 vj 之间的通道特定拓扑关系。将通道的特定相关性 CA 与领接矩阵形式的共享拓扑 A 相结合，得到特定通道的拓扑关系 R ：
 
-{% asset_img 5.webp %}
+$$R = A + \alpha \cdot CA$$
 
 其中 α 是一个可训练的标量参数，用于调整通道拓扑的改进强度。最后通过得到的通道特定拓扑R和高级特征X′，以通道方式对空间特征进行提取：
 
-{% asset_img 6.webp %}
+$$\begin{aligned} \mathcal{X}' &= \rho(\mathcal{X}) \\ Z_G &= \mathcal{A}_G(\mathcal{X}', R) \\ &= \left[ R_1 \mathcal{X}'_{:,:,1} \| R_2 \mathcal{X}'_{:,:,2} \| \cdots \| R_{C'} \mathcal{X}'_{:,:,C'} \right. \end{aligned}$$
 
 其中，ρ(⋅) 是用于将输入特征转换为高级特征的线性变换函数，AG 是聚合函数，Ri 是通道的拓扑结构，X':,:,i 是通道的变换输入特征，⨁ 表示连接操作。通过这种方式，SelfGCN 可以有效地从不同通道聚合关节特征，同时捕捉局部和全局的空间特征。
 
@@ -70,7 +70,7 @@ CAij 反映了顶点 vi 和 vj 之间的通道特定拓扑关系。将通道的�
 
 同时为了与CTR-GCN的通道拓扑结构保持一致，本文为每个通道独立地使用自注意力机制来建模通道内关节的全局关系。对于第 i 个通道，自注意力权重 SAi 通过以下公式计算：
 
-{% asset_img 7.webp %}
+$$SA_i = \text{softmax}\left(\frac{(\mathcal{X}_{:,:,i}^1)(\mathcal{X}_{:,:,i}^2)^{\prime}}{\sqrt{T}}\right)$$
 
 其中 SAi 表示第 i 个通道内关节间的全局关系，Xj:,:,i 表示变换后的输入特征的第 i 个通道特征，T 是时间帧的数量。最后将关系矩阵 SAi 与相应通道的输入特征相乘，即可以得到每个通道的全局空间特征。通过自注意力模块，SelfGCN能够有效地捕捉关节间的全局依赖关系。
 
@@ -78,12 +78,12 @@ CAij 反映了顶点 vi 和 vj 之间的通道特定拓扑关系。将通道的�
 
 使用自注意力模块的空间建模结果进行通道注意力计算，包括平均池化、两个连续的 1x1 卷积，以及后续的 GELU 激活函数，最后通过 sigmoid 函数生成通道注意力结果 Cf ：
 
-{% asset_img 8.webp %}
+$$\begin{aligned} C_f &= \text{Sig}(\text{Conv}[\text{avg}(Z_S)]) \\ &= \text{Sig}\left\{\text{Conv2}[\text{GELU}(\text{Conv1}[\text{avg}(Z_S)])]\right\} \end{aligned}$$
 
 将通道注意力结果应用于通道特定的拓扑关系 R，使用 Rf 和变换后的输入特征 X′ 聚合每个通道的特征，并将它们连接起来作为图卷积模块的输出 OutG 。对图卷积模块的建模结果应用空间注意力，包括池化操作、 1x1 卷积和 sigmoid 函数，再将空间注意力应用于自注意力模块得到建模结果 OutS ：
 
-{% asset_img 9.webp %}
-{% asset_img 10.webp %}
+$$\begin{aligned} Out_G &= \mathcal{A}_G(\mathcal{X}', R_f) \\ &= \left[ R_{f_1} \mathcal{X}'_{:,:,1} \| R_{f_2} \mathcal{X}'_{:,:,2} \| \cdots \| R_{f_{C'}} \mathcal{X}'_{:,:,C'} \right. \end{aligned}$$
+$$\begin{aligned} S_{Att} &= \text{Sig}\left\{\text{Conv}\left[\text{avg}(Out_G)\right]\right\} \\ Out_S &= S_{Att} \cdot Z_S \end{aligned}$$
 
 最后，将两个模块的建模结果 OutG 和 OutS 相加，即可以得到MFSG模块的输出。
 
@@ -95,15 +95,15 @@ TSSA模块旨在解决传统的图卷积网络在处理骨架特征序列时，�
 
 首先对输入的骨架特征 X 通过两个线性变化 ϕ(⋅) 和 φ(⋅) 将其转换为高级特征：
 
-{% asset_img 11.webp %}
+$$\begin{aligned} \mathcal{X}_a &= \varphi(\mathcal{X}) = \mathcal{X}W_1 \\ \mathcal{X}_b &= \phi(\mathcal{X}) = \mathcal{X}W_2 \end{aligned}$$
 
 其中 Xa 和 Xb 分别表示经过两个不同线性变化后的特征，W1 和 W2 则是权重矩阵。然后再通过点积计算单帧内每个节点之间的相关性，得到一个关系矩阵 TA ，计算公式如下：
 
-{% asset_img 12.webp %}
+$$TA = \text{softmax}(\mathcal{X}_a \otimes \mathcal{X}_b^T)$$
 
 最后在每个通道中计算输入矩阵和关系矩阵之间的点积，再沿着时间维度 T 连接每帧的空间建模结果，最后可以获得最终的时间特定空间建模结果 ZT ：
 
-{% asset_img 13.webp %}
+$$\begin{aligned} Z_T &= \mathcal{A}_T(\mathcal{X}', TA) \\ &= [(T_1A \otimes X_1) \| (T_2A \otimes X_2) \| \cdots \| (T_TA \otimes X_T)] \end{aligned}$$
 
 ***
 
@@ -111,7 +111,7 @@ TSSA模块旨在解决传统的图卷积网络在处理骨架特征序列时，�
 
 SelfGCN网络通过结合MFSG模块和TSSA模块以及MS-TC模块，形成了具有自注意力的图卷积网络块（SelfGC block）。这种网络块被堆叠L层，以构建基于骨架的人体动作识别网络。TSSA模块的输出特征乘以一个可学习的系数 β ，其中 β 用于调整时序特定空间特征的重要性，然后加到MFSG模块的输出特征上：
 
-{% asset_img 14.webp %}
+$$O = \text{MFSG}(\mathcal{X}) + \beta \cdot \text{TSSA}(\mathcal{X})$$
 
 经过L层的空间和时序建模后，最终的输出特征通过全局平均池化层和全连接层，以获得动作分类的分数。
 

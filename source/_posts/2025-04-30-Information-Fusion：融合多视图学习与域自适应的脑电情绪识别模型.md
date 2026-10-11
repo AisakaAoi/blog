@@ -52,7 +52,7 @@ tags:
 
     在多视图时间帧注意力MvTFA（见图2）中，首先将输入EEG信号（每个通道视为一个视图）通过线性变换生成查询（Q）、键（K）、值（V）三个矩阵，实现将S转化为三个不同的特征域：
 
-    {% asset_img 3.webp %}
+    $$Q = S \cdot W_Q, \quad K = S \cdot W_K, \quad V = S \cdot W_V$$
 
     其中S为输入序列（时间帧×特征维度），,,为可学习权重矩阵, 分别表示查询空间、键空间和值空间。
 
@@ -61,21 +61,23 @@ tags:
 
     接着，生成单个视图的时间框架注意力，由下面描述的两个方程计算获得：
 
-    {% asset_img 5.webp %}
+    $$\mathbf{H} = \mathbf{Q}(\mathbf{S}) \cdot \mathbf{K}(\mathbf{S})^T$$
+
+$$\alpha_{q,k} = \exp(H_{q,k}) / \sum_{j=1}^{q} \exp(H_{q,k}) \quad (1 \leq k \leq q \leq L)$$
 
     其中记录了从前一个时间步k到当前时间步q的特征的注意力。为确保Hq，k仅在k ≤ q时适用，当m < n时，通过将设置为零，将H更新为H′。因此，H′可以直接吸引长期和短期过去值的注意力。通过对注意力进行归一化，得到了注意力矩阵，并与值矩阵V计算注意力：
 
-    {% asset_img 6.webp %}
+    $$\mathbf{O}_{MvTFA} = \alpha \cdot \mathbf{V}^T$$
 
     最终输出：
 
-    {% asset_img 7.webp %}
+    $$Y = O_{MvTFA} + V^T$$
 
     **(2)多视图注意力（MvA）**
 
     MvA的输入是C视图中时间步t的特征序列，表示为=（, , ... , ）。使用与MvTFA模块中用于计算α类似的过程，计算标准化的视图注意力。然后，将视图注意力应用于，并将输出表示为。最后，再次与Y合并，相加获得隐藏状态Z。
 
-    {% asset_img 8.webp %}
+    $$\mathbf{Z} = \mathbf{O}_{MvA} + \mathbf{Y}$$
 
     **(3)带去除**
 
@@ -92,7 +94,7 @@ tags:
 
     对于输入序列h(s)，扩张卷积输出p(s)计算为：
 
-    {% asset_img 10.webp %}
+    $$p(s) = \sum_{l=0}^{k-1} f(l) \cdot h(s - d \cdot l)$$
 
     其中，为卷积核权重，d为扩张因子，k为核大小。简单来说，扩张卷积在不增加参数数量的情况下，通过在不同的层设置不同的膨胀因子来合并不同大小的局部信息。可以进一步提取特征，同时减少后续计算的参数数量，从而提高计算速度。
 
@@ -100,17 +102,17 @@ tags:
 
     通过对抗训练，特征提取器被训练以生成混淆域鉴别器的特征，域鉴别器被训练以区分特征来自源域还是目标域，从而迫使特征提取器对齐分布。使用平均池化来融合来自多视图特征的深度表示，并将输入转换为向量dm。引入梯度反转层（GRL），公式为：
 
-    {% asset_img 11.webp %}
+    $$d_m^r = \text{ReLU}(\mathbf{W}^r \cdot d_m + b^r)$$
 
     最后使用softmax函数推断来自源域或目标域输入的概率：
 
-    {% asset_img 12.webp %}
+    $$d_m^s = \text{softmax}(W^s \cdot d_m^r + b^s)$$
 
 5. 标签分类器
 
     先使用平均池化来融合多视图特征，然后使用三个FC层和一个softmax函数进行情绪预测，函数为：
 
-    {% asset_img 13.webp %}
+    $$d_{m,f}^s = \text{softmax}(W^s \cdot d_m + b^s)$$
 
     其中，和是可学习的权重矩阵和偏置向量。
 

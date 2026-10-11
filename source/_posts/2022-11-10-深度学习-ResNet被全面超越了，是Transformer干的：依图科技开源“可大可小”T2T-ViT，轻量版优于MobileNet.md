@@ -59,19 +59,33 @@ Tokens-to-Token(T2T)模块旨在克服ViT中简单Token化机制的局限性，�
 
 如上图所示，给定Tokens序列T，将通过自注意力模块对齐进行变换处理，可以描述为：
 
-{% asset_img 5.png %}
+$$T' = MLP(MSA(T))$$
+
+注：MSA表示多头自注意力模块，MLP表示多层感知器。经过上述变换后，Tokens将在空间维度上reshape为图像形式，描述如下：
+
+$$I = Reshape(T')$$
+
+注：Reshape表示将 $T' \in R^{l \times c}$ 转换为 $I \in R^{h \times w \times c}$。
 
 #### Soft Split
 
 正如上图所示，在得到重结构化图像I后，我们对其进行软拆分操作以建模局部结构信息，降低Tokens长度。为避免图像到tokens过程中的信息损失，我们将图像拆分为重叠块，也就是说：每个块将与近邻块之间构建相关性。每个拆分块内的Token将通过Concat方式变换为一个Token(即Tokens-to-Token)，因此可以更好的建模局部信息。我们假设每个块大小为k×k，重叠尺寸为s，padding为p
 
-{% asset_img 6.png %}
+对于重建图像 $I \in R^{h \times w \times c}$，其对应的输出Token $T_o$ 可以表示为如下尺寸：
+
+$$l_o = \lfloor \frac{h+2p-k}{k-s} + 1 \rfloor \times \lfloor \frac{w+2p-k}{k-s} + 1 \rfloor$$
+
+注：每个拆分块尺寸为 $k \times k \times c$。最后我们将所有块在空域维度上flatten为Token $T_o \in R^{l_o \times ck^2}$。这里所得到的输出Token将被送入到下一个T2T处理过程。
 
 #### T2T module
 
 通过交替执行上述Re-structurization与Soft Split操作，T2T模块可以逐渐的减少Token的长度、变换图像的空间结构。T2T模块可以表示为如下形式：
 
-{% asset_img 7.png %}
+$$T_i' = MLP(MSA(T_i))$$
+
+$$I_i = Reshape(T_i')$$
+
+$$T_{i+1} = SS(I_i),\ i = 1, \cdots, (n-1)$$
 
 对于输入图像$I_o$，我们采用SoftSplit操作将其拆分为Token：$T_1$ = SS($I_o$)。在完成最后的迭代后，输出Token $T_f$具有固定IG长度，因此T2T-ViT可以在$T_f$上建模全局相关性。
 
@@ -90,7 +104,7 @@ Tokens-to-Token(T2T)模块旨在克服ViT中简单Token化机制的局限性，�
 
 基于上述结构上的探索与发现，我们为T2T-ViT设计了Deep-Narrow形式的骨干结构，也就是说：更少的通道数、更深的层数。对于定长Token $T_f$，我们将类Token预期Concat融合并添加正弦位置嵌入(Sinusoidal Position Embedding, SPE)，类似于ViT进行最后的分类：
 
-{% asset_img 8.png %}
+$$\begin{aligned} T_{f_o} &= [t_{cls}; T_f] + E, E \in R^{(l+1) \times d} \\ T_{f_i} &= MLP(MSA(T_{f_{i-1}})), \; i = 1, \cdots, b \\ y &= fc(LN(T_{f_b})) \end{aligned}$$
 
 #### T2T-ViT Architecture
 

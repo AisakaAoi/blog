@@ -62,7 +62,9 @@ tuple(np.array(leftmost_lip_point) + int(cell_width / 2))
 
 首先分别计算当前帧与Onset帧、Offset帧在这10个区域块的绝对像素差，为了减少环境噪音影响，将差值的除以当前帧与偏差为З的连续帧的绝对像素差。将规化后的像素差求和，表示当前帧的变化强度值，即Mi。（З 表示epsilon,一个变量，并非数字3）
 
-{% asset_img 2.webp %}
+$$f(frame_i, frame_j) = \frac{|frame_i - frame_j| + 1}{|frame_i - frame_{i-3}| + 1}$$
+
+$$M_i = f(frame_{onset}, frame_{offset})$$
 
 下面根据计算脸部某个区域的变化强度函数，理解上述公式。实际上还需要对10个面部区域块分别计算，取其均值作为当前帧的变化强度值Mi。
 

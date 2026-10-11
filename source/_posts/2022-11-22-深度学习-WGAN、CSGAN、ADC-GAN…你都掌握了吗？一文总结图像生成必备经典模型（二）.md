@@ -56,11 +56,11 @@ WGAN与原始GAN第一种形式相比，只改了四点：
 
 SAGAN的架构如图1所示，其核心就是用带有自注意力的特征图去代替传统的卷积特征图，建模像素间的远距离关系，即在一层获取远距离的依赖关系而非多层卷积操作获得依赖关系。首先，图17中的f(x)、g(x)和 h(x)都是普通的 1x1 卷积，差别只在于输出通道大小不同（这是1x1 卷积的特性，可以通过控制1x1 卷积的通道数来实现特征通道的升维和降维。然后，将 f(x)的输出转置，并和 g(x)的输出相乘，再经过 softmax 归一化得到一个 attention map。最后，将得到的 attention map 和 h(x)逐像素点相乘，得到自适应注意力的特征图：
 
-{% asset_img 5.webp %}
+$$\boldsymbol{y}_i = \gamma \boldsymbol{o}_i + \boldsymbol{x}_i,$$
 
 其中，γ是一个可学习的标量，初始化为0。γ允许网络首先依赖局部附近的线索，然后逐渐学会为非局部线索分配更大的权重。在SAGAN中，将自适应注意力模块同时应用于生成器和鉴别器，通过最小化 hinge version of the adversarial loss 以交替的方式进行训练。
 
-{% asset_img 6.webp %}
+$$\begin{aligned} L_D = &- \mathbb{E}_{(x,y) \sim p_{data}} [\min(0, -1 + D(x, y))] \\ &- \mathbb{E}_{z \sim p_z, y \sim p_{data}} [\min(0, -1 - D(G(z), y))], \\ L_G = &- \mathbb{E}_{z \sim p_z, y \sim p_{data}} D(G(z), y), \end{aligned}$$
 
 SAGAN当中提出了两种优化方式以实现稳定训练的 GANs，分别是Spectral Normalization与TTUR（Two Timescale Update Rule），前者稳定了训练和生成过程，后者平衡了D与G的训练速度。
 1. Spectral Normalization。SAGAN为D和G加入了谱范数归一化的方式，让D满足了1-lipschitz限制，同时也避免了G的参数过多导致梯度异常，使得整套训练较为平稳和高效。
@@ -104,16 +104,16 @@ CSGAN是一种新的周期合成生成对抗网络，主要服务的目标是ima
 
 如图4所示，CSGAN方法的总体工作是将图像$R_A$从域A转化为B，并将其交给生成器网络G_AB，从而得到合成的图像S_ynB。将合成的图像S_ynB从域B转化为原域A，并将其交给生成器网络G_BA，得到循环的图像C_ycA。以同样的方式，来自B域的真实图像$R_B$首先被转换到A域作为合成图像S_ynA，然后通过使用生成器网络G_BA和G_AB分别转换回B域作为循环图像C_ycB。鉴别器网络$D_A$用于区分真实图像$R_A$和合成图像S_ynA。同样地，鉴别器网络$D_B$用于区分真实图像$R_B$和合成图像S_ynB。为了生成最接近真实图像的合成图像，它们之间的损失要最小化。这就意味着需要有高效的损失函数。CSGAN引入了一种新的损失函数循环合成损失(CS loss)，它可以在降低伪影的情况下提高结果的质量：
 
-{% asset_img 13.webp %}
-{% asset_img 14.webp %}
+$$\mathcal{L}_{CS_A} = \| Syn_A - Cyc_A \|_1 = \| G_{BA}(R_B) - G_{BA}(G_{AB}(R_A)) \|_1$$
+$$\mathcal{L}_{CS_B} = \| Syn_B - Cyc_B \|_1 = \| G_{AB}(R_A) - G_{AB}(G_{BA}(R_B)) \|_1$$
 
 其中，L_CSA是A域（即S_ynA和C_ycA之间）的循环合成损失，L_CSB是B域（即S_ynB和C_ycB之间）的循环合成损失。CSGAN方法的目标函数（L）结合了所提出的Cyclic-Synthesized损失与现有的Adversarial损失和Cycle-consistency损失，如下所示：
 
-{% asset_img 15.webp %}
-{% asset_img 16.webp %}
-{% asset_img 17.webp %}
-{% asset_img 18.webp %}
-{% asset_img 19.webp %}
+$$\begin{aligned} \mathcal{L}_(& G_{AB}, G_{BA}, D_A, D_B) = \mathcal{L}_{LSGAN_A} + \mathcal{L}_{LSGAN_B} \\ &+ \lambda_A \mathcal{L}_{cyc_A} + \lambda_B \mathcal{L}_{cyc_B} + \mu_A \mathcal{L}_{CS_A} + \mu_B \mathcal{L}_{CS_B}. \end{aligned}$$
+$$\begin{aligned} \mathcal{L}_{LSGAN_B}(G_{AB}, D_B, A, B) &= \mathbb{E}_{B \sim P_{data}(B)}[(D_B(R_B) - 1)^2] \\ + &\mathbb{E}_{A \sim P_{data}(A)}[D_B(G_{AB}(R_A))^2]. \end{aligned}$$
+$$\begin{aligned} \mathcal{L}_{LSGAN_A}(G_{BA}, D_A, B, A) &= \mathbb{E}_{A \sim P_{data}(A)}[(D_A(R_A) - 1)^2] \\ + &\mathbb{E}_{B \sim P_{data}(B)}[D_A(G_{BA}(R_B))^2]. \end{aligned}$$
+$$\mathcal{L}_{cyc_A} = \|R_A - Cyc_A\|_1 = \|R_A - G_{BA}(G_{AB}(R_A))\|_1$$
+$$\mathcal{L}_{cyc_B} = \|R_B - Cyc_B\|_1 = \|R_B - G_{AB}(G_{BA}(R_B))\|_1$$
 
 CSGAN的生成器网络由3个卷积层、9个残差块和3个去卷积层组成，使用实例归一化，而不是批量归一化。源域中256×256维的输入图像输入到网络。该网络通过一系列的下卷积和上卷积，将256×256的图像保留在另一个域中。鉴别器网络是一个70×70的PatchGAN，由4个卷积层组成，每个卷积层都是convolution-instance-norm-swing-ReLU的序列，然后是1个卷积层，产生1维的输出。鉴别器网络采用256×256维度的图像，输出为表征图像真假的概率（即0代表假，1代表真）。斜率为0.2的Leaky ReLUs被用作鉴别器网络的激活函数。
 
@@ -148,13 +148,13 @@ GANs面临的主要挑战之一是：生成全局和局部一致的图像，使�
 
 Unet-GAN通过重复使用原鉴别器分类网络的构件作为编码器部分，以及生成器网络的构件作为解码器部分，来扩展鉴别器形成一个U-Net，即，鉴别器现在由原来的下采样网络和一个新的上采样网络组成。这两个模块通过一个瓶颈连接，以及，从编码器和解码器模块复制和串联特征图的skip connections。将分类器表征为$D^U$。原始的D(x)将输入的图像x分类为真实和虚假，而U-Net鉴别器$D^U(x)$则在per-pixel层面额外执行这种分类处理，将图像x分割为真实和虚假区域，同时还有来自编码器的x的原始图像分类。这使鉴别器能够学习真实和虚假图像之间的全局和局部差异。把鉴别器的原始编码器模块称为($D^U$)_enc，把引入的解码器模块称为($D^U$)_dec。现在，新的鉴别器损失可以通过从($D^U$)_enc和($D^U$)_dec中获取决策来计算：
 
-{% asset_img 25.webp %}
-{% asset_img 26.webp %}
-{% asset_img 27.webp %}
+$$\mathcal{L}_{D^U} = \mathcal{L}_{D^U_{enc}} + \mathcal{L}_{D^U_{dec}},$$
+$$\mathcal{L}_{D^U_{enc}} = -\mathbb{E}_x[\log D^U_{enc}(x)] - \mathbb{E}_z[\log(1 - D^U_{enc}(G(z)))],$$
+$$\begin{aligned} \mathcal{L}_{D^U_{dec}} &= -\mathbb{E}_x\left[ \sum_{i,j} \log [D^U_{dec}(x)]_{i,j} \right] \\ &- \mathbb{E}_z\left[ \sum_{i,j} \log (1 - [D^U_{dec}(G(z))]_{i,j}) \right]. \end{aligned}$$
 
 ($D^U$)_dec的这些per-pixel输出是基于来自高级特征的全局信息，通过瓶颈的上采样过程实现的，以及来自低级特征的更多局部信息，由编码器网络中间层的skip-connection介导的。最终生成器的目标函数为：
 
-{% asset_img 28.webp %}
+$$\begin{aligned} \mathcal{L}_G = -\mathbb{E}_z\left[ \log D^U_{enc}(G(z)) \right. \\ \left. + \sum_{i,j} \log [D^U_{dec}(G(z))]_{i,j} \right], \end{aligned}$$
 
 进一步，提出了$D^U$鉴别器的一致性正则化，鼓励解码器模块($D^U$)_dec在真实和虚假样本的CutMix转换下输出等值预测值。图7中展示了CutMix的增强策略和$D^U$的预测。
 
@@ -163,16 +163,16 @@ Unet-GAN通过重复使用原鉴别器分类网络的构件作为编码器部分
 
 具体的，通过将x和G(z)∈RW×H×C与掩码M混合，为鉴别器$D^U$合成一个新的训练样本x˜
 
-{% asset_img 30.webp %}
+$$\begin{aligned} \tilde{x} &= \mathrm{mix}(x, G(z), \mathrm{M}), \\ \mathrm{mix}(x, G(z), \mathrm{M}) &= \mathrm{M} \odot x + (1 - \mathrm{M}) \odot G(z), \end{aligned}$$
 
 鉴于CutMix操作，训练鉴别器通过在鉴别器目标中引入一致性正则化损失项，以提供一致的per-pixel预测：
 
-{% asset_img 31.webp %}
-{% asset_img 32.webp %}
+$$D^U_{dec}(\text{mix}(x, G(z), M)) \approx \text{mix}(D^U_{dec}(x), D^U_{dec}(G(z)), M)$$
+$$\begin{aligned} \mathcal{L}^{cons}_{D^U_{dec}} = \big\| &D^U_{dec}(\mathrm{mix}(x, G(z), \mathrm{M})) \\ &- \mathrm{mix}(D^U_{dec}(x), D^U_{dec}(G(z)), \mathrm{M}) \big\|^2, \end{aligned}$$
 
 最终生成器的目标函数为：
 
-{% asset_img 33.webp %}
+$$\mathcal{L}_{D^U} = \mathcal{L}_{D^U_{enc}} + \mathcal{L}_{D^U_{dec}} + \lambda \mathcal{L}^{cons}_{D^U_{dec}}.$$
 
 当前 SOTA！平台收录UNet-GAN共 1 个模型实现资源。
 
@@ -191,7 +191,7 @@ IC-GAN 将数据流形划分为由数据点及其最近邻描述的重叠邻域�
 
 在IC-GAN中，采用对抗式方法来训练生成器，因此可以联合训练生成器和鉴别器，鉴别器用来区分$h_i$的真实相邻节点和生成的相邻点。对于每个$h_i$，真实邻居都从$A_i$中均匀采样。生成器 G和鉴别器 D都参与了一个两人最小-最大博弈，在博弈中，二者试图找到目标的纳什均衡的等式。
 
-{% asset_img 36.webp %}
+$$\begin{aligned} \min_G \max_D &\mathbb{E}_{\boldsymbol{x}_i \sim p(\boldsymbol{x}), \boldsymbol{x}_n \sim \mathcal{U}(\mathcal{A}_i)} [\log D(\boldsymbol{x}_n, f_\phi(\boldsymbol{x}_i))] + \\ &\mathbb{E}_{\boldsymbol{x}_i \sim p(\boldsymbol{x}), \boldsymbol{z} \sim p(\boldsymbol{z})} [\log (1 - D(G(\boldsymbol{z}, f_\phi(\boldsymbol{x}_i)), f_\phi(\boldsymbol{x}_i)))]. \end{aligned}$$
 
 在训练IC-GAN时，使用所有可用的训练数据点来微调模型。在推理时，与KDE等非参数密度估计方法一样，IC-GAN的生成器也需要实例特征，这些特征可能来自于训练分布或不同的分布。
 
@@ -217,8 +217,8 @@ IC-GAN 将数据流形划分为由数据点及其最近邻描述的重叠邻域�
 使分类器能够对具有不同类别标签的真实数据和生成的数据进行分类，建立一个鉴别性分类器Cd : X → Y+ ∪ Y- (Y+代表真实数据，Y-代表生成的数据)，以鉴别性地识别真实和生成样本的标签。鼓励生成器产生可分类的真实数据，而不是可分类的虚假数据。ADC-GAN的鉴别器、鉴别分类器和生成器的目标函数被定义为：
 
 {% asset_img 39.webp %}
-{% asset_img 40.webp %}
-{% asset_img 41.webp %}
+$$C_d(y^+|x) = \frac{\exp(\varphi^+(y) \cdot \phi(x))}{\sum_{\bar{y}} \exp(\varphi^+(\bar{y}) \cdot \phi(x)) + \sum_{\bar{y}} \exp(\varphi^-(\bar{y}) \cdot \phi(x))}$$
+$$C_d(y^-|x) = \frac{\exp(\varphi^-(y) \cdot \phi(x))}{\sum_{\bar{y}} \exp(\varphi^+(\bar{y}) \cdot \phi(x)) + \sum_{\bar{y}} \exp(\varphi^-(\bar{y}) \cdot \phi(x))}$$
 
 其中，$C_d$表示数据x被判别性分类器同时归类为标签y和真假的概率。φ : X → Rd是一个特征提取器，与原始鉴别器共享（D = σ ◦ ψ ◦ φ，具有线性映射ψ : Rd → R和sigmoid函数σ : R → [0, 1]），ϕ+ : Y → Rd和ϕ- : Y → Rd捕获负责真实和生成数据的标签的可学习嵌入。log $C_d$(y+|x)的最大化鼓励生成器只生成少数标签一致的数据，促进了保真度，但失去了生成样本的多样性。另一方面，log $C_d$(y-|x)的最小化鼓励生成器不合成典型的标签一致的数据，增加多样性，但可能降低生成样本的保真度。
 

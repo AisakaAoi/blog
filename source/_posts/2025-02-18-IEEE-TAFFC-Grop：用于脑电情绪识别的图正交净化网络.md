@@ -73,15 +73,15 @@ DSA模块旨在解决跨个体和跨样本的情感特征分布差异问题。�
 
 为了优化 Grop 模型，并充分利用情感相关信息与情感无关信息，设计了两个分类器Cer和Cei分别用于区分正交特征和情感无关特征。优化过程基于以下损失函数：
 
-{% asset_img 7.webp %}
-{% asset_img 8.webp %}
+$$\mathcal{L}_{ERcls} = -\sum_{j=1}^{N} Y_j^S log \mathcal{C}_{er}\left(\mathbf{Z}_{pro}^S\right)_j, \qquad \text{(12)}$$
+$$\mathcal{L}_{EIcls} = -\sum_{j=1}^{N} Y_j^S log \mathcal{C}_{ei}\left(\mathbf{Z}_{ei}^S\right)_j, \qquad \text{(13)}$$
 
 其中公式12是情感相关特征的分类损失，公式13是情感无关特征的分类损失；
 
 除分类损失外，还有情感相关特征损失，情感无关特征损失还由以下几个部分组成：
 
-{% asset_img 9.webp %}
-{% asset_img 10.webp %}
+$$\mathcal{L}_{ER} = \alpha \mathcal{L}_{ERcls} + \beta \mathcal{L}_{ERSA} + \gamma \mathcal{L}_{DGTC} + \eta \left\| \tilde{A}_{er} \right\|_1$$
+$$\mathcal{L}_{EI} = \alpha \mathcal{L}_{EIcls} + \beta \mathcal{L}_{EISA} + \gamma \mathcal{L}_{DGTC} + \eta \left\| \tilde{A}_{ei} \right\|_1$$
 
 L_EISA是情感无关特征损失分对齐损失目的是减少源域与目标域之间情感相关特征的分布，提升跨域适应性。L_DGTC是双图拓扑约束损失，目的是确保情感无关图的拓扑解耦性；||Aei||1是控制情感无关特征损图稀疏性，减少冗余连接。对应的，L_ERSA、L_DGTC、||Aer||1分别是情感相关的分布对齐损失、双图拓扑约束损失、稀疏正则化。
 

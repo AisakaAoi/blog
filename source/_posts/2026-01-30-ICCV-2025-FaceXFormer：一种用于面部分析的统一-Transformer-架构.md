@@ -46,7 +46,7 @@ tags:
 
 对于一张预处理后的人脸图片，FaceXFormer利用多尺度编码器进行特征提取，其中多尺度编码器由Swin-Transformer作为主干网络进行构建，4个编码层得到不同程度的特征，进过多层感知机（MLP）后，由一个轻量化多层感知机（Lightweight MLP-Fusion）进行特征融合得到面部特征F。多尺度特征融合的公式为：
 
-{% asset_img 3.webp %}
+$$\begin{aligned} \hat{\mathbf{S}}_i &= \text{MLP}_{\text{proj}}(D_i, D_t)(\mathbf{S}_i), \forall i \in \{1, \ldots, n\}, \\ \mathbf{F}_{\text{cat}} &= \text{Concat}(\hat{\mathbf{S}}_1, \hat{\mathbf{S}}_2, \ldots, \hat{\mathbf{S}}_n), \\ \mathbf{F} &= \text{MLP}_{\text{fusion}}(nD_t, D)(\mathbf{F}_{\text{cat}}), \end{aligned}$$
 
 ***
 
@@ -56,15 +56,15 @@ FaceX是一个参数高效的解码器，旨在用面部令牌有效地建模任
 
 任务自注意力被设计为细化任务令牌T，每个不同任务的令牌对应于特定面部任务的嵌入式表示。TSA通过关注所有其他任务令牌来更新每个任务令牌，以捕获特定于任务的交互。TSA的公式为：
 
-{% asset_img 4.webp %}
+$$\mathbf{T}_i' = \text{SelfAttn}(\mathbf{Q} = T_i', \mathbf{K} = \mathbf{T}, \mathbf{V} = \mathbf{T}),$$
 
 任务-面部交叉注意力允许每个任务令牌与融合的面部特征表示F交互，这使得每个任务令牌能够从融合的面部特征中收集与其特定面部任务相关的信息。TFCA的公式为：
 
-{% asset_img 5.webp %}
+$$\hat{T}_i = \text{CrossAttn}(\mathbf{Q} = T_i', \mathbf{K} = \mathbf{F}, \mathbf{V} = \mathbf{F}),$$
 
 面部-任务交叉注意力被设计为基于来自更新的任务令牌的信息来细化融合的面部特征表示F。该过程有助于用任务特定的细节来增强面部特征表示，从而改善整体融合表示的提取。FTCA的公式为：
 
-{% asset_img 6.webp %}
+$$\hat{\mathbf{F}} = \text{CrossAttn}(\mathbf{Q} = \mathbf{F}, \mathbf{K} = \mathbf{T}', \mathbf{V} = \mathbf{T}').$$
 
 ***
 

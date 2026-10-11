@@ -58,9 +58,9 @@ Code传送门：<https://github.com/openai/CLIP>
 
 VonVIRT用（image，text）对来训练模型，其有一个image encoder和一个text encoder，训练目标是让两路的representation尽可能得一致（对偶地最大化表征的agreement），其中gv和gu函数是一个non-linear得projection head，负责分别将图像和文本表征投影到一个shared的空间，从而计算距离。
 
-{% asset_img 2.webp %}
+$$\ell_i^{(v \to u)} = -\log \frac{\exp(\langle \mathbf{v}_i, \mathbf{u}_i \rangle / \tau)}{\sum_{k=1}^{N} \exp(\langle \mathbf{v}_i, \mathbf{u}_k \rangle / \tau)}$$
 
-{% asset_img 3.webp %}
+$$\ell_i^{(u \to v)} = -\log \frac{\exp(\langle \mathbf{u}_i, \mathbf{v}_i \rangle / \tau)}{\sum_{k=1}^{N} \exp(\langle \mathbf{u}_i, \mathbf{v}_k \rangle / \tau)}$$
 
 其实就是构造了一个对称的contrastive loss，在一个batch内预测谁是正样本。
 

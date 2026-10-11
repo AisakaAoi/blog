@@ -69,7 +69,7 @@ FedLGT 以 Transformer 为核心构建模型骨架，将图像特征与标签嵌
 
 计算公式如下：
 
-{% asset_img 3.webp %}
+$$s_c^{\prime} : \begin{cases} unknown, & \tau - \varepsilon \leq p_c \leq \tau + \varepsilon, \\ s_c, & \text{otherwise} \end{cases}$$
 
 其中，τ= 0.5为判断阈值，ε= 0.02为不确定性边际，ρc为全局模型对标签c的预测概率。
 
@@ -87,11 +87,11 @@ FedLGT 的总损失包括两部分：
 
 - 带属性加权的二元交叉熵损失，仅对 CA-MLE 标记的 “未知” 标签计算，强化小样本标签学习。
 
-{% asset_img 4.webp %}
+$$\mathcal{L}_{bce} = -\sum_{\substack{s_c^{\prime} \text{is unknown} \\ \forall c \in [1, C]}} y_c \log(p_c),$$
 
 - 全局模型采用 FedAvg 聚合策略，按客户端数据量加权融合局部模型参数。
 
-{% asset_img 5.webp %}
+$$w^{t+1} = \sum_{k=1}^{K} \frac{|D_k|}{|D|} w_k^t,$$
 
 训练流程遵循联邦学习范式：服务器广播全局模型→客户端通过 CA-MLE 和 ULE 进行局部训练→上传局部模型→服务器聚合更新全局模型，迭代至收敛。
 

@@ -90,7 +90,7 @@ Batch Normalization 存在以下缺点：
 
 与 BN 不同，**LN** 是针对深度网络的**某一层的所有神经元的输入**按以下公式进行 normalize 操作。
 
-{% asset_img 8.webp %}
+$$\mu^l = \frac{1}{H} \sum_{i=1}^{H} a_i^l, \quad \sigma^l = \sqrt{\frac{1}{H} \sum_{i=1}^{H} (a_i^l - \mu^l)^2}$$
 
 BN与LN的区别在于：
 - LN 中同层神经元输入拥有相同的均值和方差，不同的输入样本有不同的均值和方差；
@@ -230,9 +230,6 @@ torch.nn.BatchNorm3d(num_features, eps=1e-05, momentum=0.1, affine=True, track_r
 | **affine** | 布尔值，当设为true，给该层添加可学习的仿射变换参数。 |
 | **track_running_stats** | 布尔值，当设为true，记录训练过程中的均值和方差。 |
 
-**实现公式：**
-{% asset_img 2.webp %}
-
 ***
 
 #### LayerNorm
@@ -246,9 +243,6 @@ torch.nn.LayerNorm(normalized_shape, eps=1e-05, elementwise_affine=True)
 | **normalized_shape** | 输入尺寸 [∗×normalized_shape[0] × normalized_shape[1] × … × normalized_shape[−1]] |
 | **eps** | 为保证数值稳定性（分母不能趋近或取0），给分母加上的值。默认为1e-5。 |
 | **elementwise_affine** | 布尔值，当设为true，给该层添加可学习的仿射变换参数。 |
-
-**实现公式：**
-{% asset_img 3.webp %}
 
 ***
 
@@ -268,9 +262,6 @@ torch.nn.InstanceNorm3d(num_features, eps=1e-05, momentum=0.1, affine=False, tra
 | **affine** | 布尔值，当设为true，给该层添加可学习的仿射变换参数。 |
 | **track_running_stats** | 布尔值，当设为true，记录训练过程中的均值和方差。 |
 
-**实现公式：**
-{% asset_img 4.webp %}
-
 ***
 
 #### GroupNorm
@@ -286,9 +277,6 @@ torch.nn.GroupNorm(num_groups, num_channels, eps=1e-05, affine=True)
 | **eps** | 为保证数值稳定性（分母不能趋近或取0），给分母加上的值。默认为1e-5。 |
 | **momentum** | 动态均值和动态方差所使用的动量。默认为0.1。 |
 | **affine** | 布尔值，当设为true，给该层添加可学习的仿射变换参数。 |
-
-**实现公式：**
-{% asset_img 5.webp %}
 
 ***
 

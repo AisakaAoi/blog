@@ -22,7 +22,9 @@ date: 2022-06-06 05:16:33
 
 上一篇Partial Convolution（PConv）博文中[1]中，我们介绍了PConv的运作机制。其公式可以写为：
 
-{% asset_img 1.webp %}
+$$x' = \begin{cases} \mathbf{W}^T(\mathbf{X} \odot \mathbf{M}) \frac{\mathrm{sum}(\mathbf{1})}{\mathrm{sum}(\mathbf{M})} + b, & \text{if } \mathrm{sum}(\mathbf{M}) > 0 \\ 0, & \text{otherwise} \end{cases}$$
+
+$$m' = \begin{cases} 1, & \text{if } \mathrm{sum}(\mathbf{M}) > 0 \\ 0, & \text{otherwise} \end{cases}$$
 
 其中包括两个步骤：PConv卷积运算和Mask更新过程。我们看[NVIDIA的源代码](https://github.com/NVIDIA/partialconv)是如何实现PConv卷积的:
 
@@ -202,19 +204,37 @@ Partial Convolution的作者采用了自监督学习的方法，而没有采用G
 
 - 首先计算其L1 loss：
 
-{% asset_img 3.webp %}
+$$L_{hole} = \|(1 - M) \odot (I_{out} - I_{gt})\|_1$$
+
+$$L_{valid} = \|M \odot (I_{out} - I_{gt})\|_1$$
+
+其中，$M$ 为初始的mask，其中元素1表示未损坏区域，0表示损坏区域；$I_{out}$ 表示网络输出；$I_{gt}$ 表示标签。
+
+其次，是生成模型中最常用的perceptual loss:
+
+$$L_{perceptual} = \sum_{n=0}^{N-1} \|\Psi_n(I_{out}) - \Psi_n(I_{gt})\|_1 + \sum_{n=0}^{N-1} \|\Psi_n(I_{comp}) - \Psi_n(I_{gt})\|_1$$
+
+其中 $I_{comp}$ 是指compose之后的结果，也就是说保留了 $I_{gt}$ 中的未损失区域，而损失区域用输出 $I_{out}$ 来填充。即：$I_{comp} = M \odot I_{gt} + (1 - M) \odot I_{out}$。$\Psi_n(\cdot)$ 表示预训练好的VGG-16模型中的中间特征层，这里作者使用了pool1, pool2 and pool3三个层。这样perceptual loss就度量了特征层的L1 loss。
 
 - 再次，是和perceptual loss类似的style loss:
 
-{% asset_img 4.webp %}
+$$L_{styleout} = \sum_{n=0}^{N-1} \|K_n((\Psi_n(I_{out}))^T(\Psi_n(I_{out})) - (\Psi_n(I_{gt}))^T(\Psi_n(I_{gt})))\|_1$$
+
+$$L_{stylecomp} = \sum_{n=0}^{N-1} \|K_n((\Psi_n(I_{comp}))^T(\Psi_n(I_{comp})) - (\Psi_n(I_{gt}))^T(\Psi_n(I_{gt})))\|_1$$
+
+其中 $\Psi_n(\cdot)$ 表示 $(H_n W_n) \times C_n$ 的矩阵，那么 $\Psi_n(\cdot)^T \Psi_n(\cdot)$ 则得到一个 $C_n \times C_n$ 的矩阵，数学上成为Gram matrix。$K_n$ 为归一化系数 $1/C_n H_n K_n$（原文如此）。
 
 - 最后是一项total variation (TV) loss：
 
-{% asset_img 5.webp %}
+$$L_{tv} = \sum_{(i,j) \in P, (i,j+1) \in P} \|I_{comp}^{i,j+1} - I_{comp}^{i,j}\| + \|I_{comp}^{i+1,j} - I_{comp}^{i,j}\|$$
+
+这一项可以理解为第一项将 $I_{comp}$ 向上移一位，第二项向右移一位，然后将移位后的输出与原 $I_{comp}$ 计算L1 loss。这一项可以理解为平滑惩罚项，保证修复的图片水平、竖直方向上的像素差不会太大。
 
 - 总损失为上述损失的综合：
 
-{% asset_img 6.webp %}
+$$L_{total} = L_{valid} + 6L_{hole} + 0.05L_{perceptual} + 120(L_{styleout} + L_{stylecomp}) + 0.1L_{tv}$$
+
+作者在论文中说这些系数设置是通过在100张验证集图片上搜索得到的。
 
 ***
 

@@ -97,7 +97,19 @@ Stable Diffusion 能够把文本转换为逼真的图像，为了尽可能保留
 
 如图 3 所示，RCA 接收三个输入：输入图像特征，文本嵌入和布局。通过线性层分别得到图像查询 Q，文本键 K 和文本值 V 后，我们可以使用下式计算attention score maps：
 
-{% asset_img 4.webp %}
+$$\mathcal{M} = \frac{Q K^T}{\sqrt{d}} \in \mathbb{R}^{C \times H \times W}$$
+
+其中 $d$ 是放缩因子，其值为 $Q$ 和 $K$ 的维度，$C$、$H$ 和 $W$ 分别为 $\mathcal{M}$ 的通道数、高和宽。接着我们将单通道的输入布局转换为 $C$ 个通道，其中每个通道为对应单个语义的二值图。对于一些特殊的文本嵌入比如 paddings，我们将其对应的通道的值全部设为 1。这样我们便可以得到一个布局 $L \in R^{C \times H \times W}$，从而利用下式修正 $\mathcal{M}$：
+
+$$\widehat{\mathcal{M}}_{i,j}^k = \begin{cases} \mathcal{M}_{i,j}^k, & L_{i,j}^k = 1, \\ -inf, & L_{i,j}^k = 0, \end{cases}$$
+
+其中 $\mathcal{M}_{i,j}^k$ 和 $L_{i,j}^k$ 分别表示 $\mathcal{M}$ 和 $L$ 在第 $k$ 个通道的处的值，$\hat{\mathcal{M}}$ 代表修正后的注意力值。
+
+最后，我们便可以计算 RCA 的输出：
+
+$$\mathcal{O} = \text{softmax}(\widehat{\mathcal{M}}) V.$$
+
+经过 softmax 之后，修正的交叉注意力便成为了和输入布局在空间分布上类似的图，令每个语义仅仅影响输入布局所指定的空间区域。
 
 ***
 

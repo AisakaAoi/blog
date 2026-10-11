@@ -62,11 +62,11 @@ GCN可谓是图神经网络的“开山之作”，它首次将图像处理中�
 
 我们来看一下这个式子，天呐，这不就是聚合邻居节点的特征然后做一个线性变换吗？没错，确实是这样，同时为了使得GCN能够捕捉到K-hop的邻居节点的信息，作者还堆叠多层GCN layers，如堆叠K层有：
 
-{% asset_img 6.webp %}
+$$h_v^{k+1} = f\left(\frac{1}{|\mathcal{N}(v)|} \sum_{u \in \mathcal{N}(v)} \mathbf{W}^k h_u^k + \mathbf{b}^k\right), \quad \forall v \in \mathcal{V}.$$
 
 上述式子还可以使用矩阵形式表示如下
 
-{% asset_img 7.webp %}
+$$H^{(l+1)} = \sigma\left(D^{-\frac{1}{2}} \tilde{A} D^{-\frac{1}{2}} H^{(l)} W^{(l)}\right)$$
 
 其中 是归一化之后的邻接矩阵， 相当于给 层的所有节点的embedding做了一次线性变换，左乘以邻接矩阵表示对每个节点来说，该节点的特征表示为邻居节点特征相加之后的结果。（注意将 换成矩阵 就是图3所说的三矩阵相乘）
 
@@ -114,7 +114,14 @@ GraphSAGE是一个Inductive Learning框架，具体实现中，训练时它仅�
 
 到此为止，整个模型的架构就讲完了，那么GraphSAGE是如何学习聚合器的参数以及权重矩阵 呢？如果是有监督的情况下，可以使用每个节点的预测lable和真实lable的交叉熵作为损失函数。如果是在无监督的情况下，可以假设相邻的节点的embedding表示尽可能相近，因此可以设计出如下的损失函数：
 
-{% asset_img 13.webp %}
+$$J_G(\mathbf{z}_u) = -\log\left(\sigma\left(\mathbf{z}_u^{\top} \mathbf{z}_v\right)\right) - Q \cdot \mathbb{E}_{v_n \sim P_n(v)} \log\left(\sigma\left(-\mathbf{z}_u^{\top} \mathbf{z}_{v_n}\right)\right),$$
+
+Nearby nodes → Similar representation；Disparate nodes → Highly distant representation
+
+- $v$：is a node that co-occurs near $u$
+- $P_n$：Negative sampling distribution (from word2vec)
+- $\mathbf{z}_u$：Embedding from GraphSAGE
+- $Q$：Number of negative samples
 
 那么GrpahSAGE的实际实验效果如何呢？作者在Citation、Reddit、PPI数据集上分别给出了无监督和完全有监督的结果，相比于传统方法提升还是很明显。
 
@@ -141,15 +148,17 @@ GraphSAGE是一个Inductive Learning框架，具体实现中，训练时它仅�
 
 其中采用了单层的前馈神经网络实现，计算过程如下（注意权重矩阵 对于所有的节点是共享的）：
 
-{% asset_img 16.webp %}
+$$\alpha_{ij} = \frac{\exp\left(\text{LeakyReLU}\left(\vec{\mathbf{a}}^T [\mathbf{W}\vec{h}_i \| \mathbf{W}\vec{h}_j]\right)\right)}{\sum_{k \in \mathcal{N}_i} \exp\left(\text{LeakyReLU}\left(\vec{\mathbf{a}}^T [\mathbf{W}\vec{h}_i \| \mathbf{W}\vec{h}_k]\right)\right)}$$
 
 计算完attention之后，就可以得到某个节点聚合其邻居节点信息的新的表示，计算过程如下：
 
-{% asset_img 17.webp %}
+$$\vec{h}'_i = \sigma\left( \sum_{j \in \mathcal{N}_i} \alpha_{ij} \mathbf{W} \vec{h}_j \right)$$
 
 为了提高模型的拟合能力，还引入了多头的self-attention机制，即同时使用多个 计算self-attention，然后将计算的结果合并（连接或者求和）：
 
-{% asset_img 18.webp %}
+$$\vec{h}_i' = \Big\Vert_{k=1}^{K} \sigma\left(\sum_{j \in \mathcal{N}_i} \alpha_{ij}^k \mathbf{W}^k \vec{h}_j\right) \quad \leftarrow \text{GAT Update } (K = \# heads)$$
+
+$$\vec{h}_i' = \sigma\left(\frac{1}{K} \sum_{k=1}^{K} \sum_{j \in \mathcal{N}_i} \alpha_{ij}^k \mathbf{W}^k \vec{h}_j\right) \quad \leftarrow \text{Final Layer}$$
 
 此外，由于GAT结构的特性，GAT无需使用预先构建好的图，因此GAT既适用于Transductive Learning，又适用于Inductive Learning。
 
@@ -219,17 +228,19 @@ DiffPool的核心思想是通过一个可微池化操作模块去分层的聚合
 
 这里使用两个分开的GNN来生成分配矩阵 和每一个簇节点新的嵌入 ，这两个GNN都是用簇节点特征矩阵 和粗化邻接矩阵 作为输入
 
-{% asset_img 26.webp %}
+$$S^{(l)} = \text{softmax}\left(\text{GNN}_{l,\text{pool}}\left(A^{(l)}, X^{(l)}\right)\right)$$
+
+$$Z^{(l)} = \text{GNN}_{l,\text{embed}}\left(A^{(l)}, X^{(l)}\right),$$
 
 - 池化分配矩阵
 
 计算得到分配矩阵 和每一个簇节点新的嵌入 之后，DiffPool层根据分配矩阵，对于图中的每个节点/簇生成一个新的粗化的邻接矩阵 与新的嵌入矩阵
 
-{% asset_img 27.webp %}
+$$\begin{aligned} X^{(l+1)} &= S^{(l)T} Z^{(l)} \in \mathbb{R}^{n_{l+1} \times d}, \\ A^{(l+1)} &= S^{(l)T} A^{(l)} S^{(l)} \in \mathbb{R}^{n_{l+1} \times n_{l+1}}. \end{aligned}$$
 
 总的来看，每层的DiffPool其实就是更新每一个簇节点的嵌入和簇节点的特征矩阵，如下公式：
 
-{% asset_img 28.webp %}
+$$(A^{(l+1)}, X^{(l+1)}) = \text{DIFFPOOL}(A^{(l)}, Z^{(l)})$$
 
 至此，DiffPool的基本思想就讲完了。那么效果如何呢？作者在多种图分类的基准数据集上进行实验，如蛋白质数据集（ENZYMES，PROTEINS，D&D），社交网络数据集（REDDIT-MULTI-12K），科研合作数据集（COLLAB），实验结果如下：
 

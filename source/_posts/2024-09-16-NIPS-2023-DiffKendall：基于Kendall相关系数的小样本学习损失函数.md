@@ -40,19 +40,19 @@ tags:
 
 一个常见的FSL任务通过计算查询样本x和标签为k的类原型ck的相似度来实现分类：
 
-{% asset_img 3.webp %}
+$$P(y = k \mid x) = \frac{\exp(\text{sim}(f_{\theta}(x), c_k) \cdot t)}{\sum_{j=1}^{N} \exp(\text{sim}(f_{\theta}(x), c_j) \cdot t)},$$
 
 sim()表示相似度函数，fθ为特征提取器，t用于缩放变换。
 
 对于两个n维向量，Kendall 的排名相关性系数可以定义为表现出一致排序与不一致排序的通道对 (xi, xj) 和 (yi, yj) 之间的差异，即：
 
-{% asset_img 4.webp %}
+$$\tau(x, y) = \frac{N_{\text{con}} - N_{\text{dis}}}{N_{\text{total}}},$$
 
 其中，Ncon 表示重要性排序一致的通道对的数量，即 (xi > xj) ∧ (yi > yj) 或 (xi < xj) ∧ (yi < yj)，Ndis 反映排序不一致的通道对的数量 由 (xi > xj) ∧ (yi < yj) 或 (xi < xj) ∧ (yi > yj) 表示。 Ntotal 表示通道对的总数。
 
 为解决通道重要性排名计算不可微的问题，本文提出用平滑函数逼近Kendall排名相关性，提出了可微的Kendall排名相关性，从而能够直接在训练中优化。其公式为：
 
-{% asset_img 5.webp %}
+$$\widetilde{\tau}_{\alpha}(x, y) = \frac{1}{N_0} \sum_{i=2}^{n} \sum_{j=1}^{i-1} \frac{e^{\alpha(x_i - x_j)} - e^{-\alpha(x_i - x_j)}}{e^{\alpha(x_i - x_j)} + e^{-\alpha(x_i - x_j)}} \frac{e^{\alpha(y_i - y_j)} - e^{-\alpha(y_i - y_j)}}{e^{\alpha(y_i - y_j)} + e^{-\alpha(y_i - y_j)}},$$
 
 N0为通道对总数，α为超参数，当α趋于正无穷时，上述两式的值无限逼近，即：
 

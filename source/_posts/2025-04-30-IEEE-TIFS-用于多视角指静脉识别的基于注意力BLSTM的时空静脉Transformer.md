@@ -61,31 +61,53 @@ tags:
 
 ##### 注意力 BLSTM
 
-{% asset_img 6.webp %}
+论文中在 LSTM 架构中引入了注意力机制，构建了注意力 LSTM（见图 2(d)）。进一步地，将其扩展为双向 LSTM（BLSTM）网络（见图 2(e)），以从图像的左右两个方向提取信息。
+
+从变换后的表示 $\overline{\mathbf{X}}^{\prime}$ 中，论文提取出类别标记 $\mathbf{X}^{\prime} \in R^{T \times N \times d}$。每张图像的嵌入向量被视为一个 token，其中 $\mathbf{X}_t^{\prime}$ 表示第 t 张图像的第 t 个 token，$\mathbf{h}_{t-1}$ 表示前一时刻的隐藏状态。通过一个线性变换层，将 $\mathbf{X}_t^{\prime}$ 映射为三个向量：$\boldsymbol{x}_t$ 的查询向量 $\mathbf{Q}_x$、键向量 $\mathbf{K}_x$ 和值向量 $\mathbf{V}_x$。同样地，对前一隐藏状态 $\mathbf{h}_{t-1}$ 计算查询向量 $\mathbf{Q}_h$、键向量 $\mathbf{K}_h$ 和值向量 $\mathbf{V}_h$。输入向量 $\boldsymbol{x}_t$ 的自注意力机制按公式 (3) 计算：
+
+$$S_x = Att(Q_x, K_x, V_x) = Softmax(\frac{Q_x K_x^T}{\sqrt{d_x}} + B_x) V_x. \qquad \text{(3)}$$
+
+采用这种方法，通过公式 (4)、公式 (5) 和公式 (6) 分别获得隐藏状态 $\mathbf{h}_{t-1}$ 的自注意力机制以及 $\boldsymbol{x}_t$ 与 $\mathbf{h}_{t-1}$ 之间的交叉注意力机制。
+
+$$C_x = Att(Q_x, K_h, V_h), \qquad \text{(4)}$$
+
+$$S_h = Att(Q_h, K_h, V_h), \qquad \text{(5)}$$
+
+$$C_h = Att(Q_h, K_x, V_x), \qquad \text{(6)}$$
+
+其中，$C_x$ 和 $C_h$ 分别表示输入向量 $\boldsymbol{x}_t$ 与前一隐藏状态 $\mathbf{h}_{t-1}$ 之间的交叉注意力机制，$S_h$ 表示隐藏状态的自注意力机制。
 
 LSTM 架构包含四个模块：遗忘门、输入门、记忆单元和输出门。其中，遗忘门 决定从记忆单元中舍弃哪些信息。该决策由一个 Sigmoid 激活函数控制，如公式（7）所示：
 
-{% asset_img 7.webp %}
+$$f_t = \sigma(linear(Concat(S_x, C_h))), \qquad \text{(7)}$$
 
 其中，σ 表示 Sigmoid 函数，linear 表示线性映射函数，Concat 表示向量拼接操作。输入门 负责处理当前输入，如公式 (8) 和公式 (9) 所示：
 
-{% asset_img 8.webp %}
+$$i_t = \sigma(linear(Concat(S_x, S_h))), \qquad \text{(8)}$$
+
+$$\tilde{C}_t = tanh(linear(Concat(S_x, S_h))). \qquad \text{(9)}$$
 
 记忆单元被设计用于缓解梯度消失问题，从而有助于模型的训练，特别适用于包含长序列的数据集。记忆单元的输出由公式 (10) 给出：
 
-{% asset_img 9.webp %}
+$$C(t) = C_{t-1} \odot f(t) + i(t) \odot \tilde{C}_t, \qquad \text{(10)}$$
 
 其中，⊙ 表示 Hadamard（元素级）乘法运算符。
 
 与前两个门控机制类似，输出门通过公式 (12) 计算：
 
-{% asset_img 10.webp %}
+$$o_t = \sigma(linear(Concat(C_x, S_h))), \qquad \text{(11)}$$
+
+$$h_t = o_t * tanh(C_t). \qquad \text{(12)}$$
 
 BLSTM 是 RNN 的一种变体，增强了标准 LSTM 在处理长期依赖关系方面的能力。为了进一步提升性能，论文中提出了注意力 BLSTM（Attention BLSTM），该结构在前向和后向两个方向中引入注意力机制，从而实现信息的同步提取，如图 2(c) 所示。在 Forward 层中，注意力 LSTM 按顺序从第 1 个 token 处理到第 T 个 token，逐步获取前向隐藏层的输出。相反，在 Backward 过程中，注意力 LSTM 按相反顺序从第 T 个 token 处理到第 1 个 token，逐步获取后向隐藏层的输出。六个权重 V、V′、U、U′、Z 和 Z′ 被迭代使用，以通过公式 (13)、(14) 和 (15) 融合前向和后向层的输出。
 
-{% asset_img 11.webp %}
+$$\begin{aligned} h_t &= f(Vx_t + Uh_{t-1}), \qquad \text{(13)} \\ h'_t &= f(V'x_t + U'h_{t+1}), \qquad \text{(14)} \\ O_t &= g(Zh_t + Z'h'_t). \qquad \text{(15)} \end{aligned}$$
 
-{% asset_img 12.webp %}
+$$Y = Concat(Y_{LSTM}, Y_{local}). \qquad \text{(16)}$$
+
+$$Y' = \phi(YW_1)W_2, \qquad \text{(17)}$$
+
+其中，$\varphi(\cdot)$ 表示 ReLU 激活函数。
 
 ***
 

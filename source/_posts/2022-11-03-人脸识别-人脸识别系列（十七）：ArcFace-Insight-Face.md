@@ -17,11 +17,11 @@ date: 2022-11-03 06:25:35
 
 ### AmSoftmax
 
-{% asset_img 1.webp %}
+$$L_6 = -\frac{1}{m} \sum_{i=1}^{m} \log \frac{e^{s(cos(\theta_{y_i}) - m)}}{e^{s(cos(\theta_{y_i}) - m)} + \sum_{j=1, j \neq y_i}^{n} e^{s \cos \theta_j}}.$$
 
 ### Arcface
 
-{% asset_img 2.webp %}
+$$L_7 = -\frac{1}{m} \sum_{i=1}^{m} \log \frac{e^{s(cos(\theta_{y_i} + m))}}{e^{s(cos(\theta_{y_i} + m))} + \sum_{j=1, j \neq y_i}^{n} e^{s \cos \theta_j}}$$
 
 这样修改的**原因**：
 

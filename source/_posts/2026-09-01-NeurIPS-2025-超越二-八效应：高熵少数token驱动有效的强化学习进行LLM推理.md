@@ -57,7 +57,7 @@ LLM的数学、代码推理能力得到飞速发展，o1、Claude 3.7、DeepSeek
 
 基于上述两条规律，作者把高熵 token 命名为forking tokens（分叉 token），代表推理过程中不确定性高、会开启多条推理分支的关键位置。 为定量验证分叉 token 的作用，作者使用最大生成长度 28672 的 Qwen3‑8B，在 AIME 数据集评测时，对分叉 token 与普通 token 分配不同的解码温度，调整每个位置概率分布的计算规则：
 
-{% asset_img 3.webp %}
+$$p_t^{\prime} = \text{Softmax}\left(\frac{\boldsymbol{z}_t}{T_t^{\prime}}\right), \quad \text{where} \quad T_t^{\prime} = \begin{cases} T_{\text{high}} & \text{if } H_t > h_{\text{threshold}}, \\ T_{\text{low}} & \text{otherwise}. \end{cases}$$
 
 公式作用：实现位置可变解码温度。 设置熵阈值0.672区分分叉token与普通token；如果当前位置是分叉token，使用较高的解码温度；普通token使用较低温度。用来做对照实验，单独放大/抑制分叉位置的随机性，验证分叉token对推理性能的贡献。
 
@@ -93,7 +93,7 @@ RLVR 主要改变高熵 token 的熵值，低熵 token 熵基本保持稳定。�
 
 该算法在 DAPO 目标函数（公式 4）基础之上做修改，直接舍弃低熵 token 的策略梯度，只使用高熵 token 的梯度更新模型。 对从数据集采样得到的每一个 batch，算法的优化目标定义如下：
 
-{% asset_img 8.webp %}
+$$\mathcal{J}_{\text{HighEnt}}^{\mathcal{B}}(\theta) = \mathbb{E}_{\mathcal{B} \sim \mathcal{D}, (q, a) \sim \mathcal{B}, \{o^i\}_{i=1}^{G} \sim \pi_{\theta_{\text{old}}}(\cdot \mid q)} \left[ \frac{1}{\sum_{j=1}^{G} \sum_{t=1}^{|o^j|} \mathbb{I}\left[H_t^j \geq \tau_\rho^{\mathcal{B}}\right]} \sum_{i=1}^{G} \sum_{t=1}^{|o^i|} \mathbb{I}\left[H_t^i \geq \tau_\rho^{\mathcal{B}}\right] \cdot \min\left(r_t^i(\theta) \hat{A}_t^i, \, \text{clip}\left(r_t^i(\theta), 1 - \epsilon_{\text{low}}, 1 + \epsilon_{\text{high}}\right) \hat{A}_t^i\right) \right], \quad \text{s.t. } 0 < \left|\{o^j \mid \text{is\_equivalent}(a, o^j)\}\right| < G.$$
 
 公式作用：改进版 DAPO 损失函数。 针对每个 batch 动态计算熵阈值，只允许熵高于阈值的高熵 token 参与损失与梯度计算；低熵 token 会被指示函数屏蔽，不产生梯度。同时归一化分母只统计有效高熵 token 的数量。
 

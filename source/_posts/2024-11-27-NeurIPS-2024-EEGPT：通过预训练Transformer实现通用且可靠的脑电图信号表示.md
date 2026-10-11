@@ -51,11 +51,11 @@ EEGPT的结构如图1所示。模型将EEG信号（M个通道和T个时间点）
 
 掩码自动编码器是一种去噪自动编码器来学习特征，通过将被随机patch掩码遮挡的信号输入到编码器中，解码器预测掩码patch的原始嵌入，如公式1所示：
 
-{% asset_img 3.webp %}
+$$\min_{\theta, \phi} \underset{x \sim \mathcal{D}}{\mathbb{E}} \mathcal{H}\left(d_\phi(z), x \odot (1 - \mathbf{M})\right), \quad z = f_\theta(x \odot \mathbf{M}) \qquad \text{(1)}$$
 
 其中⊙表示逐元素乘积，是掩码块，and 分别是编码器和解码器，是学习表示，是相似性度量。通过最小化损失函数，模型学习输入信号的最佳表示。，在类BERT模型中编码器和解码器没有分割，没有明确表示，本文在EEGPT模型中添加了时空表示对齐分支来显式表达，这也就是双自监督方法，能够鼓励编码表示具有更大程度的语义，提高编码质量和泛化能力，如公式2所示：
 
-{% asset_img 4.webp %}
+$$\min_{\theta, \phi} \underset{x \sim \mathcal{D}}{\mathbb{E}} \mathcal{H}\left(d_\phi(z), x \odot (1 - \mathbf{M})\right) + \mathcal{H}\left(z, f_\theta(x)\right), \quad z = f_\theta(x \odot \mathbf{M}) \qquad \text{(2)}$$
 
 时空表示对齐方法将预测特征和动量编码器的输出对齐，增强了编码器提取鲁棒特征的能力，确保编码器的输出包含高质量的全局特征。本文采用编码器和预测器来解耦空间和时间特征，能够降低计算复杂度。
 
@@ -63,23 +63,23 @@ EEGPT的结构如图1所示。模型将EEG信号（M个通道和T个时间点）
 
 编码器整合了来自掩码patch的空间信息，公式3描述了编码器（ENC）如何处理时间j处的所有掩码，并产生相应的输出特征。
 
-{% asset_img 5.webp %}
+$$enc_j = \text{ENC}\left(\{token_{i,j}\}_{(i,j) \in \mathcal{M}}\right) \qquad \text{(3)}$$
 
 **预测器**
 
 如公式4所示，预测器（PRED）利用来自编码器掩码部分的特征，结合时间位置信息，来预测完整的编码特征。本文采用了旋转位置嵌入方法来生成，引入相对位置和时间信息。为了生成属于M的预测特征，使用可学习的向量查询作为查询标记，在自监督训练中鼓励编码器提取token之间相关性信息。
 
-{% asset_img 6.webp %}
+$$\{pred_t\}_{t \in \{1,2,\ldots,N\}} = \text{PRED}\left(\{enc_j + pos_j\}_{\exists i, (i,j) \in \mathcal{M}}\right) \qquad \text{(4)}$$
 
 **动量编码器**
 
 动量编码器与编码器的结构相同，每次训练迭代后，编码器的参数以的系数累积到动量编码器中，如公式5所示。
 
-{% asset_img 7.webp %}
+$$menc_j = \text{MENC}\left(\{token_{i,j}\}_{(i,j) \in \mathcal{M} \cup \overline{\mathcal{M}}}\right) \qquad \text{(5)}$$
 
 并使用基于均方误差（MSE）的对齐损失来实现时空表示对齐，LN表示层归一化，有助于减轻极值和协变量偏移的影响，如公式6所示。
 
-{% asset_img 8.webp %}
+$$\mathcal{L}_A = -\frac{1}{N} \sum_{j=1}^{N} ||pred_j, \text{LN}(menc_j)||_2^2 \qquad \text{(6)}$$
 
 ***
 
@@ -91,15 +91,15 @@ EEGPT的结构如图1所示。模型将EEG信号（M个通道和T个时间点）
 
 如公式7所示，重建器（REC）利用编码器编码的M部分的特征和预测器预测的M部分的特征，以及时间位置，生成重建的patch 。
 
-{% asset_img 9.webp %}
+$$\{rec_{u,t}\}_{(u,t) \in \overline{\mathcal{M}}} = \text{REC}\left(\{enc_j + pos_j\}_{\exists i, (i,j) \in \mathcal{M}} \cup \{pred_j + pos_j\}_{\forall i, (i,j) \in \overline{\mathcal{M}}}\right) \qquad \text{(7)}$$
 
 掩码重建时使用基于均方误差的重建损失来实现的，如公式8所示。
 
-{% asset_img 10.webp %}
+$$\mathcal{L}_R = -\frac{1}{|\overline{\mathcal{M}}|} \sum_{(i,j) \in \overline{\mathcal{M}}} ||rec_{i,j}, \text{LN}(p_{i,j})||_2^2 \qquad \text{(8)}$$
 
 最后通过将和相加构建完整的预训练损失。
 
-{% asset_img 11.webp %}
+$$\mathcal{L} = \mathcal{L}_A + \mathcal{L}_R$$
 
 ***
 
@@ -109,11 +109,11 @@ EEGPT的结构如图1所示。模型将EEG信号（M个通道和T个时间点）
 
 局部时空嵌入方法首先在时空维度上对EEG信号进行分块和嵌入编码，然后将其输入编码器，如图2所示。首先对EEG信号进行分割，在时空维度上划分为大小相等的块，如公式10所示。
 
-{% asset_img 13.webp %}
+$$p_{i,j} = x_{i,(j-1)d:jd} \qquad \text{(10)}$$
 
 其中d表示patch的时间长度， 是时间patch的数量。此后结合嵌入信息线性地嵌入patch，构造一个集合其中包含所有可学习的通道嵌入向量和从通道名称到通道嵌入向量，使得模型能够适应多个数据集，提高通道适应性。最后得到的token由patch线性嵌入后得到，如公式11所示。
 
-{% asset_img 14.webp %}
+$$token_{i,j} = \text{Embed}(p_{i,j}) + \varsigma_i \qquad \text{(11)}$$
 
 基于自监督学习任务，提取的patch特征是互相可预测的，可以忽略较小尺度的噪声信息。该方法旨在提取跨越更大尺度的宏观特征，这些特征更容易识别且认为是有意义的特征。
 

@@ -87,7 +87,7 @@ StyleGAN 的网络结构包含两个部分，第一个是Mapping network，即�
 
 Mapping network 要做的事就是对潜在空间（latent space）进行解耦，Mapping network由8个全连接层组成，其输出与输入层的大小相同。通过一系列仿射变换，由 z 得到 w，这个 w 转换成风格y=(ys,yb) ，结合 AdaIN (adaptive instance normalization) 风格变换方法：
 
-{% asset_img 7.webp %}
+$$\mathrm{AdaIN}(\boldsymbol{x}_i, \boldsymbol{y}) = \boldsymbol{y}_{s,i} \frac{\boldsymbol{x}_i - \mu(\boldsymbol{x}_i)}{\sigma(\boldsymbol{x}_i)} + \boldsymbol{y}_{b,i},$$
 
 使用输入向量控制视觉特征的能力是有限的，因为它必须遵循训练数据的概率密度。例如，如果黑发人的图像在数据集中更常见，则更多输入值将映射到该特征。因此，该模型无法将部分输入（向量中的元素）映射到特征，这种现象称为特征纠缠。然而，Mapping network通过使用另一个神经网络，可以生成一个不必遵循训练数据分布的向量，并且可以减少特征之间的相关性。
 
@@ -128,15 +128,15 @@ StyleGAN2是为了应对StyleGAN的问题而提出的：少量生成的图片有
 
 修改StyleGAN的生成器。首先，StyleGAN2将AdaIN重构为Weight Demodulation。如图7（d）所示，modulation根据传入的style对卷积的每个输入特征图进行缩放，也可以通过缩放卷积权重来实现：
 
-{% asset_img 12.webp %}
+$$w'_{ijk} = s_i \cdot w_{ijk},$$
 
 其中，w和w’分别表征原始的和modulated的权重，$s_i$为对应第i个输入特征图的尺度，j和k分别表示生成输出特征图和卷积的空间分布图。接着对卷积层的权重进行demod：
 
-{% asset_img 13.webp %}
+$$\sigma_j = \sqrt{\sum_{i,k} w_{ijk}'^2},$$
 
 从而得到新的卷积层权重为：
 
-{% asset_img 14.webp %}
+$$w''_{ijk} = w'_{ijk} / \sqrt{\sum_{i,k} w_{ijk}'^2 + \epsilon},$$
 
 加一个小的ϵ是为了避免分母为0，保证数值稳定性。尽管这种方式与Instance Norm并非在数学上完全等价，但是weight demodulation同其它normalization 方法一样，使得输出特征图有着standard的unit和deviation。此外，将scaling参数挪为卷积层的权重使得计算路径可以更好的并行化。这种方式使得训练加速了约40%。
 
@@ -170,7 +170,7 @@ StyleGAN2是为了应对StyleGAN的问题而提出的：少量生成的图片有
 
 StyleGAN2生成器由两部分组成。首先，一个映射网络将初始的、正常分布的latent转换为 intermediate latent code w∼W。然后，一个synthesis网络G从学习的4×4×512常数Z0开始，应用N层处理—包括卷积、非线性、上采样和per-pixel噪声—以生成输出图像$Z_N$＝G(Z0；w)。intermediate latent code w控制G中卷积核的调制。各层遵循严格的2×上采样，在每个分辨率下执行两个层，每次上采样后特征图的数量减半。此外，StyleGAN2采用了skip connection、 mixing regularization和 path length regularization 。StyleGAN3目标是使G的每一层对连续信号都是Equivariance的，这样所有较细的细节就会与局部邻域的较粗的特征一起转化。如果这成功了，整个网络也会变得类似于Equivariance。换句话说，目标是使synthesis网络的连续操作g对应用于连续输入z0的变换t（平移和旋转）具有Equivariance：
 
-{% asset_img 18.webp %}
+$$\boldsymbol{g}(\boldsymbol{t}[z_0]; \boldsymbol{w}) = \boldsymbol{t}[\boldsymbol{g}(z_0; \boldsymbol{w})].$$
 
 其中 t 是一种变换（平移或旋转），上式表明生成器对特征信号的连续运算应该对于平移和旋转操作是等变的。改进后的生成器网络结构图见图10。
 
@@ -234,9 +234,9 @@ VAE是强大的基于似然的生成模型之一，在许多领域的应用都�
 
 基于EBM，引入NCP（ the noise contrastive prior ）计算基础先验：
 
-{% asset_img 25.webp %}
+$$p_{\mathrm{NCP}}(\boldsymbol{z}) = \frac{1}{Z} r(\boldsymbol{z}) p(\boldsymbol{z}),$$
 
-{% asset_img 26.webp %}
+$$Z = \int r(\boldsymbol{z}) p(\boldsymbol{z}) d\boldsymbol{z}$$
 
 使用两阶段训练方法训练NCP，如图14。在第一阶段，使用原始VAE目标训练VAE。在第二阶段，使用噪声对比估计（noise contrast estimation，NCE）来训练重新加权因子r(z)。NCE训练一个分类器来区分来自先验的样本和来自aggregate posterior的样本。NCP是由基础先验和reweighting factor的乘积构建的，通过分类器形成。在测试时，使用采样-重要性-采样（ sampling-importance-resampling ，SIR）或LD（Langevin dynamics ）从NCP中采样。然后，这些样本被传递给解码器以产生输出样本。
 
@@ -245,15 +245,15 @@ VAE是强大的基于似然的生成模型之一，在许多领域的应用都�
 
 最后，作者还将NCP-VAE扩展到了Hierarchical VAEs
 
-{% asset_img 28.webp %}
+$$p_{\mathrm{NCP}}(\boldsymbol{z}) = \frac{1}{Z} \prod_{k=1}^{K} r(\boldsymbol{z}_k | \boldsymbol{z}_{<k}) p(\boldsymbol{z}_k | \boldsymbol{z}_{<k})$$
 
 其中，每个因子都是EBM。pNCP(z)类似于具有自回归结构的组间EBM。在第一阶段，以先验的方式训练HVAE：
 
-{% asset_img 29.webp %}
+$$\prod_{k=1}^{K} p(\boldsymbol{z}_k | \boldsymbol{z}_{<k})$$
 
 在第二阶段，我们使用K个二进制分类器，每个分类器用于一个分层组。通过以下方式训练每个分类器
 
-{% asset_img 30.webp %}
+$$\min_{D_k} \mathbb{E}_{p_d(\boldsymbol{x}) q(\boldsymbol{z}_{<k}|\boldsymbol{x})} \left[ - \mathbb{E}_{q(\boldsymbol{z}_k|\boldsymbol{z}_{<k}, \boldsymbol{x})} [\log D_k(\boldsymbol{z}_k, c(\boldsymbol{z}_{<k}))] - \mathbb{E}_{p(\boldsymbol{z}_k|\boldsymbol{z}_{<k})} [\log (1 - D_k(\boldsymbol{z}_k, c(\boldsymbol{z}_{<k})))] \right],$$
 
 {% asset_img 31.webp %}
 
@@ -293,19 +293,19 @@ Diffusion-GAN主要关注的是 stabilize GAN training 的问题。为了实现G
 
 Diffusion-GAN的对应目标是vanilla GAN的最小-最大目标，定义为
 
-{% asset_img 35.webp %}
+$$V(G, D) = \mathbb{E}_{x \sim p(x), t \sim p_\pi, y \sim q(y | x, t)} [\log(D_\phi(y, t))] + \mathbb{E}_{z \sim p(z), t \sim p_\pi, y_g \sim q(y | G_\theta(z), t)} [\log(1 - D_\phi(y_g, t))]$$
 
 鉴别器D学习区分扩散的生成样本$y_g$和扩散的真实观测值y，时间为∀t∈{1, . . . , T}，具体的优先级由$π_t$的值决定。生成器G学习将潜在变量z映射到它的输出x_g=$G_θ(z)$，它可以在扩散链的任何一步骗过鉴别器。$y_g$∼q(y | $G_θ(z)$, t)可以被重新参数化为
 
-{% asset_img 36.webp %}
+$$\boldsymbol{y}_g = \sqrt{\bar{\alpha}_t} G_\theta(\boldsymbol{z}) + \sqrt{(1 - \bar{\alpha}_t)} \sigma \epsilon, \epsilon \sim \mathcal{N}(0, \boldsymbol{I}),$$
 
 梯度可以直接反向传播到生成器。随着t的增加，y和$y_g$中的噪声与数据之比也在增加，从而使鉴别器D的任务越来越难。作者设计了一个扩散强度的自适应控制，以便更好地训练鉴别器。作者通过适应性地修改T来实现这一目标。我们为T设计了一个基于度量$r_d$的 self-paced schedule，这个schedule评估了鉴别器的过拟合度
 
-{% asset_img 37.webp %}
+$$r_d = \mathbb{E}_{y, t \sim p(y, t)} [\text{sign}(D_\phi(y, t) - 0.5)], \quad T = T + \text{sign}(r_d - d_{target}) * C$$
 
 为了更好地防止鉴别器过拟合，定义t作为一个不对称的离散分布，鼓励鉴别器在T增加时观察新增加的扩散样本。
 
-{% asset_img 38.webp %}
+$$t \sim p_\pi := \mathrm{Discrete}\left( \frac{1}{\sum_{t=1}^{T} t}, \frac{2}{\sum_{t=1}^{T} t}, \ldots, \frac{T}{\sum_{t=1}^{T} t} \right)$$
 
 当T开始增加时，鉴别器对所看到的样本已经很有信心，所以我们希望它探索更多的新样本，以抵消鉴别器的过度拟合。
 

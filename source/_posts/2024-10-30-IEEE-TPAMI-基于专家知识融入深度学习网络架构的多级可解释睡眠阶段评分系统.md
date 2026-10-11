@@ -41,13 +41,13 @@ tags:
 
 专家在识别睡眠阶段时，主要依据特定的EEG波形和频率范围，包括慢波（约1 Hz）、α波（8–13 Hz）、θ波（3–7 Hz）、梭形波（15–18 Hz的梭形活动爆发）、K复合波（大双相波）以及运动伪迹。同时，也会观察EOG中的慢速和快速眼动。为了模拟这些特定波形的识别，作者设计了一个基于Gabor函数的可训练核层，而不是使用常规的CNN架构作为特征提取器。Gabor函数通过调整参数，可以拟合EEG和EOG波形，公式如下：
 
-{% asset_img 2.webp %}
+$$G(t^{*}) = e^{-\pi\frac{(t^{*}-u)^2}{\sigma}}\cos(2\pi f t^{*})$$
 
 其中，u为时间偏移，σ为高斯包络的标准差，fff 为主频率。通过设置这些参数，Gabor函数能够有效地建模EEG和EOG波形。
 
 Gabor层（GL）被定义为：
 
-{% asset_img 3.webp %}
+$$GL_i(t) = G_i(t^{*}) \star X(t)$$
 
 其中，GLi(t)是该层输出信号的第i通道，Gi(t∗) 是具有特定参数的Gabor函数波形，X(t)是输入信号（EEG/EOG），⋆ 表示交叉相关运算。Gabor层类似于一维卷积层，使用Gabor函数作为其滤波器，Gabor核的参数是可训练的。信号通过后，Gabor层的输出表示特定波形（Gabor核）在时间上的幅值。
 
@@ -67,7 +67,7 @@ Gabor层（GL）被定义为：
 
 表I列出了单个时间段网络的详细信息及每层的属性。训练过程分为两个主要步骤：首先，使用30秒的EEG和EOG数据段训练单个时间段网络。然后，将训练集的单个时间段网络输出用于训练多时间段网络。考虑到睡眠周期的性质和睡眠阶段的不同分布，训练过程中使用了一种概率方法来构建小批量数据，以避免网络输出倾向于有较多数据段的阶段。训练过程中，小批量数据的大小设为16，并基于随机选择的时间段数据构建小批量数据，采用均匀概率分布。在单时间段网络（Single-Epoch Network）中的可训练参数包括Gabor层（GLs）的Gabor核参数，以及卷积层和全连接层的参数。训练过程中使用的损失函数是交叉熵（Cross Entropy），它结合了负对数似然（Negative Log-Likelihood）和SoftMax函数的对数，定义如下：
 
-{% asset_img 7.webp %}
+$$loss(O, class) = -log\left(\frac{exp(O[class])}{\sum_k exp(O[k])}\right)$$
 
 其中，O[k]是网络输出向量的第 k 个元素，class是由专家标记的得分类别。在单时间段网络训练完成后，使用所有训练数据的输出 On作为训练数据来训练多时间段网络（Multi-Epoch Network）。在多时间段网络的训练过程中，使用了与单时间段网络相同的损失函数、学习率初始化和调整方法，以及优化算法。
 
@@ -79,11 +79,13 @@ Gabor层（GL）被定义为：
 
 尽管GL的输出对于解释来说是有意义的，但每个输出时间序列中的幅度无法与其他输出进行比较。网络的后续层和GL的输出值不能直接表示每个波形对网络输出的贡献。可以使用基于目标输出的GL输出的局部梯度作为归一化权重。因此，网络输出对GL输出时间序列的敏感性可以通过计算目标输出（O[class]）对每个Gabor层输出样本（GLi(t)）的导数来测量，如公式(4)所示。
 
-{% asset_img 8.webp %}
+$$Sen(t)_{GL^i(t)\rightarrow O[class]} = \frac{dO[class]}{dGL^i(t)} \qquad \text{(4)}$$
 
 这里的敏感性（Sen(t)）类似于显著性图技术，但它是相对于GL的输出。GL的输出时间序列与网络输出之间的关系非常复杂、非线性，并且取决于输入。我们将从线性近似中导出的方程视为输出对每个GL输出的敏感性。敏感性仅显示输出变化对GL输出变化的依赖性。将GL输出值与敏感性相乘，可以表示GL输出对网络输出的功能性影响，作为一种归因图（attribution map）。因此，我们使用GL输出与敏感性正值相乘的平方和来量化每个Gabor核对网络输出的正向功能性影响的强度，如公式(5)和(6)所示。
 
-{% asset_img 9.webp %}
+$$Eff^{X(t)}_{GL^i\rightarrow O[class]}(t) = GL^i(t) Sen(t)_{GL^i(t)\rightarrow O[class]} \times \theta(Sen(t)_{GL^i(t)\rightarrow O[class]}) \qquad \text{(5)}$$
+
+$$\overline{Eff}^{X(t)}_{GL^i\rightarrow O[class]} = \sum_t (Eff^{X(t)}_{GL^i\rightarrow O[class]}(t))^2 \qquad \text{(6)}$$
 
 步进函数 θ(.) 是一个阶跃函数，而 EffX(t) GLi→O[class] 则表示在给定输入 X(t) (可以是 EEG 或 EOG 信号) 时，第 i 个 Gabor 核对输出中第 class 元素的正向功能效应。仅使用敏感度中的正值，建立了 Gabor 层的输出与模型主要输出之间的直接联系，即 GL 输出值的增加会增加相对输出，并且通过 softmax 函数，提高相关输出的概率。根据设计的架构，不同层次的解释是基于 EffX(t) GLi→O[class] (t) 时间序列 (Eff(t)) 和 EffX(t) GLi→O[class] (Eff) 从上到下（总体到细节）的解释（图 4）进行定义的。
 
@@ -91,21 +93,21 @@ Gabor层（GL）被定义为：
 
 **分期过程**： 在第一级分期过程层次上，基于单周期网络设计中考虑的逻辑，并在第一层中使用 Gabor 核，在经过有效的训练过程后，我们假设系统将找到 Gabor 核的优化参数集，从而可以解释 EEG 信号中各个波形对检测到的睡眠阶段的影响。因此，通过对所有测试周期中所有 Gabor 核的 Eff 进行加权平均，可以将每个核 (第 i 个核) 对睡眠分期过程的影响量化为 Effi，作为一个定性衡量标准，如公式(7)所示。
 
-{% asset_img 11.webp %}
+$$Eff_i = \sum_j \frac{1}{N_j} \sum_{X(t)} \overline{Eff}^{X(t)}_{GL^i\rightarrow O[class]} \delta(class_X - j) \qquad \text{(7)}$$
 
 其中 Nj 是睡眠阶段 j 中测试周期的总数，δ(.) 是单位脉冲函数，O[classX] 是相对输入信号 (X(t)) 的实际睡眠阶段。Effi 是对真实输出类别的正向功能效应的平均值，可以表示每个 Gabor 核在决策过程中整体上的定性影响。为了以定量的方式衡量核对睡眠阶段评分过程的影响，我们定义了每个 Gabor 核在选择的睡眠阶段中具有最大效应的次数加权值 νi，公式(8)用于表示第 i 个 Gabor 核的定量影响。
 
-{% asset_img 12.webp %}
+$$\nu_i = \sum_j \frac{1}{N_j} \sum_{X(t)} \left[ \delta\left(\arg\max_x \overline{Eff}^{X(t)}_{GL^k\rightarrow O[class]} - i\right) \times \delta(class_X - j) \right] \qquad \text{(8)}$$
 
 其中，νi 与第 i 个核在睡眠阶段评分过程中具有最高正向功能效应 (Eff) 的次数呈线性关系。
 
 **阶段**：下一个层级专注于各个睡眠阶段（阶段层级）。类似于公式 (7) 和 (8)，每个波形对每个睡眠阶段的影响可以分别在数量和质量上进行测量。通过分别对每个睡眠阶段中的每个核的 Eff 值进行平均，可以量化每个核波形对特定睡眠阶段的整体定性影响，记作 Effji， 如公式(9)所示。
 
-{% asset_img 13.webp %}
+$$Eff^j_i = \frac{1}{N_j} \sum_{X(t)} \overline{Eff}^{X(t)}_{GL^k\rightarrow O[class]} \delta(class_X - j) \qquad \text{(9)}$$
 
 在每个核的每个阶段中计算 Eff 值并对这些值进行排序后，我们计算了每个核对选择特定睡眠阶段影响最大的次数，记作 νji，如公式(10)所示。
 
-{% asset_img 14.webp %}
+$$\nu^j_i = \sum_{X(t)} \left[ \delta\left(\arg\max_x \overline{Eff}^{X(t)}_{GL^k\rightarrow O[class]} - i\right) \delta(class_X - j) \right] \qquad \text{(10)}$$
 
 其中，νj i 代表第 i 个核在 j 类睡眠阶段中具有最高正功能效应 (Eff) 的次数。
 

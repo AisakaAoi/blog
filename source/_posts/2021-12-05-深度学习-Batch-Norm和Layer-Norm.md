@@ -59,7 +59,7 @@ ICS问题(internal covariate shift), 就是说如果训练数据在经过网络�
 
 ### 通用变换框架
 
-{% asset_img 1.webp %}
+$$h = f\left(\mathbf{g} \cdot \frac{\mathbf{x} - \mu}{\sigma} + \mathbf{b}\right)$$
 
 最终得到的数据符合均值为 b 、方差为 $g^2$ 的分布。
 
@@ -97,11 +97,13 @@ BN的学习参数包含rescale和shift两个参数。
 
 BN实际使用时需要计算并且保存某一层神经网络batch的均值和方差等统计信息，对于对一个固定深度的前向神经网络（DNN，CNN）使用BN，很方便；但对于RNN来说，sequence的长度是不一致的，换句话说RNN的深度不是固定的，不同的time-step需要保存不同的statics特征，可能存在一个特殊sequence比其他sequence长很多，这样training时，计算很麻烦。
 
-{% asset_img 5.webp %}
+Batch Normalization (BN) 是最早出现的，也通常是效果最好的归一化方式。feature map：$$\boldsymbol{x} \in \mathbb{R}^{N \times C \times H \times W}$$ 包含 N 个样本，每个样本通道数为 C，高为 H，宽为 W。对其求均值和方差时，将在 N、H、W 上操作，而保留通道 C 的维度。具体来说，就是把第 1 个样本的第 1 个通道，加上第 2 个样本第 1 个通道……加上第 N 个样本第 1 个通道，求平均，得到通道 1 的均值（注意是除以 N×H×W 而不是单纯除以 N，最后得到的是一个代表这个 batch 第 1 个通道平均值的数字，而不是一个 H×W 的矩阵）。求通道 1 的方差也是同理。对所有通道都施加一遍这个操作，就得到了相应的均值和方差。具体公式为：
 
-{% asset_img 6.webp %}
+$$\mu_c(x) = \frac{1}{NHW} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} x_{nchw} \tag{2}$$
 
-{% asset_img 7.webp %}
+$$\sigma_c(x) = \sqrt{\frac{1}{NHW} \sum_{n=1}^{N} \sum_{h=1}^{H} \sum_{w=1}^{W} (x_{nchw} - \mu_c(x))^2 + \epsilon} \tag{3}$$
+
+如果把 $$\boldsymbol{x} \in \mathbb{R}^{N \times C \times H \times W}$$ 类比为一摞书，这摞书总共有 N 本，每本有 C 页，每页有 H 行，每行 W 个字符。BN 求均值时，相当于把这些书按页码一一对应地加起来（例如第 1 本书第 36 页，第 2 本书第 36 页……），再除以每个页码下的字符总数：N×H×W，因此可以把 BN 看成求“平均书”的操作（注意这个“平均书”每页只有一个字），求标准差时也是同理。
 
 ***
 
@@ -124,10 +126,10 @@ LayerNorm实际就是对隐含层做层归一化，即对某一层的所有神�
 一般情况，LN常常用于RNN网络！把一个 batch 的 feature 类比为一摞书，LN 求均值时，相当于把每一本书的所有字加起来，再除以这本书的字符总数：C×H×W，即求整本书的“平均字”，求标准差时也是同理。
 
 Layer Norm
-{% asset_img 2.webp %}
+$$\text{LayerNorm}(x) = \alpha \odot \frac{x - \mu}{\sqrt{\sigma^2 + \epsilon}} + \beta$$
 
 Layer Norm求均值方差
-{% asset_img 3.webp %}
+$$\begin{aligned} \sigma^l &= \sqrt{\frac{1}{H} \sum_{i=1}^{H} \left(x_i^l - \mu^l\right)^2} \\ \mu^l &= \frac{1}{H} \sum_{i=1}^{H} x_i^l \\ x^l &= w_i^l h^l \end{aligned}$$
 
 Bert layer norm实现代码
 

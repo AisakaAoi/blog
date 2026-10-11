@@ -68,7 +68,7 @@ TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特
 
 表情迁移分类的loss为LC：
 
-{% asset_img 3.webp %}
+$$L_C = -\left\{\lambda_{G_f} \mathbb{E}_{(I_g, y_f) \sim p_g}\left[\log\left(D_f(I_g)\right)\right] + \lambda_{G_e} \mathbb{E}_{(I_g, y_e) \sim p_g}\left[\log\left(D_e(I_g)\right)\right]\right\},$$
 
 ***
 
@@ -78,7 +78,7 @@ TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特
 
 {% asset_img 4.webp %}
 
-{% asset_img 5.webp %}
+$$L_D = \lambda_D \mathbb{E}_{I_f \sim p_f,\, I_e \sim p_e} [\|\hat{I}_f - I_f\|_1 + \|\hat{I}_e - I_e\|_1]$$
 
 ***
 
@@ -86,15 +86,15 @@ TDGAN首先通过两个编码器生成表情和面部特征，然后将两个特
 
 本文采用额外感知loss(additionally perceptual loss)来评估生成面部图片的差距。df是由面部编码器对面部图片编码后生成的高级语义特征，d(g,f)是生成的图片输入到面部编码器生成的高层语义特征。LP用于计算两个图片的差距。
 
-{% asset_img 6.webp %}
+$$L_P = \lambda_{P_f} \|\mathbf{d}_f - d_{(g,f)}\|_1$$
 
 因此，本文提出方法的生成器的loss最终计算为：
 
-{% asset_img 7.webp %}
+$$L_G = L_C + L_D + L_P$$
 
 表情识别分支的loss：
 
-{% asset_img 8.webp %}
+$$L_{ER} = -\frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^{K_e} y_i^j \log\left(\widetilde{y_i}^j\right),$$
 
 使用方法：J. Johnson, A. Alahi, and L. Fei-Fei, “Perceptual losses for realtime style transfer and super-resolution,” in European Conference on Computer Vision, ECCV, 2016, pp. 694–711.
 
