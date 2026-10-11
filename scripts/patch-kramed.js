@@ -9,15 +9,9 @@ const patched = '  em: /^\\*((?:\\*\\*|[\\s\\S])+?)\\*(?!\\*)/,';
 const original = '  em: /^\\b_((?:__|[\\s\\S])+?)_\\b|^\\*((?:\\*\\*|[\\s\\S])+?)\\*(?!\\*)/,';
 
 function main() {
-  if (!fs.existsSync(file)) {
-    console.log('[patch-kramed] kramed 未安装，跳过');
-    return;
-  }
+  if (!fs.existsSync(file)) return;
   const src = fs.readFileSync(file, 'utf8');
-  if (src.includes(patched)) {
-    console.log('[patch-kramed] 已打过补丁');
-    return;
-  }
+  if (src.includes(patched)) return; // 已打过，静默
   if (!src.includes(original)) {
     console.error('[patch-kramed] 未找到预期代码，kramed 版本可能已变化，请人工检查');
     return;
