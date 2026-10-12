@@ -49,6 +49,8 @@ date: 2023-10-27 05:26:30
 #### 审稿经历
 
 - BIBM 2026 PC member
+- 期刊：IEEE TAFFC、IEEE TCDS、JNE
+- 会议：ICLR 2027
 
 #### 学生项目
 
