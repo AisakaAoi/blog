@@ -3,6 +3,7 @@ title: NeurIPS2022 | SegNeXt，重新思考卷积注意力设计
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
+  - 💫未分类
 abbrlink: 801beac9
 date: 2022-09-22 13:27:50
 tags:

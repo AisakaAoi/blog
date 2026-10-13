@@ -3,6 +3,7 @@ title: 深度学习-ResNet被全面超越了，是Transformer干的：依图科�
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
+  - 💫未分类
 abbrlink: 96cdc0f0
 date: 2022-11-10 11:02:58
 tags:

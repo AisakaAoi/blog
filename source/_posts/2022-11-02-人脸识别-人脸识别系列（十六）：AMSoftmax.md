@@ -3,6 +3,7 @@ title: 人脸识别-人脸识别系列（十六）：AMSoftmax
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
+  - 💫未分类
 abbrlink: 2f45f198
 date: 2022-11-02 06:41:49
 ---

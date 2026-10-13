@@ -3,6 +3,7 @@ title: 'ReduceNet: 按照VanillaNet的方式极限压缩网络深度至单层（
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
+  - 💫未分类
 abbrlink: e11878ad
 date: 2023-06-04 04:28:16
 tags:

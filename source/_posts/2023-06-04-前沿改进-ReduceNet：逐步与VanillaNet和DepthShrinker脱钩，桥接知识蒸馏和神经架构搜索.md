@@ -3,6 +3,7 @@ title: ReduceNet：逐步与VanillaNet和DepthShrinker脱钩，桥接知识蒸�
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
+  - 💫未分类
 abbrlink: 86eeeedf
 date: 2023-06-04 04:49:52
 tags:

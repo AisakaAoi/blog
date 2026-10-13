@@ -3,6 +3,7 @@ title: 深度学习-EfficientNet、ShuffleNet、NFNet…你都掌握了吗？一
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
+  - 💫未分类
 abbrlink: 1d840294
 date: 2022-12-03 04:53:34
 ---
