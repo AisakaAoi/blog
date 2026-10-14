@@ -57,5 +57,12 @@ hexo.extend.helper.register('next_url', function(path, text, options = {}) {
     }
   }
 
-  return htmlTag(tag, attrs, decodeURI(text), false);
+  let decoded = text;
+  try {
+    decoded = decodeURI(text);
+  } catch (e) {
+    // Title may contain a bare '%' (e.g. "I²=0%") that is not a valid
+    // percent-encoding sequence; keep the raw text in that case.
+  }
+  return htmlTag(tag, attrs, decoded, false);
 });
