@@ -85,3 +85,18 @@
   margin-left: 8px;
   margin-right: 0;
 }
+
+/* MathJax 公式顶部被裁剪修复：overflow-y 保持 hidden（横向滚动需要），
+   垂直方向加内边距，符号顶部伸入 padding 区域不再被裁掉。
+   （overflow-y: visible 在 overflow-x: auto 时会被规范计算为 auto，照样裁剪，故用 padding 方案） */
+mjx-container[jax="CHTML"][display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.3em 0;
+}
+
+.has-jax {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.15em 0;
+}
