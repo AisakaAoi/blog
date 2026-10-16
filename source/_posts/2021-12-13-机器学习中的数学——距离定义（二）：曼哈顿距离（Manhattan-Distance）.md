@@ -4,6 +4,7 @@ categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence
   - 💫《机器学习中的数学》
+  - ✨线性代数
 abbrlink: e0a9dc3d
 date: 2021-12-13 23:11:57
 ---
