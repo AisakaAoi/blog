@@ -98,5 +98,8 @@ mjx-container[jax="CHTML"][display="true"] {
 .has-jax {
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.15em 0;
+  /* 只加垂直内边距：NexT 会给含公式的 ul 加 has-jax 类，
+     padding 简写会把 ul 左侧缩进清零，导致列表圆点消失 */
+  padding-top: 0.15em;
+  padding-bottom: 0.15em;
 }
