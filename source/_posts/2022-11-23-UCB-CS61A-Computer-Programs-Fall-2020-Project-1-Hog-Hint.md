@@ -1,5 +1,5 @@
 ---
-title: 'UCB CS61A: Computer Programs [Fall 2020] Project 1 Hog Hint'
+title: "'UCB CS61A: Computer Programs [Fall 2020] Project 1 Hog Hint'"
 categories:
   - 🌙上过网课
   - ⭐UCB CS61A

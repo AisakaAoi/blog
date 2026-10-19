@@ -314,4 +314,4 @@ $$2\sigma(FC(GELU(FC(pool(h))))) \times h$$
 
 ### 参考资料
 
-> <https://mp.weixin.qq.com/s/8Svli4dmU3Hyq-932_SXgQ>
+> <https://mp.weixin.qq.com/s/5xgdFkqPXo_LxTfZl2jzfA>

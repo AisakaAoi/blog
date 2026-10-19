@@ -1,5 +1,5 @@
 ---
-title: 'UCB CS61A: Computer Programs [Fall 2020] Homework 1 Hints'
+title: "'UCB CS61A: Computer Programs [Fall 2020] Homework 1 Hints'"
 categories:
   - 🌙上过网课
   - ⭐UCB CS61A

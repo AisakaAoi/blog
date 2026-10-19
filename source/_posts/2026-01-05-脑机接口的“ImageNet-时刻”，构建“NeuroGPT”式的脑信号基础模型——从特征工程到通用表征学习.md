@@ -65,7 +65,7 @@ $Z_{0}$ = [xₚ¹E; xₚ²E; …; xₚᴺE] + E_pos
 
 损失函数常用均方误差（MSE），只在被遮挡位置计算：
 
-L = (1/|M|) · Σ_{i∈M} (xᵢ − x̂ᵢ)²
+$$L = \frac{1}{|M|} \sum_{i \in M} (x_i - \hat{x}_i)^2$$
 
 通过这种训练，模型虽然没有见过任何任务标签，却被迫学会了脑电波的“语法”和“结构”。
 
@@ -77,7 +77,7 @@ L = (1/|M|) · Σ_{i∈M} (xᵢ − x̂ᵢ)²
 
 在 MAE 训练过程中，Transformer 的自注意力机制（Self-Attention）相当于自动构建了动态的“功能连接图”。其形式为：
 
-Attention(Q, K, V) = softmax(QKᵀ / √dₖ) · V
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right) \cdot V$$
 
 #### 空间注意力（Spatial Attention）
 

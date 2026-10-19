@@ -1,5 +1,5 @@
 ---
-title: 'DeepEMD: Differentiable Earth Mover’s Distance for Few-Shot Learning'
+title: "'DeepEMD: Differentiable Earth Mover’s Distance for Few-Shot Learning'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

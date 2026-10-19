@@ -1,5 +1,5 @@
 ---
-title: '深度学习-图神经网络必读的5个基础模型: GCN, GAT, GraphSAGE, GAE, DiffPool'
+title: "'深度学习-图神经网络必读的5个基础模型: GCN, GAT, GraphSAGE, GAE, DiffPool'"
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

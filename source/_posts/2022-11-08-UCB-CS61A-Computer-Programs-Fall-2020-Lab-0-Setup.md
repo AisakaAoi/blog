@@ -1,5 +1,5 @@
 ---
-title: 'UCB CS61A: Computer Programs [Fall 2020] Lab 0 Setup'
+title: "'UCB CS61A: Computer Programs [Fall 2020] Lab 0 Setup'"
 categories:
   - 🌙上过网课
   - ⭐UCB CS61A

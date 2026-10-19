@@ -1,5 +1,5 @@
 ---
-title: 'UCB CS61A: Computer Programs [Fall 2020] Lecture 1 Computer Science'
+title: "'UCB CS61A: Computer Programs [Fall 2020] Lecture 1 Computer Science'"
 categories:
   - 🌙上过网课
   - ⭐UCB CS61A

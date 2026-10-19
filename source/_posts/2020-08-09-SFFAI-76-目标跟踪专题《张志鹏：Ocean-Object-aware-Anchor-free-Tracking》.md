@@ -1,5 +1,5 @@
 ---
-title: 'SFFAI 76 | 目标跟踪专题《张志鹏：Ocean: Object-aware Anchor-free Tracking》'
+title: "'SFFAI 76 | 目标跟踪专题《张志鹏：Ocean: Object-aware Anchor-free Tracking》'"
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

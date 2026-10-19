@@ -1,5 +1,5 @@
 ---
-title: 'KDD 2024 | 大模型 Brant-X: A Unified Physiological Signal Alignment Framework'
+title: "'KDD 2024 | 大模型 Brant-X: A Unified Physiological Signal Alignment Framework'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

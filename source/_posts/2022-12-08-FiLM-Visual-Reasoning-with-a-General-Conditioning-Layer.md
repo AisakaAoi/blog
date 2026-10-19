@@ -1,5 +1,5 @@
 ---
-title: 'FiLM: Visual Reasoning with a General Conditioning Layer'
+title: "'FiLM: Visual Reasoning with a General Conditioning Layer'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队
@@ -29,11 +29,11 @@ FiLM层通过学习，自适应性地用仿射变换（线性变化＋平移，A
 
 下标表示第i个输入的第c个特征。用Fi,c表示网络的activation，γ和β通过特征仿射变换调节神经网络的激活F，可以表示为：
 
-γi,c = fc(xi) βi,c = hc(xi), (1)
+$$\gamma_{i,c} = f_c(x_i) \quad \beta_{i,c} = h_c(x_i), \tag{1}$$
 
 f和h可以是任意函数，比如两个神经网络。实际应用中，这两个函数可以看作一个函数，输出一个向量，因为f和h​共享参数对训练有帮助。这个合体后的函数就称作FiLM generator。整个大网络模型叫做Feature-wise Linearly Modulated network（FiLM-ed network）。FiLM generator可以对FiLM-ed network的feature maps特征图进行操作(放缩、提高或者下降域值（当跟在ReLU后边时候）)。对于CNN来说f和h根据不可知的空间位置，调节激活每个特征图分布。
 
-FiLM(Fi,c|γi,c, βi,c) = γi,cFi,c + βi,c. (2)
+$$\text{FiLM}(F_{i,c} | \gamma_{i,c}, \beta_{i,c}) = \gamma_{i,c} F_{i,c} + \beta_{i,c}. \tag{2}$$
 
 ***
 

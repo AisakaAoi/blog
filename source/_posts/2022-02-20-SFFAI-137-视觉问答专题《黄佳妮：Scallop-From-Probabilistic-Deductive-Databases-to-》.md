@@ -1,5 +1,5 @@
 ---
-title: 'SFFAI 137 | 视觉问答专题《黄佳妮：Scallop: From Probabilistic Deductive Databases to ...》'
+title: "'SFFAI 137 | 视觉问答专题《黄佳妮：Scallop: From Probabilistic Deductive Databases to ...》'"
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

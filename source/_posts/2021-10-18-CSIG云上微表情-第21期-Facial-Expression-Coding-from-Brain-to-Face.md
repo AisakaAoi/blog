@@ -1,5 +1,5 @@
 ---
-title: 'CSIG云上微表情-第21期-Facial Expression Coding: from Brain to Face'
+title: "'CSIG云上微表情-第21期-Facial Expression Coding: from Brain to Face'"
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

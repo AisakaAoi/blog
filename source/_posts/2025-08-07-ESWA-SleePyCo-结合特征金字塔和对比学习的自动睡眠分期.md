@@ -1,5 +1,5 @@
 ---
-title: 'ESWA | SleePyCo: 结合特征金字塔和对比学习的自动睡眠分期'
+title: "'ESWA | SleePyCo: 结合特征金字塔和对比学习的自动睡眠分期'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

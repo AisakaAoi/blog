@@ -1,5 +1,5 @@
 ---
-title: 'CVPR 2023 | DA-BEV: 3D目标检测新 SOTA，一种强大的深度信息挖掘方法'
+title: "'CVPR 2023 | DA-BEV: 3D目标检测新 SOTA，一种强大的深度信息挖掘方法'"
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

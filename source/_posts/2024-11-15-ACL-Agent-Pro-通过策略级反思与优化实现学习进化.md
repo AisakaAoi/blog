@@ -1,5 +1,5 @@
 ---
-title: 'ACL | Agent-Pro: 通过策略级反思与优化实现学习进化'
+title: "'ACL | Agent-Pro: 通过策略级反思与优化实现学习进化'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

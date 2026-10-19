@@ -1,5 +1,5 @@
 ---
-title: 'Hexo：fatal:in unpopulated submodule ''.deploy_git'' 怎么解决？'
+title: "'Hexo：fatal:in unpopulated submodule ''.deploy_git'' 怎么解决？'"
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些技术

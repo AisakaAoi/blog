@@ -1,5 +1,5 @@
 ---
-title: 'CS231n: Convolutional Neural Networks for Visual Recognition [2017] Lecture 1'
+title: "'CS231n: Convolutional Neural Networks for Visual Recognition [2017] Lecture 1'"
 categories:
   - 🌙上过网课
   - ⭐Stanford CS231n

@@ -1,5 +1,5 @@
 ---
-title: '高效卷积神经网络设计，AugShuffleNet: Communicate More, Compute Less'
+title: "'高效卷积神经网络设计，AugShuffleNet: Communicate More, Compute Less'"
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

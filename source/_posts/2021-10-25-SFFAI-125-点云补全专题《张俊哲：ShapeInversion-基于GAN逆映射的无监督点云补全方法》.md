@@ -1,5 +1,5 @@
 ---
-title: 'SFFAI 125 | 点云补全专题《张俊哲：ShapeInversion: 基于GAN逆映射的无监督点云补全方法》'
+title: "'SFFAI 125 | 点云补全专题《张俊哲：ShapeInversion: 基于GAN逆映射的无监督点云补全方法》'"
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

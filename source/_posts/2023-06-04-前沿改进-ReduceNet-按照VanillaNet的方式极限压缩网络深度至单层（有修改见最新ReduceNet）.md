@@ -1,5 +1,5 @@
 ---
-title: 'ReduceNet: 按照VanillaNet的方式极限压缩网络深度至单层（有修改见最新ReduceNet）'
+title: "'ReduceNet: 按照VanillaNet的方式极限压缩网络深度至单层（有修改见最新ReduceNet）'"
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

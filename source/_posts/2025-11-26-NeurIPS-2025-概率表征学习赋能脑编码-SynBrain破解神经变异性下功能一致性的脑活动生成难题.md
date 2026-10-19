@@ -1,5 +1,5 @@
 ---
-title: 'NeurIPS 2025 | 概率表征学习赋能脑编码: SynBrain破解神经变异性下功能一致性的脑活动生成难题'
+title: "'NeurIPS 2025 | 概率表征学习赋能脑编码: SynBrain破解神经变异性下功能一致性的脑活动生成难题'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队
