@@ -2,8 +2,8 @@
 title: 世界机器人大赛BCI脑控机器人大赛情绪脑机-使用MATLAB进行脑机接口中的AI开发
 categories:
   - 🌙进阶学习
-  - ⭐人工智能 Artificial Intelligence
-  - 💫未分类
+  - ⭐SCNU BCI团队
+  - 💫基础知识
 abbrlink: 1b1a8060
 date: 2023-06-05 15:04:30
 ---

@@ -3,7 +3,7 @@ title: EEG 中为什么要区分 Evoked 和 Induced Activity？—— 理解 ERP
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队
-  - 💫学习报告
+  - 💫基础知识
 abbrlink: e77c1d1
 date: 2026-06-29 12:01:00
 tags:
