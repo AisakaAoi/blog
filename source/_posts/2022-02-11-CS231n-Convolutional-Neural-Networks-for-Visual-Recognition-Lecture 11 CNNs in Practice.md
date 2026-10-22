@@ -1,7 +1,5 @@
 ---
-title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
-  Lecture 11 CNNs in Practice
+title: "CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] - Lecture 11 CNNs in Practice"
 categories:
   - 🌙上过网课
   - ⭐Stanford CS231n

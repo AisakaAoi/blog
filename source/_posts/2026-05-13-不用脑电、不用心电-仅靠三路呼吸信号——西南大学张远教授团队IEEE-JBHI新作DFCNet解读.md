@@ -1,5 +1,5 @@
 ---
-title: '不用脑电、不用心电,仅靠三路呼吸信号——西南大学张远教授团队IEEE JBHI新作DFCNet解读'
+title: "'不用脑电、不用心电,仅靠三路呼吸信号——西南大学张远教授团队IEEE JBHI新作DFCNet解读'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

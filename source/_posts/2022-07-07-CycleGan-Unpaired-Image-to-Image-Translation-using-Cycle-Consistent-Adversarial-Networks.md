@@ -1,7 +1,5 @@
 ---
-title: >-
-  CycleGan: Unpaired Image-to-Image Translation using Cycle-Consistent
-  Adversarial Networks
+title: "CycleGan: Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

@@ -1,7 +1,5 @@
 ---
-title: >-
-  PAPER REVIEW· 第004期：听同一首陌生的曲子，不同人为什么能"想"到差不多的故事？Nature Communications
-  2026论文硬核解读
+title: PAPER REVIEW· 第004期：听同一首陌生的曲子，不同人为什么能"想"到差不多的故事？Nature Communications 2026论文硬核解读
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

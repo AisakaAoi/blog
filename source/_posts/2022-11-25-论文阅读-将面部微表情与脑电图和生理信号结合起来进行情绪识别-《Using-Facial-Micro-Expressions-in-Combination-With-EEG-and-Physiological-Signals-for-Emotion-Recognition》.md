@@ -1,7 +1,5 @@
 ---
-title: >-
-  将面部微表情与脑电图和生理信号结合起来进行情绪识别-《Using Facial Micro-Expressions in Combination With
-  EEG and Physiological Signals for Emotion Recognition》
+title: 将面部微表情与脑电图和生理信号结合起来进行情绪识别-《Using Facial Micro-Expressions in Combination With EEG and Physiological Signals for Emotion Recognition》
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

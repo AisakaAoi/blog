@@ -1,7 +1,5 @@
 ---
-title: >-
-  CLIP论文逐段精读-《Learning Transferable Visual Models From Natural Language
-  Supervision》
+title: CLIP论文逐段精读-《Learning Transferable Visual Models From Natural Language Supervision》
 categories:
   - 🌙进阶学习
   - ⭐论文带读

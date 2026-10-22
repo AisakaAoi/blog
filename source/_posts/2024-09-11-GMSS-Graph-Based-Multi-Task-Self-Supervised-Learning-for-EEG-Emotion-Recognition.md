@@ -1,7 +1,5 @@
 ---
-title: >-
-  GMSS Graph-Based Multi-Task Self-Supervised Learning for EEG Emotion
-  Recognition
+title: GMSS Graph-Based Multi-Task Self-Supervised Learning for EEG Emotion Recognition
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

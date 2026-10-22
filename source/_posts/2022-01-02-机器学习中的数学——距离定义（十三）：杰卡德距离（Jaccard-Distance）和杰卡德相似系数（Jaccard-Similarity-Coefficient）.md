@@ -1,7 +1,5 @@
 ---
-title: >-
-  机器学习中的数学——距离定义（十三）：杰卡德距离（Jaccard Distance）和杰卡德相似系数（Jaccard Similarity
-  Coefficient）
+title: 机器学习中的数学——距离定义（十三）：杰卡德距离（Jaccard Distance）和杰卡德相似系数（Jaccard Similarity Coefficient）
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

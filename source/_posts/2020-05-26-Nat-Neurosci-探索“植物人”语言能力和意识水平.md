@@ -1,7 +1,5 @@
 ---
-title: >-
-  Nature Neuroscience | 探索“植物人”语言能力和意识水平 | Assessing the depth of language
-  processing in patients with disorders of consciousness
+title: Nature Neuroscience | 探索“植物人”语言能力和意识水平 | Assessing the depth of language processing in patients with disorders of consciousness
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

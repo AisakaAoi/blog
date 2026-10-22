@@ -1,7 +1,5 @@
 ---
-title: >-
-  2019年微表情综述《Analysis on Emotion Detection and Recognition Methods using Facial
-  Microexpressions》
+title: 2019年微表情综述《Analysis on Emotion Detection and Recognition Methods using Facial Microexpressions》
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

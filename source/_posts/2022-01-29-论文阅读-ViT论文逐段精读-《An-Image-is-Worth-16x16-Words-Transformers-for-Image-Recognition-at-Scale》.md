@@ -1,7 +1,5 @@
 ---
-title: >-
-  深度学习ViT论文逐段精读-《An Image is Worth 16x16 Words: Transformers for Image
-  Recognition at Scale》
+title: "深度学习ViT论文逐段精读-《An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale》"
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

@@ -1,7 +1,5 @@
 ---
-title: >-
-  2018年微表情识别综述《Micro-expression recognition: an updated review of current
-  trends, challenges and solutions》
+title: "2018年微表情识别综述《Micro-expression recognition: an updated review of current trends, challenges and solutions》"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

@@ -1,7 +1,5 @@
 ---
-title: >-
-  TDGAN论文精读-《Facial Expression Recognition With Two-Branch Disentangled
-  Generative Adversarial Network》
+title: TDGAN论文精读-《Facial Expression Recognition With Two-Branch Disentangled Generative Adversarial Network》
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

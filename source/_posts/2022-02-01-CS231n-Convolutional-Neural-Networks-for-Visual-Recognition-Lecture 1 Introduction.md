@@ -1,7 +1,5 @@
 ---
-title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
-  Lecture 1 Introduction
+title: "CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] - Lecture 1 Introduction"
 categories:
   - 🌙上过网课
   - ⭐Stanford CS231n

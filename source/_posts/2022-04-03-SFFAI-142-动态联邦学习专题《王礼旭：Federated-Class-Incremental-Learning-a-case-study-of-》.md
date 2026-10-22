@@ -1,7 +1,5 @@
 ---
-title: >-
-  SFFAI 142 | 动态联邦学习专题《王礼旭：Federated Class Incremental Learning, a case study
-  of...》
+title: SFFAI 142 | 动态联邦学习专题《王礼旭：Federated Class Incremental Learning, a case study of...》
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

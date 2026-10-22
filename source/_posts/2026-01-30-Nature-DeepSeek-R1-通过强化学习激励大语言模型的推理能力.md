@@ -1,5 +1,5 @@
 ---
-title: 'Nature | DeepSeek-R1: 通过强化学习激励大语言模型的推理能力'
+title: "'Nature | DeepSeek-R1: 通过强化学习激励大语言模型的推理能力'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

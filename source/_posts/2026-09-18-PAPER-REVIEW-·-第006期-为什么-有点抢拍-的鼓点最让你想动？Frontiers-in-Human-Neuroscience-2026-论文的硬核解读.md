@@ -1,7 +1,5 @@
 ---
-title: >-
-  PAPER REVIEW · 第006期 为什么"有点抢拍"的鼓点最让你想动？Frontiers in Human Neuroscience 2026
-  论文的硬核解读
+title: PAPER REVIEW · 第006期 为什么"有点抢拍"的鼓点最让你想动？Frontiers in Human Neuroscience 2026 论文的硬核解读
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

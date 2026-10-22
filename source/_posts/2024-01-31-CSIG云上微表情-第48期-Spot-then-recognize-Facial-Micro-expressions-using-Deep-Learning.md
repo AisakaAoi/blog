@@ -1,7 +1,5 @@
 ---
-title: >-
-  CSIG云上微表情-第48期-Spot-then-recognize Facial Micro-expressions using Deep
-  Learning
+title: CSIG云上微表情-第48期-Spot-then-recognize Facial Micro-expressions using Deep Learning
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

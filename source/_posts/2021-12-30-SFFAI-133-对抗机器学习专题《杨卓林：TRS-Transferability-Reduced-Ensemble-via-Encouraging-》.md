@@ -1,7 +1,5 @@
 ---
-title: >-
-  SFFAI 133 | 对抗机器学习专题《杨卓林：TRS：Transferability Reduced Ensemble via
-  Encouraging...》
+title: SFFAI 133 | 对抗机器学习专题《杨卓林：TRS：Transferability Reduced Ensemble via Encouraging...》
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

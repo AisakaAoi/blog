@@ -1,7 +1,5 @@
 ---
-title: >-
-  深度学习-CCNN论文精读-《Towards a General Purpose CNN for Long Range Dependencies in
-  ND》
+title: 深度学习-CCNN论文精读-《Towards a General Purpose CNN for Long Range Dependencies in ND》
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

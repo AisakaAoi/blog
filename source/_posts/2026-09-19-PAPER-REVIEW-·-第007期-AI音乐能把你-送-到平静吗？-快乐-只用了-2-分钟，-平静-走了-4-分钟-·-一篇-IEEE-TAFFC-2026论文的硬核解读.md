@@ -1,7 +1,5 @@
 ---
-title: >-
-  PAPER REVIEW · 第007期 AI音乐能把你"送"到平静吗？"快乐"只用了 2 分钟，"平静"走了 4 分钟 · 一篇 IEEE TAFFC
-  2026论文的硬核解读
+title: PAPER REVIEW · 第007期 AI音乐能把你"送"到平静吗？"快乐"只用了 2 分钟，"平静"走了 4 分钟 · 一篇 IEEE TAFFC 2026论文的硬核解读
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

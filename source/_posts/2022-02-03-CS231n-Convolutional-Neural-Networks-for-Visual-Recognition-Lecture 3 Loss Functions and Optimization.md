@@ -1,7 +1,5 @@
 ---
-title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] -
-  Lecture 3 Loss Functions and Optimization
+title: "CS231n: Convolutional Neural Networks for Visual Recognition [2019中文] - Lecture 3 Loss Functions and Optimization"
 categories:
   - 🌙上过网课
   - ⭐Stanford CS231n

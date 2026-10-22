@@ -1,7 +1,5 @@
 ---
-title: >-
-  Swin Transformer论文精读-《Swin Transformer: Hierarchical Vision Transformer using
-  Shifted Windows》
+title: "Swin Transformer论文精读-《Swin Transformer: Hierarchical Vision Transformer using Shifted Windows》"
 categories:
   - 🌙进阶学习
   - ⭐论文带读

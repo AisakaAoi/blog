@@ -1,5 +1,5 @@
 ---
-title: 'JNE | GraphSleepFormer: 面向OSA患者睡眠分期的多模态图神经网络'
+title: "'JNE | GraphSleepFormer: 面向OSA患者睡眠分期的多模态图神经网络'"
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

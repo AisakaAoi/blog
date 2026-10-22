@@ -1,7 +1,5 @@
 ---
-title: >-
-  通过量化知识来解释知识蒸馏-《Explaining Knowledge Distillation by Quantifying the
-  Knowledge》in CVPR2020
+title: 通过量化知识来解释知识蒸馏-《Explaining Knowledge Distillation by Quantifying the Knowledge》in CVPR2020
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

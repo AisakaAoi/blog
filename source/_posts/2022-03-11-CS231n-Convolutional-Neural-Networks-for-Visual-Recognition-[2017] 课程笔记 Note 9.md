@@ -1,7 +1,5 @@
 ---
-title: >-
-  CS231n: Convolutional Neural Networks for Visual Recognition [2017] 课程笔记 Note
-  9
+title: "CS231n: Convolutional Neural Networks for Visual Recognition [2017] 课程笔记 Note 9"
 categories:
   - 🌙上过网课
   - ⭐Stanford CS231n

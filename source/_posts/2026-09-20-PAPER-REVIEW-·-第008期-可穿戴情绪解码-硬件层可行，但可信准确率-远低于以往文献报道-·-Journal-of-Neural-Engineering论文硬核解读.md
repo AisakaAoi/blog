@@ -1,7 +1,5 @@
 ---
-title: >-
-  PAPER REVIEW · 第008期 "可穿戴情绪解码"硬件层可行，但可信准确率"远低于以往文献报道 · Journal of Neural
-  Engineering论文硬核解读
+title: PAPER REVIEW · 第008期 "可穿戴情绪解码"硬件层可行，但可信准确率"远低于以往文献报道 · Journal of Neural Engineering论文硬核解读
 categories:
   - 🌙进阶学习
   - ⭐SCNU BCI团队

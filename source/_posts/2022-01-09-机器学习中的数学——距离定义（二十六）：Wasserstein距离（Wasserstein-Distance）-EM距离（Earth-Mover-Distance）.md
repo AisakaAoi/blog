@@ -1,7 +1,5 @@
 ---
-title: >-
-  机器学习中的数学——距离定义（二十六）：Wasserstein距离（Wasserstei Distance）/EM距离（Earth-Mover
-  Distance）
+title: 机器学习中的数学——距离定义（二十六）：Wasserstein距离（Wasserstei Distance）/EM距离（Earth-Mover Distance）
 categories:
   - 🌙进阶学习
   - ⭐人工智能 Artificial Intelligence

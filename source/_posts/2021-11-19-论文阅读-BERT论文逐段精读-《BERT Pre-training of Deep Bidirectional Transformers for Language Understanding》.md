@@ -1,7 +1,5 @@
 ---
-title: >-
-  BERT论文逐段精读-《BERT: Pre-training of Deep Bidirectional Transformers for Language
-  Understanding》
+title: "BERT论文逐段精读-《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》"
 categories:
   - 🌙进阶学习
   - ⭐论文带读

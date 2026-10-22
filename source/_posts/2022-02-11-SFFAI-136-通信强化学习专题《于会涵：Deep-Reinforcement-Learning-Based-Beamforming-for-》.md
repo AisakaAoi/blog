@@ -1,7 +1,5 @@
 ---
-title: >-
-  SFFAI 136 | 通信强化学习专题《于会涵：Deep Reinforcement Learning Based Beamforming for
-  ...》
+title: SFFAI 136 | 通信强化学习专题《于会涵：Deep Reinforcement Learning Based Beamforming for ...》
 categories:
   - 🌙逢坂杂谈与搬运
   - ⭐一些讲座

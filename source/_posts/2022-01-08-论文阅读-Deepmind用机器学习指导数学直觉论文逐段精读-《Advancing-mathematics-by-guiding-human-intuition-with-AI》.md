@@ -1,7 +1,5 @@
 ---
-title: >-
-  Deepmind用机器学习指导数学直觉论文逐段精读-《Advancing mathematics by guiding human intuition
-  with AI》
+title: Deepmind用机器学习指导数学直觉论文逐段精读-《Advancing mathematics by guiding human intuition with AI》
 categories:
   - 🌙进阶学习
   - ⭐论文带读
